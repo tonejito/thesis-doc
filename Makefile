@@ -1,10 +1,10 @@
-SHELL=		/bin/sh
-RM=		/bin/rm
-LATEX=		/usr/bin/latex
-BIBTEX=		/usr/bin/bibtex
-DVIPS=		/usr/bin/dvips
-PS2PDF=		/usr/bin/ps2pdf
-GS=		/usr/bin/gs
+SHELL=		sh
+RM=		rm
+LATEX=		latex
+BIBTEX=		bibtex
+DVIPS=		dvips
+PS2PDF=		ps2pdf
+GS=		gs
 
 .SUFFIXES:      .tex .dvi .eps .ps .pdf
 
@@ -56,3 +56,4 @@ neat:
 	$(RM) -f *.aux \
 		$(MAIN).log $(MAIN).blg $(MAIN).bbl \
 		$(MAIN).lot $(MAIN).lof $(MAIN).toc
+
