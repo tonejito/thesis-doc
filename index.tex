@@ -8,10 +8,10 @@
 \renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
 \renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
 
-
 \begin{enumerate}
   \item Introducci\'{o}n
   \begin{enumerate}
+    \item Estado del arte
     \item Sistemas de almacenamiento
     \item T\'{e}cnicas de respaldo
     \item Appliances
@@ -25,19 +25,77 @@
     \begin{enumerate}
       \item Diagrama funcional
       \item Dependencias
+      \item N\'{u}mero m\'{a}ximo de usuarios
+      \item Hardware recomendado
       \item Autenticaci\'{o}n centralizada
       \begin{enumerate}
         \item Directorio
         \item Estructura
       \end{enumerate}
       \item Acceso a los archivos
+      \begin{enumerate}
+        \item WebDAV
+        \item SFTP
+      \end{enumerate}
       \item Interfaz de administraci\'{o}n
+        \begin{enumerate}
+          \item Rails
+        \end{enumerate}
     \end{enumerate}
+    \item Especificaci\'{o}n del appliance
+    \begin{enumerate}
+      \item Hardware recomendado
+      \item Versiones de software
+      \item L\'{i}mites
+    \end{enumerate}
+  \end{enumerate}
+  \item Implementaci\'{o}n / Desarrollo
+  \begin{enumerate}
+    \item Instalaci\'{o}n del sistema operativo
+    \begin{enumerate}
+      \item RAID
+      \item LVM
+    \end{enumerate}
+    \item Instalaci\'{o}n de las herramientas
     \item Hardening
     \begin{enumerate}
       \item Sistema operativo
       \item Servicios
+      \begin{enumerate}
+        \item ssh
+        \item http
+        \item ldap
+      \end{enumerate}
     \end{enumerate}
+  \end{enumerate}
+  \item Pruebas
+  \begin{enumerate}
+    \item Pruebas de SQLi y XSS en las interfaces de usuario y adminstraci\'{o}n
+    \item Pruebas de carga al sistema
+    \begin{enumerate}
+      \item N\'{u}mero m\'{a}ximo de usuarios
+      \item Performance del arreglo RAID
+      \item Estabilidad del prototipo
+      \item Condiciones t\'{e}rmicas de operaci\'{o}n
+    \end{enumerate}
+    \item Compatibilidad multiplataforma
+    \begin{enumerate}
+      \item GNU/Linux
+      \item Mac OS X
+      \item Apple iOS
+      \item Android
+      \item Windows
+    \end{enumerate}
+  \end{enumerate}
+  \item Conclusiones
+  \begin{enumerate}
+    \item Resultados obtenidos
+    \item Oportunidades de Mejora
   \end{enumerate}
 \end{enumerate}
 }
+
+\section{ref}
+We can cite a journal article~\cite{someguy2002} and a conference
+paper~\cite{LastName1996} in the same way as a book citation.  More
+information can be found in~\cite{lam1994}.
