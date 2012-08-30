@@ -25,6 +25,10 @@ FILES = thesis.tex thesis.sty						\
 	chap1.tex chap2.tex chap3.tex chap4.tex chap5.tex chap6.tex	\
 	bib.tex ref.bib apdxa.tex
 
+# Make pdf and clean all temporary files by default
+# Added by Andrés Hernández
+$(MAIN):	$(MAIN).pdf neat
+
 $(MAIN).dvi:    $(MAIN).tex $(FIGURES) $(FILES)
 	$(LATEX) $*.tex; 
 	$(BIBTEX) $*;
