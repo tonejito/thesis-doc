@@ -8,14 +8,49 @@
 \renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
 \renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
 
+% On the final index only 3 levels will be shown (x.y.z) instead of the current 4 (x.y.z.w)
+
 \begin{enumerate}
+  % 1
   \item Introducci\'{o}n
   \begin{enumerate}
-    \item Estado del arte
-    \item Sistemas de almacenamiento
-    \item T\'{e}cnicas de respaldo
-    \item Appliances
+    \item Objetivo
+    \item Estructura de la t'{e}sis
   \end{enumerate}
+  % 2
+  \item Marco Te\'{o}rico
+  \begin{enumerate}
+    \item Sistemas de almacenamiento
+    \begin{enumerate}
+      \item Ventajas y desventajas
+      \item Escenarios de falla
+      \item M\'{e}todos de protecci\'{o}n
+      \begin{enumerate}
+        \item T\'{e}cnicas de respaldo
+        \item Arreglos RAID
+      \end{enumerate}
+    \end{enumerate}
+    \item GNU/Linux
+    \begin{enumerate}
+      \item Historia
+      \item Uso en la industria
+      \item Debian GNU/Linux
+    \end{enumerate}
+    \item Appliances
+    \item Protocolo HTTP
+    \begin{enumerate}
+      \item HTTPS
+      \item WebDAV
+    \end{enumerate}
+    \item Protocolo LDAP
+    \item Protocolo SSH
+    \begin{enumerate}
+      \item SCP
+      \item SFTP
+      \item SSHFS
+    \end{enumerate}
+  \end{enumerate}
+  % 3
   \item Definici\'{o}n del problema y soluci\'{o}n propuesta
   \begin{enumerate}
     \item Problem\'{a}tica actual
@@ -49,6 +84,7 @@
       \item L\'{i}mites
     \end{enumerate}
   \end{enumerate}
+  % 4
   \item Implementaci\'{o}n / Desarrollo
   \begin{enumerate}
     \item Instalaci\'{o}n del sistema operativo
@@ -68,6 +104,7 @@
       \end{enumerate}
     \end{enumerate}
   \end{enumerate}
+  % 5
   \item Pruebas
   \begin{enumerate}
     \item Pruebas de SQLi y XSS en las interfaces de usuario y adminstraci\'{o}n
@@ -87,6 +124,7 @@
       \item Windows
     \end{enumerate}
   \end{enumerate}
+  % 6
   \item Conclusiones
   \begin{enumerate}
     \item Resultados obtenidos
@@ -94,8 +132,3 @@
   \end{enumerate}
 \end{enumerate}
 }
-
-\section{ref}
-We can cite a journal article~\cite{someguy2002} and a conference
-paper~\cite{LastName1996} in the same way as a book citation.  More
-information can be found in~\cite{lam1994}.
