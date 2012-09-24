@@ -27,11 +27,11 @@ FILES = thesis.tex thesis.sty						\
 
 # Make pdf and clean all temporary files by default
 # Added by Andrés Hernández
-$(MAIN):	$(MAIN).pdf neat
+$(MAIN):	clean $(MAIN).pdf neat
 
 $(MAIN).dvi:    $(MAIN).tex $(FIGURES) $(FILES)
 	$(LATEX) $*.tex; 
-	$(BIBTEX) $*;
+	# $(BIBTEX) $*;
 	$(LATEX) $*.tex;
 	while grep -s 'Rerun' $*.log 2> /dev/null; do	\
 		$(LATEX) $*.tex;			\
