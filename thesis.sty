@@ -2,6 +2,13 @@
 \usepackage{latexsym}
 \usepackage{rotating}
 
+% used to center in fixed width table columns
+\usepackage{array}
+
+% mac ports texlive-latex-extra
+\usepackage{multirow}
+
+
 % Try uncommenting the following line if fonts don't
 % display correctly in the PDF file.
 %\usepackage{pslatex} 
@@ -63,44 +70,50 @@
 	\normalsize
 }
 
+% Define new column type C : centered fixed width
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
 % Command for creating the thesis title page in accordance with the
 % requirements of the School of Graduate Studies.
 % For usage example, see thesis.tex.
 %
+% Notes:
+% To get vertical lines separate the tabular specification with pipes {|c|C{13cm}|}
+% To get horizontal separators uncomment the hline tags
+
 \newcommand{\thesistitle}[7]{%
 \thispagestyle{empty}
-\begin{center}
 
-\renewcommand{\baselinestretch}{1.0}%
-\textbf{\Large #1}
-\renewcommand{\baselinestretch}{\spacing}%
+\begin{table}
+\centering
+\noindent\makebox[\textwidth]{%
+\begin{tabular}{ c C{13cm} }
+% \hline
+\multirow{3}{*}{\includegraphics[width=90px]{figures/UNAM}} 
+  & \textbf{\Large #1} \\
+  & \rule{\linewidth}{2.0mm} \\
+  & \textbf{\Large #2} \\
+% \hline
+\tiny{} & \tiny{} \\
+% \hline
+\multirow{7}{*}{\rule{2.0mm}{115mm}} 
+  & \textbf{\Large #3} \tabularnewline \\
+  & \textbf{\huge T E S I S} \tabularnewline \\
+  & \textbf{\large Para obtener el T\'{i}tulo de} \\
+  & \textbf{\Large #4} \tabularnewline \\
+  & \textbf{\large Presenta} \\
+  & \textbf{\Large #5} \tabularnewline \\
+  & \tabularnewline \\
+% \hline
+\multirow{3}{*}{\includegraphics[width=90px]{figures/Ingenieria}} 
+  & \textbf{\large Director de Tesis} \\
+  & \textbf{\Large #6} \tabularnewline \\
+  & \textbf{\emph{#7}} \\ 
+% \hline
+\end{tabular}
+} % ending of \makebox
+\end{table}
 
-\vspace{1.0cm}
-
-Que presenta \\
-#2
-
-\vspace{\fill}
-
-\vspace{\fill}
-
-Para obtener el t\'{i}tulo de \\
-#3 \\
-
-\vspace{\fill}
-
-Asesor \\
-#4 \\
-
-\vspace{\fill}
-
-#5 \\
-#6 \\
-
-\vspace{\fill}
-
-#7 
-\end{center}
 }
 
 % The \munepsfig command is used to insert a new EPS figure 
