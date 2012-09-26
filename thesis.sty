@@ -42,9 +42,9 @@
 \setcounter{tocdepth}{3}
 
 % Almost everything is double spaced.
-%
-\newcommand{\spacing}{1.8}
-\renewcommand{\baselinestretch}{\spacing}
+% Disabled to make the text single spaced
+% \newcommand{\spacing}{1.8}
+% \renewcommand{\baselinestretch}{\spacing}
 
 % Footnotes are to be single spaced.
 %
@@ -83,6 +83,10 @@
 
 \newcommand{\thesistitle}[7]{%
 \thispagestyle{empty}
+
+% Double space text on title page
+\newcommand{\spacing}{1.8}
+\renewcommand{\baselinestretch}{\spacing}
 
 \begin{table}
 \centering
