@@ -1,8 +1,9 @@
-\chapter{\'{I}ndice}
+%\chapter{\'{I}ndice}
 \label{chap:index}
 
 \section{\'{I}ndice Propuesto}
 {
+% Label items with arabic numbers
 \renewcommand{\labelenumi}{\arabic{enumi}.}
 \renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
 \renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
@@ -15,7 +16,7 @@
   \item Introducci\'{o}n
   \begin{enumerate}
     \item Objetivo
-    \item Estructura de la t'{e}sis
+    \item Estructura de la tesis
   \end{enumerate}
   % 2
   \item Marco Te\'{o}rico
@@ -30,19 +31,22 @@
         \item Arreglos RAID
       \end{enumerate}
     \end{enumerate}
+    \item Appliances
     \item GNU/Linux
     \begin{enumerate}
       \item Historia
       \item Uso en la industria
       \item Debian GNU/Linux
     \end{enumerate}
-    \item Appliances
     \item Protocolo HTTP
     \begin{enumerate}
       \item HTTPS
       \item WebDAV
     \end{enumerate}
     \item Protocolo LDAP
+    \begin{enumerate}
+      \item Directorio de usuarios
+    \end{enumerate}
     \item Protocolo SSH
     \begin{enumerate}
       \item SCP
@@ -59,43 +63,60 @@
     \item Arquitectura del prototipo
     \begin{enumerate}
       \item Diagrama funcional
-      \item Dependencias
-      \item N\'{u}mero m\'{a}ximo de usuarios
-      \item Hardware recomendado
+%      \begin{enumerate}
+%        \item Dependencias
+%      \end{enumerate}
       \item Autenticaci\'{o}n centralizada
       \begin{enumerate}
-        \item Directorio
-        \item Estructura
+        \item Autenticaci\'{o}n por medio de directorio
+        \item Estructura del directorio
       \end{enumerate}
-      \item Acceso a los archivos
+      \item Mecanismos de acceso a los archivos
       \begin{enumerate}
         \item WebDAV
+        \item SCP
         \item SFTP
+        \item SSHFS
       \end{enumerate}
-      \item Interfaz de administraci\'{o}n
-        \begin{enumerate}
-          \item Rails
-        \end{enumerate}
+      \item Interfaces de usuario
+      \begin{enumerate}
+        \item Rails
+        \item Interfaz de administraci\'{o}n
+        \item Interfaz de cambio de contrase\~{n}a
+      \end{enumerate}
     \end{enumerate}
     \item Especificaci\'{o}n del appliance
     \begin{enumerate}
-      \item Hardware recomendado
-      \item Versiones de software
+      \item Hardware
+      \item Software
       \item L\'{i}mites
     \end{enumerate}
   \end{enumerate}
   % 4
-  \item Implementaci\'{o}n / Desarrollo
+  \item Implementaci\'{o}n de la soluci\'{o}n
   \begin{enumerate}
-    \item Instalaci\'{o}n del sistema operativo
+    \item Configuraci\'{o}n del sistema operativo
     \begin{enumerate}
       \item RAID
-      \item LVM
+      \item Reducci\'{o}n de componentes instalados
     \end{enumerate}
-    \item Instalaci\'{o}n de las herramientas
+    \item Configuraci\'{o}n de las herramientas
+    \begin{enumerate}
+      \item OpenLDAP
+      \item OpenSSH
+      \item Apache httpd
+    \end{enumerate}
+    \item Interfaces de usuario
+    \begin{enumerate}
+      \item Interfaz de administraci\'{o}n
+      \item Interfaz de cambio de contrase\~{n}a
+    \end{enumerate}
     \item Hardening
     \begin{enumerate}
       \item Sistema operativo
+      \begin{enumerate}
+        \item Firewall
+      \end{enumerate}
       \item Servicios
       \begin{enumerate}
         \item ssh
@@ -107,14 +128,6 @@
   % 5
   \item Pruebas
   \begin{enumerate}
-    \item Pruebas de SQLi y XSS en las interfaces de usuario y adminstraci\'{o}n
-    \item Pruebas de carga al sistema
-    \begin{enumerate}
-      \item N\'{u}mero m\'{a}ximo de usuarios
-      \item Performance del arreglo RAID
-      \item Estabilidad del prototipo
-      \item Condiciones t\'{e}rmicas de operaci\'{o}n
-    \end{enumerate}
     \item Compatibilidad multiplataforma
     \begin{enumerate}
       \item GNU/Linux
@@ -122,6 +135,17 @@
       \item Apple iOS
       \item Android
       \item Windows
+    \end{enumerate}
+    \item Pruebas de carga al sistema
+    \begin{enumerate}
+      \item N\'{u}mero m\'{a}ximo de usuarios
+      \item Rendimiento del arreglo RAID
+    \end{enumerate}
+    \item Pruebas de seguridad
+    \begin{enumerate}
+      \item SQLi - SQL Inyection
+      \item XSS - Cross-site scripting
+      \item Directory traversal
     \end{enumerate}
   \end{enumerate}
   % 6
@@ -131,4 +155,4 @@
     \item Oportunidades de Mejora
   \end{enumerate}
 \end{enumerate}
-}
+} %end \section
