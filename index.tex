@@ -1,7 +1,10 @@
 %\chapter{\'{I}ndice}
-\label{chap:index}
+%\label{chap:index}
 
-\section{\'{I}ndice Propuesto}
+\addcontentsline{toc}{chapter}{Abstract}
+\textbf{\Large \'{I}ndice Propuesto}
+
+%\section{}
 {
 % Label items with arabic numbers
 \renewcommand{\labelenumi}{\arabic{enumi}.}
@@ -11,14 +14,16 @@
 
 % On the final index only 3 levels will be shown (x.y.z) instead of the current 4 (x.y.z.w)
 
-\begin{enumerate}
-  % 1
+\begin{itemize}
+  % •
   \item Introducci\'{o}n
-  \begin{enumerate}
+  \begin{itemize}
     \item Objetivo
     \item Estructura de la tesis
-  \end{enumerate}
-  % 2
+  \end{itemize}
+\end{itemize}
+\begin{enumerate}
+  % 1
   \item Marco Te\'{o}rico
   \begin{enumerate}
     \item Sistemas de almacenamiento
@@ -32,15 +37,22 @@
       \end{enumerate}
     \end{enumerate}
     \item Appliances
+    \item Seguridad Inform\'{a}tica
+    \begin{enumerate}
+      \item Principios de seguridad inform\'{a}tica
+      \item Vulnerabilidades
+      \item Hardening
+    \end{enumerate}
     \item GNU/Linux
     \begin{enumerate}
       \item Historia
-      \item Uso en la industria
+      \item Uso de GNU/Linux en la industria
+      \item Distribuciones de GNU/Linux
       \item Debian GNU/Linux
     \end{enumerate}
     \item Protocolo HTTP
     \begin{enumerate}
-      \item HTTPS
+      \item HTTPS - HTTP over SSL
       \item WebDAV
     \end{enumerate}
     \item Protocolo LDAP
@@ -49,12 +61,12 @@
     \end{enumerate}
     \item Protocolo SSH
     \begin{enumerate}
-      \item SCP
-      \item SFTP
-      \item SSHFS
+      \item SCP - Secure Copy
+      \item SFTP - Secure FTP
+      \item SSHFS - Secure Shell Filesystem
     \end{enumerate}
   \end{enumerate}
-  % 3
+  % 2
   \item Definici\'{o}n del problema y soluci\'{o}n propuesta
   \begin{enumerate}
     \item Problem\'{a}tica actual
@@ -63,9 +75,6 @@
     \item Arquitectura del prototipo
     \begin{enumerate}
       \item Diagrama funcional
-%      \begin{enumerate}
-%        \item Dependencias
-%      \end{enumerate}
       \item Autenticaci\'{o}n centralizada
       \begin{enumerate}
         \item Autenticaci\'{o}n por medio de directorio
@@ -73,16 +82,16 @@
       \end{enumerate}
       \item Mecanismos de acceso a los archivos
       \begin{enumerate}
-        \item WebDAV
-        \item SCP
-        \item SFTP
-        \item SSHFS
+        \item Acceso por HTTP mediante WebDAV
+        \item Acceso por SSH utilizando SCP
+        \item Acceso por SSH utilizando SFTP
+        \item Acceso por SSH utilizando SSHFS
       \end{enumerate}
       \item Interfaces de usuario
       \begin{enumerate}
         \item Rails
-        \item Interfaz de administraci\'{o}n
-        \item Interfaz de cambio de contrase\~{n}a
+        \item Dise\~{n}o de la interfaz de administraci\'{o}n
+        \item Dise\~{n}o de la interfaz de cambio de contrase\~{n}a
       \end{enumerate}
     \end{enumerate}
     \item Especificaci\'{o}n del appliance
@@ -92,12 +101,12 @@
       \item L\'{i}mites
     \end{enumerate}
   \end{enumerate}
-  % 4
+  % 3
   \item Implementaci\'{o}n de la soluci\'{o}n
   \begin{enumerate}
     \item Configuraci\'{o}n del sistema operativo
     \begin{enumerate}
-      \item RAID
+      \item Arreglo de discos RAID
       \item Reducci\'{o}n de componentes instalados
     \end{enumerate}
     \item Configuraci\'{o}n de las herramientas
@@ -106,7 +115,7 @@
       \item OpenSSH
       \item Apache httpd
     \end{enumerate}
-    \item Interfaces de usuario
+    \item Desarrollo de las interfaces de usuario
     \begin{enumerate}
       \item Interfaz de administraci\'{o}n
       \item Interfaz de cambio de contrase\~{n}a
@@ -117,7 +126,7 @@
       \begin{enumerate}
         \item Firewall
       \end{enumerate}
-      \item Servicios
+      \item Servicios de red
       \begin{enumerate}
         \item ssh
         \item http
@@ -125,7 +134,7 @@
       \end{enumerate}
     \end{enumerate}
   \end{enumerate}
-  % 5
+  % 4
   \item Pruebas
   \begin{enumerate}
     \item Compatibilidad multiplataforma
@@ -148,7 +157,7 @@
       \item Directory traversal
     \end{enumerate}
   \end{enumerate}
-  % 6
+  % 5
   \item Conclusiones
   \begin{enumerate}
     \item Resultados obtenidos
