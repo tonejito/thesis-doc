@@ -1,12 +1,190 @@
+\restylefloat{table}
   \chapter{Marco Te\'{o}rico}
   \label{chap:cap1}
     \section {Sistemas de almacenamiento}
-      \subsection {Ventajas y desventajas}
+    
+Definici\'{o}n
+
+Los sistemas de almacenamiento son importantes puesto que guardan los datos del usuario.
+
+%Caracter\'{i}sticas de los sistemas de almacenamiento
+%
+%\begin{itemize}
+%  \item Persistencia de la informaci\'{o}n
+%  \item Capacidad Multi-escritura
+%\end{itemize}
+
+Clasificaci\'{o}n por tipo de medio \cite{_ibm_????}
+
+%Medios F\'{i}sicos
+%\begin{itemize}
+%  \item Tarjetas Perforadas
+%
+%  IBM Punch Cards \cite{_ibm_????} \\
+%
+%\newglossaryentry{punch-card}
+%{
+%  name=Tarjeta Perforada,
+%    description=
+%      {
+%          tarjeta que esta perforada y tiene codificado algo
+%	    }
+%	    }
+%
+%  \gls{punch-card}
+%\end{itemize}
+Medios basados en circuitos
+\begin{itemize}
+  \item RAM
+  
+  Es un medio de almacenamiento vol\'{a}til que generalmente se utiliza para guardar datos temporales o es la memoria intermedia de un equipo de c\'{o}mputo, tiene una gran velocidad de lectura y de escritura comparada con cualquier otro medio de almacenamiento.
+  
+  \item NVRAM
+  
+  Es una variante de la memoria RAM donde se almacena la informaci\'{o}n de manera no vol\'{a}til, generalmente su capacidad es peque\~{n}a y este tipo de memoria se utiliza para fines muy especializados.
+  
+  \item ROM
+  
+  Es una memoria de s\'{o}lo lectura que puede ser grabado una sola vez, generalmente se utilizaba para almacenar firmware de dispositivos o alg\'{u}n programa embebido en hardware que requiere una salida fija para una entrada determinada.
+  
+  \item EEPROM
+  
+  Una variante de la memoria ROM donde el contenido puede ser borrado por varios m\'{e}todos, ya sea el\'{e}ctricamente o por medio de la exposici\'{o}n a rayos ultravioleta. En condiciones normales de operaci\'{o}n su comportamiento es similar al de la memoria ROM y se debe entrar en un modo especial para grabar nuevos datos en la misma.
+  
+  \item FLASH
+  
+  Una variante m\'{a}s de los medios de almacenamiento basados en circuitos es este tipo de memoria se ha hecho popular en los \'{u}ltimos a\~{n}os gracias a que no depende de partes m\'{o}viles y es de tama\~{n}o peque\~{n}o por lo que es un medio de almacenamiento port\'{a}til y eficiente.
+  
+  \item SSD
+  
+  Un medio de almacenamiento relativamente reciente utiliza arreglos de circuitos para guardar la informaci\'{o}n, generalmente se utiliza memoria tipo NAND para mantener los datos y a diferencia de los discos duros no tienen partes m\'{o}viles por lo que son menos propensos a fallos y disipan menos calor.
+  
+\end{itemize}
+Medios Magn\'{e}ticos
+\begin{itemize}
+  \item Cinta
+  
+  Las unidades de cinta son medios que almacenan de manera secuencial los datos, generalmente tienen capacidades muy grandes y son utilizadas para archivar informaci\'{o}n.
+  
+  \item Discos Flexibles
+  
+  Los discos flexibles fueron muy populares en las \'{u}ltimas tres d\'{e}cadas del siglo pasado, sus capacidades eran peque\~{n}as y los datos se pueden acceder de manera aleatoria gracias a que cuenta con cabezales para acceder a cualquier sector del disco de manera no secuencial.
+  
+  \item Discos Duros
+  
+  Parecidos a los discos flexibles, estos medios tienen mayor capacidad y actualmente son el medio primordial de almacenar informaci\'{o}n en los equipos de c\'{o}mputo. A diferencia de los discos flexibles, tienen los componentes mec\'{a}nicos dentro del armaz\'{o}n del disco y pueden almacenar grandes cantidades de informaci\'{o}n gracias a que se apilan varios discos en una estructura cilindrica. Para buscar un dato se debe hacer referencia al plato donde est\'{a}, al sector del disco y a la cabeza de lectura que corresponda.
+  
+\end{itemize}
+Medios \'{O}pticos
+\begin{itemize}
+  \item Discos de s\'{o}lo lectura (WORM)
+  
+  Los discos pre-masterizados (CD-ROM, DVD-ROM, BD-ROM) se graban en las f\'{a}bricas donde se tiene un disco maestro que sirve para transferir los datos al medio final por un proceso de vaciado t\'{e}rmico.
+  
+  Los discos grabables (CD-R, DVD+R, DVD-R y BD-R) pueden ser grabados mediante un laser al fundir una capa de policarbonato en la superficie inferior del disco para grabar los bits en 1. El formato de los bits generalmente va de acuerdo al est\'{a}ndar ISO-9660.
+  
+  \item Discos regrabables
+  
+  Los discos regrabables (CD-RW, DVD+RW, DVD-RW, BD-RE) tienen una ventaja adicional comparados con los discos grabables de una sola vez, es posible borrar la informaci\'{o}n contenida para almacenar nuevos datos en el medio, esto se logra inicializar parcial o totalmente los sectores del disco para que este pueda admitir nuevos datos.
+  
+\end{itemize}
+Medios Magneto-\'{o}pticos
+\begin{itemize}
+  \item Discos MO (Magneto-optic)
+  
+  Los discos magneto-\'{o}pticos tienen las bondades de la rapidez de los discos magn\'{e}ticos y la versatilidad de los discos \'{o}pticos, 
+  
+\end{itemize}
+Medios Hologr\'{a}ficos
+\begin{itemize}
+  \item HVD - Disco Vers\'{a}til Hologr\'{a}fico
+  
+  Es un nuevo medio de almacenamiento a\'{u}n en desarrollo que ofrece un m\'{e}todo m\'{a}s vers\'{a}til de escribir los datos utilizando un mecanismo hologr\'{a}fico donde dependiendo la manera en la que se leen los datos es la informaci\'{o}n que se obtiene.
+  
+\end{itemize}
+      \subsection {Comparativa de medios de almacenamiento actuales}
+
+\begin{table}[H]
+\noindent\makebox[\textwidth]{%
+% manually center the table in page
+\hspace*{-1.1cm}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+%Medio & Capacidad & Persistente & Acceso aleatorio & Lectura y escritura & Vulnerabilidades \\
+\multirow{2}{*}{Medio} & \multirow{2}{*}{Capacidad} & \multirow{2}{*}{Persistente} & Acceso & Lectura y & \multirow{2}{*}{Vulnerabilidades} \\
+ & & & aleatorio & escritura & \\
+\hline
+RAM & MB & No & Si & Si & \multirow{6}{*}{Electricidad est\'{a}tica} \\
+NVRAM & MB & Si & Si & Si &  \\
+ROM & MB & Si & Si & No &  \\
+EEPROM & MB & Si & Si & No &  \\
+FLASH & GB & Si & Si & Si &  \\
+SSD & GB & Si & Si & Si &  \\
+\hline
+Cinta & TB & Si & No & Si & \multirow{3}{*}{Campos magn\'{e}ticos} \\
+Disco Flexible & MB & Si & Si & Si &  \\
+Disco Duro & TB & Si & Si & Si &  \\
+\hline
+Disco \'{O}ptico & MB/GB & Si & Si & No & \multirow{2}{*}{Rayaduras} \\
+Disco Regrabable & MB/GB & SI & SI & Si &  \\
+\hline
+\multirow{2}{*}{Disco MO} & \multirow{2}{*}{MB/GB} & \multirow{2}{*}{Si} & \multirow{2}{*}{Si} & \multirow{2}{*}{Si} & Rayaduras \\
+ & & & & & Campos magn\'{e}ticos \\
+\hline
+Disco Hologr\'{a}fico & GB & Si & Si & Si & Rayaduras \\
+\hline
+\end{tabular}
+} % ending of \makebox
+\end{table}
+
       \subsection {Escenarios de falla}
+
+Da\~{n}o f\'{i}sico del medio
+
+Fallo de componentes internos
+
+% Componentes mec\'{a}nicos
+
+% Circuitos
+
       \subsection {M\'{e}todos de protecci\'{o}n}
+
+Protecci\'{o}n antiest\'{a}tica
+
+Seguro contra escritura
+
+Protecci\'{o}n contra da\~{n}o f\'{i}sico
+
+Protecci\'{o}n contra golpes
+
+Protecci\'{o}n contra campos magn\'{e}ticos
+
         \subsubsection {T\'{e}cnicas de respaldo}
+
+Definici\'{o}n de respaldo
+
+Copia a otros discos
+
+Copia a medios de solo lectura
+
+Copia de archivos a recursos de red compartidos (NFS, CIFS, SSHFS)
+
+Montaje de dispositivos de bloque por red (NBD, SAN)
+
         \subsubsection {Arreglos RAID}
+
+Definici\'{o}n de arreglo de discos (f\'{i}sico y l\'{o}gico)
+
+Tipo de arreglos RAID
+
+0, 1, 5, 6, 01, 10
+
+Ventajas respecto al almacenamiento en un s\'{o}lo disco
+
     \section {Appliances}
+
+Definici\'{o}n de appliance
+
     \section {Seguridad Inform\'{a}tica}
       \subsection {Principios de seguridad inform\'{a}tica}
       \subsection {Vulnerabilidades}
