@@ -31,7 +31,7 @@ $(MAIN):	clean $(MAIN).pdf neat
 
 $(MAIN).dvi:    $(MAIN).tex $(FIGURES) $(FILES)
 	$(LATEX) $*.tex; 
-	# $(BIBTEX) $*;
+	$(BIBTEX) $*;
 	$(LATEX) $*.tex;
 	while grep -s 'Rerun' $*.log 2> /dev/null; do	\
 		$(LATEX) $*.tex;			\
