@@ -25,9 +25,13 @@ FILES = thesis.tex thesis.sty						\
 	chap1.tex chap2.tex chap3.tex chap4.tex chap5.tex chap6.tex	\
 	bib.tex ref.bib apdxa.tex
 
-# Make pdf and clean all temporary files by default
+PREVIEW=/Applications/Preview.app/Contents/MacOS/Preview
+
+# Make pdf, clean all temporary files by default and open the document with the platform pdf viewer
 # Added by Andrés Hernández
 $(MAIN):	clean $(MAIN).pdf neat
+	if [ -r $(MAIN).pdf -a -e ${PREVIEW} ] ; then VIEWER="$(shell which open)" ; $$VIEWER $(MAIN).pdf ; fi ;
+	if [ -r $(MAIN).pdf -a -n "$(shell which evince)" ] ; then VIEWER="$(shell which evince)" ; $$VIEWER $(MAIN).pdf ; fi ;
 
 $(MAIN).dvi:    $(MAIN).tex $(FIGURES) $(FILES)
 	$(LATEX) $*.tex; 
