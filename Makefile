@@ -30,7 +30,7 @@ PREVIEW=/Applications/Preview.app/Contents/MacOS/Preview
 # Make pdf, clean all temporary files by default and open the document with
 # the platform pdf viewer
 # Added by Andrés Hernández
-$(MAIN):	clean.pdf $(MAIN).pdf neat
+$(MAIN):	clean.doc $(MAIN).pdf
 	# Preview automagically reload the document on change
 	#if [ -r $(MAIN).pdf -a -e ${PREVIEW} ] ; \
 	#then \
@@ -64,12 +64,12 @@ $(EMAIN).pdf:	$(MAIN).ps
 .ps.pdf:       $*.dvi
 	$(PS2PDF) -sPAPERSIZE=letter $< $@
 
-clean.pdf:
-	$(RM) -f *.aux $(MAIN).pdf $(EMAIN).pdf
+clean.doc:
+	$(RM) -f *.aux $(MAIN).dvi $(MAIN).ps $(MAIN).pdf $(EMAIN).pdf
 
-clean:	clean.pdf
+clean:	clean.doc
 	$(RM) -f *.aux \
-		$(MAIN).log $(MAIN).dvi $(MAIN).ps $(MAIN).blg $(MAIN).bbl \
+		$(MAIN).log $(MAIN).blg $(MAIN).bbl \
 		$(MAIN).lot $(MAIN).lof $(MAIN).toc
 
 # Suggested by Neil B.
