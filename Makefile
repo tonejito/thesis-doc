@@ -27,12 +27,21 @@ FILES = thesis.tex thesis.sty						\
 
 PREVIEW=/Applications/Preview.app/Contents/MacOS/Preview
 
-# Make pdf, clean all temporary files by default and open the document with the platform pdf viewer
+# Make pdf, clean all temporary files by default and open the document with
+# the platform pdf viewer
 # Added by Andrés Hernández
 $(MAIN):	clean.pdf $(MAIN).pdf neat
-	# Preview automagically reload the document on change, so this is not needed
-	#if [ -r $(MAIN).pdf -a -e ${PREVIEW} ] ; then VIEWER="$(shell which open)" ; $$VIEWER $(MAIN).pdf ; fi ;
-	if [ -r $(MAIN).pdf -a -n "$(shell which evince)" ] ; then VIEWER="$(shell which evince)" ; $$VIEWER $(MAIN).pdf ; fi ;
+	# Preview automagically reload the document on change
+	#if [ -r $(MAIN).pdf -a -e ${PREVIEW} ] ; \
+	#then \
+	#  VIEWER="$(shell which open)" ; \
+	#  $$VIEWER $(MAIN).pdf ; \
+	#fi ;
+	if [ -r $(MAIN).pdf -a -n "$(shell which evince)" ] ; \
+	then \
+	  VIEWER="$(shell which evince)" ; \
+	  $$VIEWER $(MAIN).pdf ; \
+	fi ;
 
 $(MAIN).dvi:    $(MAIN).tex $(FIGURES) $(FILES)
 	$(LATEX) $*.tex; 
