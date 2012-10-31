@@ -29,8 +29,9 @@ PREVIEW=/Applications/Preview.app/Contents/MacOS/Preview
 
 # Make pdf, clean all temporary files by default and open the document with the platform pdf viewer
 # Added by Andrés Hernández
-$(MAIN):	clean $(MAIN).pdf neat
-	if [ -r $(MAIN).pdf -a -e ${PREVIEW} ] ; then VIEWER="$(shell which open)" ; $$VIEWER $(MAIN).pdf ; fi ;
+$(MAIN):	clean.pdf $(MAIN).pdf neat
+	# Preview automagically reload the document on change, so this is not needed
+	#if [ -r $(MAIN).pdf -a -e ${PREVIEW} ] ; then VIEWER="$(shell which open)" ; $$VIEWER $(MAIN).pdf ; fi ;
 	if [ -r $(MAIN).pdf -a -n "$(shell which evince)" ] ; then VIEWER="$(shell which evince)" ; $$VIEWER $(MAIN).pdf ; fi ;
 
 $(MAIN).dvi:    $(MAIN).tex $(FIGURES) $(FILES)
@@ -54,10 +55,13 @@ $(EMAIN).pdf:	$(MAIN).ps
 .ps.pdf:       $*.dvi
 	$(PS2PDF) -sPAPERSIZE=letter $< $@
 
-clean:
+clean.pdf:
+	$(RM) -f *.aux $(MAIN).pdf $(EMAIN).pdf
+
+clean:	clean.pdf
 	$(RM) -f *.aux \
 		$(MAIN).log $(MAIN).dvi $(MAIN).ps $(MAIN).blg $(MAIN).bbl \
-		$(MAIN).lot $(MAIN).lof $(MAIN).toc $(MAIN).pdf $(EMAIN).pdf
+		$(MAIN).lot $(MAIN).lof $(MAIN).toc
 
 # Suggested by Neil B.
 neat:
