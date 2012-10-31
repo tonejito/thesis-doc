@@ -1,5 +1,13 @@
+% Spanish language package
+\usepackage[spanish]{babel}
+
+% Used to import eps graphics
 \usepackage[dvips]{graphicx}
+
+% 
 \usepackage{latexsym}
+
+% 
 \usepackage{rotating}
 
 % used to center in fixed width table columns
@@ -280,3 +288,21 @@
 %
 \newtheorem{cor}{Corollary}
 \newtheorem{thm}{Theorem}
+
+% Prevent words from being hypenated
+\hyphenpenalty=100000
+
+% Customize the default sections text
+\addto\captionsspanish{
+  \renewcommand{\contentsname}{\'{I}ndice general}
+  \renewcommand{\listfigurename}{Lista de figuras}
+  \renewcommand{\listtablename}{Lista de tablas}
+  \renewcommand{\appendixname}{Ap\'{e}ndice}
+  \renewcommand{\bibname}{Bibliograf\'{i}a}
+  \renewcommand{\chaptername}{Cap\'{i}tulo}
+  \renewcommand{\figurename}{Figura}
+  \renewcommand{\tablename}{Tabla}
+  \renewcommand{\abstractname}{Abstracto}
+  \renewcommand{\indexname}{\'{I}ndice}
+  \renewcommand{\partname}{Parte}
+}
