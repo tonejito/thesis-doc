@@ -14,9 +14,9 @@ Los sistemas de almacenamiento son importantes puesto que guardan los datos del 
 %  \item Capacidad Multi-escritura
 %\end{itemize}
 
-\subsection {Clasificaci\'{o}n por tipo de medio} \cite{_ibm_????}
+\subsection {Clasificaci\'{o}n por tipo de medio}
 
-%Medios F\'{i}sicos
+%\textbf{\\ Medios F\'{i}sicos \\}
 %\begin{itemize}
 %  \item Tarjetas Perforadas
 %
@@ -28,7 +28,11 @@ Los sistemas de almacenamiento son importantes puesto que guardan los datos del 
 %  Similitud con otros medios de almacenamiento
 %
 %\end{itemize}
-Medios basados en circuitos
+
+\textbf{\\ Medios basados en circuitos \\}
+
+Descripci\'{o}n de los medios, caracter\'{i}sticas, componentes, m\'{e}todo de operaci\'{o}n, similitudes o aplicaciones y capacidad actual.
+
 \begin{itemize}
   \item RAM
   
@@ -55,11 +59,17 @@ Medios basados en circuitos
   Un medio de almacenamiento relativamente reciente utiliza arreglos de circuitos para guardar la informaci\'{o}n, generalmente se utiliza memoria tipo NAND para mantener los datos y a diferencia de los discos duros no tienen partes m\'{o}viles por lo que son menos propensos a fallos y disipan menos calor.
   
 \end{itemize}
-Medios Magn\'{e}ticos
+
+\textbf{\\ Medios Magn\'{e}ticos \\}
+
+Este tipo de medios se caracterizan porque el acceso a los datos se realiza mediante un cabezal que lee o escribe el campo magn\'{e}tico impreso en el material que lo guarda. Este tipo de medios es susceptible a fallar si se le expone a campos magn\'{e}ticos, golpes o temperaturas extremas.
+
 \begin{itemize}
   \item Cinta
   
-  Las unidades de cinta son medios que almacenan de manera secuencial los datos, generalmente tienen capacidades muy grandes y son utilizadas para archivar informaci\'{o}n.
+  Las unidades de cinta son medios que almacenan de manera secuencial los datos, por lo que no son de acceso aleatorio. Dentro de sus componentes internos destacan dos carretes que sirven para almacenar la cinta mientras se lee, para acceder datos en una posici\'{o}n anterior es necesario rebobinar la cinta.
+  
+  Generalmente tienen capacidades que oscilan entre los GB y TB  \cite{b306cc575a86d1e84e6ba100dcfb4417} y son utilizadas para archivar informaci\'{o}n.
   
   \item Discos Flexibles
   
@@ -70,7 +80,11 @@ Medios Magn\'{e}ticos
   Parecidos a los discos flexibles, estos medios tienen mayor capacidad y actualmente son el medio primordial de almacenar informaci\'{o}n en los equipos de c\'{o}mputo. A diferencia de los discos flexibles, tienen los componentes mec\'{a}nicos dentro del armaz\'{o}n del disco y pueden almacenar grandes cantidades de informaci\'{o}n gracias a que se apilan varios discos en una estructura cilindrica. Para buscar un dato se debe hacer referencia al plato donde est\'{a}, al sector del disco y a la cabeza de lectura que corresponda.
   
 \end{itemize}
-Medios \'{O}pticos
+
+\textbf{\\ Medios \'{O}pticos \\}
+
+Descripci\'{o}n de los medios, caracter\'{i}sticas, componentes, m\'{e}todo de operaci\'{o}n, similitudes o aplicaciones y capacidad actual.
+
 \begin{itemize}
   \item Discos de s\'{o}lo lectura (WORM)
   
@@ -83,14 +97,18 @@ Medios \'{O}pticos
   Los discos regrabables (CD-RW, DVD+RW, DVD-RW, BD-RE) tienen una ventaja adicional comparados con los discos grabables de una sola vez, es posible borrar la informaci\'{o}n contenida para almacenar nuevos datos en el medio, esto se logra inicializar parcial o totalmente los sectores del disco para que este pueda admitir nuevos datos.
   
 \end{itemize}
-Medios Magneto-\'{o}pticos
+
+\textbf{\\ Medios Magneto-\'{o}pticos \\}
+
 \begin{itemize}
   \item Discos MO (Magneto-optic)
   
   Los discos magneto-\'{o}pticos tienen las bondades de la rapidez de los discos magn\'{e}ticos y la versatilidad de los discos \'{o}pticos, 
   
 \end{itemize}
-Medios Hologr\'{a}ficos
+
+\textbf{\\ Medios Hologr\'{a}ficos \\}
+
 \begin{itemize}
   \item HVD - Disco Vers\'{a}til Hologr\'{a}fico
   
@@ -100,6 +118,8 @@ Medios Hologr\'{a}ficos
       \subsection {Comparativa de medios de almacenamiento actuales}
 
 \begin{table}[H]
+\caption{Comparativa de medios de almacenamiento}{}
+\label{tab:comparativa}
 \noindent\makebox[\textwidth]{%
 % manually center the table in page
 \hspace*{-1.1cm}
