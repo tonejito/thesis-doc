@@ -5,6 +5,7 @@ BIBTEX=		bibtex
 DVIPS=		dvips
 PS2PDF=		ps2pdf
 GS=		gs
+SED=		sed
 
 .SUFFIXES:      .tex .dvi .eps .ps .pdf
 
@@ -20,9 +21,12 @@ FIGURES =	$(FIGDIR)/MUN_Logo_Pantone.eps		\
 		$(FIGDIR)/enrollment-rotate.eps 	\
 		$(FIGDIR)/db-deadlock.eps
 
+CHAPTERS = chap1.tex chap2.tex chap3.tex chap4.tex chap5.tex chap6.tex	\
+	   cap1.tex cap2.tex cap3.tex cap4.tex cap5.tex
+
 FILES = thesis.tex thesis.sty						\
 	abstract.tex ack.tex contents.tex tables.tex figures.tex	\
-	chap1.tex chap2.tex chap3.tex chap4.tex chap5.tex chap6.tex	\
+	$(CHAPTERS)							\
 	bib.tex ref.bib apdxa.tex
 
 PREVIEW=/Applications/Preview.app/Contents/MacOS/Preview
@@ -30,7 +34,7 @@ PREVIEW=/Applications/Preview.app/Contents/MacOS/Preview
 # Make pdf, clean all temporary files by default and open the document with
 # the platform pdf viewer
 # Added by Andrés Hernández
-$(MAIN):	clean.doc $(MAIN).pdf
+$(MAIN):	clean.doc accents $(MAIN).pdf
 	# Preview automagically reload the document on change
 	#if [ -r $(MAIN).pdf -a -e ${PREVIEW} ] ; \
 	#then \
@@ -40,7 +44,7 @@ $(MAIN):	clean.doc $(MAIN).pdf
 	if [ -r $(MAIN).pdf -a -n "$(shell which evince)" ] ; \
 	then \
 	  VIEWER="$(shell which evince)" ; \
-	  $$VIEWER $(MAIN).pdf ; \
+	  $$VIEWER $(MAIN).pdf & \
 	fi ;
 
 $(MAIN).dvi:    $(MAIN).tex $(FIGURES) $(FILES)
@@ -78,3 +82,16 @@ neat:
 		$(MAIN).log $(MAIN).blg $(MAIN).bbl \
 		$(MAIN).lot $(MAIN).lof $(MAIN).toc
 
+# Translate spanish accents to LaTeX-friendly character sequences
+# Added by Andrés Hernández
+accents:
+	for chapter in $(CHAPTERS) ;\
+	do \
+	  $(SED) -e "s/á/\\\'{a}/g" \
+	      -e "s/é/\\\'{e}/g" \
+	      -e "s/í/\\\'{i}/g" \
+	      -e "s/ó/\\\'{o}/g" \
+	      -e "s/ú/\\\'{u}/g" \
+	      -e "s/ñ/\\\~{n}/g" \
+	      -i'' $$chapter ;\
+	done ;
