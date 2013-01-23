@@ -1,6 +1,3 @@
-% Spanish language package
-\usepackage[spanish]{babel}
-
 % Used to import eps graphics
 \usepackage[dvips]{graphicx}
 
@@ -108,7 +105,7 @@
 \hspace*{-1.3cm}
 \begin{tabular}{ c C{13cm} }
 % \hline
-\multirow{3}{*}{\includegraphics[width=90px]{figures/UNAM}} 
+\multirow{3}{*}{\includegraphics[keepaspectratio=true, width=90px]{figures/UNAM}} 
   & \textbf{\Large #1} \\
   & \rule{\linewidth}{2.0mm} \\
   & \textbf{\Large #2} \\
@@ -124,7 +121,7 @@
   & \textbf{\Large #5} \tabularnewline \\
   & \tabularnewline \\
 % \hline
-\multirow{3}{*}{\includegraphics[width=90px]{figures/Ingenieria}} 
+\multirow{3}{*}{\includegraphics[keepaspectratio=true, width=90px]{figures/Ingenieria}} 
   & \textbf{\large Director de Tesis} \\
   & \textbf{\Large #6} \tabularnewline \\
   & \textbf{\emph{#7}} \\ 
@@ -290,7 +287,8 @@
 \newtheorem{thm}{Theorem}
 
 % Prevent words from being hypenated
-\hyphenpenalty=100000
+ \tolerance=5000
+ \hyphenpenalty=10000
 
 % Customize the default sections text
 \addto\captionsspanish{
@@ -306,3 +304,11 @@
   \renewcommand{\indexname}{\'{I}ndice}
   \renewcommand{\partname}{Parte}
 }
+
+%\usepackage{microtype}
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+
+%\usepackage[utf8]{inputenc}
+%\DeclareUnicodeCharacter{2713}{\checkmark}
+%\DeclareUnicodeCharacter{2717}{\notmark}
