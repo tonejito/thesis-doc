@@ -120,23 +120,24 @@ Descripci\'{o}n de los medios, caracter\'{i}sticas, componentes, m\'{e}todo de o
 \multirow{2}{*}{Medio} & \multirow{2}{*}{Capacidad} & \multirow{2}{*}{Persistente} & Acceso & Lectura y & \multirow{2}{*}{Vulnerabilidades} \\
  & & & aleatorio & escritura & \\
 \hline
-RAM & MB & No & Si & Si & \multirow{6}{*}{Electricidad est\'{a}tica} \\
-NVRAM & MB & Si & Si & Si &  \\
-ROM & MB & Si & Si & No &  \\
-EEPROM & MB & Si & Si & No &  \\
-FLASH / SSD & GB & Si & Si & Si &  \\
+\includegraphics[keepaspectratio=true, width=10px]{figures/Y}
+RAM & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \multirow{5}{*}{Electricidad est\'{a}tica} \\
+NVRAM & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
+ROM & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} &  \\
+EEPROM & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} &  \\
+FLASH / SSD & GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
 \hline
-Cinta & TB & Si & No & Si & \multirow{3}{*}{Campos magn\'{e}ticos} \\
-Disco Flexible & MB & Si & Si & Si &  \\
-Disco Duro & TB & Si & Si & Si &  \\
+Cinta & TB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \multirow{3}{*}{Campos magn\'{e}ticos} \\
+Disco Flexible & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
+Disco Duro & TB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
 \hline
 \multirow{2}{*}{Disco MO} & \multirow{2}{*}{MB/GB} & \multirow{2}{*}{Si} & \multirow{2}{*}{Si} & \multirow{2}{*}{Si} & Rayaduras \\
  & & & & & Campos magn\'{e}ticos \\
 \hline
-Disco \'{O}ptico & MB/GB & Si & Si & No & \multirow{2}{*}{Rayaduras} \\
-Disco Regrabable & MB/GB & SI & SI & Si &  \\
+Disco \'{O}ptico & MB/GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \multirow{2}{*}{Rayaduras} \\
+Disco Regrabable & MB/GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
 \hline
-Disco Hologr\'{a}fico & GB & Si & Si & Si & Rayaduras \\
+Disco Hologr\'{a}fico & GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & Rayaduras \\
 \hline
 \end{tabular}
 } % ending of \makebox
@@ -199,39 +200,39 @@ La descripci\'{o}n de cada elemento se muestra a continuaci\'{o}n:
 
     \begin{itemize}
     
-      \item Respaldo en medios \'{opticos}
+      \item \textbf{Respaldo en medios \'{opticos}}
 
 % separar en dos parragos, usar comas
 
 Cada soluci\'{o}n tiene sus pros y contras, por ejemplo el guardar informaci\'{o}n en discos \'{o}pticos deja la copia como s\'{o}lo lectura y aunque eso sea bueno para respaldos completos o archivado de datos, no lo es para guardar datos que van a cambiar como documentos que se est\'{a}n editando porque cada vez que se escriba al disco \'{o}ptico se guardar\'{a} una nueva copia del documento en lugar de reemplazar la existente.
 
-      \item Respaldo en medios magn\'{e}ticos y unidades port\'{a}tiles
+      \item \textbf{Respaldo en medios magn\'{e}ticos y unidades port\'{a}tiles}
 %uso en masa
 Desde la masificaci\'{o}n de los discos duros externos y las unidades port\'{a}tiles se han adoptado como medio de almacenamiento para los datos que cambian mucho. Gracias a que estos medios generalmente son de lectura y escritura, las modificaciones de los archivos pueden guardarse reemplazando la copia original y si un archivo es borrado se recupera el espacio en disco.
 
 Una desventaja del uso de este tipo de medios radica en que se pueden editar tanto la copia local en la computadora como el archivo de respaldo produciendo diferentes versiones y el usuario es quien tiene que decidir que versi\'{o}n del archivo es la que debe considerarse la m\'{a}s actualizada.
 
-      \item Recursos compartidos por red
+      \item \textbf{Recursos compartidos por red}
 
 Cuando se cuenta con una red de computadoras se puede utilizar otro mecanismo para almacenar datos en equipos remotos por medio de recursos compartidos en red. Dependiendo de la configuraci\'{o}n se pueden asignar permisos de s\'{o}lo lectura o lectura-escritura. A diferencia de la copia a unidades port\'{a}tiles, en este caso, se tiene una sola copia de la informaci\'{o}n por lo que no existe posibilidad de encontrar una versi\'{o}n desactualizada de los datos. La gran desventaja de los recursos compartidos entre varios equipos, es que los datos no se pueden acceder cuando el equipo que los almacena se encuentra apagado o con intermitencias de conectividad. Esta soluci\'{o}n funciona mejor cuando los equipos que comparten los recursos est\'{a}n encendidos la mayor\'{i}a del tiempo.
 
 Los protocolos que com\'{u}nmente se utilizan para compartir recursos a trav\'{e}s de la red son NFS y CIFS (samba) siendo el primero el protocolo m\'{a}s utilizado en sistemas tipo UNIX y el segundo se utiliza mayormente en sistemas Windows, aunque se puede utilizar tambi\'{e}n en sistemas UNIX a trav\'{e}s de la suite de herramientas de samba [samba.org]
 
-      \item Dispositivos de bloque compartidos por red
+      \item \textbf{Dispositivos de bloque compartidos por red}
 
 Otra soluci\'{o}n popular en sistemas UNIX es compartir dispositivos de bloque a trav\'{e}s de la red para acceder a discos remotos como si fuesen locales, ejemplos de esto son Network Block Device en GNU/Linux y tecnolog\'{i}as SAN como iSCSI (Internet SCSI) o AoE (ATA over Ethernet), este tipo de soluciones llegan a ser costosas y no se adaptan bien a ambientes como empresas peque\~{n}as u hogares.
     
-      \item Servicios de almacenamiento en la nube
+      \item \textbf{Servicios de almacenamiento en la nube}
 
 En los \'{u}ltimos a\~{n}os los servicios de almacenamiento en la nube han ganado popularidad por ser servicios administrados que no requieren mucha configuraci\'{o}n por parte del usuario. Algunos de estos servicios ofrecen una unidad virtual que se monta en el equipo local para acceder al contenido y agregar o modificar los archivos del usuario, mientras que otros sincronizan las modificaciones locales con el contenido almacenado remotamente y viceversa.
 
-Nube p\'{u}blica
+        \textrm{Nube p\'{u}blica}
 
 Los servicios de almacenamiento remotos en Internet son denominados \emph{Almacenamiento de Nube P\'{u}blica}, son \'{u}tiles cuando la velocidad de la conexi\'{o}n se ajusta a la demanda de los usuarios. Dado que los archivos residen en otro lugar, es necesario descargar y subir grandes cantidades de datos al servicio de almacenamiento remoto y si la conexi\'{o}n a Internet no es lo suficientemente r\'{a}pida, la experiencia del usuario se ven afectada.
 
 Com\'{u}nmente este tipo de servicios ofrece menos de 100GB de almacenamiento y al subir o descargar archivos de gran tama\~{n}o la copia es muy lenta.
 
-Nube privada
+        \textrm{Nube privada}
 
 Cuando el servicio de almacenamiento se encuentra en la red local, se puede aprovechar de mejor manera, dado que la velocidad de transmisi\'{o}n en una red local es m\'{a}s r\'{a}pida que entre redes separadas. Adem\'{a}s el servicio no est\'{a} disponible para clientes de otras redes por lo que se denomina \emph{Privado}. En este caso los usuarios tienen mejor experiencia y los datos se quedan resguardados en un equipo dentro de la organizaci\'{o}n.
 
@@ -249,7 +250,7 @@ Tipo de arreglos RAID
 
 \begin{itemize}
 
-  \item Linear
+  \item \textbf{Linear}
 
 En esta variante se combinan dos o mas discos como si fueran uno solo al \emph{concatenar} el espacio y s\'{o}lo se escribir\'{a} al disco 1 si el disco 0 se encuentra lleno.
 
@@ -261,7 +262,7 @@ Este m\'{e}todo no ofrece redundancia, por lo que si falla un disco los datos co
 % http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch26_:_Linux_Software_RAID
 % http://nst.sourceforge.net/nst/docs/user/ch14.html
 
-  \item RAID 0
+  \item \textbf{RAID 0}
 
 Tambi\'{e}n llamado \emph{Stripe}, organiza los datos en bloques que se reparten en los discos copiando un bloque a cada disco.
 
@@ -272,7 +273,7 @@ No ofrece redundancia porque los bloques se reparten en todos los discos y si un
 Diagrama \cite{18b4e676f432f4780a509b508056c779}
 {\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
 
-  \item RAID 1
+  \item \textbf{RAID 1}
   
 Denominado \emph{Mirror}, guarda una copia exacta de los datos en ambos discos. Se requiere un m\'{i}nimo de dos discos de igual tama\~{n}o para hacer este arreglo, si los discos son de diferente capacidad, el espacio del arreglo ser\'{a} el del disco m\'{a}s peque\~{n}o.
 
@@ -283,7 +284,7 @@ El rendimiento de escritura es menor al que presenta un solo disco porque se deb
 Diagrama \cite{0a250ce04fb10680f70cb2c3efd365b1}
 {\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
 
-  \item RAID 5
+  \item \textbf{RAID 5}
 
 En este tipo de arreglo se dividen los datos en bloques como sucede en RAID 0 y adem\'{a}s se calcula un bloque de paridad que sirve para reconstruir los datos si uno de los discos falla.
 
@@ -294,7 +295,7 @@ Dado que se calcula la paridad de los bloques de datos , se debe restar el tama\
 Diagrama \cite{9397b15f6a384de60446b869f05412af}
 {\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
 
-  \item RAID 6
+  \item \textbf{RAID 6}
 
 Su funcionamiento es similar al de RAID 5, s\'{o}lo que se calculan dos bloques de paridad para cada bloque de datos.
 
@@ -313,7 +314,7 @@ Los arreglos anidados \cite{3e1f0dad689a7971f226a3ded845ae63}
 
 \begin{itemize}
 
-  \item RAID 10
+  \item \textbf{RAID 10}
 
 Consiste en un arreglo RAID 0 conformado por dos o m\'{a}s arreglos RAID 1, el sistema operativo detecta la presencia de un solo disco mientras que este se conforma por un arreglo RAID 0 (Stripe) que une los dos arreglos RAID 1 (Mirror).
 
@@ -331,7 +332,7 @@ HDD1  HDD2 HDD3  HDD4
 \end{verbatim}
   
 
-  \item RAID 01
+  \item \textbf{RAID 01}
 
 Se compone por un arreglo RAID 1 que replica los datos contenidos en dos arreglos RAID 0. Se requiere un m\'{i}nimo de cuatro discos para hacer esta configuraci\'{o}n.
 
@@ -350,7 +351,36 @@ HDD1  HDD2 HDD3  HDD4
   
 \end{itemize}
 
-Ventajas respecto al almacenamiento en un s\'{o}lo disco
+      \subsection {Comparativa de tipos de arreglo RAID}
+
+\begin{table}[H]
+\caption{Comparativa de arreglos RAID}{}
+\label{tab:comparativa}
+\noindent\makebox[\textwidth]{%
+% manually center the table in page
+\hspace*{-1.1cm}
+\begin{tabular}{|c|c|c|c|c|p{6cm}|}
+\hline
+%Medio & Capacidad & Persistente & Acceso aleatorio & Lectura y escritura & Vulnerabilidades \\
+Tipo & Redundancia & Paridad & Discos & Capacidad \'{u}til & Ventajas \\
+\hline
+Linear  & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & Todos los discos & Los datos se escriben en el siguente disco cuando el actual se llena. \\
+\hline
+RAID 0  & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & Todos los discos & Los bloques se escriben en paralelo en los discos. \\
+\hline
+RAID 1  & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & 1 Disco  & Se tiene una copia exacta de los datos en los discos. \\
+\hline
+RAID 5  & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} \tiny{simple} & 3+ & 2 Discos & Tolera el fallo de un disco. \\
+\hline
+RAID 6  & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} \tiny{doble} & 4+ & 2 Discos & Tolera el fallo de hasta dos discos. \\
+\hline
+RAID 10 & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 4+ & 2 Discos &  \\
+\hline
+RAID 01 & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 4+ & 2 Discos &  \\
+\hline
+\end{tabular}
+} % ending of \makebox
+\end{table}
 
     \section {Appliances}
 
