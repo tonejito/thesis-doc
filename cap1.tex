@@ -359,11 +359,10 @@ HDD1  HDD2 HDD3  HDD4
 \noindent\makebox[\textwidth]{%
 % manually center the table in page
 \hspace*{-1.1cm}
-\begin{tabular}{|c|c|c|c|c|p{6cm}|}
-\hline
-%Medio & Capacidad & Persistente & Acceso aleatorio & Lectura y escritura & Vulnerabilidades \\
+\begin{tabular}[c]{c|c|c|c|c|p{5.95cm}}
+%\hline
 Tipo & Redundancia & Paridad & Discos & Capacidad \'{u}til & Ventajas \\
-\hline
+\hline \hline
 Linear  & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & Todos los discos & Los datos se escriben en el siguente disco cuando el actual se llena. \\
 \hline
 RAID 0  & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & Todos los discos & Los bloques se escriben en paralelo en los discos. \\
@@ -377,7 +376,7 @@ RAID 6  & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \inclu
 RAID 10 & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 4+ & 2 Discos &  \\
 \hline
 RAID 01 & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 4+ & 2 Discos &  \\
-\hline
+%\hline
 \end{tabular}
 } % ending of \makebox
 \end{table}
@@ -392,15 +391,24 @@ Tipos de Appliance
 
   \item Hardware
   
-Los appliances de hardware son sistemas especializados \cite{dcd32ad713054f2f67fbcd17c0900928}...
+Los appliances de hardware son sistemas especializados que hacen tareas espec\'{i}ficas, el fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta nueva funcion.
+
+Regularmente tienen una interfaz web que permite controlarlos, algunos integran un shell para realizar las funciones conectandose a trav\'{e}s de ssh y en otros casos integran adem\'{a}s soporte para SNMP.
+\cite{dcd32ad713054f2f67fbcd17c0900928}
 
   \item Software
   
-Los appliances de software son programas descomprimibles o imagenes ISO instalables \cite{4cb5bff4c029d86b328a2126e8a3060f}...
+Los appliances de software pueden ser distribuidos en paquetes descomprimibles (tarballs) que contienen el instalador y todos los progamas necesarios para que funcione la soluci\'{o}n.
+
+Estos integran s\'{o}lo la interfaz web, puesto que se ejecutan en un equipo existente y son independientes del shell o el soporte SNMP que se tenga en el mismo.
+%Los appliances de software son programas descomprimibles o imagenes ISO instalables
+\cite{4cb5bff4c029d86b328a2126e8a3060f}
   
   \item Virtual 
-  
-Los appliances de software o virtuales son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}ficamente dise\~{n}adas para un ambiente de virtualizaci\'{o}n \cite{314f38cbb73bf967a21191775959cf1d}...
+
+Los appliances virtuales son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}ficamente dise\~{n}adas para un ambiente de virtualizaci\'{o}n que integran la funcionalidad de los appliances de hardware dentro de un equipo virtual. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual.
+
+\cite{314f38cbb73bf967a21191775959cf1d}
   
 \end{itemize}
 
