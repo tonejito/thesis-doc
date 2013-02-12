@@ -93,5 +93,5 @@ accents:
 	      -e "s/ó/\\\'{o}/g" \
 	      -e "s/ú/\\\'{u}/g" \
 	      -e "s/ñ/\\\~{n}/g" \
-	      -i'' $$chapter ;\
+	      "-i''" $$chapter ; \
 	done ;
