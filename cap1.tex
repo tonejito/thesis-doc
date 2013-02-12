@@ -114,31 +114,37 @@ Descripci\'{o}n de los medios, caracter\'{i}sticas, componentes, m\'{e}todo de o
 \noindent\makebox[\textwidth]{%
 % manually center the table in page
 \hspace*{-1.1cm}
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabular}{c|c|c|c|c|c}
+%\hline
+\multirow{2}{*}{\textbf{Medio}} & \multirow{2}{*}{\textbf{Capacidad}} & \multirow{2}{*}{\textbf{Persistente}} & \textbf{Acceso} & \textbf{Lectura y} & \multirow{2}{*}{\textbf{Vulnerabilidades}} \\
+ & & & \textbf{aleatorio} & \textbf{escritura} & \\
 \hline
-%Medio & Capacidad & Persistente & Acceso aleatorio & Lectura y escritura & Vulnerabilidades \\
-\multirow{2}{*}{Medio} & \multirow{2}{*}{Capacidad} & \multirow{2}{*}{Persistente} & Acceso & Lectura y & \multirow{2}{*}{Vulnerabilidades} \\
- & & & aleatorio & escritura & \\
 \hline
-\includegraphics[keepaspectratio=true, width=10px]{figures/Y}
 RAM & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \multirow{5}{*}{Electricidad est\'{a}tica} \\
+\cline{1-5}
 NVRAM & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
+\cline{1-5}
 ROM & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} &  \\
+\cline{1-5}
 EEPROM & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} &  \\
+\cline{1-5}
 FLASH / SSD & GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
 \hline
 Cinta & TB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \multirow{3}{*}{Campos magn\'{e}ticos} \\
+\cline{1-5}
 Disco Flexible & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
+\cline{1-5}
 Disco Duro & TB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
 \hline
-\multirow{2}{*}{Disco MO} & \multirow{2}{*}{MB/GB} & \multirow{2}{*}{Si} & \multirow{2}{*}{Si} & \multirow{2}{*}{Si} & Rayaduras \\
- & & & & & Campos magn\'{e}ticos \\
+\multirow{2}{*}{Disco MO} & \multirow{2}{*}{MB/GB} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}} & Campos magn\'{e}ticos\\
+ & & & & & Rayaduras \\
 \hline
-Disco \'{O}ptico & MB/GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \multirow{2}{*}{Rayaduras} \\
+Disco \'{O}ptico & MB/GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \multirow{3}{*}{Rayaduras} \\
+\cline{1-5}
 Disco Regrabable & MB/GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
-\hline
-Disco Hologr\'{a}fico & GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & Rayaduras \\
-\hline
+\cline{1-5}
+Disco Hologr\'{a}fico & GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \\
+%\hline
 \end{tabular}
 } % ending of \makebox
 \end{table}
@@ -361,13 +367,13 @@ HDD1  HDD2 HDD3  HDD4
 \hspace*{-1.1cm}
 \begin{tabular}[c]{c|c|c|c|c|p{5.95cm}}
 %\hline
-Tipo & Redundancia & Paridad & Discos & Capacidad \'{u}til & Ventajas \\
+\textbf{Tipo} & \textbf{Redundancia} & \textbf{Paridad} & \textbf{Discos} & \textbf{Capacidad \'{u}til} & \multicolumn{1}{c}{\textbf{Ventajas}} \\
 \hline \hline
-Linear  & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & Todos los discos & Los datos se escriben en el siguente disco cuando el actual se llena. \\
+\multirow{3}{*}{Linear}  & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & Todos los discos & Los datos se escriben en el siguente disco cuando el actual se llena. \\
 \hline
-RAID 0  & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & Todos los discos & Los bloques se escriben en paralelo en los discos. \\
+\multirow{2}{*}{RAID 0}  & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & Todos los discos & Los bloques se escriben en paralelo en los discos. \\
 \hline
-RAID 1  & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & 1 Disco  & Se tiene una copia exacta de los datos en los discos. \\
+\multirow{2}{*}{RAID 1}  & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & 1 Disco  & Se tiene una copia exacta de los datos en los discos. \\
 \hline
 RAID 5  & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} \tiny{simple} & 3+ & 2 Discos & Tolera el fallo de un disco. \\
 \hline
