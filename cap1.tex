@@ -397,9 +397,9 @@ Tipos de Appliance
 
   \item Hardware
   
-Los appliances de hardware son sistemas especializados que hacen tareas espec\'{i}ficas, el fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta nueva funcion.
+Los appliances de hardware son sistemas especializados dise\~{n}ados para realizar tareas espec\'{i}ficas, el fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta nueva funcion.
 
-Regularmente tienen una interfaz web que permite controlarlos, algunos integran un shell para realizar las funciones conectandose a trav\'{e}s de ssh y en otros casos integran adem\'{a}s soporte para SNMP.
+Regularmente tienen una interfaz web para administraci\'{o}n, algunos integran un shell para realizar las funciones conectandose a trav\'{e}s de ssh y en otros casos integran adem\'{a}s soporte para SNMP.
 \cite{dcd32ad713054f2f67fbcd17c0900928}
 
   \item Software
@@ -408,12 +408,12 @@ Los appliances de software pueden ser distribuidos en paquetes descomprimibles (
 
 Estos integran s\'{o}lo la interfaz web, puesto que se ejecutan en un equipo existente y son independientes del shell o el soporte SNMP que se tenga en el mismo.
 %Los appliances de software son programas descomprimibles o imagenes ISO instalables
+[bitnami.org]
 \cite{4cb5bff4c029d86b328a2126e8a3060f}
   
   \item Virtual 
 
-Los appliances virtuales son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}ficamente dise\~{n}adas para un ambiente de virtualizaci\'{o}n que integran la funcionalidad de los appliances de hardware dentro de un equipo virtual. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual.
-
+Los appliances virtuales son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}ficamente dise\~{n}adas para un ambiente de virtualizaci\'{o}n que integran la funcionalidad de los appliances de hardware dentro de un equipo virtual. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual para procesar en paralelo las peticiones de los usuarios.
 \cite{314f38cbb73bf967a21191775959cf1d}
   
 \end{itemize}
@@ -423,22 +423,52 @@ Los appliances virtuales son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}fi
 Definici\'{o}n de seguridad inform\'{a}tica
 
   \subsection {Principios de seguridad inform\'{a}tica}
+% http://www.oregon.gov/DAS/CIO/ISRC/pages/intro_basics.aspx
+% http://csrc.nist.gov/publications/nistpubs/800-14/800-14.pdf
 
-Confidencialidad
+\begin{itemize}
 
-Integridad
+  \item \textbf{Confidencialidad}
 
-Disponibilidad
+Este principio busca conservar los datos \'{u}nicamente para la persona que est\'{a} destinada a leerlos.
+
+Por ejemplo, al cifrar un correo electr\'{o}nico o un archivo se garantiza que s\'{o}lo ser\'{a} visto por la persona que tenga los medios para descifrarlo (ya sea una llave privada o una contrase\~{n}a).
+
+  \item \textbf{Integridad}
+
+Este principio busca que la informaci\'{o}n no pueda ser alterada, ya sea por fallos en el medio de almacenamiento o modificaciones no autorizadas.
+
+Por ejemplo, al firmar un archivo o un correo electr\'{o}nico la firma s\'{o}lo pasar\'{a} la prueba de verificaci\'{o}n si el mensaje est\'{a} integro, de lo contrario no podr\'{a} ser verificado satisfactoriamente.
+
+  \item \textbf{Disponibilidad}
+
+Este principio dicta que la informaci\'{o}n debe poderse acceder cuando sea necesario o respetando el criterio de los tiempos establecidos.
+
+Por ejemplo, un recurso en linea debe estar disponible siempre para que pueda ser accedido por las personas que har\'{a}n uso de el, en caso de tener horarios de disponibilidad se debe garantizar que el recurso se pueda acceder durante ese periodo.
+
+\end{itemize}
 
   \subsection {Vulnerabilidades}
 
-Definici\'{o}n de vulnerabilidad
+Una vulnerabilidad es un fallo en la l\'{o}gica o una situaci\'{o}n que se da en condiciones especiales con la que un programa o proceso realiza tareas para las que no fue originalmente destinado. Cuando se alcanzan estas condiciones y se modifica la ejecuci\'{o}n del programa se dice que se ha \textit{explotado} la vulnarabilidad.
+
+% http://www.first.org/cvss/cvss-guide.html
+% http://nvd.nist.gov/cvss.cfm?calculator&adv&version=2
+% http://www.first.org/cvss
+% http://cve.mitre.org/
 
   \subsection {Hardening}
 
-Definici\'{o}n de Hardening
+Se denomina \textit{hardening} al proceso de reforzar las configuraciones del sistema operativo y las aplicaciones para reducir la posibilidad de que una vulnerabilidad se presente.
 
-Importancia del hardening para mitigar las vulnerabilidades
+El hardening se puede realizar en diferentes partes del sistema operativo como:
+
+\begin{itemize}
+  \item Configuración de acceso físico
+  \item Configuración de inicio
+  \item Configuración de acceso remoto
+  \item Configuración de las aplicaciones
+\end{itemize}
 
 \section {GNU/Linux}
   \subsection {Historia}
