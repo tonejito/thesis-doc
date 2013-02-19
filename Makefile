@@ -29,22 +29,26 @@ FILES = thesis.tex thesis.sty						\
 	$(CHAPTERS)							\
 	bib.tex ref.bib apdxa.tex
 
-PREVIEW=/Applications/Preview.app/Contents/MacOS/Preview
+# Set system specific programs and arguments
+# Linux
+ifeq ($(shell uname -s),Linux)
+  BACKUP_SUFFIX=-i''
+  VIEWER=$(shell which evince)
+endif
+# Darwin / Mac OS X
+ifeq ($(shell uname -s),Darwin)
+  BACKUP_SUFFIX=-i ''
+  VIEWER=$(shell which open)
+endif
 
 # Make pdf, clean all temporary files by default and open the document with
 # the platform pdf viewer
 # Added by Andrés Hernández
 $(MAIN):	clean.doc accents $(MAIN).pdf
 	# Preview automagically reload the document on change
-	#if [ -r $(MAIN).pdf -a -e ${PREVIEW} ] ; \
-	#then \
-	#  VIEWER="$(shell which open)" ; \
-	#  $$VIEWER $(MAIN).pdf ; \
-	#fi ;
-	if [ -r $(MAIN).pdf -a -n "$(shell which evince)" ] ; \
+	if [ -r $(MAIN).pdf -a -e ${VIEWER} ] ; \
 	then \
-	  VIEWER="$(shell which evince)" ; \
-	  $$VIEWER $(MAIN).pdf & \
+	  ${VIEWER} $(MAIN).pdf & \
 	fi ;
 
 $(MAIN).dvi:    $(MAIN).tex $(FIGURES) $(FILES)
@@ -71,13 +75,8 @@ $(EMAIN).pdf:	$(MAIN).ps
 clean.doc:
 	$(RM) -f *.aux $(MAIN).dvi $(MAIN).ps $(MAIN).pdf $(EMAIN).pdf
 
-clean:	clean.doc
-	$(RM) -f *.aux \
-		$(MAIN).log $(MAIN).blg $(MAIN).bbl \
-		$(MAIN).lot $(MAIN).lof $(MAIN).toc
-
 # Suggested by Neil B.
-neat:
+clean:	clean.doc
 	$(RM) -f *.aux \
 		$(MAIN).log $(MAIN).blg $(MAIN).bbl \
 		$(MAIN).lot $(MAIN).lof $(MAIN).toc
@@ -85,13 +84,23 @@ neat:
 # Translate spanish accents to LaTeX-friendly character sequences
 # Added by Andrés Hernández
 accents:
-	for chapter in $(CHAPTERS) ;\
-	do \
-	  $(SED) -e "s/á/\\\'{a}/g" \
-	      -e "s/é/\\\'{e}/g" \
-	      -e "s/í/\\\'{i}/g" \
-	      -e "s/ó/\\\'{o}/g" \
-	      -e "s/ú/\\\'{u}/g" \
-	      -e "s/ñ/\\\~{n}/g" \
-	      "-i''" $$chapter ; \
-	done ;
+	if [ -n "${BACKUP_SUFFIX}" ] ; \
+	then \
+	  for chapter in $(CHAPTERS) ; \
+	  do \
+	    $(SED) -e "s/á/\\\'{a}/g" \
+	           -e "s/é/\\\'{e}/g" \
+	           -e "s/í/\\\'{i}/g" \
+	           -e "s/ó/\\\'{o}/g" \
+	           -e "s/ú/\\\'{u}/g" \
+	           -e "s/ñ/\\\~{n}/g" \
+	           -e "s/Á/\\\'{A}/g" \
+	           -e "s/É/\\\'{E}/g" \
+	           -e "s/Í/\\\'{I}/g" \
+	           -e "s/Ó/\\\'{O}/g" \
+	           -e "s/Ú/\\\'{U}/g" \
+	           -e "s/Ñ/\\\~{N}/g" \
+	           ${BACKUP_SUFFIX} $$chapter ; \
+	  done ; \
+	fi ;
+
