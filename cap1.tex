@@ -264,6 +264,7 @@ Para crear el arreglo no importa el tama\~{n}o de los discos. Si se acceden dos 
 
 Este m\'{e}todo no ofrece redundancia, por lo que si falla un disco los datos contenidos en este se pierden. Es posible montar el sistema de archivos en un modo especial y recuperar los datos almacenados en los dem\'{a}s discos.
 
+%\includegraphics[keepaspectratio=true]{figures/000-Linear}
 {\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
 % http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch26_:_Linux_Software_RAID
 % http://nst.sourceforge.net/nst/docs/user/ch14.html
@@ -276,7 +277,8 @@ Aunque es posible crear el arreglo con discos de diferente tama\~{n}o, se recomi
 
 No ofrece redundancia porque los bloques se reparten en todos los discos y si uno falla se perder\'{a}n partes de todos los archivos haciendo que el contenido no tenga coherencia.
 
-Diagrama \cite{18b4e676f432f4780a509b508056c779}
+%\includegraphics[keepaspectratio=true]{figures/001-RAID0}
+%Diagrama \cite{18b4e676f432f4780a509b508056c779}
 {\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
 
   \item \textbf{RAID 1}
@@ -287,7 +289,8 @@ Este tipo de arreglo es tolerante a fallos siempre y cuando un solo disco siga f
 
 El rendimiento de escritura es menor al que presenta un solo disco porque se deben de hacer copias exactas de la informaci\'{o}n en todos los discos pertenecientes al arreglo.
 
-Diagrama \cite{0a250ce04fb10680f70cb2c3efd365b1}
+%\includegraphics[keepaspectratio=true]{figures/002-RAID1}
+%Diagrama \cite{0a250ce04fb10680f70cb2c3efd365b1}
 {\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
 
   \item \textbf{RAID 5}
@@ -298,7 +301,8 @@ Esta configuraci\'{o}n de RAID tiene tolerancia a fallos, siempre y cuando no fa
 
 Dado que se calcula la paridad de los bloques de datos , se debe restar el tama\~{n}o de un disco para obtener el espacio m\'{a}ximo utilizable.
   
-Diagrama \cite{9397b15f6a384de60446b869f05412af}
+%\includegraphics[keepaspectratio=true]{figures/003-RAID5}
+%Diagrama \cite{9397b15f6a384de60446b869f05412af}
 {\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
 
   \item \textbf{RAID 6}
@@ -309,7 +313,8 @@ Esta configuraci\'{o}n de arreglo puede tolerar el fallo de hasta dos discos dur
 
 Las operaciones de escritura tardan mas porque se deben calcular dos bloques de paridad, las operaciones de lectura no se ven afectadas.
   
-Diagrama \cite{9e2f3e1ba21ce971703a62c6217946ae}
+%\includegraphics[keepaspectratio=true]{figures/004-RAID6}
+%Diagrama \cite{9e2f3e1ba21ce971703a62c6217946ae}
 {\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
   
 \end{itemize}
@@ -369,19 +374,19 @@ HDD1  HDD2 HDD3  HDD4
 %\hline
 \textbf{Tipo} & \textbf{Redundancia} & \textbf{Paridad} & \textbf{Discos} & \textbf{Capacidad \'{u}til} & \multicolumn{1}{c}{\textbf{Ventajas}} \\
 \hline \hline
-\multirow{3}{*}{Linear}  & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & Todos los discos & Los datos se escriben en el siguente disco cuando el actual se llena. \\
+\multirow{3}{*}{Linear}  & \multirow{3}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{3}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{3}{*}{2+} & \multirow{3}{*}{Todos los discos} & Los datos se escriben en el siguente disco cuando el actual se llena. \\
 \hline
-\multirow{2}{*}{RAID 0}  & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & Todos los discos & Los bloques se escriben en paralelo en los discos. \\
+\multirow{2}{*}{RAID 0}  & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{2}{*}{2+} & \multirow{2}{*}{Todos los discos} & Los bloques se escriben en paralelo en los discos. \\
 \hline
-\multirow{2}{*}{RAID 1}  & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 2+ & 1 Disco  & Se tiene una copia exacta de los datos en los discos. \\
+\multirow{2}{*}{RAID 1}  & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{2}{*}{2+} & \multirow{2}{*}{1 Disco}  & Se tiene una copia exacta de los datos en los discos. \\
 \hline
 RAID 5  & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} \tiny{simple} & 3+ & 2 Discos & Tolera el fallo de un disco. \\
 \hline
 RAID 6  & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} \tiny{doble} & 4+ & 2 Discos & Tolera el fallo de hasta dos discos. \\
 \hline
-RAID 10 & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 4+ & 2 Discos &  \\
+RAID 10 & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} &  Tolera el fallo de discos de diferentes arreglos. \\
 \hline
-RAID 01 & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & 4+ & 2 Discos &  \\
+RAID 01 & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} & Tolera el fallo de arreglos completos. \\
 %\hline
 \end{tabular}
 } % ending of \makebox
@@ -464,10 +469,10 @@ Se denomina \textit{hardening} al proceso de reforzar las configuraciones del si
 El hardening se puede realizar en diferentes partes del sistema operativo como:
 
 \begin{itemize}
-  \item Configuración de acceso físico
-  \item Configuración de inicio
-  \item Configuración de acceso remoto
-  \item Configuración de las aplicaciones
+  \item Configuraci\'{o}n de acceso f\'{i}sico
+  \item Configuraci\'{o}n de inicio
+  \item Configuraci\'{o}n de acceso remoto
+  \item Configuraci\'{o}n de las aplicaciones
 \end{itemize}
 
 \section {GNU/Linux}
