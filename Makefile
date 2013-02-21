@@ -27,7 +27,12 @@ CHAPTERS = chap1.tex chap2.tex chap3.tex chap4.tex chap5.tex chap6.tex	\
 FILES = thesis.tex thesis.sty						\
 	abstract.tex ack.tex contents.tex tables.tex figures.tex	\
 	$(CHAPTERS)							\
-	bib.tex ref.bib apdxa.tex
+	bib.tex ${REF_BIB} apdxa.tex
+
+REF_BIB = ref.bib
+
+# URL size in reference section
+URL_SIZE = footnotesize
 
 # Set system specific programs and arguments
 # Linux
@@ -104,3 +109,7 @@ accents:
 	  done ; \
 	fi ;
 
+# Style up BibTeX entries before being rendered
+ref-url:
+	${SED} -e 's/\(howpublished\ =\ \){\{1,\}\(.*\)}\{1,\},/\1{\\newline \\begin{footnotesize} \2 \\end{footnotesize}},/g' -e 's/}\(\ \\end\)/\1/g' ${BACKUP_SUFFIX} ${REF_BIB}
+#	${SED} -e 's/\(howpublished\ =\ \){\{1,\}\(.*\)}\{1,\},/\1{\\newline \\begin{footnotesize} \\texttt{\2} \\end{footnotesize}},/g' -e 's/}\(}\ \\end\)/\1/g' ${BACKUP_SUFFIX} ${REF_BIB}
