@@ -236,13 +236,13 @@ Otra soluci\'{o}n popular en sistemas UNIX es compartir dispositivos de bloque a
 
 En los \'{u}ltimos a\~{n}os los servicios de almacenamiento en la nube han ganado popularidad por ser servicios administrados que no requieren mucha configuraci\'{o}n por parte del usuario. Algunos de estos servicios ofrecen una unidad virtual que se monta en el equipo local para acceder al contenido y agregar o modificar los archivos del usuario, mientras que otros sincronizan los archivos locales con el servidor remoto a trav\'{e}s de un programa que funge como intermediario.
 
-        \textrm{Nube p\'{u}blica}
+        \textsc{Nube p\'{u}blica}
 
 Los servicios de almacenamiento remotos en Internet son denominados \emph{Almacenamiento de Nube P\'{u}blica}, son \'{u}tiles cuando la velocidad de la conexi\'{o}n se ajusta a la demanda de los usuarios. Dado que los archivos residen en otro lugar, es necesario descargar y subir grandes cantidades de datos al servicio de almacenamiento remoto y si la conexi\'{o}n a Internet no es lo suficientemente r\'{a}pida, la experiencia del usuario se ven afectada.
 
 Com\'{u}nmente este tipo de servicios ofrece menos de 100GB de almacenamiento y al subir o descargar archivos de gran tama\~{n}o la copia es muy lenta.
 
-        \textrm{Nube privada}
+        \textsc{Nube privada}
 
 Cuando el servicio de almacenamiento se encuentra en la red local, se puede aprovechar de mejor manera, dado que la velocidad de transmisi\'{o}n en una red local es m\'{a}s r\'{a}pida que entre redes separadas. Adem\'{a}s el servicio no est\'{a} disponible para clientes de otras redes por lo que se denomina \emph{Privado}. En este caso los usuarios tienen una mejor experiencia al utilizar el servicio y los datos se quedan resguardados en un equipo dentro de la organizaci\'{o}n.
 
@@ -461,7 +461,7 @@ Por ejemplo, un recurso en linea debe estar disponible siempre para que pueda se
 
   \subsection {Vulnerabilidades}
 
-Una vulnerabilidad es un fallo en la l\'{o}gica o una situaci\'{o}n que se da en condiciones especiales con la que un programa o proceso realiza tareas para las que no fue originalmente destinado. Cuando se alcanzan estas condiciones y se modifica la ejecuci\'{o}n del programa se dice que se ha \textit{explotado} la vulnarabilidad.
+Una vulnerabilidad es un fallo en la l\'{o}gica o una situaci\'{o}n que se da en condiciones especiales con la que un programa o proceso realiza tareas para las que no fue originalmente destinado. Cuando se alcanzan estas condiciones y se modifica la ejecuci\'{o}n del programa se dice que se ha \textit{explotado} la vulnarabilidad \cite{padilla_buenas_2009}.
 
 % http://www.first.org/cvss/cvss-guide.html
 % http://nvd.nist.gov/cvss.cfm?calculator&adv&version=2
@@ -470,7 +470,7 @@ Una vulnerabilidad es un fallo en la l\'{o}gica o una situaci\'{o}n que se da en
 
   \subsection {Hardening}
 
-Se denomina \textit{hardening} al proceso de reforzar las configuraciones del sistema operativo y las aplicaciones para reducir la posibilidad de que una vulnerabilidad se presente.
+Se denomina \textit{hardening} al proceso de reforzar las configuraciones del sistema operativo y las aplicaciones para reducir la posibilidad de que una vulnerabilidad se presente \cite{padilla_buenas_2009}.
 
 El hardening se puede realizar en diferentes partes del sistema operativo como:
 
@@ -486,9 +486,22 @@ El hardening se puede realizar en diferentes partes del sistema operativo como:
   \subsection {Uso de GNU/Linux en la industria}
   \subsection {Distribuciones de GNU/Linux}
   \subsection {Debian GNU/Linux}
+
 \section {Protocolo HTTP}
+
+El protocolo HTTP permite transferir datos a trav\'{e}s de Internet en un esquema cliente - servidor. La primer versi\'{o}n de este protocolo (HTTP/1.0) fu\'{e} descrita en el RFC 1945 \cite{rfc1945}, con la evoluci\'{o}n de Internet el protocolo fue mejorado y se le agregaron funciones como el control de transferencia o el soporte de mensajes \textit{MIME} que dieron origen a la versi\'{o}n actual (HTTP/1.1) definida en el RFC 2616 \cite{rfc2616}.
+
+% http://www.w3.org/Protocols/rfc1945/rfc1945
+% http://www.w3.org/Protocols/rfc2616/rfc2616
+
   \subsection {HTTPS - HTTP over SSL}
+
+Definido en el RFC 2818 \cite{rfc2818}, el protocolo HTTP no contempla el cifrado de los datos y es un potencial riesgo de seguridad porque afecta a la confidencialidad y a la integridad de la informaci\'{o}n, para solventar esto se hizo una extensi\'{o}n al protocolo para permitir que viajara sobre la capa de sockets seguros (\textit{secure socket layer}) ofreciendo as\'{i} una capa extra de seguridad al cifrar la informaci\'{o}n, garantizando adem\'{a}s de la confidencialidad la integridad de los datos.
+
+% http://www.ietf.org/rfc/rfc2818.txt
+
   \subsection {WebDAV}
+
 \section {Protocolo LDAP}
   \subsection {Directorio de usuarios}
 \section {Protocolo SSH}
