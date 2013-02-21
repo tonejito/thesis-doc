@@ -31,9 +31,6 @@ FILES = thesis.tex thesis.sty						\
 
 REF_BIB = ref.bib
 
-# URL size in reference section
-URL_SIZE = footnotesize
-
 # Set system specific programs and arguments
 # Linux
 ifeq ($(shell uname -s),Linux)
@@ -111,5 +108,5 @@ accents:
 
 # Style up BibTeX entries before being rendered
 ref-url:
-	${SED} -e 's/\(howpublished\ =\ \){\{1,\}\(.*\)}\{1,\},/\1{\\newline \\begin{footnotesize} \2 \\end{footnotesize}},/g' -e 's/}\(\ \\end\)/\1/g' ${BACKUP_SUFFIX} ${REF_BIB}
+	${SED} -e 's/en-{US/en-US/g' -e 's/\(howpublished\ =\ \){\{1,\}\(.*\)}\{1,\},/\1{\\newline \\begin{footnotesize} \2 \\end{footnotesize}},/g' -e 's/}\(\ \\end\)/\1/g' ${BACKUP_SUFFIX} ${REF_BIB}
 #	${SED} -e 's/\(howpublished\ =\ \){\{1,\}\(.*\)}\{1,\},/\1{\\newline \\begin{footnotesize} \\texttt{\2} \\end{footnotesize}},/g' -e 's/}\(}\ \\end\)/\1/g' ${BACKUP_SUFFIX} ${REF_BIB}
