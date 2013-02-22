@@ -1,5 +1,5 @@
-%\documentclass[dvips,letterpaper,12pt]{report}
-\documentclass[draft,dvips,letterpaper,12pt]{report}
+\documentclass[dvips,letterpaper,12pt]{report}
+%\documentclass[draft,dvips,letterpaper,12pt]{report}
 
 % Spanish language package
 \usepackage[spanish]{babel}
@@ -51,5 +51,8 @@
 
 \include{bib}
 \include{glossary}
+
+% Add empty page at the end
+\newpage\null\thispagestyle{empty}\newpage
 
 \end{document}
