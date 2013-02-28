@@ -503,7 +503,23 @@ Definido en el RFC 2818 \cite{rfc2818}, el protocolo HTTP no contempla el cifrad
   \subsection {WebDAV}
 
 \section {Protocolo LDAP}
+
+El protocolo LDAP \footnote{Ligthweight Directory Access Protocol por sus siglas en ingl\'{e}s.} define el directorio como una colecci\'{o}n de objetos. Est\'{a} definido en el RFC 4511 y hace que la informaci\'{o}n de los objetos est\'{e} disponible a trav\'{e}s de una conexi\'{o}n de red.
+
+Los objetos se organizan en una estructura jer\'{a}rquica parecida a la que se utiliza el protocolo DNS. Se pueden tener \'{a}rboles secundarios para delegar partes del directorio o incluso \'{a}rboles de s\'{o}lo lectura y delegar las operaciones de escritura.
+
+% http://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol
+% http://www.gracion.com/server/whatldap.html
+% http://tldp.org/HOWTO/LDAP-HOWTO/
+% http://ldapman.org/articles/intro_to_ldap.html
+% http://ldap.perl.org/
+% https://tools.ietf.org/html/rfc4511
+% http://www.ietf.org/rfc/rfc4511.txt
+
   \subsection {Directorio de usuarios}
+
+En LDAP los usuarios tienen ciertas propiedades como identificador, nombre de usuario, contrase\~{n}a y otros. Existen dos tipos principales de usuario: simpleSecurityObject y posixAccount. El primero utilizado s\'{o}lamente para autenticar un usuario en el directorio y el segundo tiene propiedades parecidas a una cuenta UNIX (uid, gid, GECOS, etc.).
+
 \section {Protocolo SSH}
   \subsection {SCP - Secure Copy}
   \subsection {SFTP - Secure FTP}
