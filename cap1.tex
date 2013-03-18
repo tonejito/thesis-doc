@@ -496,7 +496,9 @@ El protocolo HTTP permite transferir datos a trav\'{e}s de Internet en un esquem
 
   \subsection {HTTPS - HTTP over SSL}
 
-Definido en el RFC 2818 \cite{rfc2818}, el protocolo HTTP no contempla el cifrado de los datos y es un potencial riesgo de seguridad porque afecta a la confidencialidad y a la integridad de la informaci\'{o}n, para solventar esto se hizo una extensi\'{o}n al protocolo para permitir que viajara sobre la capa de sockets seguros (\textit{secure socket layer}) ofreciendo as\'{i} una capa extra de seguridad al cifrar la informaci\'{o}n, garantizando adem\'{a}s de la confidencialidad la integridad de los datos.
+El protocolo HTTP no contempla el cifrado de los datos y es un potencial riesgo de seguridad porque afecta a la confidencialidad y a la integridad de la informaci\'{o}n,
+
+Para solventar esto se defini\'{o} HTTPS en el RFC 2818 \cite{rfc2818} que ofrece una capa de seguridad extra porque cifra la conexi\'{o}n HTTP utilizando \textit{SSL} (Secure Socket Layer) \cite{rfc6101} o su sucesor \textit{TLS} (Transport Layer Security) \cite{rfc5246}, garantizando as\'{i} de la confidencialidad la integridad de los datos.
 
 % http://www.ietf.org/rfc/rfc2818.txt
 
