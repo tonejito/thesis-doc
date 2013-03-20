@@ -271,9 +271,20 @@ Para crear el arreglo no importa el tama\~{n}o de los discos. Si se acceden dos 
 Este m\'{e}todo no ofrece redundancia, por lo que si falla un disco los datos contenidos en este se pierden. Es posible montar el sistema de archivos en un modo especial y recuperar los datos almacenados en los dem\'{a}s discos.
 
 %\includegraphics[keepaspectratio=true]{figures/000-Linear}
-{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
+%{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
 % http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch26_:_Linux_Software_RAID
 % http://nst.sourceforge.net/nst/docs/user/ch14.html
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+                +---------+---------+
+                |AB   ... |  ...   Z|
+SO -- Linear -- |  HDD 0  |  HDD 1  |
+      A,B..Z    |         |         |
+                +---------+---------+
+\end{verbatim}
+}
 
   \item \textbf{RAID 0}
 
@@ -285,7 +296,24 @@ No ofrece redundancia porque los bloques se reparten en todos los discos y si un
 
 %\includegraphics[keepaspectratio=true]{figures/001-RAID0}
 %Diagrama \cite{18b4e676f432f4780a509b508056c779}
-{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
+%{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+                    +---------+
+                    |AC       |
+                /-- |  HDD 0  |
+                |   |         |
+                |   +---------+
+SO -- RAID  0 --+
+      A,B,C,D   |   +---------+
+                |   |BD       |
+                \-- |  HDD 1  |
+                    |         |
+                    +---------+
+\end{verbatim}
+}
 
   \item \textbf{RAID 1}
   
@@ -297,7 +325,24 @@ El rendimiento de escritura es menor al que presenta un solo disco porque se deb
 
 %\includegraphics[keepaspectratio=true]{figures/002-RAID1}
 %Diagrama \cite{0a250ce04fb10680f70cb2c3efd365b1}
-{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
+%{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+                    +---------+
+                    |ABCD     |
+                /-- |  HDD 0  |
+                |   |         |
+                |   +---------+
+SO -- RAID  1 --+
+      A,B,C,D   |   +---------+
+                |   |ABCD     |
+                \-- |  HDD 1  |
+                    |         |
+                    +---------+
+\end{verbatim}
+}
 
   \item \textbf{RAID 5}
 
@@ -309,7 +354,28 @@ Dado que se calcula la paridad de los bloques de datos , se debe restar el tama\
   
 %\includegraphics[keepaspectratio=true]{figures/003-RAID5}
 %Diagrama \cite{9397b15f6a384de60446b869f05412af}
-{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
+%{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+                      +---------+
+                      | A, C,P3 |
+                  /-- |  HDD 0  |
+                  |   |         |
+                  |   +---------+
+                  |   +---------+
+                  |   | B,P2, E |
+SO --   RAID  5 --+-- |  HDD 1  |
+      A,B,C,D,E,F |   |         |
+                  |   +---------+
+                  |   +---------+
+                  |   |P1, D, F |
+                  \-- |  HDD 2  |
+                      |         |
+                      +---------+
+\end{verbatim}
+}
 
   \item \textbf{RAID 6}
 
@@ -321,7 +387,33 @@ Las operaciones de escritura tardan mas porque se deben calcular dos bloques de 
   
 %\includegraphics[keepaspectratio=true]{figures/004-RAID6}
 %Diagrama \cite{9e2f3e1ba21ce971703a62c6217946ae}
-{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
+%{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+                            +---------- +
+                            | A, C,P2,Q3|
+                        /-- |  HDD 0    |
+                        |   |           |
+                        |   +-----------+
+                        |   +-----------+
+                        |   | B,P1,Q2, G|
+                        +-- |  HDD 1    |
+                        |   |           |
+SO --     RAID  6     --+   +-----------+
+      A,B,C,D,E,F,G,H   |   +-----------+
+                        |   |P0,Q1, E, H|
+                        +-- |  HDD 2    |
+                        |   |           |
+                        |   +-----------+
+                        |   +-----------+
+                        |   |Q0, D, F,P3|
+                        \-- |  HDD 3    |
+                            |           |
+                            +-----------+
+\end{verbatim}
+}
   
 \end{itemize}
 
@@ -338,16 +430,35 @@ Consiste en un arreglo RAID 0 conformado por dos o m\'{a}s arreglos RAID 1, el s
 Si un disco de alg\'{u}n arreglo RAID 1 falla, este entra en modo degradado y el funcionamiento del arreglo RAID 0 no se ve afectado \footnote{Salvo por la perdida de rendimiento en el arreglo.}, si fallan dos discos del mismo arreglo RAID 1 el arreglo RAID 0 pierde los datos. Se requieren por lo menos cuatro discos para hacer esta configuraci\'{o}n.
 
 RAID 01... Diagrama \cite{3638d46cd02c0cd72e333c6d6f8f9608}
+{
+\scriptsize
+\linespread{1}
 \begin{verbatim}
-        SO
-         |
-       RAID 0
-     |        |
-  RAID 1     RAID 1
-  |    |     |    |
-HDD1  HDD2 HDD3  HDD4
+                               +---------+
+                               |AC       |
+                           /-- |  HDD 0  |
+                           |   |         |
+                +------+   |   +---------+
+            /-- |RAID 1| --+
+            |   +------+   |   +---------+
+            |              |   |AC       |
+            |              \-- |  HDD 1  |
+            |                  |         |
++-------+   |                  +---------+
+|RAID  0| --+
++-------+   |                  +---------+
+ A,B,C,D    |                  |BD       |
+            |              /-- |  HDD 2  |
+            |              |   |         |
+            |   +------+   |   +---------+
+            \-- |RAID 1| --+
+                +------+   |   +---------+
+                           |   |BD       |
+                           \-- |  HDD 3  |
+                               |         |
+                               +---------+
 \end{verbatim}
-  
+}
 
   \item \textbf{RAID 01}
 
@@ -356,15 +467,35 @@ Se compone por un arreglo RAID 1 que replica los datos contenidos en dos arreglo
 Si falla uno o dos discos del mismo arreglo RAID 0, todo el arreglo se pierde y el arreglo RAID 1 entra en modo degradado sin perder los datos, si adem\'{a}s falla un disco de otro arreglo RAID 0 todos los datos se pierden.
   
 RAID 10... Diagrama \cite{9b286bf9442c2cf4d1e02ddf7322c92b}
+{
+\scriptsize
+\linespread{1}
 \begin{verbatim}
-        SO
-         |
-       RAID 1
-     |        |
-  RAID 0     RAID 0
-  |    |     |    |
-HDD1  HDD2 HDD3  HDD4
+                               +---------+
+                               |AC       |
+                           /-- |  HDD 0  |
+                           |   |         |
+                +------+   |   +---------+
+            /-- |RAID 0| --+
+            |   +------+   |   +---------+
+            |              |   |BD       |
+            |              \-- |  HDD 1  |
+            |                  |         |
++-------+   |                  +---------+
+|RAID  1| --+
++-------+   |                  +---------+
+ A,B,C,D    |                  |AC       |
+            |              /-- |  HDD 2  |
+            |              |   |         |
+            |   +------+   |   +---------+
+            \-- |RAID 0| --+
+                +------+   |   +---------+
+                           |   |BD       |
+                           \-- |  HDD 3  |
+                               |         |
+                               +---------+
 \end{verbatim}
+}
   
 \end{itemize}
 
