@@ -271,9 +271,6 @@ Para crear el arreglo no importa el tama\~{n}o de los discos. Si se acceden dos 
 Este m\'{e}todo no ofrece redundancia, por lo que si falla un disco los datos contenidos en este se pierden. Es posible montar el sistema de archivos en un modo especial y recuperar los datos almacenados en los dem\'{a}s discos.
 
 %\includegraphics[keepaspectratio=true]{figures/000-Linear}
-%{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
-% http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch26_:_Linux_Software_RAID
-% http://nst.sourceforge.net/nst/docs/user/ch14.html
 {
 \scriptsize
 \linespread{1}
@@ -296,7 +293,6 @@ No ofrece redundancia porque los bloques se reparten en todos los discos y si un
 
 %\includegraphics[keepaspectratio=true]{figures/001-RAID0}
 %Diagrama \cite{18b4e676f432f4780a509b508056c779}
-%{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
 {
 \scriptsize
 \linespread{1}
@@ -325,7 +321,6 @@ El rendimiento de escritura es menor al que presenta un solo disco porque se deb
 
 %\includegraphics[keepaspectratio=true]{figures/002-RAID1}
 %Diagrama \cite{0a250ce04fb10680f70cb2c3efd365b1}
-%{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
 {
 \scriptsize
 \linespread{1}
@@ -354,7 +349,6 @@ Dado que se calcula la paridad de los bloques de datos , se debe restar el tama\
   
 %\includegraphics[keepaspectratio=true]{figures/003-RAID5}
 %Diagrama \cite{9397b15f6a384de60446b869f05412af}
-%{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
 {
 \scriptsize
 \linespread{1}
@@ -387,7 +381,6 @@ Las operaciones de escritura tardan mas porque se deben calcular dos bloques de 
   
 %\includegraphics[keepaspectratio=true]{figures/004-RAID6}
 %Diagrama \cite{9e2f3e1ba21ce971703a62c6217946ae}
-%{\large\begin{verbatim}<Falta imagen/>\end{verbatim}}
 {
 \scriptsize
 \linespread{1}
@@ -429,7 +422,7 @@ Consiste en un arreglo RAID 0 conformado por dos o m\'{a}s arreglos RAID 1, el s
 
 Si un disco de alg\'{u}n arreglo RAID 1 falla, este entra en modo degradado y el funcionamiento del arreglo RAID 0 no se ve afectado \footnote{Salvo por la perdida de rendimiento en el arreglo.}, si fallan dos discos del mismo arreglo RAID 1 el arreglo RAID 0 pierde los datos. Se requieren por lo menos cuatro discos para hacer esta configuraci\'{o}n.
 
-RAID 01... Diagrama \cite{3638d46cd02c0cd72e333c6d6f8f9608}
+%Diagrama \cite{3638d46cd02c0cd72e333c6d6f8f9608}
 {
 \scriptsize
 \linespread{1}
@@ -466,7 +459,7 @@ Se compone por un arreglo RAID 1 que replica los datos contenidos en dos arreglo
 
 Si falla uno o dos discos del mismo arreglo RAID 0, todo el arreglo se pierde y el arreglo RAID 1 entra en modo degradado sin perder los datos, si adem\'{a}s falla un disco de otro arreglo RAID 0 todos los datos se pierden.
   
-RAID 10... Diagrama \cite{9b286bf9442c2cf4d1e02ddf7322c92b}
+%Diagrama \cite{9b286bf9442c2cf4d1e02ddf7322c92b}
 {
 \scriptsize
 \linespread{1}
@@ -550,7 +543,7 @@ Los appliances de software pueden ser distribuidos en paquetes descomprimibles (
 
 Estos integran s\'{o}lo la interfaz web, puesto que se ejecutan en un equipo existente y son independientes del shell o el soporte SNMP que se tenga en el mismo.
 %Los appliances de software son programas descomprimibles o imagenes ISO instalables
-[bitnami.org]
+\cite{bitnami}
 \cite{4cb5bff4c029d86b328a2126e8a3060f}
   
   \item Virtual 
@@ -594,11 +587,6 @@ Por ejemplo, un recurso en linea debe estar disponible siempre para que pueda se
 
 Una vulnerabilidad es un fallo en la l\'{o}gica o una situaci\'{o}n que se da en condiciones especiales con la que un programa o proceso realiza tareas para las que no fue originalmente destinado. Cuando se alcanzan estas condiciones y se modifica la ejecuci\'{o}n del programa se dice que se ha \textit{explotado} la vulnarabilidad \cite{padilla_buenas_2009}.
 
-% http://www.first.org/cvss/cvss-guide.html
-% http://nvd.nist.gov/cvss.cfm?calculator&adv&version=2
-% http://www.first.org/cvss
-% http://cve.mitre.org/
-
   \subsection {Hardening}
 
 Se denomina \textit{hardening} al proceso de reforzar las configuraciones del sistema operativo y las aplicaciones para reducir la posibilidad de que una vulnerabilidad se presente \cite{padilla_buenas_2009}.
@@ -620,41 +608,47 @@ El hardening se puede realizar en diferentes partes del sistema operativo como:
 
 \section {Protocolo HTTP}
 
-El protocolo HTTP permite transferir datos a trav\'{e}s de Internet en un esquema cliente - servidor. La primer versi\'{o}n de este protocolo (HTTP/1.0) fu\'{e} descrita en el RFC 1945 \cite{rfc1945}, con la evoluci\'{o}n de Internet el protocolo fue mejorado y se le agregaron funciones como el control de transferencia o el soporte de mensajes \textit{MIME} que dieron origen a la versi\'{o}n actual (HTTP/1.1) definida en el RFC 2616 \cite{rfc2616}.
-
-% http://www.w3.org/Protocols/rfc1945/rfc1945
-% http://www.w3.org/Protocols/rfc2616/rfc2616
+El protocolo HTTP permite transferir datos a trav\'{e}s de Internet en un esquema cliente - servidor. La primer versi\'{o}n de este protocolo (\verb|HTTP/1.0|) fu\'{e} descrita en el RFC 1945 \cite{rfc1945}, con la evoluci\'{o}n de Internet el protocolo fue mejorado y se le agregaron funciones como el control de transferencia o el soporte de mensajes \textit{MIME} que dieron origen a la versi\'{o}n actual (\verb|HTTP/1.1|) definida en el RFC 2616 \cite{rfc2616}.
 
   \subsection {HTTPS - HTTP over SSL}
 
-El protocolo HTTP no contempla el cifrado de los datos y es un potencial riesgo de seguridad porque afecta a la confidencialidad y a la integridad de la informaci\'{o}n,
+En el protocolo HTTP los datos se envian y reciben en claro, esto deja la informaci\'{o}n vulnerable puesto que se puede interceptar o incluso modificar afectando la confidencialidad o integidad de la misma.
 
-Para solventar esto se defini\'{o} HTTPS en el RFC 2818 \cite{rfc2818} que ofrece una capa de seguridad extra porque cifra la conexi\'{o}n HTTP utilizando \textit{SSL} (Secure Socket Layer) \cite{rfc6101} o su sucesor \textit{TLS} (Transport Layer Security) \cite{rfc5246}, garantizando as\'{i} de la confidencialidad la integridad de los datos.
-
-% http://www.ietf.org/rfc/rfc2818.txt
+Para solventar estas debilidades se defini\'{o} HTTPS en el RFC 2818 \cite{rfc2818} que cifra la conexi\'{o}n HTTP utilizando \textit{SSL} \footnote{Secure Socket Layer por sus siglas en ingl\'{e}s, definido en el RFC 6101 \cite{rfc6101}.} o su sucesor \textit{TLS} \footnote{Transport Layer Security por sus siglas en ingl\'{e}s, definido en el RFC 5246 \cite{rfc5246}}, garantizando as\'{i} la confidencialidad e integridad de la informaci\'{o}n.
 
   \subsection {WebDAV}
 
+Web Distributed Authoring and Versioning es una extensi\'{o}n al protocolo HTTP que a\~{n}ade la capacidad de interactuar con archivos alnacendos en el servidor web.
+
+Est\'{a} definido en el RFC 4918 \cite{rfc4918} y establece un conjunto de extensiones al protocolo HTTP que incluyen m\'{e}todos, cabeceras y formatos tanto de petici\'{o}n como de respuesta para interactuar con el servidor con la finalidad de crear, modificar, borrar archivos y adem\'{a}s establece un mecanismo denominado \textit{File locking} que previene que dos personas editen el documento al mismo tiempo para no perder cambios.
+
 \section {Protocolo LDAP}
 
-El protocolo LDAP \footnote{Ligthweight Directory Access Protocol por sus siglas en ingl\'{e}s.} define el directorio como una colecci\'{o}n de objetos. Est\'{a} definido en el RFC 4511 y hace que la informaci\'{o}n de los objetos est\'{e} disponible a trav\'{e}s de una conexi\'{o}n de red.
+El protocolo LDAP \footnote{Ligthweight Directory Access Protocol por sus siglas en ingl\'{e}s.} est\'{a} definido en el RFC 4511 \cite{rfc4511} y establece un directorio como una colecci\'{o}n de objetos que comparte a otros equipos y programas a trav\'{e}s de una conexi\'{o}n de red.
 
-Los objetos se organizan en una estructura jer\'{a}rquica parecida a la que se utiliza el protocolo DNS. Se pueden tener \'{a}rboles secundarios para delegar partes del directorio o incluso \'{a}rboles de s\'{o}lo lectura y delegar las operaciones de escritura.
+Dentro del directorio los objetos se organizan en una estructura jer\'{a}rquica donde se tiene la ra\'{i}z del \'{a}rbol, los contenedores y los objetos, estos \'{u}ltimos adem\'{a}s tienen atributos que pueden tener uno o m\'{a}s valores.
 
-% http://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol
-% http://www.gracion.com/server/whatldap.html
-% http://tldp.org/HOWTO/LDAP-HOWTO/
-% http://ldapman.org/articles/intro_to_ldap.html
-% http://ldap.perl.org/
-% https://tools.ietf.org/html/rfc4511
-% http://www.ietf.org/rfc/rfc4511.txt
+La nomenclatura de los objetos es similar a la de DNS, es decir el nivel m\'{a}s general se indica a la derecha y el nivel m\'{a}s espec\'{i}fico se indica a la izquierda.
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
++- dc=root
+|+- ou=other container
+\+- ou=container
+ \=- uid=object,ou=container,dc=root
+     cn: common name
+     comment: something
+     attrib: value1
+     attrib: value2
+\end{verbatim}
+}
 
   \subsection {Directorio de usuarios}
 
-En LDAP los usuarios tienen ciertas propiedades como identificador, nombre de usuario, contrase\~{n}a y otros. Existen dos tipos principales de usuario: simpleSecurityObject y posixAccount. El primero utilizado s\'{o}lamente para autenticar un usuario en el directorio y el segundo tiene propiedades parecidas a una cuenta UNIX (uid, gid, GECOS, etc.).
+En LDAP  los usuarios tienen ciertas propiedades como identificador, nombre de usuario, contrase\~{n}a y otros. Existen dos tipos principales de usuario: \verb/simpleSecurityObject/ y \verb/posixAccount/. El primero utilizado s\'{o}lamente para autenticar un usuario en el directorio y el segundo tiene propiedades parecidas a una cuenta UNIX (\textit{uid}, \textit{gid}, \textit{GECOS}, entre otros).
 
 \section {Protocolo SSH}
   \subsection {SCP - Secure Copy}
   \subsection {SFTP - Secure FTP}
   \subsection {SSHFS - Secure Shell Filesystem}
-
