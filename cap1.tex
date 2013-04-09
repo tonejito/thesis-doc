@@ -620,15 +620,51 @@ Para solventar estas debilidades se defini\'{o} HTTPS en el RFC 2818 \cite{rfc28
 
 Web Distributed Authoring and Versioning es una extensi\'{o}n al protocolo HTTP que a\~{n}ade la capacidad de interactuar con archivos alnacendos en el servidor web.
 
-Est\'{a} definido en el RFC 4918 \cite{rfc4918} y establece un conjunto de extensiones al protocolo HTTP que incluyen m\'{e}todos, cabeceras y formatos tanto de petici\'{o}n como de respuesta para interactuar con el servidor con la finalidad de crear, modificar, borrar archivos y adem\'{a}s establece un mecanismo denominado \textit{File locking} que previene que dos personas editen el documento al mismo tiempo para no perder cambios.
+Est\'{a} definido en el RFC 4918 \cite{rfc4918} y establece un conjunto de extensiones al protocolo HTTP que incluyen m\'{e}todos, cabeceras y formatos tanto de petici\'{o}n como de respuesta para interactuar con el servidor con la finalidad de crear, modificar y borrar archivos. Adem\'{a}s establece un mecanismo denominado \textit{File locking} que previene que dos personas editen el documento al mismo tiempo para no perder cambios.
 
 \section {Protocolo LDAP}
 
-El protocolo LDAP \footnote{Ligthweight Directory Access Protocol por sus siglas en ingl\'{e}s.} est\'{a} definido en el RFC 4511 \cite{rfc4511} y establece un directorio como una colecci\'{o}n de objetos que comparte a otros equipos y programas a trav\'{e}s de una conexi\'{o}n de red.
+El protocolo LDAP \footnote{Ligthweight Directory Access Protocol por sus siglas en ingl\'{e}s.} est\'{a} definido en el RFC 4511 \cite{rfc4511} y establece el directorio como una colecci\'{o}n de objetos que comparte a otros equipos y programas a trav\'{e}s de una conexi\'{o}n de red.
 
 Dentro del directorio los objetos se organizan en una estructura jer\'{a}rquica donde se tiene la ra\'{i}z del \'{a}rbol, los contenedores y los objetos, estos \'{u}ltimos adem\'{a}s tienen atributos que pueden tener uno o m\'{a}s valores.
 
-La nomenclatura de los objetos es similar a la de DNS, es decir el nivel m\'{a}s general se indica a la derecha y el nivel m\'{a}s espec\'{i}fico se indica a la izquierda.
+  \subsection {Nomenclatura}
+
+La nomenclatura de los objetos es similar a la de DNS, es decir, el nivel m\'{a}s general se indica a la derecha y el nivel m\'{a}s espec\'{i}fico se indica a la izquierda \cite{zytrax}. La ra\'{i}z del \'{a}rbol se puede escribir de manera similar al dominio DNS en una notaci\'{o}n denominada \textit{Domain Component} (\textbf{dc}) o utilizando el nombre de la organizaci\'{o}n (\textbf{o}).
+
+\begin{table}[H]
+\caption{Nomenclatura del nodo ra\'{i}z de LDAP}{}
+\label{tab:nomenclatura-ldap-root}
+\noindent\makebox[\textwidth]{%
+\begin{tabular}[c]{c|c}
+%\hline
+\textbf{Nomenclatura} & \textbf{Formato del nodo ra\'{i}z} \\
+\hline \hline
+\textit{Domain Component} & dc=tonejito,dc=org \\
+\textit{Organization} & o=tonejito \\
+%\hline
+\end{tabular}
+} % ending of \makebox
+\end{table}
+
+Cada objeto tiene un identificador \'{u}nico en el directorio conocido como \textit{Distinguished Name} (\textbf{dn}) que ayuda a diferenciar los objetos entre si. Se listan a continuaci\'{o}n a manera de ejemplo dos de los diferentes nombres distinguidos que se utilizar\'{a}n en este documento.
+
+{
+\scriptsize
+\linespread{1}
+\begin{center}
+  \verb|dn: cn=admin,dc=tonejito,dc=org|
+  \\
+  \verb|dn: uid=user,ou=users,dc=tonejito,dc=org|
+\end{center}
+}
+
+  \subsection{Contenedores}
+
+Dentro del directorio se tienen almacenados los objetos en diferentes ramas del \'{a}rbol que pueden ser vistas como carpetas en un sistema de archivos. Cada contenedor es denominado \textit{Unidad Organizacional} (\textbf{ou}) o Unidad Organizacional y es utilizado para almacenar otros objetos, incluyendo otras unidades organizacionales para darle estructura al \'{a}rbol del directorio.
+
+% http://www.zytrax.com/books/ldap/apa/dn-rdn.html
+
 {
 \scriptsize
 \linespread{1}
@@ -647,6 +683,30 @@ La nomenclatura de los objetos es similar a la de DNS, es decir el nivel m\'{a}s
   \subsection {Directorio de usuarios}
 
 En LDAP  los usuarios tienen ciertas propiedades como identificador, nombre de usuario, contrase\~{n}a y otros. Existen dos tipos principales de usuario: \verb/simpleSecurityObject/ y \verb/posixAccount/. El primero utilizado s\'{o}lamente para autenticar un usuario en el directorio y el segundo tiene propiedades parecidas a una cuenta UNIX (\textit{uid}, \textit{gid}, \textit{GECOS}, entre otros).
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+simpleSecurityObject
+  cn
+  userPassword
+
+posixAccount
+  cn
+  userPassword
+  uid
+  gid
+  GECOS
+  home
+  shell
+
+posixGroup
+  gid
+  memberUid
+\end{verbatim}
+}
+
 
 \section {Protocolo SSH}
   \subsection {SCP - Secure Copy}
