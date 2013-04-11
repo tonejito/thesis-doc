@@ -122,30 +122,30 @@ Este tipo de medios se caracterizan porque el acceso a los datos se realiza medi
  & & & \textbf{aleatorio} & \textbf{escritura} & \\
 \hline
 \hline
-RAM & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \multirow{5}{*}{Electricidad est\'{a}tica} \\
+RAM & MB & \nomark & \yesmark & \yesmark & \multirow{5}{*}{Electricidad est\'{a}tica} \\
 \cline{1-5}
-NVRAM & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
+NVRAM & MB & \yesmark & \yesmark & \yesmark &  \\
 \cline{1-5}
-ROM & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} &  \\
+ROM & MB & \yesmark & \yesmark & \nomark &  \\
 \cline{1-5}
-EEPROM & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} &  \\
+EEPROM & MB & \yesmark & \yesmark & \nomark &  \\
 \cline{1-5}
-FLASH / SSD & GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
+FLASH / SSD & GB & \yesmark & \yesmark & \yesmark &  \\
 \hline
-Cinta & TB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \multirow{3}{*}{Campos magn\'{e}ticos} \\
+Cinta & TB & \yesmark & \nomark & \yesmark & \multirow{3}{*}{Campos magn\'{e}ticos} \\
 \cline{1-5}
-Disco Flexible & MB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
+Disco Flexible & MB & \yesmark & \yesmark & \yesmark &  \\
 \cline{1-5}
-Disco Duro & TB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
+Disco Duro & TB & \yesmark & \yesmark & \yesmark &  \\
 \hline
-\multirow{2}{*}{Disco MO} & \multirow{2}{*}{MB/GB} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}} & Campos magn\'{e}ticos\\
+\multirow{2}{*}{Disco MO} & \multirow{2}{*}{MB/GB} & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\yesmark} & Campos magn\'{e}ticos\\
  & & & & & Rayaduras \\
 \hline
-Disco \'{O}ptico & MB/GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/N} & \multirow{3}{*}{Rayaduras} \\
+Disco \'{O}ptico & MB/GB & \yesmark & \yesmark & \nomark & \multirow{3}{*}{Rayaduras} \\
 \cline{1-5}
-Disco Regrabable & MB/GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} &  \\
+Disco Regrabable & MB/GB & \yesmark & \yesmark & \yesmark &  \\
 \cline{1-5}
-Disco Hologr\'{a}fico & GB & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \\
+Disco Hologr\'{a}fico & GB & \yesmark & \yesmark & \yesmark & \\
 %\hline
 \end{tabular}
 } % ending of \makebox
@@ -407,7 +407,7 @@ SO --     RAID  6     --+   +-----------+
                             +-----------+
 \end{verbatim}
 }
-  
+ 
 \end{itemize}
 
 Arreglos anidados
@@ -504,19 +504,19 @@ Si falla uno o dos discos del mismo arreglo RAID 0, todo el arreglo se pierde y 
 %\hline
 \textbf{Tipo} & \textbf{Redundancia} & \textbf{Paridad} & \textbf{Discos} & \textbf{Capacidad \'{u}til} & \multicolumn{1}{c}{\textbf{Ventajas}} \\
 \hline \hline
-\multirow{3}{*}{Linear}  & \multirow{3}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{3}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{3}{*}{2+} & \multirow{3}{*}{Todos los discos} & Los datos se escriben en el siguente disco cuando el actual se llena. \\
+\multirow{3}{*}{Linear}  & \multirow{3}{*}{\nomark} & \multirow{3}{*}{\nomark} & \multirow{3}{*}{2+} & \multirow{3}{*}{Todos los discos} & Los datos se escriben en el siguente disco cuando el actual se llena. \\
 \hline
-\multirow{2}{*}{RAID 0}  & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{2}{*}{2+} & \multirow{2}{*}{Todos los discos} & Los bloques se escriben en paralelo en los discos. \\
+\multirow{2}{*}{RAID 0}  & \multirow{2}{*}{\nomark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{2+} & \multirow{2}{*}{Todos los discos} & Los bloques se escriben en paralelo en los discos. \\
 \hline
-\multirow{2}{*}{RAID 1}  & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{2}{*}{2+} & \multirow{2}{*}{1 Disco}  & Se tiene una copia exacta de los datos en los discos. \\
+\multirow{2}{*}{RAID 1}  & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{2+} & \multirow{2}{*}{1 Disco}  & Se tiene una copia exacta de los datos en los discos. \\
 \hline
-RAID 5  & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} \tiny{simple} & 3+ & 2 Discos & Tolera el fallo de un disco. \\
+RAID 5  & \yesmark & \yesmark \tiny{simple} & 3+ & 2 Discos & Tolera el fallo de un disco. \\
 \hline
-RAID 6  & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} & \includegraphics[keepaspectratio=true, width=10px]{figures/Y} \tiny{doble} & 4+ & 2 Discos & Tolera el fallo de hasta dos discos. \\
+RAID 6  & \yesmark & \yesmark \tiny{doble} & 4+ & 2 Discos & Tolera el fallo de hasta dos discos. \\
 \hline
-RAID 10 & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} &  Tolera el fallo de discos de diferentes arreglos. \\
+RAID 10 & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} &  Tolera el fallo de discos de diferentes arreglos. \\
 \hline
-RAID 01 & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}} & \multirow{2}{*}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}} & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} & Tolera el fallo de arreglos completos. \\
+RAID 01 & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} & Tolera el fallo de arreglos completos. \\
 %\hline
 \end{tabular}
 } % ending of \makebox
@@ -707,8 +707,9 @@ posixGroup
 \end{verbatim}
 }
 
-
 \section {Protocolo SSH}
+
   \subsection {SCP - Secure Copy}
   \subsection {SFTP - Secure FTP}
   \subsection {SSHFS - Secure Shell Filesystem}
+

@@ -316,3 +316,13 @@
 %\usepackage[bookmarks]{hyperref}
 %\usepackage{url}
 
+% Works when not using verbatim, verb texttt or tt inside it
+\usepackage{ifdraft}
+\newcommand{\yesmark}{\ifdraft{O}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}}}
+\newcommand{\nomark}{\ifdraft{X}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}}}
+
+% Doesn't seem to work
+%\newif\ifdraft\drafttrue
+%\newcommand{\yesmark}{ \ifdraft O \else \includegraphics[keepaspectratio=true, width=10px]{figures/Y} \fi }
+%\newcommand{\nomark}{ \ifdraft X \else \includegraphics[keepaspectratio=true, width=10px]{figures/N} \fi }
+
