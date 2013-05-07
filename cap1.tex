@@ -661,7 +661,7 @@ Cada objeto tiene un identificador \'{u}nico en el directorio conocido como \tex
 
   \subsection{Contenedores}
 
-Dentro del directorio se tienen almacenados los objetos en diferentes ramas del \'{a}rbol que pueden ser vistas como carpetas en un sistema de archivos. Cada contenedor es denominado \textit{Unidad Organizacional} (\textbf{ou}) o Unidad Organizacional y es utilizado para almacenar otros objetos, incluyendo otras unidades organizacionales para darle estructura al \'{a}rbol del directorio.
+Dentro del directorio se tienen almacenados los objetos en diferentes ramas del \'{a}rbol que pueden ser vistas como carpetas en un sistema de archivos. Cada contenedor es denominado \textit{Organizational Unit} (\textbf{ou}) o Unidad Organizacional y es utilizado para almacenar otros objetos, incluyendo otras unidades organizacionales para darle estructura al \'{a}rbol del directorio.
 
 % http://www.zytrax.com/books/ldap/apa/dn-rdn.html
 
@@ -709,7 +709,38 @@ posixGroup
 
 \section {Protocolo SSH}
 
+El protocolo SSH \footnote{Secure Shell por sus siglas en ingl\'{e}s.} sirve para establecer sesiones remotas cifradas entre dos equipos \cite{gwolf}. Utiliza cifrado asim\'{e}trico para proteger la conexi\'{o}n y soporta m\'{u}ltiples m\'{e}todos de autenticaci\'{o}n lo que permite que sea flexible y f\'{a}cil de incluir en varios sistemas operativos.
+
+Com\'{u}nmente se utiliza para conectarse a un servidor y utilizar la interfaz de l\'{i}nea de comandos, aunque el protocolo es muy flexible y se puede utilizar para cumplir las funciones que se listan a continuaci\'{o}n:
+
+  \begin{itemize}
+    \item{Ejecutar un shell en el equipo remoto.}
+    \item{Transferencia de archivos desde y hacia el equipo remoto.}
+    \item{Creaci\'{o}n de t\'{u}neles para permitir que el equipo local alcance servicios remotos \textit{LocalForward}.}
+    \item{Creaci\'{o}n de t\'{u}neles para que los equipos remotos puedan acceder a los servicios locales \textit{RemoteForward}.}
+    \item{Ejecutar programas gr\'{a}ficos en el equipo remoto y visualizar la interfaz como si fuese un programa local \textit{X11Forward}.}
+    \item{Generar un proxy SOCKS para enviar el tr\'{a}fico local al equipo remoto \textit{DynamicForward}.}
+  \end{itemize}
+
+% http://gwolf.org/files/pki/node9.html
+
   \subsection {SCP - Secure Copy}
+
+Este protocolo se utiliza para copiar archivos entre dos equipos, ya sea desde el equipo remoto hacia el local o viceversa y utiliza \textsc{SSH} como transporte para los datos. Est\'{a} basado en el programa de copia de archivos \textit{rcp} originario de la variante de \textsc{UNIX} \textsc{BSD}.
+
+% http://nixdoc.net/man-pages/FreeBSD/scp.1.html#HISTORY
+
   \subsection {SFTP - Secure FTP}
+
+El protocolo \textsc{SFTP} dise\~{n}ado por la \textsc{IETF} \footnote{Espec\'{i}ficamente por el grupo \textsc{SECSH} de la \textsc{IETF}.} es una extensi\'{o}n del protocolo \textsc{SSH} que a diferencia de \textsc{SCP} permite acceder, transferir y borrar archivos adem\'{a}s de listar los directorios del equipo remoto. La versi\'{o}n actual de este protocolo es la 6.0. 
+
+% http://www.ipsure.com/blog/2010/chrooted-sftp-with-public-key-authentication/
+
   \subsection {SSHFS - Secure Shell Filesystem}
+
+\textsc{SSHFS} es un programa que hace uso de \textsc{SFTP} para \textit{montar} un directorio remoto en el equipo local utilizando \textsc{SSH} como transporte y hace uso de la biblioteca de sistemas de archivo \textsc{FUSE} del lado del cliente para realizar el mapeo y manejo del sistema de archivos virtual. El funcionamiento de un directorio montado con \textsc{SSHFS} es similar a \textsc{NFS} o \textsc{CIFS}.
+
+% http://fuse.sourceforge.net/sshfs.html
+% http://www.linuxjournal.com/article/8904
+% https://help.ubuntu.com/community/SSHFS
 
