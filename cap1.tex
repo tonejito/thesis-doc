@@ -252,9 +252,9 @@ En este tipo de soluciones se pueden tener grandes vol\'{u}menes de datos dispon
 
   \subsection {Arreglos RAID}
 
-El t\'{e}rmino \textsc{RAID} es un acr\'{o}nimo de \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Independientes) \cite{8810bc4904cabf93eede72a03c171b7e} \footnote{Dependiendo de la bibliograf\'{i}a el t\'{e}rmino puede ser tambi\'{e}n referido como \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Baratos).}. Es una tecnolog\'{i}a que se basa en combinar m\'{u}ltiples discos para que se comporten como uno solo. Dependiendo el modo de operaci\'{o}n, ofrece la posibilidad de tomar varios discos y sumar el espacio de almacenamiento o bien replicar los datos escribiendolos en varios discos para tener tolerancia a fallos.
+El t\'{e}rmino \textsc{RAID} es un acr\'{o}nimo de \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Independientes) \cite{_bytepile.com_????} \footnote{Dependiendo de la bibliograf\'{i}a el t\'{e}rmino puede ser tambi\'{e}n referido como \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Baratos).}. Es una tecnolog\'{i}a que se basa en combinar m\'{u}ltiples discos para que se comporten como uno solo. Dependiendo el modo de operaci\'{o}n, ofrece la posibilidad de tomar varios discos y sumar el espacio de almacenamiento o bien replicar los datos escribiendolos en varios discos para tener tolerancia a fallos \cite{_raid_????-2}.
 
-Los arreglos de disco se pueden configurar por tarjetas dedicadas de hardware o mediante configuraci\'{o}n de software en el sistema operativo. En los \emph{arreglos por hardware} el firmware de la tarjeta controladora tiene los algoritmos encargados de leer, escribir y sincronizar los datos, mientras que en los \emph{arreglos por software} el kernel del sistema operativo es el encargado de realizar estas operaciones.
+Los arreglos de disco se pueden configurar por tarjetas dedicadas de hardware o mediante configuraci\'{o}n de software en el sistema operativo. En los \emph{arreglos por hardware} el firmware de la tarjeta controladora tiene los algoritmos encargados de leer, escribir y sincronizar los datos, mientras que en los \emph{arreglos por software} el kernel del sistema operativo es el encargado de realizar estas operaciones \cite{_chapter_????}.
 
 \textbf{Tipo de arreglos RAID}
 
@@ -412,7 +412,7 @@ SO --     RAID  6     --+   +-----------+
 
 Arreglos anidados
 
-Los arreglos anidados \cite{3e1f0dad689a7971f226a3ded845ae63}
+Los arreglos anidados \cite{_intro_????}
 
 \begin{itemize}
 
@@ -524,32 +524,29 @@ Si falla uno o dos discos del mismo arreglo \textsc{RAID} 0, todo el arreglo se 
 
     \section {Appliances}
 
-Definici\'{o}n de appliance \cite{74e586f4d341588a0bcc6273c524d8f5}
+Un appliance es un conjunto de elementos (hardware, software y sistema operativo) que trabajan de manera conjunta para realizar un proceso espec\'{i}fico \cite{smith_linux_2007}.
 
-Tipos de Appliance
+    \subsection{Tipos de Appliance}
 
 \begin{itemize}
 
   \item Hardware
   
-Los appliances de hardware son sistemas especializados dise\~{n}ados para realizar tareas espec\'{i}ficas, el fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta nueva funcion.
+Los appliances de hardware son sistemas especializados dise\~{n}ados para realizar tareas espec\'{i}ficas, el fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta nueva funcion \cite{}.
 
 Regularmente tienen una interfaz web para administraci\'{o}n, algunos integran un shell para realizar las funciones conectandose a trav\'{e}s de ssh y en otros casos integran adem\'{a}s soporte para \textsc{SNMP}.
 \cite{dcd32ad713054f2f67fbcd17c0900928}
 
   \item Software
   
-Los appliances de software pueden ser distribuidos en paquetes descomprimibles (tarballs) que contienen el instalador y todos los progamas necesarios para que funcione la soluci\'{o}n.
+Los appliances de software pueden ser distribuidos en paquetes descomprimibles (tarballs) que contienen el instalador y todos los progamas necesarios para que funcione la soluci\'{o}n \cite{_bitnami:_????}.
 
 Estos integran s\'{o}lo la interfaz web, puesto que se ejecutan en un equipo existente y son independientes del shell o el soporte \textsc{SNMP} que se tenga en el mismo.
-%Los appliances de software son programas descomprimibles o imagenes ISO instalables
-\cite{bitnami}
 \cite{4cb5bff4c029d86b328a2126e8a3060f}
   
   \item Virtual 
 
-Los appliances virtuales son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}ficamente dise\~{n}adas para un ambiente de virtualizaci\'{o}n que integran la funcionalidad de los appliances de hardware dentro de un equipo virtual. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual para procesar en paralelo las peticiones de los usuarios.
-\cite{314f38cbb73bf967a21191775959cf1d}
+Los appliances virtuales son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}ficamente dise\~{n}adas para un ambiente de virtualizaci\'{o}n que integran la funcionalidad de los appliances de hardware dentro de un equipo virtual. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual para procesar en paralelo las peticiones de los usuarios \cite{_why_????}.
   
 \end{itemize}
 
@@ -558,26 +555,24 @@ Los appliances virtuales son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}fi
 Definici\'{o}n de seguridad inform\'{a}tica
 
   \subsection {Principios de seguridad inform\'{a}tica}
-% http://www.oregon.gov/DAS/CIO/ISRC/pages/intro_basics.aspx
-% http://csrc.nist.gov/publications/nistpubs/800-14/800-14.pdf
 
 \begin{itemize}
 
   \item \textbf{Confidencialidad}
 
-Este principio busca conservar los datos \'{u}nicamente para la persona que est\'{a} destinada a leerlos.
+Este principio busca conservar los datos \'{u}nicamente para la persona que est\'{a} destinada a leerlos \cite{NIST} \cite{oregon-sec}.
 
 Por ejemplo, al cifrar un correo electr\'{o}nico o un archivo se garantiza que s\'{o}lo ser\'{a} visto por la persona que tenga los medios para descifrarlo (ya sea una llave privada o una contrase\~{n}a).
 
   \item \textbf{Integridad}
 
-Este principio busca que la informaci\'{o}n no pueda ser alterada, ya sea por fallos en el medio de almacenamiento o modificaciones no autorizadas.
+Este principio busca que la informaci\'{o}n no pueda ser alterada, ya sea por fallos en el medio de almacenamiento o modificaciones no autorizadas \cite{NIST} \cite{oregon-sec}.
 
 Por ejemplo, al firmar un archivo o un correo electr\'{o}nico la firma s\'{o}lo pasar\'{a} la prueba de verificaci\'{o}n si el mensaje est\'{a} integro, de lo contrario no podr\'{a} ser verificado satisfactoriamente.
 
   \item \textbf{Disponibilidad}
 
-Este principio dicta que la informaci\'{o}n debe poderse acceder cuando sea necesario o respetando el criterio de los tiempos establecidos.
+Este principio dicta que la informaci\'{o}n debe poderse acceder cuando sea necesario o respetando el criterio de los tiempos establecidos \cite{NIST} \cite{oregon-sec}.
 
 Por ejemplo, un recurso en linea debe estar disponible siempre para que pueda ser accedido por las personas que har\'{a}n uso de el, en caso de tener horarios de disponibilidad se debe garantizar que el recurso se pueda acceder durante ese periodo.
 
@@ -661,9 +656,7 @@ Cada objeto tiene un identificador \'{u}nico en el directorio conocido como \tex
 
   \subsection{Contenedores}
 
-Dentro del directorio se tienen almacenados los objetos en diferentes ramas del \'{a}rbol que pueden ser vistas como carpetas en un sistema de archivos. Cada contenedor es denominado \textit{Organizational Unit} (\textbf{ou}) o Unidad Organizacional y es utilizado para almacenar otros objetos, incluyendo otras unidades organizacionales para darle estructura al \'{a}rbol del directorio.
-
-% http://www.zytrax.com/books/ldap/apa/dn-rdn.html
+Dentro del directorio se tienen almacenados los objetos en diferentes ramas del \'{a}rbol que pueden ser vistas como carpetas en un sistema de archivos. Cada contenedor es denominado \textit{Organizational Unit} (\textbf{ou}) o Unidad Organizacional y es utilizado para almacenar otros objetos, incluyendo otras unidades organizacionales para darle estructura al \'{a}rbol del directorio \cite{zytrax}.
 
 {
 \scriptsize
@@ -722,25 +715,15 @@ Com\'{u}nmente se utiliza para conectarse a un servidor y utilizar la interfaz d
     \item{Generar un proxy \textsc{SOCKS} para enviar el tr\'{a}fico local al equipo remoto \textit{DynamicForward}.}
   \end{itemize}
 
-% http://gwolf.org/files/pki/node9.html
-
   \subsection {SCP - Secure Copy}
 
-Este protocolo se utiliza para copiar archivos entre dos equipos, ya sea desde el equipo remoto hacia el local o viceversa y utiliza \textsc{SSH} como transporte para los datos. Est\'{a} basado en el programa de copia de archivos \textit{rcp} originario de la variante de \textsc{UNIX} \textsc{BSD}.
-
-% http://nixdoc.net/man-pages/FreeBSD/scp.1.html#HISTORY
+Este protocolo se utiliza para copiar archivos entre dos equipos, ya sea desde el equipo remoto hacia el local o viceversa y utiliza \textsc{SSH} como transporte para los datos. Est\'{a} basado en el programa de copia de archivos \textit{rcp} originario de la variante de \textsc{UNIX} \textsc{BSD} \cite{FreeBSD-scp}.
 
   \subsection {SFTP - Secure FTP}
 
-El protocolo \textsc{SFTP} dise\~{n}ado por la \textsc{IETF} \footnote{Espec\'{i}ficamente por el grupo \textsc{SECSH} de la \textsc{IETF}.} es una extensi\'{o}n del protocolo \textsc{SSH} que a diferencia de \textsc{SCP} permite acceder, transferir y borrar archivos adem\'{a}s de listar los directorios del equipo remoto. La versi\'{o}n actual de este protocolo es la 6.0. 
-
-% http://www.ipsure.com/blog/2010/chrooted-sftp-with-public-key-authentication/
+El protocolo \textsc{SFTP} dise\~{n}ado por la \textsc{IETF} \footnote{Espec\'{i}ficamente por el grupo \textsc{SECSH} de la \textsc{IETF}.} es una extensi\'{o}n del protocolo \textsc{SSH} que a diferencia de \textsc{SCP} permite acceder, transferir y borrar archivos adem\'{a}s de listar los directorios del equipo remoto \cite{ipsure}. La versi\'{o}n actual de este protocolo es la 6.0. 
 
   \subsection {SSHFS - Secure Shell Filesystem}
 
-\textsc{SSHFS} es un programa que hace uso de \textsc{SFTP} para \textit{montar} un directorio remoto en el equipo local utilizando \textsc{SSH} como transporte y hace uso de la biblioteca de sistemas de archivo \textsc{FUSE} del lado del cliente para realizar el mapeo y manejo del sistema de archivos virtual. El funcionamiento de un directorio montado con \textsc{SSHFS} es similar a \textsc{NFS} o \textsc{CIFS}.
-
-% http://fuse.sourceforge.net/sshfs.html
-% http://www.linuxjournal.com/article/8904
-% https://help.ubuntu.com/community/SSHFS
+\textsc{SSHFS} es un programa que hace uso de \textsc{SFTP} para \textit{montar} un directorio remoto en el equipo local utilizando \textsc{SSH} como transporte \cite{ubuntu-sshfs} y hace uso de la biblioteca de sistemas de archivo \textsc{FUSE} \cite{FUSE} del lado del cliente para realizar el mapeo y manejo del sistema de archivos virtual. El funcionamiento de un directorio montado con \textsc{SSHFS} es similar a \textsc{NFS} o \textsc{CIFS} \cite{linuxjournal}.
 
