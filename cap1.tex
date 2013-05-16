@@ -1,45 +1,42 @@
-\restylefloat{table}
+estylefloat{table}
   \chapter{Marco Te\'{o}rico}
   \label{chap:cap1}
     \section {Sistemas de almacenamiento}
-    
-Definici\'{o}n
 
-% expandir
-Los sistemas de almacenamiento son importantes puesto que guardan los datos del usuario.
+Los medios de almacenamiento guardan los datos de los programas o del usuario para que despu\'{e}s puedan ser leidos o modificados, el m\'{e}todo de lectura y escritura dependen en gran medida del tipo de medio, a continuaci\'{o}n se hace una clasificaci\'{o}n de los medios comunes de almacenamiento de acuerdo a su tipo.
 
 \subsection {Clasificaci\'{o}n por tipo de medio}
 
 \textbf{\\ Medios basados en circuitos \\}
 
-Descripci\'{o}n de los medios, caracter\'{i}sticas, componentes, m\'{e}todo de operaci\'{o}n, similitudes o aplicaciones y capacidad actual.
+Estos medios de almacenamiento son circuitos individuales o arreglos de circuitos que se utilizan para almacenar datos, la informaci\'{o}n guardada se lee haciendo referencia a la ubicaci\'{o}n de memoria y el tama\~{n}o de los datos que se lee muchas veces es fijo.
 
 \begin{itemize}
 
   \item \textbf{RAM}
-  
-  Es un medio de almacenamiento vol\'{a}til que se utiliza para guardar datos temporales o como memoria intermedia de un equipo de c\'{o}mputo. Se compone de arreglos de circuitos y tiene una gran velocidad de lectura y escritura comparada con cualquier otro medio \cite{_rom_????}.
-  
+
+Es un medio de almacenamiento vol\'{a}til que se utiliza para guardar datos temporales o como memoria intermedia de un equipo de c\'{o}mputo. Se compone de arreglos de circuitos y tiene una gran velocidad de lectura y escritura comparada con cualquier otro medio \cite{_rom_????}.
+
   \item \textbf{NVRAM}
-  
-  Es una variante de la memoria \textsc{RAM} donde se almacena la informaci\'{o}n de manera no vol\'{a}til, generalmente su capacidad es peque\~{n}a y este tipo de memoria se utiliza para fines muy especializados, por ejemplo para guardar las configuraciones de algunos sistemas embebidos \cite{veenstra_random_1986}.
-  
+
+Es una variante de la memoria \textsc{RAM} donde se almacena la informaci\'{o}n de manera no vol\'{a}til, generalmente su capacidad es peque\~{n}a y este tipo de memoria se utiliza para fines muy especializados, por ejemplo para guardar las configuraciones de algunos sistemas embebidos \cite{veenstra_random_1986}.
+
   \item \textbf{ROM}
-  
-  Es una memoria de s\'{o}lo lectura que puede ser grabada una sola vez, generalmente se utilizaba para almacenar el firmware de dispositivos o alg\'{u}n programa embebido en hardware que requiere una salida fija para una entrada determinada \cite{_rom_????}.
-  
+
+Es una memoria de s\'{o}lo lectura que puede ser grabada una sola vez, generalmente se utilizaba para almacenar el firmware de dispositivos o alg\'{u}n programa embebido en hardware que requiere una salida fija para una entrada determinada \cite{_rom_????}.
+
   \item \textbf{EEPROM}
-  
-  Una variante de la memoria \textsc{ROM} donde el contenido puede ser borrado por varios m\'{e}todos, ya sea el\'{e}ctricamente o por medio de la exposici\'{o}n a rayos ultravioleta. En condiciones normales de operaci\'{o}n su comportamiento es similar al de la memoria \textsc{ROM} y se debe entrar en un modo especial para grabar nuevos datos en la misma \cite{_rom_????-1}.
-  
+
+Una variante de la memoria \textsc{ROM} donde el contenido puede ser borrado por varios m\'{e}todos, ya sea el\'{e}ctricamente o por medio de la exposici\'{o}n a rayos ultravioleta. En condiciones normales de operaci\'{o}n su comportamiento es similar al de la memoria \textsc{ROM} y se debe entrar en un modo especial para grabar nuevos datos en la misma \cite{_rom_????-1}.
+
   \item \textbf{FLASH}
-  
-  Una variante m\'{a}s de los medios de almacenamiento basados en circuitos es este tipo de memoria que se ha hecho popular en los \'{u}ltimos a\~{n}os gracias a que no depende de partes m\'{o}viles y es de tama\~{n}o peque\~{n}o, por lo que es un medio de almacenamiento port\'{a}til y eficiente \cite{_flashmemguide.pdf_????}.
-  
+
+Una variante m\'{a}s de los medios de almacenamiento basados en circuitos es este tipo de memoria que se ha hecho popular en los \'{u}ltimos a\~{n}os gracias a que no depende de partes m\'{o}viles y es de tama\~{n}o peque\~{n}o, por lo que es un medio de almacenamiento port\'{a}til y eficiente \cite{_flashmemguide.pdf_????}.
+
   \item \textbf{SSD}
-  
-  Un medio de almacenamiento relativamente reciente, utiliza arreglos de circuitos para guardar la informaci\'{o}n, generalmente se utiliza memoria tipo \textsc{NAND} para mantener los datos y a diferencia de los discos duros no tiene partes m\'{o}viles por lo que es menos propensa a fallos y disipa menos calor \cite{_ssd-faq-us.pdf_????}.
-  
+
+Un medio de almacenamiento relativamente reciente, utiliza arreglos de circuitos para guardar la informaci\'{o}n, generalmente se utiliza memoria tipo \textsc{NAND} para mantener los datos y a diferencia de los discos duros no tiene partes m\'{o}viles por lo que es menos propensa a fallos y disipa menos calor \cite{_ssd-faq-us.pdf_????}.
+
 \end{itemize}
 
 \textbf{\\ Medios Magn\'{e}ticos \\}
@@ -49,23 +46,23 @@ Este tipo de medios se caracterizan porque el acceso a los datos se realiza medi
 \begin{itemize}
 
   \item \textbf{Cinta}
-  
-  Las unidades de cinta son medios que almacenan de manera secuencial los datos y dentro de sus componentes internos destacan dos carretes que sirven para almacenar la cinta mientras se lee, para acceder datos en una posici\'{o}n anterior es necesario rebobinar la cinta.
-  
-  Generalmente tienen capacidades que oscilan entre los \textsc{GB} y \textsc{TB}  \cite{_powervault_????} y son utilizadas para archivar informaci\'{o}n.
-  
+
+Las unidades de cinta son medios que almacenan de manera secuencial los datos y dentro de sus componentes internos destacan dos carretes que sirven para almacenar la cinta mientras se lee, para acceder datos en una posici\'{o}n anterior es necesario rebobinar la cinta.
+
+Generalmente tienen capacidades que oscilan entre los \textsc{GB} y \textsc{TB}  \cite{_powervault_????} y son utilizadas para archivar informaci\'{o}n.
+
   \item \textbf{Discos Flexibles}
-  
-  Este tipo de discos puede acceder de manera aleatoria a los datos almacenados, cuentan con un plato magn\'{e}tico rodeado de un material protector contenido en un armaz\'{o}n de pl\'{a}stico con una abertura que permite a la cabeza lectora tener acceso al medio \cite{_anatomy_????}.
-  
-  Los discos flexibles almacenan los datos dividiendo el plato en circulos conc\'{e}ntricos (pistas) que a su vez se subdividen en arcos (sectores), de esta manera se puede localizar la informaci\'{o}n conociendo la pista y el sector donde se encuentra \cite{_illustrated_????}. Su capacidad oscila entre los cientos de \textsc{KB} hasta llegar a 1.44 \textsc{MB} \footnote{Existieron otros formatos como \textit{ZIP} de Iomega, \textit{SuperDisk} LS120 de Imation o \textit{HiFD} de Sony.}.
-  
+
+Este tipo de discos puede acceder de manera aleatoria a los datos almacenados, cuentan con un plato magn\'{e}tico rodeado de un material protector contenido en un armaz\'{o}n de pl\'{a}stico con una abertura que permite a la cabeza lectora tener acceso al medio \cite{_anatomy_????}.
+
+Los discos flexibles almacenan los datos dividiendo el plato en circulos conc\'{e}ntricos (pistas) que a su vez se subdividen en arcos (sectores), de esta manera se puede localizar la informaci\'{o}n conociendo la pista y el sector donde se encuentra \cite{_illustrated_????}. Su capacidad oscila entre los cientos de \textsc{KB} hasta llegar a 1.44 \textsc{MB} \footnote{Existieron otros formatos como \textit{ZIP} de Iomega, \textit{SuperDisk} LS120 de Imation o \textit{HiFD} de Sony.}.
+
   \item \textbf{Discos Duros}
-  
-  Similar al disco flexible, el disco duro tiene una estructura formada por varios platos, cada uno leido por una cabeza diferente. De manera l\'{o}gica el espacio se organiza en circulos conc\'{e}ntricos (cilindros), platos (cabezas) y arcos (sectores), en modelos modernos se utiliza \emph{Logical Block Addressing} para asignar el espacio \cite{_introduction_????}.
-  
-  Parecidos a los discos flexibles, estos medios tienen mayor capacidad y actualmente son el medio primordial de almacenar informaci\'{o}n en los equipos de c\'{o}mputo. A diferencia de los discos flexibles, tienen los componentes mec\'{a}nicos dentro del armaz\'{o}n del disco y pueden almacenar grandes cantidades de informaci\'{o}n gracias a que se apilan varios discos en una estructura cilindrica. Para buscar un dato se debe hacer referencia al plato donde est\'{a}, al sector del disco y a la cabeza de lectura que corresponda.
-  
+
+Similar al disco flexible, el disco duro tiene una estructura formada por varios platos, cada uno leido por una cabeza diferente. De manera l\'{o}gica el espacio se organiza en circulos conc\'{e}ntricos (cilindros), platos (cabezas) y arcos (sectores), en modelos modernos se utiliza \emph{Logical Block Addressing} para asignar el espacio \cite{_introduction_????}.
+
+Parecidos a los discos flexibles, estos medios tienen mayor capacidad y actualmente son el medio primordial de almacenar informaci\'{o}n en los equipos de c\'{o}mputo. A diferencia de los discos flexibles, tienen los componentes mec\'{a}nicos dentro del armaz\'{o}n del disco y pueden almacenar grandes cantidades de informaci\'{o}n gracias a que se apilan varios discos en una estructura cilindrica. Para buscar un dato se debe hacer referencia al plato donde est\'{a}, al sector del disco y a la cabeza de lectura que corresponda.
+
 \end{itemize}
 
 \textbf{\\ Medios Magneto-\'{o}pticos \\}
@@ -73,29 +70,27 @@ Este tipo de medios se caracterizan porque el acceso a los datos se realiza medi
 \begin{itemize}
 
   \item \textbf{Discos MO (Magneto-optic)}
-  
-  Los discos magneto-\'{o}pticos tienen las bondades de la rapidez de los discos magn\'{e}ticos y la versatilidad de los discos \'{o}pticos.
-  
-  Para escribir los datos calientan la superficie del disco y se aplica un campo magn\'{e}tico para que se quede registrado, al leer los datos el laser reconoce la polaridad y esta se interpreta como cero o uno para la parte del disco que est\'{e} leyendo \cite{_illustrated_????}.
- 
+
+Los discos magneto-\'{o}pticos tienen las bondades de la rapidez de los discos magn\'{e}ticos y la versatilidad de los discos \'{o}pticos.
+
+Para escribir los datos calientan la superficie del disco y se aplica un campo magn\'{e}tico para que se quede registrado, al leer los datos el laser reconoce la polaridad y esta se interpreta como cero o uno para la parte del disco que est\'{e} leyendo \cite{_illustrated_????}.
+
 \end{itemize}
 
 \textbf{\\ Medios \'{O}pticos \\}
 
-%Descripci\'{o}n de los medios, caracter\'{i}sticas, componentes, m\'{e}todo de operaci\'{o}n, similitudes o aplicaciones y capacidad actual.
-
 \begin{itemize}
 
   \item \textbf{Discos de s\'{o}lo lectura (WORM)}
-  
-  Los discos pre-masterizados (\textsc{CD-ROM}, \textsc{DVD-ROM}, \textsc{BD-ROM}) se graban en las f\'{a}bricas donde se tiene un disco maestro que sirve para transferir los datos al medio final por un proceso de vaciado t\'{e}rmico.
-  
-  Los discos grabables (\textsc{CD-R}, \textsc{DVD+R}, \textsc{DVD-R} y \textsc{BD-R}) pueden ser grabados mediante un laser al fundir una capa de policarbonato en la superficie inferior del disco para grabar los bits en 1. El formato de los bits generalmente va de acuerdo al est\'{a}ndar \textsc{ISO-9660} \cite{_further_????}.
-  
+
+Los discos pre-masterizados (\textsc{CD-ROM}, \textsc{DVD-ROM}, \textsc{BD-ROM}) se graban en las f\'{a}bricas donde se tiene un disco maestro que sirve para transferir los datos al medio final por un proceso de vaciado t\'{e}rmico.
+
+Los discos grabables (\textsc{CD-R}, \textsc{DVD+R}, \textsc{DVD-R} y \textsc{BD-R}) pueden ser grabados mediante un laser al fundir una capa de policarbonato en la superficie inferior del disco para grabar los bits en 1. El formato de los bits generalmente va de acuerdo al est\'{a}ndar \textsc{ISO-9660} \cite{_further_????}.
+
   \item \textbf{Discos regrabables}
-  
-  Los discos regrabables (\textsc{CD-RW}, \textsc{DVD+RW}, \textsc{DVD-RW}, \textsc{BD-RE}) tienen una ventaja adicional comparados con los discos grabables de una sola vez, gracias a que es posible borrar la informaci\'{o}n contenida para almacenar nuevos datos en el medio, esto se logra inicializar parcial o totalmente los sectores del disco para que este pueda admitir nuevos datos \cite{_odd_????}.
-  
+
+Los discos regrabables (\textsc{CD-RW}, \textsc{DVD+RW}, \textsc{DVD-RW}, \textsc{BD-RE}) tienen una ventaja adicional comparados con los discos grabables de una sola vez, gracias a que es posible borrar la informaci\'{o}n contenida para almacenar nuevos datos en el medio, esto se logra inicializar parcial o totalmente los sectores del disco para que este pueda admitir nuevos datos \cite{_odd_????}.
+
 \end{itemize}
 
 \textbf{\\ Medios Hologr\'{a}ficos \\}
@@ -103,9 +98,9 @@ Este tipo de medios se caracterizan porque el acceso a los datos se realiza medi
 \begin{itemize}
 
   \item \textbf{HVD - Disco Vers\'{a}til Hologr\'{a}fico}
-  
-  Es un nuevo medio de almacenamiento a\'{u}n en desarrollo que ofrece un m\'{e}todo m\'{a}s vers\'{a}til de escribir los datos utilizando un mecanismo hologr\'{a}fico donde dependiendo la manera en la que se leen los datos es la informaci\'{o}n que se obtiene \cite{_worlds_2004}.
-  
+
+Es un nuevo medio de almacenamiento a\'{u}n en desarrollo que ofrece un m\'{e}todo m\'{a}s vers\'{a}til de escribir los datos utilizando un mecanismo hologr\'{a}fico donde dependiendo la manera en la que se leen los datos es la informaci\'{o}n que se obtiene \cite{_worlds_2004}.
+
 \end{itemize}
 
       \subsection {Comparativa de medios de almacenamiento actuales}
@@ -178,22 +173,22 @@ Los m\'{e}todos de protecci\'{o}n de los medios de almacenamiento varian dependi
     \begin{itemize}
 
       \item \textbf{Seguro contra escritura}
-        
+
 El seguro contra escritura previene que los datos sean modificados, puesto que el medio se reconoce como de s\'{o}lo lectura y no es posible escribir en \'{e}l. Este m\'{e}todo es \'{u}til cuando se archivan o respaldan datos porque se busca que estos no sean modificados.
 
       \item \textbf{Protecci\'{o}n antiest\'{a}tica y contra campos magn\'{e}ticos}
-        
+
 Para evitar el da\~{n}o por una descarga de electricidad est\'{a}tica o por la presencia de campos magn\'{e}ticos en los medios de almacenamiento como cintas o discos duros existen bolsas que evitan que el disco reciba una descarga y cubiertas especiales para salvaguardar el disco de los campos magn\'{e}ticos.
 
       \item \textbf{Protecci\'{o}n contra da\~{n}o f\'{i}sico}
-       
-% ampliar 
-El da\~{n}o f\'{i}sico se puede prevenir si se maneja el medio de almacenamiento con precauci\'{o}n y se guarda en un lugar fresco y seco que no tenga exposici\'{o}n directa a la luz solar y que est\'{e} fuera del alcance 
+
+% ampliar
+El da\~{n}o f\'{i}sico se puede prevenir si se maneja el medio de almacenamiento con precauci\'{o}n y se guarda en un lugar fresco y seco que no tenga exposici\'{o}n directa a la luz solar y que est\'{e} fuera del alcance
 
     \end{itemize}
 
   \subsection {T\'{e}cnicas de respaldo}
-  
+
 % gloasario SOHO
 
 En un entorno de hogar u oficina peque\~{n}a (\textsc{SOHO}) el n\'{u}mero de usuario es reducido y se busca la manera de tener un almacenamiento centralizado, para resolver este problema varias tecnicas han aparecido a lo largo de los a\~{n}os:
@@ -209,7 +204,7 @@ En un entorno de hogar u oficina peque\~{n}a (\textsc{SOHO}) el n\'{u}mero de us
 La descripci\'{o}n de cada elemento se muestra a continuaci\'{o}n:
 
     \begin{itemize}
-    
+
       \item \textbf{Respaldo en medios \'{opticos}}
 
 Guardar informaci\'{o}n en discos \'{o}pticos deja la copia como s\'{o}lo lectura y aunque eso sea bueno para respaldos completos o archivado de datos, no lo es para guardar datos que van a cambiar como documentos que se est\'{a}n editando porque cada vez que se escriba al disco \'{o}ptico se guardar\'{a} una nueva copia del documento en lugar de reemplazar la existente.
@@ -231,7 +226,7 @@ Los protocolos que com\'{u}nmente se utilizan para compartir recursos a trav\'{e
       \item \textbf{Dispositivos de bloque compartidos por red}
 
 Otra soluci\'{o}n popular en sistemas \textsc{UNIX} es compartir dispositivos de bloque a trav\'{e}s de la red para acceder a discos remotos como si fuesen locales, ejemplos de esto son Network Block Device en GNU/Linux y tecnolog\'{i}as \textsc{SAN} como iSCSI (Internet SCSI) o AoE (ATA over Ethernet). Este tipo de soluciones llegan a ser costosas y no se adaptan bien a ambientes como empresas peque\~{n}as u hogares.
-    
+
       \item \textbf{Servicios de almacenamiento en la nube}
 
 En los \'{u}ltimos a\~{n}os los servicios de almacenamiento en la nube han ganado popularidad por ser servicios administrados que no requieren mucha configuraci\'{o}n por parte del usuario. Algunos de estos servicios ofrecen una unidad virtual que se monta en el equipo local para acceder al contenido y agregar o modificar los archivos del usuario, mientras que otros sincronizan los archivos locales con el servidor remoto a trav\'{e}s de un programa que funge como intermediario.
@@ -258,7 +253,7 @@ Los arreglos de disco se pueden configurar por tarjetas dedicadas de hardware o 
 
 \textbf{Tipo de arreglos RAID}
 
-A continuaci\'{o}n se muestra la descripci\'{o}n de los tipos de arreglo \textsc{RAID} que se pueden implementar tanto en hardware y en software con las tarjetas controladoras actuales \footnote{Los tipos 2, 3 y 4 de \textsc{RAID} no son comunes y generalmente no son soportados.}. 
+A continuaci\'{o}n se muestra la descripci\'{o}n de los tipos de arreglo \textsc{RAID} que se pueden implementar tanto en hardware y en software con las tarjetas controladoras actuales \footnote{Los tipos 2, 3 y 4 de \textsc{RAID} no son comunes y generalmente no son soportados.}.
 
 \begin{itemize}
 
@@ -292,7 +287,6 @@ Aunque es posible crear el arreglo con discos de diferente tama\~{n}o, se recomi
 No ofrece redundancia porque los bloques se reparten en todos los discos y si uno falla se perder\'{a}n partes de todos los archivos haciendo que el contenido no tenga coherencia.
 
 %\includegraphics[keepaspectratio=true]{figures/001-RAID0}
-%Diagrama \cite{18b4e676f432f4780a509b508056c779}
 {
 \scriptsize
 \linespread{1}
@@ -312,7 +306,7 @@ SO -- RAID  0 --+
 }
 
   \item \textbf{RAID 1}
-  
+
 Denominado \emph{Mirror}, guarda una copia exacta de los datos en ambos discos. Se requiere un m\'{i}nimo de dos discos de igual tama\~{n}o para hacer este arreglo, si los discos son de diferente capacidad, el espacio del arreglo ser\'{a} el del disco m\'{a}s peque\~{n}o.
 
 Este tipo de arreglo es tolerante a fallos siempre y cuando un solo disco siga funcionando porque contiene una copia exacta de los datos contenidos en los dem\'{a}s medios.
@@ -320,7 +314,6 @@ Este tipo de arreglo es tolerante a fallos siempre y cuando un solo disco siga f
 El rendimiento de escritura es menor al que presenta un solo disco porque se deben de hacer copias exactas de la informaci\'{o}n en todos los discos pertenecientes al arreglo.
 
 %\includegraphics[keepaspectratio=true]{figures/002-RAID1}
-%Diagrama \cite{0a250ce04fb10680f70cb2c3efd365b1}
 {
 \scriptsize
 \linespread{1}
@@ -346,9 +339,8 @@ En este tipo de arreglo se dividen los datos en bloques como sucede en \textsc{R
 Esta configuraci\'{o}n de \textsc{RAID} tiene tolerancia a fallos, siempre y cuando no falle m\'{a}s de un disco en el arreglo. Se requieren por lo menos tres discos para hacer el arreglo.
 
 Dado que se calcula la paridad de los bloques de datos , se debe restar el tama\~{n}o de un disco para obtener el espacio m\'{a}ximo utilizable.
-  
+
 %\includegraphics[keepaspectratio=true]{figures/003-RAID5}
-%Diagrama \cite{9397b15f6a384de60446b869f05412af}
 {
 \scriptsize
 \linespread{1}
@@ -378,9 +370,8 @@ Su funcionamiento es similar al de \textsc{RAID} 5, s\'{o}lo que se calculan dos
 Esta configuraci\'{o}n de arreglo puede tolerar el fallo de hasta dos discos duros, mismos que se reconstruyen utilizando los bloques de paridad. Se requieren al menos cuatro discos para hacer un arreglo \textsc{RAID} 6.
 
 Las operaciones de escritura tardan mas porque se deben calcular dos bloques de paridad, las operaciones de lectura no se ven afectadas.
-  
+
 %\includegraphics[keepaspectratio=true]{figures/004-RAID6}
-%Diagrama \cite{9e2f3e1ba21ce971703a62c6217946ae}
 {
 \scriptsize
 \linespread{1}
@@ -407,7 +398,7 @@ SO --     RAID  6     --+   +-----------+
                             +-----------+
 \end{verbatim}
 }
- 
+
 \end{itemize}
 
 Arreglos anidados
@@ -422,7 +413,6 @@ Consiste en un arreglo \textsc{RAID} 0 conformado por dos o m\'{a}s arreglos \te
 
 Si un disco de alg\'{u}n arreglo \textsc{RAID} 1 falla, este entra en modo degradado y el funcionamiento del arreglo \textsc{RAID} 0 no se ve afectado \footnote{Salvo por la perdida de rendimiento en el arreglo.}, si fallan dos discos del mismo arreglo \textsc{RAID} 1 el arreglo \textsc{RAID} 0 pierde los datos. Se requieren por lo menos cuatro discos para hacer esta configuraci\'{o}n.
 
-%Diagrama \cite{3638d46cd02c0cd72e333c6d6f8f9608}
 {
 \scriptsize
 \linespread{1}
@@ -458,8 +448,7 @@ Si un disco de alg\'{u}n arreglo \textsc{RAID} 1 falla, este entra en modo degra
 Se compone por un arreglo \textsc{RAID} 1 que replica los datos contenidos en dos arreglos \textsc{RAID} 0. Se requiere un m\'{i}nimo de cuatro discos para hacer esta configuraci\'{o}n.
 
 Si falla uno o dos discos del mismo arreglo \textsc{RAID} 0, todo el arreglo se pierde y el arreglo \textsc{RAID} 1 entra en modo degradado sin perder los datos, si adem\'{a}s falla un disco de otro arreglo \textsc{RAID} 0 todos los datos se pierden.
-  
-%Diagrama \cite{9b286bf9442c2cf4d1e02ddf7322c92b}
+
 {
 \scriptsize
 \linespread{1}
@@ -489,7 +478,7 @@ Si falla uno o dos discos del mismo arreglo \textsc{RAID} 0, todo el arreglo se 
                                +---------+
 \end{verbatim}
 }
-  
+
 \end{itemize}
 
       \subsection {Comparativa de tipos de arreglo RAID}
@@ -531,28 +520,26 @@ Un appliance es un conjunto de elementos (hardware, software y sistema operativo
 \begin{itemize}
 
   \item Hardware
-  
+
 Los appliances de hardware son sistemas especializados dise\~{n}ados para realizar tareas espec\'{i}ficas, el fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta nueva funcion \cite{}.
 
 Regularmente tienen una interfaz web para administraci\'{o}n, algunos integran un shell para realizar las funciones conectandose a trav\'{e}s de ssh y en otros casos integran adem\'{a}s soporte para \textsc{SNMP}.
-\cite{dcd32ad713054f2f67fbcd17c0900928}
 
   \item Software
-  
+
 Los appliances de software pueden ser distribuidos en paquetes descomprimibles (tarballs) que contienen el instalador y todos los progamas necesarios para que funcione la soluci\'{o}n \cite{_bitnami:_????}.
 
 Estos integran s\'{o}lo la interfaz web, puesto que se ejecutan en un equipo existente y son independientes del shell o el soporte \textsc{SNMP} que se tenga en el mismo.
-\cite{4cb5bff4c029d86b328a2126e8a3060f}
-  
-  \item Virtual 
+
+  \item Virtual
 
 Los appliances virtuales son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}ficamente dise\~{n}adas para un ambiente de virtualizaci\'{o}n que integran la funcionalidad de los appliances de hardware dentro de un equipo virtual. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual para procesar en paralelo las peticiones de los usuarios \cite{_why_????}.
-  
+
 \end{itemize}
 
 \section {Seguridad Inform\'{a}tica}
-    
-Definici\'{o}n de seguridad inform\'{a}tica
+
+La seguridad inform\'{a}tica se refiere a los procesos y metodolog\'{i}as dise\~{n}ados e implementados para proteger informaci\'{o}n sin importar que est\'{e} en medios impresos, electr\'{o}nicos o de otro tipo, esta puede ser confidencial, privada o sensible y se debe proteger de accesos no autorizados, uso, mal uso, revelaci\'{o}n, destrucci\'{o}n o modificaci\'{o}n \cite{_sans:_????}
 
   \subsection {Principios de seguridad inform\'{a}tica}
 
@@ -560,19 +547,19 @@ Definici\'{o}n de seguridad inform\'{a}tica
 
   \item \textbf{Confidencialidad}
 
-Este principio busca conservar los datos \'{u}nicamente para la persona que est\'{a} destinada a leerlos \cite{NIST} \cite{oregon-sec}.
+Este principio busca conservar los datos \'{u}nicamente para la persona que est\'{a} destinada a leerlos \cite{_nist_????} \cite{_information_????}.
 
 Por ejemplo, al cifrar un correo electr\'{o}nico o un archivo se garantiza que s\'{o}lo ser\'{a} visto por la persona que tenga los medios para descifrarlo (ya sea una llave privada o una contrase\~{n}a).
 
   \item \textbf{Integridad}
 
-Este principio busca que la informaci\'{o}n no pueda ser alterada, ya sea por fallos en el medio de almacenamiento o modificaciones no autorizadas \cite{NIST} \cite{oregon-sec}.
+Este principio busca que la informaci\'{o}n no pueda ser alterada, ya sea por fallos en el medio de almacenamiento o modificaciones no autorizadas \cite{_nist_????} \cite{_information_????}.
 
 Por ejemplo, al firmar un archivo o un correo electr\'{o}nico la firma s\'{o}lo pasar\'{a} la prueba de verificaci\'{o}n si el mensaje est\'{a} integro, de lo contrario no podr\'{a} ser verificado satisfactoriamente.
 
   \item \textbf{Disponibilidad}
 
-Este principio dicta que la informaci\'{o}n debe poderse acceder cuando sea necesario o respetando el criterio de los tiempos establecidos \cite{NIST} \cite{oregon-sec}.
+Este principio dicta que la informaci\'{o}n debe poderse acceder cuando sea necesario o respetando el criterio de los tiempos establecidos \cite{_nist_????} \cite{_information_????}.
 
 Por ejemplo, un recurso en linea debe estar disponible siempre para que pueda ser accedido por las personas que har\'{a}n uso de el, en caso de tener horarios de disponibilidad se debe garantizar que el recurso se pueda acceder durante ese periodo.
 
@@ -589,10 +576,10 @@ Se denomina \textit{hardening} al proceso de reforzar las configuraciones del si
 El hardening se puede realizar en diferentes partes del sistema operativo como:
 
 \begin{itemize}
-  \item Configuraci\'{o}n de acceso f\'{i}sico
-  \item Configuraci\'{o}n de inicio
-  \item Configuraci\'{o}n de acceso remoto
-  \item Configuraci\'{o}n de las aplicaciones
+  \item Configuraci\'{o}n de acceso f\'{i}sico.
+  \item Configuraci\'{o}n de inicio.
+  \item Configuraci\'{o}n de acceso remoto.
+  \item Configuraci\'{o}n de las aplicaciones.
 \end{itemize}
 
 \section {GNU/Linux}
@@ -603,29 +590,29 @@ El hardening se puede realizar en diferentes partes del sistema operativo como:
 
 \section {Protocolo HTTP}
 
-El protocolo \textsc{HTTP} permite transferir datos a trav\'{e}s de Internet en un esquema cliente - servidor. La primer versi\'{o}n de este protocolo (\verb|HTTP/1.0|) fu\'{e} descrita en el \textsc{RFC} 1945 \cite{rfc1945}, con la evoluci\'{o}n de Internet el protocolo fue mejorado y se le agregaron funciones como el control de transferencia o el soporte de mensajes \textit{MIME} que dieron origen a la versi\'{o}n actual (\verb|HTTP/1.1|) definida en el RFC 2616 \cite{rfc2616}.
+El protocolo \textsc{HTTP} permite transferir datos a trav\'{e}s de Internet en un esquema cliente - servidor. La primer versi\'{o}n de este protocolo (\verb|HTTP/1.0|) fu\'{e} descrita en el \textsc{RFC} 1945 \cite{_rfc_????-1}, con la evoluci\'{o}n de Internet el protocolo fue mejorado y se le agregaron funciones como el control de transferencia o el soporte de mensajes \textit{MIME} que dieron origen a la versi\'{o}n actual (\verb|HTTP/1.1|) definida en el RFC 2616 \cite{_rfc_????}.
 
   \subsection {HTTPS - HTTP over SSL}
 
 En el protocolo \textsc{HTTP} los datos se envian y reciben en claro, esto deja la informaci\'{o}n vulnerable puesto que se puede interceptar o incluso modificar afectando la confidencialidad o integidad de la misma.
 
-Para solventar estas debilidades se defini\'{o} \textsc{HTTPS} en el \textsc{RFC} 2818 \cite{rfc2818} que cifra la conexi\'{o}n \textsc{HTTP} utilizando \textit{SSL} \footnote{Secure Socket Layer por sus siglas en ingl\'{e}s, definido en el \textsc{RFC} 6101 \cite{rfc6101}.} o su sucesor \textit{TLS} \footnote{Transport Layer Security por sus siglas en ingl\'{e}s, definido en el \textsc{RFC} 5246 \cite{rfc5246}}, garantizando as\'{i} la confidencialidad e integridad de la informaci\'{o}n.
+Para solventar estas debilidades se defini\'{o} \textsc{HTTPS} en el \textsc{RFC} 2818 \cite{_rfc_????-6} que cifra la conexi\'{o}n \textsc{HTTP} utilizando \textit{SSL} \footnote{Secure Socket Layer por sus siglas en ingl\'{e}s, definido en el \textsc{RFC} 6101 \cite{_rfc_????-4}.} o su sucesor \textit{TLS} \footnote{Transport Layer Security por sus siglas en ingl\'{e}s, definido en el \textsc{RFC} 5246 \cite{_rfc_????-3}}, garantizando as\'{i} la confidencialidad e integridad de la informaci\'{o}n.
 
   \subsection {WebDAV}
 
 Web Distributed Authoring and Versioning es una extensi\'{o}n al protocolo \textsc{HTTP} que a\~{n}ade la capacidad de interactuar con archivos alnacendos en el servidor web.
 
-Est\'{a} definido en el \textsc{RFC} 4918 \cite{rfc4918} y establece un conjunto de extensiones al protocolo \textsc{HTTP} que incluyen m\'{e}todos, cabeceras y formatos tanto de petici\'{o}n como de respuesta para interactuar con el servidor con la finalidad de crear, modificar y borrar archivos. Adem\'{a}s establece un mecanismo denominado \textit{File locking} que previene que dos personas editen el documento al mismo tiempo para no perder cambios.
+Est\'{a} definido en el \textsc{RFC} 4918 \cite{_rfc_????-2} y establece un conjunto de extensiones al protocolo \textsc{HTTP} que incluyen m\'{e}todos, cabeceras y formatos tanto de petici\'{o}n como de respuesta para interactuar con el servidor con la finalidad de crear, modificar y borrar archivos. Adem\'{a}s establece un mecanismo denominado \textit{File locking} que previene que dos personas editen el documento al mismo tiempo para no perder cambios.
 
 \section {Protocolo LDAP}
 
-El protocolo \textsc{LDAP} \footnote{Ligthweight Directory Access Protocol por sus siglas en ingl\'{e}s.} est\'{a} definido en el \textsc{RFC} 4511 \cite{rfc4511} y establece el directorio como una colecci\'{o}n de objetos que comparte a otros equipos y programas a trav\'{e}s de una conexi\'{o}n de red.
+El protocolo \textsc{LDAP} \footnote{Ligthweight Directory Access Protocol por sus siglas en ingl\'{e}s.} est\'{a} definido en el \textsc{RFC} 4511 \cite{_rfc_????-5} y establece el directorio como una colecci\'{o}n de objetos que comparte a otros equipos y programas a trav\'{e}s de una conexi\'{o}n de red.
 
 Dentro del directorio los objetos se organizan en una estructura jer\'{a}rquica donde se tiene la ra\'{i}z del \'{a}rbol, los contenedores y los objetos, estos \'{u}ltimos adem\'{a}s tienen atributos que pueden tener uno o m\'{a}s valores.
 
   \subsection {Nomenclatura}
 
-La nomenclatura de los objetos es similar a la de \textsc{DNS}, es decir, el nivel m\'{a}s general se indica a la derecha y el nivel m\'{a}s espec\'{i}fico se indica a la izquierda \cite{zytrax}. La ra\'{i}z del \'{a}rbol se puede escribir de manera similar al dominio \textsc{DNS} en una notaci\'{o}n denominada \textit{Domain Component} (\textbf{dc}) o utilizando el nombre de la organizaci\'{o}n (\textbf{o}).
+La nomenclatura de los objetos es similar a la de \textsc{DNS}, es decir, el nivel m\'{a}s general se indica a la derecha y el nivel m\'{a}s espec\'{i}fico se indica a la izquierda \cite{_appendix_????}. La ra\'{i}z del \'{a}rbol se puede escribir de manera similar al dominio \textsc{DNS} en una notaci\'{o}n denominada \textit{Domain Component} (\textbf{dc}) o utilizando el nombre de la organizaci\'{o}n (\textbf{o}).
 
 \begin{table}[H]
 \caption{Nomenclatura del nodo ra\'{i}z de \textsc{LDAP}}{}
@@ -656,7 +643,7 @@ Cada objeto tiene un identificador \'{u}nico en el directorio conocido como \tex
 
   \subsection{Contenedores}
 
-Dentro del directorio se tienen almacenados los objetos en diferentes ramas del \'{a}rbol que pueden ser vistas como carpetas en un sistema de archivos. Cada contenedor es denominado \textit{Organizational Unit} (\textbf{ou}) o Unidad Organizacional y es utilizado para almacenar otros objetos, incluyendo otras unidades organizacionales para darle estructura al \'{a}rbol del directorio \cite{zytrax}.
+Dentro del directorio se tienen almacenados los objetos en diferentes ramas del \'{a}rbol que pueden ser vistas como carpetas en un sistema de archivos. Cada contenedor es denominado \textit{Organizational Unit} (\textbf{ou}) o Unidad Organizacional y es utilizado para almacenar otros objetos, incluyendo otras unidades organizacionales para darle estructura al \'{a}rbol del directorio \cite{_appendix_????}.
 
 {
 \scriptsize
@@ -702,7 +689,7 @@ posixGroup
 
 \section {Protocolo SSH}
 
-El protocolo \textsc{SSH} \footnote{Secure Shell por sus siglas en ingl\'{e}s.} sirve para establecer sesiones remotas cifradas entre dos equipos \cite{gwolf}. Utiliza cifrado asim\'{e}trico para proteger la conexi\'{o}n y soporta m\'{u}ltiples m\'{e}todos de autenticaci\'{o}n lo que permite que sea flexible y f\'{a}cil de incluir en varios sistemas operativos.
+El protocolo \textsc{SSH} \footnote{Secure Shell por sus siglas en ingl\'{e}s.} sirve para establecer sesiones remotas cifradas entre dos equipos \cite{_ssh_????-1}. Utiliza cifrado asim\'{e}trico para proteger la conexi\'{o}n y soporta m\'{u}ltiples m\'{e}todos de autenticaci\'{o}n lo que permite que sea flexible y f\'{a}cil de incluir en varios sistemas operativos.
 
 Com\'{u}nmente se utiliza para conectarse a un servidor y utilizar la interfaz de l\'{i}nea de comandos, aunque el protocolo es muy flexible y se puede utilizar para cumplir las funciones que se listan a continuaci\'{o}n:
 
@@ -717,13 +704,13 @@ Com\'{u}nmente se utiliza para conectarse a un servidor y utilizar la interfaz d
 
   \subsection {SCP - Secure Copy}
 
-Este protocolo se utiliza para copiar archivos entre dos equipos, ya sea desde el equipo remoto hacia el local o viceversa y utiliza \textsc{SSH} como transporte para los datos. Est\'{a} basado en el programa de copia de archivos \textit{rcp} originario de la variante de \textsc{UNIX} \textsc{BSD} \cite{FreeBSD-scp}.
+Este protocolo se utiliza para copiar archivos entre dos equipos, ya sea desde el equipo remoto hacia el local o viceversa y utiliza \textsc{SSH} como transporte para los datos. Est\'{a} basado en el programa de copia de archivos \textit{rcp} originario de la variante de \textsc{UNIX} \textsc{BSD} \cite{_scp_????}.
 
   \subsection {SFTP - Secure FTP}
 
-El protocolo \textsc{SFTP} dise\~{n}ado por la \textsc{IETF} \footnote{Espec\'{i}ficamente por el grupo \textsc{SECSH} de la \textsc{IETF}.} es una extensi\'{o}n del protocolo \textsc{SSH} que a diferencia de \textsc{SCP} permite acceder, transferir y borrar archivos adem\'{a}s de listar los directorios del equipo remoto \cite{ipsure}. La versi\'{o}n actual de este protocolo es la 6.0. 
+El protocolo \textsc{SFTP} dise\~{n}ado por la \textsc{IETF} \footnote{Espec\'{i}ficamente por el grupo \textsc{SECSH} de la \textsc{IETF}.} es una extensi\'{o}n del protocolo \textsc{SSH} que a diferencia de \textsc{SCP} permite acceder, transferir y borrar archivos adem\'{a}s de listar los directorios del equipo remoto \cite{_chrooted_????}. La versi\'{o}n actual de este protocolo es la 6.0.
 
   \subsection {SSHFS - Secure Shell Filesystem}
 
-\textsc{SSHFS} es un programa que hace uso de \textsc{SFTP} para \textit{montar} un directorio remoto en el equipo local utilizando \textsc{SSH} como transporte \cite{ubuntu-sshfs} y hace uso de la biblioteca de sistemas de archivo \textsc{FUSE} \cite{FUSE} del lado del cliente para realizar el mapeo y manejo del sistema de archivos virtual. El funcionamiento de un directorio montado con \textsc{SSHFS} es similar a \textsc{NFS} o \textsc{CIFS} \cite{linuxjournal}.
+\textsc{SSHFS} es un programa que hace uso de \textsc{SFTP} para \textit{montar} un directorio remoto en el equipo local utilizando \textsc{SSH} como transporte \cite{_sshfs_????} y hace uso de la biblioteca de sistemas de archivo \textsc{FUSE} \cite{_ssh_????} del lado del cliente para realizar el mapeo y manejo del sistema de archivos virtual. El funcionamiento de un directorio montado con \textsc{SSHFS} es similar a \textsc{NFS} o \textsc{CIFS} \cite{_sshfs:_????}.
 
