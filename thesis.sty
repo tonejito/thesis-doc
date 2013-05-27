@@ -326,3 +326,12 @@
 %\newcommand{\yesmark}{ \ifdraft O \else \includegraphics[keepaspectratio=true, width=10px]{figures/Y} \fi }
 %\newcommand{\nomark}{ \ifdraft X \else \includegraphics[keepaspectratio=true, width=10px]{figures/N} \fi }
 
+\usepackage{verbatim}
+% Use this command to include file as verbatim text
+\newcommand{\verbatiminclude}[1]
+{
+\scriptsize
+\linespread{1}
+\verbatiminput{#1}
+}
+
