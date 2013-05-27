@@ -594,8 +594,15 @@ En 1987 el profesor Andrew S. Tannenbaum public\'{o} un libro titulado \textit{S
 
 En 1991 Linus Torvalds que estudiaba la maestr\'{i}a en ciencias de la computaci\'{o}n en Helsinki Finlandia \cite{_staff_????}, inspirado en \textsc{MINIX}, decidi\'{o} escribir un sistema operativo compatible con UNIX que cumpliera con el est\'{a}ndar \textsc{POSIX} y el 25 de agosto public\'{o} una entrada en el foro \textsc{usenet} de \textsc{MINIX} \cite{_history_????} explicando su proyecto y pidiendo retroalimentaci\'{o}n, esto di\'{o} origen a una ola de desarrollo que hizo que el kernel Linux creciera, la licencia original de Linux prohib\'{i}a el uso comercial pero se cambi\'{o} para que fuese liberado con la licencia \textsc{GPL} de \textsc{GNU} \cite{_linux_????-3} \footnote{Visitar \cite{_linuxs_????} para ver la lista completa de mensajes \textsc{usenet}.}.
 
-  \subsection {Uso de GNU/Linux en la industria}
   \subsection {Distribuciones de GNU/Linux}
+
+Una distribuci\'{o}n es un conjunto de paquetes que permiten instalar, actualizar y borrar programas de una manera sencilla gracias a que resuelven las dependencias de forma autom\'{a}tica. A este tipo de paquetes se les llama \textit{paquetes binarios}.
+
+Existen tambi\'{e}n \textit{paquetes de c\'{o}digo fuente} que permiten instalar los archivos de desarrollo (archivos de cabecera) de un paquete en espec\'{i}fico, esto permite compilar un software que requiera bibliotecas adicionales sin especificarlas expl\'{i}citamente gracias a que se resuelven autom\'{a}ticamente al estar en las rutas del sistema.
+
+La ubicaci\'{o}n de los archivos de configuraci\'{o}n y de los binarios var\'{i}a entre distribuciones y generalmente la estructura del sistema de archivos se hereda entre distribuciones derivadas, tradicionalmente se utilizaba el sistema de inicio basado en \textsc{SystemV} (\textit{sysvrc}) que lanza los servicios de manera secuencial, aunque existen otros sistemas de inicio que pueden lanzar servicios en paralelo si no tienen relaci\'{o}n entre si como \textit{insserv} propuesto por \textsc{LSB} \footnote{\textit{Linux Standard Base} por sus siglas en ingl\'{e}s.}, \textit{OpenRC} utilizado en \textit{Gentoo}, \textit{upstart} utilizado en \textit{Ubuntu} y \textit{systemd} utilizado en \textit{Arch Linux}.
+
+  \subsection {Uso de GNU/Linux en la industria}
 
 %\includegraphics[keepaspectratio=true]{figures/timeline}
 %\includegraphics[keepaspectratio=true, width=666px]{figures/timeline}}
