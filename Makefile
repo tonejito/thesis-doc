@@ -8,6 +8,8 @@ GS=		gs
 SED=		sed
 GREP=		grep
 EGREP=		egrep
+CAT=		cat
+PANDOC=		pandoc
 
 .SUFFIXES:      .tex .dvi .eps .ps .pdf
 
@@ -77,13 +79,17 @@ $(EMAIN).pdf:	$(MAIN).ps
 	$(PS2PDF) -sPAPERSIZE=letter $< $@
 
 clean.doc:
-	$(RM) -f *.aux $(MAIN).dvi $(MAIN).ps $(MAIN).pdf $(EMAIN).pdf
+	$(RM) -f *.aux \
+		$(MAIN).dvi $(MAIN).ps $(MAIN).pdf $(EMAIN).pdf \
+		$(MAIN).md  $(MAIN).html \
+	;
 
 # Suggested by Neil B.
 clean:	clean.doc
 	$(RM) -f *.aux \
 		$(MAIN).log $(MAIN).blg $(MAIN).bbl \
-		$(MAIN).lot $(MAIN).lof $(MAIN).toc
+		$(MAIN).lot $(MAIN).lof $(MAIN).toc \
+	;
 
 # Translate spanish accents to LaTeX-friendly character sequences
 # Added by Andrés Hernández
@@ -123,3 +129,10 @@ extract-url:
 	  done ; \
 	done ;
 
+# Convert latex to markdown using pandoc(1)
+$(MAIN).md:	
+	$(CAT) $(CHAPTERS) | $(PANDOC) -r latex -w markdown > $(MAIN).md
+
+# Convert latex to html using pandoc(1)
+$(MAIN).html:	
+	$(CAT) $(CHAPTERS) | $(PANDOC) -r latex -w html > $(MAIN).html
