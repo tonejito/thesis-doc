@@ -25,8 +25,7 @@ FIGURES =	$(FIGDIR)/MUN_Logo_Pantone.eps		\
 		$(FIGDIR)/enrollment-rotate.eps 	\
 		$(FIGDIR)/db-deadlock.eps
 
-CHAPTERS = chap1.tex chap2.tex chap3.tex chap4.tex chap5.tex chap6.tex	\
-	   cap1.tex cap2.tex cap3.tex cap4.tex cap5.tex
+CHAPTERS = cap1.tex cap2.tex cap3.tex cap4.tex cap5.tex
 
 FILES = thesis.tex thesis.sty						\
 	abstract.tex ack.tex contents.tex tables.tex figures.tex	\
@@ -135,4 +134,4 @@ $(MAIN).md:
 
 # Convert latex to html using pandoc(1)
 $(MAIN).html:	
-	$(CAT) $(CHAPTERS) | $(PANDOC) -r latex -w html > $(MAIN).html
+	$(CAT) $(CHAPTERS) | $(PANDOC) --toc --preserve-tabs --standalone --self-contained -r latex -w html5 > $(MAIN).html
