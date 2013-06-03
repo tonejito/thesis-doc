@@ -32,7 +32,11 @@ FILES = thesis.tex thesis.sty						\
 	$(CHAPTERS)							\
 	bib.tex ${REF_BIB} apdxa.tex
 
+INTRO = intro.tex
+
 REF_BIB = ref.bib
+
+README = README.md
 
 # Set system specific programs and arguments
 # Linux
@@ -49,7 +53,7 @@ endif
 # Make pdf, clean all temporary files by default and open the document with
 # the platform pdf viewer
 # Added by Andrés Hernández
-$(MAIN):	clean.doc accents $(MAIN).pdf
+$(MAIN):	clean.doc accents $(MAIN).pdf $(MAIN).md $(MAIN).html
 	# Preview automagically reload the document on change
 	if [ -r $(MAIN).pdf -a -e ${VIEWER} ] ; \
 	then \
@@ -128,10 +132,13 @@ extract-url:
 	  done ; \
 	done ;
 
-# Convert latex to markdown using pandoc(1)
+# Convert latex to MarkDown using pandoc(1)
 $(MAIN).md:	
-	$(CAT) $(CHAPTERS) | $(PANDOC) -r latex -w markdown > $(MAIN).md
+	$(CAT) $(INTRO) $(CHAPTERS) | $(GREP) -v '\\label{[[:alnum:]]\+:[[:alnum:]]\+}' | \
+	$(PANDOC) --normalize --toc --standalone --self-contained --reference-links --preserve-tabs -B $(README) -A $(README) -r latex -w markdown > $(MAIN).md
 
-# Convert latex to html using pandoc(1)
+# Convert latex to HTML5 using pandoc(1)
 $(MAIN).html:	
-	$(CAT) $(CHAPTERS) | $(PANDOC) --toc --preserve-tabs --standalone --self-contained -r latex -w html5 > $(MAIN).html
+	$(CAT) $(INTRO) $(CHAPTERS) | $(GREP) -v '\\label{[[:alnum:]]\+:[[:alnum:]]\+}' | \
+	$(PANDOC) --normalize --toc --standalone --self-contained --reference-links --preserve-tabs -B $(README) -A $(README) --bibliography $(REF_BIB) --biblatex -r latex -w html5 > $(MAIN).html
+
