@@ -1,4 +1,3 @@
-estylefloat{table}
   \chapter{Marco Te\'{o}rico}
   \label{chap:cap1}
     \section {Sistemas de almacenamiento}
@@ -168,6 +167,7 @@ Dependiendo del tipo de medio, la falla de componentes internos puede ser fatal,
 
   \subsection {M\'{e}todos de protecci\'{o}n}
 
+% Revisar la referencia a la tabla o completar
 Los m\'{e}todos de protecci\'{o}n de los medios de almacenamiento varian dependiendo de su tipo, en la tabla \ref{tab:comparativa} se muestra una comparativa de los medios.
 
     \begin{itemize}
@@ -521,7 +521,7 @@ Un appliance es un conjunto de elementos (hardware, software y sistema operativo
 
   \item Hardware
 
-Los appliances de hardware son sistemas especializados dise\~{n}ados para realizar tareas espec\'{i}ficas, el fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta nueva funcion \cite{}.
+Los appliances de hardware son sistemas especializados dise\~{n}ados para realizar tareas espec\'{i}ficas, el fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta nueva funci\'{o}n \cite{}.
 
 Regularmente tienen una interfaz web para administraci\'{o}n, algunos integran un shell para realizar las funciones conectandose a trav\'{e}s de ssh y en otros casos integran adem\'{a}s soporte para \textsc{SNMP}.
 
@@ -561,13 +561,13 @@ Por ejemplo, al firmar un archivo o un correo electr\'{o}nico la firma s\'{o}lo 
 
 Este principio dicta que la informaci\'{o}n debe poderse acceder cuando sea necesario o respetando el criterio de los tiempos establecidos \cite{_nist_????}\cite{_information_????}.
 
-Por ejemplo, un recurso en linea debe estar disponible siempre para que pueda ser accedido por las personas que har\'{a}n uso de el, en caso de tener horarios de disponibilidad se debe garantizar que el recurso se pueda acceder durante ese periodo.
+Por ejemplo, un recurso en linea debe estar disponible siempre para que pueda ser accedido por las personas que har\'{a}n uso de \'{e}l, en caso de tener horarios de disponibilidad se debe garantizar que el recurso se pueda acceder durante ese periodo.
 
 \end{itemize}
 
   \subsection {Vulnerabilidades}
 
-Una vulnerabilidad es un fallo en la l\'{o}gica o una situaci\'{o}n que se da en condiciones especiales con la que un programa o proceso realiza tareas para las que no fue originalmente destinado. Cuando se alcanzan estas condiciones y se modifica la ejecuci\'{o}n del programa se dice que se ha \textit{explotado} la vulnarabilidad \cite{padilla_buenas_2009}.
+Una vulnerabilidad es un fallo en la l\'{o}gica o una situaci\'{o}n que se da en condiciones especiales con la que un programa o proceso realiza tareas para las que no fue originalmente destinado. Cuando se alcanzan estas condiciones y se modifica la ejecuci\'{o}n del programa se dice que se ha \textit{explotado} la vulnerabilidad \cite{padilla_buenas_2009}.
 
   \subsection {Hardening}
 
@@ -592,7 +592,7 @@ En 1983 Richard Stallman inici\'{o} el proyecto \textsc{GNU} \footnote{Acr\'{o}n
 
 En 1987 el profesor Andrew S. Tannenbaum public\'{o} un libro titulado \textit{Sistemas Operativos Dise\~{n}o e Implementaci\'{o}n} \cite{tanenbaum_operating_2006} donde explica varios conceptos y aspectos clave de los sistemas operativos, en las \'{u}ltima secci\'{o}n viene incluido el c\'{o}digo fuente del sistema operativo \textsc{MINIX} que \'{e}l mismo desarroll\'{o} como un clon de \textsc{UNIX} para prop\'{o}sitos educativos. \cite{_complete_????}.
 
-En 1991 Linus Torvalds que estudiaba la maestr\'{i}a en ciencias de la computaci\'{o}n en Helsinki Finlandia \cite{_staff_????}, inspirado en \textsc{MINIX}, decidi\'{o} escribir un sistema operativo compatible con UNIX que cumpliera con el est\'{a}ndar \textsc{POSIX} y el 25 de agosto public\'{o} una entrada en el foro \textsc{usenet} de \textsc{MINIX} \cite{_history_????} explicando su proyecto y pidiendo retroalimentaci\'{o}n, esto di\'{o} origen a una ola de desarrollo que hizo que el kernel Linux creciera, la licencia original de Linux prohib\'{i}a el uso comercial pero se cambi\'{o} para que fuese liberado con la licencia \textsc{GPL} de \textsc{GNU} \cite{_linux_????-3} \footnote{Visitar \cite{_linuxs_????} para ver la lista completa de mensajes \textsc{usenet}.}.
+En 1991 Linus Torvalds que estudiaba la maestr\'{i}a en ciencias de la computaci\'{o}n en Helsinki Finlandia \cite{_staff_????}, inspirado en \textsc{MINIX}, decidi\'{o} escribir un sistema operativo compatible con UNIX que cumpliera con el est\'{a}ndar \textsc{POSIX} y el 25 de agosto public\'{o} una entrada en el foro \textsc{usenet} de \textsc{MINIX} \cite{_history_????} explicando su proyecto y pidiendo retroalimentaci\'{o}n, esto di\'{o} origen a una ola de desarrollo que hizo que el kernel Linux creciera, la licencia original de Linux prohib\'{i}a el uso comercial pero se cambi\'{o} para que fuese liberado con la licencia \textsc{GPL} de \textsc{GNU} que permite el uso comercial siempre y cuando se liberen las modificaciones hechas al software y se permita distribuir copias modificadas \cite{_linux_????-3} \footnote{Visitar \cite{_linuxs_????} para ver la lista completa de mensajes \textsc{usenet}.}.
 
 % ligar con el estado actual
 
@@ -606,7 +606,7 @@ Aunque todas las distribuciones se apegan al est\'{a}ndar \textsc{FHS} \cite{_fi
 
 Tradicionalmente se utilizaba el sistema de inicio basado en \textsc{SystemV} (\textit{sysvrc}) que lanza los servicios de manera secuencial, recientemente se han implementado otros sistemas de inicio que pueden lanzar servicios en paralelo si no tienen relaci\'{o}n entre si, un ejemplo es \textit{insserv} propuesto por \textsc{LSB} \cite{_lsbinitscripts_????}\cite{_lsbinitscripts/dependencybasedboot_????} \footnote{\textit{Linux Standard Base} por sus siglas en ingl\'{e}s.}, \textit{OpenRC} utilizado principalmente en \textit{Gentoo} \cite{_gentoo_????}\cite{_openrc_????}\cite{_openrc_????-1}, \textit{upstart} utilizado en \textit{Ubuntu} y sus derivados \cite{_upstart_????} y \textit{systemd} utilizado en \textit{Arch Linux} \cite{_systemd_????}.
 
-\includegraphics[keepaspectratio=true, width=400px]{figures/linux-distributions}
+%\includegraphics[keepaspectratio=true, width=400px]{figures/linux-distributions}
 
   \subsection {Uso de GNU/Linux en la industria}
 
@@ -617,17 +617,21 @@ El sistema operativo \textsc{GNU/Linux} ha tenido un gran auge en la industria y
 \begin{itemize}
   \item Clusters de superc\'{o}mputo (94\% de los sistemas de c\'{o}mputo de alto rendimiento se ejecuta sobre GNU/Linux). \cite{_tic_????}\cite{_94_????}.
   \item Sistemas embebidos con aplicaciones m\'{e}dicas, militares y civiles \cite{_elinux.org_????}\cite{_rtos_????}.
-  \item Sistemas embebidos de control y RTOS \footnote{\textit{Real Time Operating System} por sus siglas en ingl\'{e}s.} \cite{_uclinux_????}\cite{_rtos_????}.
-  \item Appliances de red y firewalls \cite{_router/bridge_????}\cite{_endian_????}.
-  \item Proxys y sistemas de seguridad \cite{_f5_????}\cite{_junos_????}\cite{_infoblox_????}.
-  \item HTPC (Dispositivos de entretenimiento casero) \cite{_openelec_????}
+  \item Sistemas embebidos de control y \textsc{RTOS} \footnote{\textit{Real Time Operating System} por sus siglas en ingl\'{e}s.} \cite{_uclinux_????}\cite{_rtos_????}.
+  \item Appliances de red y firewalls \cite{_router/bridge_????}\cite{_endian_????}
+  \item Proxys y sistemas de seguridad \cite{_f5_????}\cite{_junos_????}\cite{_infoblox_????}
+  \item \textsc{HTPC} (Dispositivos de entretenimiento casero) \cite{_openelec_????}
   \item Dispositivos m\'{o}viles como celulares y tablets (Android \cite{_android_????}, Firefox OS \cite{_firefox_????}, HP WebOS \cite{_hp_????}, TizenOS \cite{_tizen_????}, Maemo \cite{_maemo.org_????}, Ubuntu Phone \cite{_ubuntu_????})
   \item Consolas de videojuegos (PlayStation 2 \cite{_ps2_????} y PlayStation 3 \cite{_open_????})
 \end{itemize}
 
-\includegraphics[keepaspectratio=true, width=400px]{figures/LinuxDistributions}
+%\includegraphics[keepaspectratio=true, width=400px]{figures/LinuxDistributions}
 
   \subsection {Debian GNU/Linux}
+
+Debian \footnote{El nombre \textit{Debian} proviene de la conjunci\'{o}n del nombre de su creador Ian y el nombre de su esposa Debra.} es una de las primeras distribuciones de GNU/Linux que existieron, fu\'{e} creado en agosto de 1993 por Ian Murdock qui\'{e}n pens\'{o} en hacer un proyecto en el que cualquiera pudiera colaborar sin importar que fuese un usuario o desarrollador \cite{_debian_????}.
+
+Hoy en d\'{i}a Debian es la distribuci\'{o}n m\'{a}s significativa de GNU/Linux que no tiene fines comerciales y la no dependencia de una entidad comercial hace posible que \'{e}ste proyecto sea gestionado por una organizaci\'{o}n de individuos que velan por el proyecto y no por los intereses de los accionistas.
 
 \section {Protocolo HTTP}
 
