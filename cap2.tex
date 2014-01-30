@@ -1,18 +1,192 @@
   \label{chap:cap2}
   \chapter {Definici\'{o}n del problema y soluci\'{o}n propuesta}
+
     \section {Problem\'{a}tica actual}
+
+Los usuarios de la Divisi\'{o}n de Ingenier\'{i}as Civil y Geom\'{a}tica utilizan memorias \textsc{USB}, discos \'{o}pticos y carpetas compartidas en red para acceder a archivos de uso interno como documentos, presentaciones e im\'{a}genes que ocupan para realizar sus actividades.
+
+Adicionalmente el personal de la Unidad de C\'{o}mputo almacena los archivos de instalaci\'{o}n de programas y controladores en dispositivos externos como memorias \textsc{USB}, discos duros externos \'{o} en discos \'{o}pticos y los utiliza al dar mantenimiento a los equipos de c\'{o}mputo de la divisi\'{o}n.
+
+El problema al mantener los archivos en carpetas compartidas o utilizar un medio de almacenamiento externo es que los datos dejan de estar disponibles si el equipo que comparte la carpeta se encuentra apagado o si el medio de almacenamiento no est\'{a} conectado al equipo donde se procesa la informaci\'{o}n.
+
+Por ejemplo, si un profesor necesita compartir algunos archivos con los alumnos parar utilizarlos en clase copia a una memoria \textsc{USB} los archivos y la pasa a cada uno de los estudiantes para que copien los archivos a su equipo lo cual, adem\'{a}s de que implica tiempo, es un proceso propenso a errores donde se puede da\~{n}ar la memoria flash que circula entre los equipos o se puede infectar con malware en un equipo y al pasar de equipo a equipo propagar la infecci\'{o}n.
+
+Otro caso muy com\'{u}n es el env\'{i}o de archivos modificados por correo electr\'{o}nico, generando as\'{i} una lista de versiones diferentes del mismo archivo que causan confusi\'{o}n porque se desconoce cual es la versi\'{o}n m\'{a}s actualizada.
+
     \section {Soluci\'{o}n propuesta}
+
+Para solventar este problema se propone instalar un servidor de almacenamiento que provea espacio para que los usuarios de la \textsc{DICyG} puedan guardar su informaci\'{o}n y accederla desde los equipos conectados a la red interna a trav\'{e}s de una conexi\'{o}n cifrada.
+
+La implementaci\'{o}n del servidor de almacenamiento ayudar\'{a} a liberar espacio en los equipos de c\'{o}mputo de la divisi\'{o}n que se utilizan para compartir archivos y proporcionar\'{a} un repositorio central que guarde la informaci\'{o}n y la haga accesible a los usuarios sin depender de un equipo externo.
+
+% Usuarios de la Divisi\'{o}n de Ingenier\'{i}a Civil y Geom\'{a}tica (Depto de Geomatica) y Unidad de Computo
+% 50 usuarios
+% Almacenamiento centralizado para guardar imagenes o documentos y poderlos visualizar o editar en cualquier equipo conectado a la red de la division (archivos ligeros)
+% Almacenamiento de archivos de intalacion para uso de la unidad de computo (archivos pesados)
+% % Alcance
+% Implementaci\'{o}n, hardening, interfaz de cambio de contrase\~{n}a, pruebas de seguridad y de compatibilidad
+% % Justificacion
+% proveer el servicio de almacenamiento centralizado a los usuarios de la dicyg
+% reglas de acceso para las redes, 
+% la transmision de datos esta cifrada, los datos no se cifran en el servidor
+% disponibilidad de los datos en los horarios establecidos
+% liberar espacio y evitar el uso de medios externos para transmitir la informacion
+% poderlos visualizar o editar en cualquier equipo conectado a la red de la division
+
     \section {Tecnolog\'{i}as a utilizar}
+
+Para la implementaci\'{o}n de este proyecto se utilizar\'{a}n las siguientes tecnolog\'{i}as:
+
+\begin{itemize}
+  \item Debian GNU/Linux como sistema operativo del appliance.
+  \item Apache HTTPD para proveer el servicio de HTTPS.
+  \item OpenLDAP para implementar el directorio de usuarios.
+  \item OpenSSH para el acceso remoto por linea de comandos.
+\end{itemize}
+
     \section {Arquitectura del prototipo}
+
+El prototipo a implementar ser\'{a} un servidor proporcionado por la \textsc{DICyG} que almacenar\'{a} los archivos que los profesores utilizan en sus clases, as\'{i} como los programas de instalaci\'{o}n y software de controladores de dispositivo que la Unidad de C\'{o}mputo utiliza para dar mantenimiento a los equipos de la divisi\'{o}n.
+
       \subsection {Diagrama funcional}
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+                        +---------+       +-----+
+                     22 | OpenSSH |------>| pam |----------+
+                        +---------+       +-----+          |
+                                                           v
+                                                      +----------+
+                                                      | OpenLDAP |
+                                                      +----------+
+      ro-------                                            ^
+               \        +--------------+                   |
+      rw--------+---443 | Apache HTTPD |-------------------+
+               /        +--------------+
+    reset------
+
+\end{verbatim}
+}
+
       \subsection {Autenticaci\'{o}n centralizada}
+
+El t\'{e}rmino \textit{autenticaci\'{o}n centralizada} se refiere a contar con un repositorio central de usuarios que permita que las aplicaciones puedan verificar las credenciales de acceso \textit{autenticando} as\'{i} al usuario.
+
         \subsubsection {Autenticaci\'{o}n por medio de directorio}
+
+Para tener un esquema de autenticaci\'{o}n centralizada se tendr\'{a} un directorio de usuarios que implemente el protocolo LDAP mediante el software \textsc{OpenLDAP}.
+
         \subsubsection {Estructura del directorio}
+
+La estructura propuesta comprende tres contenedores que sirven para separar los tipos de objeto que forman parte del directorio, cada contenedor est\'{a} representado por una \textit{unidad organizacional} y su atributo \'{u}nico es el nombre \textbf{ou}. Los contenedores principales en la ra\'{i}z del directorio son los siguientes:
+
+\begin{itemize}
+  \item Contenedor de usuarios.
+  \item Contenedor de grupos.
+  \item Contenedor de cuentas de servicio.
+\end{itemize}
+
+\textbf{\\ Contenedor de usuarios \\}
+
+Clasifica los usuarios del sistema por tipo, cada usuario tiene un identificador \'{u}nico asignado llamado \textbf{uid} se subdivide en tres ramas:
+
+\begin{itemize}
+  \item Profesores.
+  Se representan en el directorio como objetos de tipo \textit{posixAccount} que representan cuentas est\'{a}ndar de \textsc{UNIX}.
+  \item Alumnos.
+  Su representaci\'{o}n en el directorio es un objeto de tipo \textit{simpleSecurityObject} que se utiliza para asignar un usuario y contrase\~{n}a \'{u}nicamente.
+  \item Personal de la \textit{Unidad de C\'{o}mputo} de la divisi\'{o}n.
+  Estas cuentas de usuario son objetos de tipo \textit{posixAccount} y representan cuentas est\'{a}ndar de \textsc{UNIX}.
+\end{itemize}
+
+\textbf{\\ Contenedor de grupos \\}
+
+Contiene a los grupos que ayudan a permitir o negar el acceso a los recursos del servidor, un usuario puede pertenecer a uno o m\'{a}s grupos. Cada grupo tiene un identificador \'{u}nico llamado \textbf{gid}.
+
+\textbf{\\ Contenedor de cuentas de servicio \\}
+
+Contiene cuentas de usuario asociadas a servicios de sistema, se utiliza para almacenar las cuentas que realizan b\'{u}squedas en el directorio.
+
+\textbf{\\ Diagrama \\}
+% Works with `pdflatex', not compatible with `latex'
+%\pdfannot{/Subtype/Text/Contents(TEXT)}
+
+El siguiente diagrama muestra la estructura del \'{a}rbol del directorio \textsc{LDAP}.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
++ dc=dicyg,dc=ingenieria,dc=unam,dc=mx
+|
+|-+ cn=admin
+|
+|-+ ou=users
+| |-+ ou=profesores
+| | |-+ uid=profesor01
+| | |-+ uid=profesor02
+| | |   ...
+| | \-+ uid=...
+| |
+| |-+ `ou=alumnos
+| | |-+ uid=alumno01
+| | |-+ uid=alumno02
+| | |   ...
+| | \-+ uid=...
+| |
+| \-+ ou=unidadcomputo
+|   |-+ uid=tiaricci
+|   |-+ uid=unidadcomputo
+|   |   ...  
+|   \-+ uid=...
+|  
+|-+ ou=groups
+|   |-+ gid=grupo01
+|   |-+ gid=grupo02
+|   |   ...  
+|   \-+ gid=...
+|
+\-+ ou=services
+    |-+ cn=linux
+    |-+ cn=apache2
+    |   ...
+    \-+ cn=...
+\end{verbatim}
+}
+\
+
       \subsection {Mecanismos de acceso a los archivos}
-        \subsubsection {Acceso por HTTP mediante WebDAV}
-        \subsubsection {Acceso por SSH utilizando SCP}
-        \subsubsection {Acceso por SSH utilizando SFTP}
-        \subsubsection {Acceso por SSH utilizando SSHFS}
+
+Se propone establecer el acceso a los archivos utilizando mecanismos est\'{a}ndar como son \textsc{SSH} y \textsc{WebDAV}.
+
+        \subsubsection {Acceso por HTTP}
+
+          \textbf{\\ Acceso por HTTP est\'{a}ndar \\}
+
+Para acceder a los archivos mediante las llamadas est\'{a}ndar del protocolo HTTP s\'{o}lo se necesita que el usuario tenga un navegador web, que acceda a la \textsc{URL} iniciando sesi\'{o}n, donde podr\'{a} navegar los directorios a los que tenga acceso y podr\'{a} descargar los archivos si tiene permisos de acceder al directorio.
+
+          \textbf{\\ Acceso por WebDAV \\}
+
+Para el caso del acceso via \textsc{WebDAV} es necesario un cliente, los sistemas operativos de escritorio como \textsc{GNU/Linux}, \textsc{Solaris}, \textsc{*BSD}, \textsc{Mac OS X} y Windows tienen un cliente nativo en sus interfaces gr\'{a}ficas del navegador de archivos.
+
+        \subsubsection {Acceso por SSH}
+
+
+
+          \textbf{\\ SCP - Secure Copy \\}
+
+
+
+          \textbf{\\ SFTP - Secure File Transfer Protocol \\}
+
+
+
+          \textbf{\\ SSHFS - SecureShell Filesystem \\}
+
+
+
       \subsection {Interfaces de usuario}
         \subsubsection {Rails}
         \subsubsection {Dise\~{n}o de la interfaz de administraci\'{o}n}
