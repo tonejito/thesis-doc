@@ -90,7 +90,7 @@ view:
 # Optimize pdf for print size
 optimize:	
 	$(GS) $(GS_QUIET) -dBATCH -dNOPAUSE -sPAPERSIZE=$(PAPERSIZE) -sDEVICE=pdfwrite -dPDFSETTINGS=/$(PDFSETTINGS) -dUseCIEColor=true -sOutputFile=$(MAIN)..pdf $(MAIN).pdf
-	$(LS) -l $(MAIN).pdf $(MAIN)..pdf
+	$(LS) -l --sort=size $(MAIN).pdf $(MAIN)..pdf
 
 $(MAIN).dvi:	$(MAIN).tex $(FIGURES) $(FILES)
 	$(LATEX) $*.tex; 
@@ -118,7 +118,7 @@ $(EMAIN).pdf:	$(MAIN).ps
 clean.doc:	
 	$(RM) -f *.aux \
 		$(MAIN).dvi $(MAIN).ps $(MAIN).pdf $(EMAIN).pdf \
-		$(MAIN).md  $(MAIN).html \
+		$(MAIN).md  $(MAIN).html $(MAIN)..pdf \
 	;
 
 # Suggested by Neil B.
