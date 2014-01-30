@@ -320,13 +320,20 @@
 
 % Works when not using verbatim, verb texttt or tt inside it
 \usepackage{ifdraft}
-\newcommand{\yesmark}{\ifdraft{O}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}}}
-\newcommand{\nomark}{\ifdraft{X}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}}}
+%\newcommand{\yesmark}{\ifdraft{O}{\includegraphics[keepaspectratio=true, width=10px]{figures/Y}}}
+%\newcommand{\nomark}{\ifdraft{X}{\includegraphics[keepaspectratio=true, width=10px]{figures/N}}}
 
 % Doesn't seem to work
 %\newif\ifdraft\drafttrue
 %\newcommand{\yesmark}{ \ifdraft O \else \includegraphics[keepaspectratio=true, width=10px]{figures/Y} \fi }
 %\newcommand{\nomark}{ \ifdraft X \else \includegraphics[keepaspectratio=true, width=10px]{figures/N} \fi }
+
+%	http://tex.stackexchange.com/questions/132783/how-to-write-checkmark-in-latex
+%	http://willbenton.com/wb-images/pifont.pdf
+% Checkmark 51 or 52 (bold)
+\newcommand{\yesmark}{\ding{52}}
+% Cross 55 or 56 (bold)
+\newcommand{\nomark}{\ding{56}}
 
 \usepackage{verbatim}
 % Use this command to include file as verbatim text
@@ -336,4 +343,12 @@
 \linespread{1}
 \verbatiminput{#1}
 }
+
+% Use this package to draw diagrams
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+% Extra fonts to draw checkmark instead of importing graphic
+%	http://tex.stackexchange.com/questions/132783/how-to-write-checkmark-in-latex
+\usepackage{pifont}
 
