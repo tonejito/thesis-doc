@@ -22,11 +22,8 @@ EMAIN = ethesis
 
 FIGDIR = figures
 
-FIGURES =	$(FIGDIR)/MUN_Logo_Pantone.eps		\
-		$(FIGDIR)/enrollment.eps 		\
-		$(FIGDIR)/enrollment-landscape.eps 	\
-		$(FIGDIR)/enrollment-rotate.eps 	\
-		$(FIGDIR)/db-deadlock.eps
+FIGURES =	$(FIGDIR)/UNAM.eps		\
+		$(FIGDIR)/Ingenieria.eps
 
 CHAPTERS = cap1.tex cap2.tex cap3.tex cap4.tex cap5.tex
 
