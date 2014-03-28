@@ -14,6 +14,9 @@ EGREP=		egrep
 CAT=		cat
 PANDOC=		pandoc
 
+SUDO=		sudo
+APTITUDE=	aptitude
+
 .SUFFIXES:	.tex .dvi .eps .ps .pdf
 
 MAIN = thesis
@@ -71,6 +74,14 @@ $(MAIN):	clean.doc accents $(MAIN).pdf view
 ifneq ($(shell uname -s),CYGWIN_NT-6.1-WOW64)
 	$(MAKE) $(MAIN).md $(MAIN).html
 endif
+
+
+# Install dependencies
+deps:
+	$(SUDO) $(APTITUDE) install \
+	texlive pandoc pandoc-citeproc \
+	texlive-latex-extra  texlive-bibtex-extra \
+	texlive-lang-english texlive-lang-spanish ;
 
 # Preview automagically reload the document on change
 view:	
