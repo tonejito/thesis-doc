@@ -80,11 +80,12 @@ Para tener un esquema de autenticaci\'{o}n centralizada se tendr\'{a} un directo
 
         \subsubsection {Estructura del directorio}
 
-La estructura propuesta comprende tres contenedores que sirven para separar los tipos de objeto que forman parte del directorio, cada contenedor est\'{a} representado por una \textit{unidad organizacional} y su atributo \'{u}nico es el nombre \textbf{ou}. Los contenedores principales en la ra\'{i}z del directorio son los siguientes:
+La estructura propuesta comprende varios contenedores que sirven para separar los tipos de objeto que forman parte del directorio, cada contenedor est\'{a} representado por una \textit{unidad organizacional} y su atributo \'{u}nico es el nombre \textbf{ou}. Los contenedores principales en la ra\'{i}z del directorio son los siguientes:
 
 \begin{itemize}
   \item Contenedor de usuarios.
   \item Contenedor de grupos.
+  \item Contenedor de materias.
   \item Contenedor de cuentas de servicio.
 \end{itemize}
 
@@ -93,17 +94,30 @@ La estructura propuesta comprende tres contenedores que sirven para separar los 
 Clasifica los usuarios del sistema por tipo, cada usuario tiene un identificador \'{u}nico asignado llamado \textbf{uid} se subdivide en tres ramas:
 
 \begin{itemize}
+  \item Personal de la \textit{Unidad de C\'{o}mputo} de la divisi\'{o}n.
+  Estas cuentas de usuario son objetos de tipo \textit{posixAccount} y representan cuentas est\'{a}ndar de \textsc{UNIX}.
   \item Profesores.
   Se representan en el directorio como objetos de tipo \textit{posixAccount} que representan cuentas est\'{a}ndar de \textsc{UNIX}.
   \item Alumnos.
   Su representaci\'{o}n en el directorio es un objeto de tipo \textit{simpleSecurityObject} que se utiliza para asignar un usuario y contrase\~{n}a \'{u}nicamente.
-  \item Personal de la \textit{Unidad de C\'{o}mputo} de la divisi\'{o}n.
-  Estas cuentas de usuario son objetos de tipo \textit{posixAccount} y representan cuentas est\'{a}ndar de \textsc{UNIX}.
 \end{itemize}
 
 \textbf{\\ Contenedor de grupos \\}
 
-Contiene a los grupos que ayudan a permitir o negar el acceso a los recursos del servidor, un usuario puede pertenecer a uno o m\'{a}s grupos. Cada grupo tiene un identificador \'{u}nico llamado \textbf{gid}.
+Existen tres clases de grupos de usuarios contemplados en el sistema, esto ayuda a permitir o negar el acceso a los recursos del servidor, un usuario puede pertenecer a uno o m\'{a}s grupos. A continuaci\'{o}n se listan los grupos.
+
+\begin{itemize}
+  \item Usuarios de la \textit{Unidad de C\'{o}mputo} de la divisi\'{o}n.
+  Existe un grupo \'{u}nico que contiene a todos los usuarios de este tipo y se almacena como un objeto de tipo \textit{posixGroup} que representa un grupo est\'{a}ndar de usuarios \textsc{UNIX}.
+  \item Profesores.
+  Existe un grupo individual para cada usuario y se almacena como \textit{posixGroup}.
+  \item Alumnos.
+  Existen varios grupos que contienen al profesor, la materia y el grupo en el que se imparte, permiten dar acceso a la carpeta donde se almacenan los archivos de un grupo en particular se almacena internamente como un objeto de tipo \textit{groupOfNames}.
+\end{itemize}
+
+\textbf{\\ Contenedor de materias \\}
+
+Permite almacenar el cat\'{a} logo de las materias que se imparten en la divisi\'{o}n.
 
 \textbf{\\ Contenedor de cuentas de servicio \\}
 
@@ -130,9 +144,9 @@ El siguiente diagrama muestra la estructura del \'{a}rbol del directorio \textsc
 | | |   ...
 | | \-+ uid=...
 | |
-| |-+ `ou=alumnos
-| | |-+ uid=alumno01
-| | |-+ uid=alumno02
+| |-+ ou=grupos
+| | |-+ uid=grupo01
+| | |-+ uid=grupo02
 | | |   ...
 | | \-+ uid=...
 | |
@@ -143,10 +157,30 @@ El siguiente diagrama muestra la estructura del \'{a}rbol del directorio \textsc
 |   \-+ uid=...
 |  
 |-+ ou=groups
-|   |-+ gid=grupo01
-|   |-+ gid=grupo02
+| |-+ ou=unix
+| | |-+ `ou=profesores
+| | | |-+ cn=grupo01
+| | | |-+ cn=grupo02
+| | | |   ...
+| | | \-+ cn=...
+| | |
+| | \-+ ou=staff
+| |   |-+ cn=grupo01
+| |   |-+ cn=grupo02
+| |   |   ...
+| |   \-+ cn=...
+| |  
+| \-+ ou=webdav
+|   |-+ uid=tiaricci
+|   |-+ uid=unidadcomputo
 |   |   ...  
-|   \-+ gid=...
+|   \-+ uid=...
+|
+|-+ ou=materias
+|   |-+ cn=materia01
+|   |-+ cn=materia02
+|   |   ...
+|   \-+ cn=...
 |
 \-+ ou=services
     |-+ cn=linux
@@ -189,17 +223,87 @@ El acceso por \textsc{SSH} permite que los usuarios puedan copiar archivos a tra
 
       \subsection {Interfaces de usuario}
 
-
+Adem\'{a}s del acceso por \textsc{WebDAV} y por medio de un navegador web el appliance tendr\'{a} una interfaz de administraci\'{o}n para ver y modificar los atributos de los usuarios y una interfaz para que los usuarios puedan cambiar su contrase\~{n}a sin necesidad de acudir con el administrador.
 
         \subsubsection {Interfaz de administraci\'{o}n}
 
-
+La interfaz de administraci\'{o}n que se propone permite ver, agregar, modificar y borrar registros del directorio. Se utilizar\'{a} la interfaz web \textit{LDAP Account Manager} y adem\'{a}s se puede instalar la herramienta \textit{Apache Directory Studio} en la workstation del administrador para realizar  estas tareas .
 
         \subsubsection {Interfaz de cambio de contrase\~{n}a}
 
-
+Esta interfaz permite tanto al personal de la \textit{Unidad de C\'{o}mputo} como a los profesores cambiar la contrase\~{n}a de acceso que tienen asignada y al realizar esta acci\'{o}n env\'{i}a un correo para notificar que se llev\'{o} acabo.
 
     \subsection {Especificaci\'{o}n del appliance}
+
+En la siguiente secci\'{o}n se muestran las configuraciones del hardware y software que tendr\'{a} el appliance, as\'{i} como los l\'{i}mites que soportar\'{a}.
+
       \section {Hardware}
+
+% Poner en esta seccion las caracteristicas del equipo de pruebas y de produccion donde se pondra el appliance
+
+\begin{table}[H]
+\caption{Recursos de hardware utilizados para el appliance}{}
+\label{tab:recursos-hardware}
+\noindent\makebox[\textwidth]{%
+\begin{tabular}[c]{c|c|c}
+%\hline
+\textbf{Elemento} & \textbf{M\'{i}nimo} & \textbf{Recomendado} \\
+\hline \hline
+\textit{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
+\hline
+\textit{CPU} & []x[] GHz & []x[] GHz \\
+\textit{RAM} & [] GHz & [] GHz \\
+\textit{Discos Duros} & []x[] GB & []x[] GB \\
+\textit{Arreglo RAID} & RAID[]: [] & RAID[]: [] \\
+%\hline
+\end{tabular}
+} % ending of \makebox
+\end{table}
+
+
       \section {Software}
+
+% Poner en esta seccion las caracteristicas del equipo de pruebas y de produccion donde se pondra el appliance
+
+\begin{table}[H]
+\caption{Versiones de software utilizados para el appliance}{}
+\label{tab:versiones-software}
+\noindent\makebox[\textwidth]{%
+\begin{tabular}[c]{c|c|c}
+%\hline
+\textbf{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
+\hline \hline
+\textit{Sistema Operativo} & \multicolumn{2}{c}{Debian GNU/Linux 7 \textit{Wheezy}} \\
+\textit{OpenSSH} & [] & [] \\
+\textit{Apache httpd} & [] & [] \\
+\textit{OpenLDAP} & [] & [] \\
+\textit{PHP} & [] & [] \\
+\textit{LDAP Account Manager} & [] & [] \\
+\textit{LDAP Toolbox: Self Service Password} & [] & [] \\
+%\hline
+\end{tabular}
+} % ending of \makebox
+\end{table}
+
       \section {L\'{i}mites}
+
+El appliance est\'{a} configurado para alojar los archivos del staff de la \textit{unidad de c\'{o}mputo} y los archivos que cada profesor designe para la impartici\'{o}n de cada curso.
+
+\begin{table}[H]
+\caption{Limites establecidos en el appliance}{}
+\label{tab:limites-appliance}
+\noindent\makebox[\textwidth]{%
+\begin{tabular}[c]{c|c|c}
+%\hline
+\textbf{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
+\hline \hline
+% Se ve feo, mejorar el estilo visual
+\multirow{2}{*}{Cuotas} & Staff: []GB & Staff: []GB \\
+                        & Profesor: []GB & Profesor: []GB \\
+\textit{Temperatura} & [] & [] \\
+\textit{Voltaje} & []AC & []AC \\
+%\hline
+\end{tabular}
+} % ending of \makebox
+\end{table}
+
