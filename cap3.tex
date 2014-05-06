@@ -1,19 +1,79 @@
   \label{chap:cap3}
+
   \chapter {Implementaci\'{o}n de la soluci\'{o}n}
+
     \section {Configuraci\'{o}n del sistema operativo}
+
+El sistema operativo que ser\'{a} utilizado para la implementaci\'{o}n es \textsc{Debian GNU/Linux} 7.0 \textit{\guillemotleft wheezy\guillemotright} que se instalar\'{a} de manera nativa en el servidor y se le aplicar\'{a}n configuraciones personalizadas para ejecutar el software que ser\'{a} implementado, ajustar el rendimiento y reforzar la seguridad de los servicios.
+
       \subsection {Arreglo de discos RAID}
+
+Los discos duros del servidor ser\'{a}n configurados en un arreglo RAID debido a las ventajas que propone para el servicio\footnote{Ver p\'{a}gina \pageref{Arreglos-RAID} secci\'{o}n \ref{Arreglos-RAID}}. La configuraci\'{o}n en el servidor de pruebas se realizar\'{a} con un arreglo RAID [] por \textit{software}, mientras que en el servidor de producci\'{o}n se realizar\'{a} en un arreglo por \textit{hardware}.
+
+Para realizar la configuraci\'{o}n de un arreglo RAID [] por software se realiza lo siguiente:
+
       \subsection {Reducci\'{o}n de componentes instalados}
+
     \section {Configuraci\'{o}n de las herramientas}
-      \subsection {OpenLDAP}
+
       \subsection {OpenSSH}
+
+Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguientes opciones:
+
+\begin{itemize}
+  \item Permitir el acceso al grupo de usuarios de la \textit{Unidad de C\'{o}mputo} de la \textsc{DICyG} (\textit{AllowGroups}).
+  \item  Mostrar una pantalla antes de iniciar la sesi\'{o}n en la que se listen las pol\'{i}ticas de uso del sistema (\textit{Banner}).
+  \item Evitar la desconexi\'{o}n manteniendo actividad en la sesi\'{o}n (\textit{TCPKeepAlive} y \textit{ClientAliveInterval}).
+  \item Evitar la redirecci\'{o}n de puertos y sesiones gr\'{a}ficas (\textit{AllowTCPForwarding}, \textit{GatewayPorts} y \textit{X11Forwarding}).
+  \item Desconectar al usuario si no inicia sesi\'{o}n en 60 segundos (\textit{LoginGraceTime}).
+\end{itemize}
+
+\ifdraft{Configuraci\'{o}n de \textsc{OpenSSH}.}{\verbatimincludebox{./etc/ssh/sshd_config}}
+
+      \subsection {OpenLDAP}
+
+Se configur\'{o} el sistema operativo para permitir que los usuarios de \textsc{LDAP} puedan iniciar sesi\'{o}n en el equipo.
+
+Adicionalmente se instalaron los demonios \textsc{NSCD} y \textsc{NSLCD} que se utilizan para guardar en cache los resultados de las consultas al directorio y para representar los objetos \textit{posixAccount} de \textsc{LDAP} como cuentas est\'{a}ndar de \textsc{UNIX}.
+
+\ifdraft{Configuraci\'{o}n de \textsc{OpenLDAP}.}{\verbatimincludebox{./etc/ldap/ldap.conf}}
+
       \subsection {Apache httpd}
+
+La configuraci\'{o}n de Apache \textit{httpd} comprende dos \textit{VirtualHost} que sirven como puntos de entrada para el acceso de s\'{o}lo lectura o lectura y escritura a los archivos almacenados en el servidor.
+
+\ifdraft{Configuraci\'{o}n de Apache \textsc{httpd}.}{\verbatimincludebox{./etc/apache2/apache2.conf}}
+
     \section {Desarrollo de las interfaces de usuario}
+
+
       \subsection {Interfaz de administraci\'{o}n}
-      \subsection {Interfaz de cambio de contrase\~{n}a}
-    \section {Hardening}
-      \subsection {Sistema operativo}
+
         \subsubsection {Firewall}
+
+Los reportes que elabora la herramienta son los siguientes:
+
+\begin{itemize}
+  \item N\'{u}mero de accesos por usuario.
+  \item Espacio en disco utilizado por usuario.
+  \item Estado del sistema.
+\end{itemize}
+
+      \subsection {Interfaz de cambio de contrase\~{n}a}
+
+La interfaz de cambio de contrase\~{n}a
+
+    \section {Hardening}
+
+      \subsection {Sistema operativo}
+
+        \subsubsection {Firewall}
+
       \subsection {Servicios de red}
+
         \subsubsection {ssh}
+
         \subsubsection {http}
+
         \subsubsection {ldap}
+

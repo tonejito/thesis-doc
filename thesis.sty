@@ -344,6 +344,16 @@
 \verbatiminput{#1}
 }
 
+\usepackage{mdframed}
+% Use this command to include file as verbatim text inside a box
+\newcommand{\verbatimincludebox}[1]
+{
+%\fbox{\parbox[b][\height][t]{\textwidth}{\verbatiminclude{#1}}}
+\begin{mdframed}
+  \verbatiminclude{#1}
+\end{mdframed}
+}
+
 % Use this package to draw diagrams
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
@@ -352,3 +362,5 @@
 %	http://tex.stackexchange.com/questions/132783/how-to-write-checkmark-in-latex
 \usepackage{pifont}
 
+% For Lorem Ipsum
+\usepackage{blindtext}
