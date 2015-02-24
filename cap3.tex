@@ -14,6 +14,15 @@ Para realizar la configuraci\'{o}n de un arreglo RAID [] por software se realiza
 
       \subsection {Reducci\'{o}n de componentes instalados}
 
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+  aptitude install localepurge
+  en_US.utf-8
+\end{verbatim}
+}
+
     \section {Configuraci\'{o}n de las herramientas}
 
       \subsection {OpenSSH}
@@ -32,48 +41,481 @@ Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguient
 
       \subsection {OpenLDAP}
 
+          \subsubsection {Instalaci\'{o}n de \textsc{OpenLDAP}}
+
+Se instala \textsc{OpenLDAP} utilizando aptitude, es necesario contestar \textbf{NO} en el cuadro de di\'{a}logo para seguir el asistente de instalaci\'{o}n:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # aptitude install slapd
+\end{verbatim}
+}
+
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
++---------------------------+ Configuring slapd +----------------------------+
+| If you enable this option, no initial configuration or database will be    |
+| created for you.                                                           |
+|                                                                            |
+| Omit OpenLDAP server configuration?                                        |
+|                    <Yes>                       <No>                        |
++----------------------------------------------------------------------------+
+\end{verbatim}
+}
+
+Se pide el nombre DNS del dominio que servir\'{a} para conformar la ra\'{i}z del \'{a}rbol de \textsc{LDAP}.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
++---------------------------+ Configuring slapd +----------------------------+
+| The DNS domain name is used to construct the base DN of the LDAP           |
+| directory. For example, 'foo.example.org' will create the directory with   |
+| 'dc=foo, dc=example, dc=org' as base DN.                                   |
+|                                                                            |
+| DNS domain name:                                                           |
+| xnas.local________________________________________________________________ |
+|                                   <Ok>                                     |
++----------------------------------------------------------------------------+
+\end{verbatim}
+}
+
+Adicionalmente el instalador pregunta por el nombre de la organizaci\'{o}n, aunque este dato no es necesario, se recomienda introducirlo:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
++---------------------------+ Configuring slapd +----------------------------+
+| Please enter the name of the organization to use in the base DN of your    |
+| LDAP directory.                                                            |
+|                                                                            |
+| Organization name:                                                         |
+| xNAS_____________________________________________________________________  |
+|                                  <Ok>                                      |
++----------------------------------------------------------------------------+
+\end{verbatim}
+}
+
+A continuaci\'{o}n se pide que se introduzca la contrase\~{n}a que ser\'{a} utilizada por el administrador del directorio:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
++-------------------------+ Configuring slapd +------------------------------+
+| Please enter the password for the admin entry in your LDAP directory.      |
+|                                                                            |
+| Administrator password:                                                    |
+| **********____________________________________________________________     |
+|                                 <Ok>                                       |
++----------------------------------------------------------------------------+
+
++---------------------------+ Configuring slapd +----------------------------+
+| Please enter the admin password for your LDAP directory again to verify    |
+| that you have typed it correctly.                                          |
+|                                                                            |
+| Confirm password:                                                          |
+| **********_______________________________________________________________  |
+|                                  <Ok>                                      |
++----------------------------------------------------------------------------+
+\end{verbatim}
+}
+
+La versi\'{o}n del protocolo \textsc{LDAPv2} es obsoleta y se recomienda deshabilitar el soporte para la misma, responder \textbf{NO} en el cuadro de di\'{a}logo.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
++----------------------------+ Configuring slapd +---------------------------+
+|                                                                            |
+| The obsolete LDAPv2 protocol is disabled by default in slapd. Programs and |
+| users should upgrade to LDAPv3.  If you have old programs which can't use  |
+| LDAPv3, you should select this option and 'allow bind_v2' will be added to |
+| your slapd.conf file.                                                      |
+|                                                                            |
+| Allow LDAPv2 protocol?                                                     |
+|                     <Yes>                        <No>                      |
++----------------------------------------------------------------------------+
+\end{verbatim}
+}
+
+          \subsubsection {Configuraci\'{o}n de \textsc{OpenLDAP}}
+
 Se configur\'{o} el sistema operativo para permitir que los usuarios de \textsc{LDAP} puedan iniciar sesi\'{o}n en el equipo.
 
-Adicionalmente se instalaron los demonios \textsc{NSCD} y \textsc{NSLCD} que se utilizan para guardar en cache los resultados de las consultas al directorio y para representar los objetos \textit{posixAccount} de \textsc{LDAP} como cuentas est\'{a}ndar de \textsc{UNIX}.
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+  # aptitude install libpam-ldapd
+\end{verbatim}
+}
+
+Adicionalmente se instalaron los demonios \textsc{NSCD} y \textsc{NSLCD} que se utilizan para guardar en \textit{cache} los resultados de las consultas al directorio y para representar los objetos \textit{posixAccount} de \textsc{LDAP} como cuentas est\'{a}ndar de \textsc{UNIX}.
 
 \ifdraft{Configuraci\'{o}n de \textsc{OpenLDAP}.}{\verbatimincludebox{./etc/ldap/ldap.conf}}
 
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
++------------------------+ Configuring libnss-ldapd +-------------------------+
+| For this package to work, you need to modify your /etc/nsswitch.conf to     |
+| use the ldap datasource.                                                    |
+|                                                                             |
+| You can select the services that should have LDAP lookups enabled. The new  |
+| LDAP lookups will be added as the last datasource. Be sure to review these  |
+| changes.                                                                    |
+|                                                                             |
+| Name services to configure:                                                 |
+|    [ ] aliases                                                              |
+|    [ ] ethers                                                               |
+|    [*] group                                                                |
+|    [ ] hosts                                                                |
+|    [ ] netgroup                                                             |
+|    [ ] networks                                                             |
+|    [*] passwd                                                               |
+|    [ ] protocols                                                            |
+|    [ ] rpc                                                                  |
+|    [ ] services                                                             |
+|    [*] shadow                                                               |
+|                                   <Ok>                                      |
++-----------------------------------------------------------------------------+
+\end{verbatim}
+}
+
+Para la configuraci\'{o}n de \textsc{PAM}, se indica que se utilizar\'{a}n como fuentes de autenticaci\'{o}n la base de datos est\'{a}ndar de UNIX y adicionalmente el directorio LDAP.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
++----------------------------+ PAM configuration +----------------------------+
+| Pluggable Authentication Modules (PAM) determine how authentication,        |
+| authorization, and password changing are handled on the system, as well as  |
+| allowing configuration of additional actions to take when starting user     |
+| sessions.                                                                   |
+|                                                                             |
+| Some PAM module packages provide profiles that can be used to               |
+| automatically adjust the behavior of all PAM-using applications on the      |
+| system.  Please indicate which of these behaviors you wish to enable.       |
+|                                                                             |
+| PAM profiles to enable:                                                     |
+|    [*] Unix authentication                                                  |
+|    [*] LDAP Authentication                                                  |
+|                    <Ok>                        <Cancel>                     |
++-----------------------------------------------------------------------------+
+\end{verbatim}
+}
+
       \subsection {Apache httpd}
 
-La configuraci\'{o}n de Apache \textit{httpd} comprende dos \textit{VirtualHost} que sirven como puntos de entrada para el acceso de s\'{o}lo lectura o lectura y escritura a los archivos almacenados en el servidor.
+        \subsubsection {Esquema de configuraci\'{o}n}
 
-\ifdraft{Configuraci\'{o}n de Apache \textsc{httpd}.}{\verbatimincludebox{./etc/apache2/apache2.conf}}
+La configuraci\'{o}n de Apache \textit{httpd} comprende tres \verb/VirtualHost/ que sirven como puntos de entrada para el acceso de s\'{o}lo lectura o lectura y escritura a los archivos almacenados en el servidor.
 
-    \section {Desarrollo de las interfaces de usuario}
+\begin{table}[H]
+\caption{VirtualHost configurados en Apache HTTPD}{}
+\label{tab:virtualhost}
+\noindent\makebox[\textwidth]{%
+\begin{tabular}[c]{c|c}
+%\hline
+\textbf{VirtualHost} & \textbf{Funci\'{o}n} \\
+\hline \hline
+\textit{xnas.local} & Acceso a los archivos por medio de \textsc{WebDAV} \\
+\textit{reset.xnas.local} & Interfaz de cambio de contrase\~{n}a \\
+\textit{admin.xnas.local} & Interfaz administrativa del directorio \textsc{LDAP} \\
+%\hline
+\end{tabular}
+} % ending of \makebox
+\end{table}
 
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+                       +---------+         +--------+
+      xnas.local ____  |         |_________| WebDAV |____[Archivos y directorios]
+                     \ | Apache  |         +--------+
+                      \| httpd   |         +--------+
+reset.xnas.local ------x         |---------|        |----[(ltb) self-service-password ]
+                      /| 443/tcp |         |  PHP   |
+admin.xnas.local ..../ |         |.........|        |....[(lam) ldap-account-manager  ]
+                       +---------+         +--------+
 
-      \subsection {Interfaz de administraci\'{o}n}
+/opt/xNAS/
++ apache2
+| + ports.conf
+| + extra
+| \ sites-available
++ app
+| + lam
+| | \ htdocs
+| + ltb
+| | \ htdocs
+| \ static
++ ssl
+| + certs
+| \ private
+\ files
+  + staff
+  + profesor
+  \ p -> profesor
 
-        \subsubsection {Firewall}
+/etc/apache2
++ ports.conf
++ extra -> /opt/xNAS/apache2/extra
+\ sites-available
+  + default -> /opt/xNAS/apache2/sites-available/xnas.local
+  + admin.xnas.local -> /opt/xNAS/apache2/sites-available/admin.xnas.local
+  \ reset.xnas.local -> /opt/xNAS/apache2/sites-available/reset.xnas.local
 
-Los reportes que elabora la herramienta son los siguientes:
+/etc/ssl
++ certs
+| + ca.thesis.tonejito.info.crt -> /opt/xNAS/ssl/certs/ca.thesis.tonejito.info.crt
+| + xnas.local.crt -> /opt/xNAS/ssl/certs/xnas.local.crt
+| + admin.xnas.local.crt -> /opt/xNAS/ssl/certs/admin.xnas.local.crt
+| \ reset.xnas.local.crt -> /opt/xNAS/ssl/certs/reset.xnas.local.crt
+\ private
+  + xnas.local.key -> /opt/xNAS/ssl/private/xnas.local.key
+  + admin.xnas.local.key -> /opt/xNAS/ssl/private/admin.xnas.local.key
+  \ reset.xnas.local.key -> /opt/xNAS/ssl/private/reset.xnas.local.key
+\end{verbatim}
+}
 
-\begin{itemize}
-  \item N\'{u}mero de accesos por usuario.
-  \item Espacio en disco utilizado por usuario.
-  \item Estado del sistema.
-\end{itemize}
+        \subsubsection {Configuraci\'{o}n del servicio}
+
+Se instalan los certificados \textsc{SSL} del servidor web mediante los siguientes comandos:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # cd /etc/ssl/private
+    # ln -vsf ../../../opt/xNAS/ssl/xnas.local.key
+    # cd /etc/ssl/certs
+    # ln -vsf ../../../opt/xNAS/ssl/ca.thesis.tonejito.info.crt
+    # ln -vsf ../../../opt/xNAS/ssl/xnas.local.crt
+    # c_rehash
+\end{verbatim}
+}
+
+Para configurar de manera adecuada la directiva \verb/NameVirtualHost/ para los sitios por \textsc{HTTPS} se copia el archivo \verb/ports.conf/ al directorio principal de Apache \textit{httpd}.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # cd /opt/xNAS/apache2
+    # cp ports.conf /etc/apache2
+    # /etc/init.d/apache2 restart
+    # apache2ctl -S
+\end{verbatim}
+}
+
+Se habilita el acceso a las configuraciones espec\'{i}ficas del \textit{appliance} al hacer una \textit{liga simb\'{o}lica} al directorio \verb/extra/:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # cd /etc/apache2
+    # ln -vsf ../../opt/xNAS/apache2/extra
+\end{verbatim}
+}
+
+Se instalan y habilitan los m\'{odulos} necesarios para que las funcionalidades del sitio se realizen de manera adecuada, esto incluye la autenticaci\'{o}n y la funcionalidad de \textsc{WebDAV}. Por \'{u}ltimo se reinicia el servicio para aplicar los cambios.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # aptitude install libapache2-mod-rpaf
+    # cd /etc/apache2/sites-available
+    # ln -vsf ../../../opt/xNAS/apache2/xnas.local
+    # a2dissite default
+    # a2enmod headers ssl rewrite ldap authnz_ldap dav dav_fs dav_lock
+    # a2enmod proxy proxy_http rpaf
+    # a2ensite default
+    # /etc/init.d/apache2 restart
+\end{verbatim}
+}
+
+%\ifdraft{Configuraci\'{o}n de Apache \textsc{httpd}.}{\verbatimincludebox{./etc/apache2/apache2.conf}}
+
+    \section {Implementaci\'{o}n de las interfaces de usuario}
+
+      \subsection {Interfaz de administraci\'{o}n \textit{LDAP Account Manager}}
+
+Se descarga el \textit{tarball} del c\'{o}digo fuente y se descomprime en el directorio \verb|lam/htdocs|:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # cd /opt/xNAS/app/lam
+    # wget -c 'http://iweb.dl.sourceforge.net/project/lam/LAM/4.8/ldap-account-manager-4.8.tar.bz2'
+    # tar -xvvjf ldap-account-manager-4.8.tar.bz2 -C /opt/xNAS/app/lam
+    # mv ldap-account-manager-4.8 htdocs
+\end{verbatim}
+}
+
+Se establecen permisos de escritura para el servidor web en los directorios \verb/sess/ y \verb/temp/:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # chown -cR www-data:www-data /opt/xNAS/app/lam/htdocs/{sess,tmp}
+\end{verbatim}
+}
+
+Se instalan los archivos de configuraci\'{o}n de la herramienta:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # cd /opt/xNAS/app/lam/htdocs/config
+    # ln -vsf ../../lam.conf
+    # ln -vsf ../../config.cfg
+\end{verbatim}
+}
+
+Se instala el certificado, la llave privada y la configuraci\'{o}n del sitio, una vez realizado esto, se reinicia el servicio:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # cd /etc/ssl/private
+    # ln -vsf ../../../opt/xNAS/ssl/admin.xnas.local.key
+    # cd /etc/ssl/certs
+    # ln -vsf ../../../opt/xNAS/ssl/admin.xnas.local.crt
+    # c_rehash
+
+    # cd /etc/apache2/sites-available
+    # ln -vsf ../../../opt/xNAS/apache2/admin.xnas.local
+    # a2ensite admin.xnas.local
+    # /etc/init.d/apache2 reload
+\end{verbatim}
+}
+
+%         \subsubsection {Firewall}
+% 
+% Los reportes que elabora la herramienta son los siguientes:
+% 
+% \begin{itemize}
+%   \item N\'{u}mero de accesos por usuario.
+%   \item Espacio en disco utilizado por usuario.
+%   \item Estado del sistema.
+% \end{itemize}
 
       \subsection {Interfaz de cambio de contrase\~{n}a}
 
-La interfaz de cambio de contrase\~{n}a
+Se descarga el paquete de instalaci\'{o}n del sitio web oficial y se extrae en el directorio \verb|ltb/htdocs|:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # cd /opt/xNAS/app/ltb
+    # wget -c 'http://tools.ltb-project.org/attachments/download/497/\ 
+      ltb-project-self-service-password-0.8.tar.gz'
+    # tar -xvvzf ltb-project-self-service-password-0.8.tar.gz -C /opt/xNAS/app/ltb
+    # mv ltb-project-self-service-password-0.8 htdocs
+\end{verbatim}
+}
+
+Se instala el certificado, la llave privada y la configuraci\'{o}n del \verb/VirtualHost/, hecho esto se reinicia el servicio para reflejar los cambios.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # cd /etc/ssl/private
+    # ln -vsf ../../../opt/xNAS/ssl/reset.xnas.local.key
+    # cd /etc/ssl/certs
+    # ln -vsf ../../../opt/xNAS/ssl/reset.xnas.local.crt
+    # c_rehash
+
+    # cd /etc/apache2/sites-available
+    # ln -vsf ../../../opt/xNAS/apache2/reset.xnas.local
+    # a2ensite reset.xnas.local
+    # /etc/init.d/apache2 reload
+\end{verbatim}
+}
+
+
 
     \section {Hardening}
 
       \subsection {Sistema operativo}
 
+        \subsubsection {Actualizaciones desatendidas}
+
+Una parte importante de la configuraci\'{o}n de seguridad de un sistema radica en la instalaci\'{o}n peri\'{o}dica de actualizaciones, al ejecutar el siguiente comando y responder \textbf{YES} en el cuadro de di\'{a}logo, se configura el sistema para descargar e instalar \emph{autom\'{a}ticamente} las actualizaciones de seguridad que sean liberadas por el fabricante del sistema operativo.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # dpkg-reconfigure unattended-upgrades
+
++------------------------+ Configuring unattended-upgrades +------------------------+
+|                                                                                   |
+| Applying updates on a frequent basis is an important part of keeping systems      |
+| secure. By default, updates need to be applied manually using package management  |
+| tools. Alternatively, you can choose to have this system automatically download   |
+| and install security updates.                                                     |
+|                                                                                   |
+| Automatically download and install stable updates?                                |
+|                       <Yes>                          <No>                         |
++-----------------------------------------------------------------------------------+
+\end{verbatim}
+}
+
         \subsubsection {Firewall}
+
+Para filtrar el tr\'{a}fico no deseado se establecieron las siguientes pol\'{i}ticas de \textit{firewall} de host en el equipo:
+
+\begin{itemize}
+  \item Se permite todo el tr\'{a}fico proveniente de la interfaz \textit{loopback}.
+  \item Las conexiones a trav\'{e}s de \textsc{SSH} se permiten \'{u}nicamente desde los siguientes segmentos de red:
+  \begin{enumerate}
+    \item Segmentos de \textsc{RedUNAM}: \verb|132.247.0.0/16| , \verb|132.248.0.0/16|
+    \item Red interna de la \textsc{DICyG}.
+  \end{enumerate}
+  \item Se permiten las conexiones al puerto de \textsc{HTTPS} desde cualquier host, ya sea de la red interna, segmentos de \textsc{RedUNAM} o Internet.
+\end{itemize}
 
       \subsection {Servicios de red}
 
+Restricci\'{o}n de acceso
+
         \subsubsection {ssh}
+
+\begin{itemize}
+  \item Se permite el acceso \'{u}nicamente al grupo de usuarios pertenecientes al staff de la DICyG
+\end{itemize}
 
         \subsubsection {http}
 
+\begin{itemize}
+  \item Se restringe el acceso a cada \verb/VirtualHost/ desde determinado rango de direcciones IP
+\end{itemize}
+
         \subsubsection {ldap}
+
+\begin{itemize}
+  \item Se permiten conexiones locales por \verb/socket/ \verb|ldapi:///| y conexiones al puerto 389 para diagn\'{o}stico
+\end{itemize}
 
