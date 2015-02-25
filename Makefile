@@ -16,6 +16,7 @@ PANDOC=		pandoc
 
 SUDO=		sudo
 APTITUDE=	aptitude
+PORT=		/opt/local/bin/port
 
 .SUFFIXES:	.tex .dvi .eps .ps .pdf
 
@@ -53,11 +54,13 @@ GS_QUIET =
 ifeq ($(shell uname -s),Linux)
   BACKUP_SUFFIX=-i''
   VIEWER=$(shell which evince)
+  INSTALL=$(APTITUDE)
 endif
 # Darwin / Mac OS X
 ifeq ($(shell uname -s),Darwin)
   BACKUP_SUFFIX=-i ''
   VIEWER=$(shell which open)
+  INSTALL=$(PORT)
 endif
 # Cygwin
 ifeq ($(shell uname -s),CYGWIN_NT-6.1-WOW64)
@@ -78,8 +81,8 @@ endif
 
 # Install dependencies
 deps:
-	$(SUDO) $(APTITUDE) install \
-	texlive pandoc pandoc-citeproc \
+	$(SUDO) $(INSTALL) install \
+	pandoc texlive \
 	texlive-latex-extra  texlive-bibtex-extra \
 	texlive-lang-english texlive-lang-spanish ;
 
@@ -104,9 +107,9 @@ $(MAIN).dvi:	$(MAIN).tex $(FIGURES) $(FILES)
 	$(LATEX) $*.tex; 
 	$(BIBTEX) $*;
 	$(LATEX) $*.tex;
-	while grep -s 'Rerun' $*.log 2> /dev/null; do	\
-		$(LATEX) $*.tex;			\
-	done
+	#while grep -s 'Rerun' $*.log 2> /dev/null; do	\
+	#	$(LATEX) $*.tex;			\
+	#done
 
 # GhostScript command line options based upon:
 # http://pages.cs.wisc.edu/~ghost/doc/cvs/Ps2pdf.htm#PDFA
