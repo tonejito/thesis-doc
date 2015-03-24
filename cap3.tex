@@ -4,7 +4,7 @@
 
     \section {Configuraci\'{o}n del sistema operativo}
 
-El sistema operativo que ser\'{a} utilizado para la implementaci\'{o}n es \textsc{Debian GNU/Linux} 7.0 \textit{\guillemotleft wheezy\guillemotright} que se instalar\'{a} de manera nativa en el servidor y se le aplicar\'{a}n configuraciones personalizadas para ejecutar el software que ser\'{a} implementado, ajustar el rendimiento y reforzar la seguridad de los servicios.
+El sistema operativo que ser\'{a} utilizado para la implementaci\'{o}n es \textsc{Debian GNU/Linux} 7.0 \textit{\guillemotleft wheezy\guillemotright} que se instalar\'{a} de manera nativa en el servidor y se le aplicar\'{a}n configuraciones personalizadas para ejecutar el software que ser\'{a} implementado, ajustar el rendimiento y reforzar la seguridad de los servicios que ofrezca.
 
       \subsection {Arreglo de discos RAID}
 
@@ -12,7 +12,17 @@ Los discos duros del servidor ser\'{a}n configurados en un arreglo RAID debido a
 
 Para realizar la configuraci\'{o}n de un arreglo RAID [] por software se realiza lo siguiente:
 
+\begin{itemize}
+  \item Crear las particiones
+  \item Crear arreglo
+  \item Asignar tipo y punto de montaje
+  \item Formatear
+  \item guardar configuraci\'{o}n
+\end{itemize}
+
       \subsection {Reducci\'{o}n de componentes instalados}
+
+Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los paquetes que se instalan en el sistema operativo para disminuir la ventana de posibilidades de tener una intrusi\'{o}n. Con la siguiente configuraci\'{o}n se guardan en disco \'{u}nicamente las paginas de manual en ingles y se evita la instalacion de paquetes no esenciales del sistema operativo \footnote{http://aptitude.alioth.debian.org/doc/en/ch02s05s05.html}
 
 {
 \scriptsize
@@ -20,6 +30,7 @@ Para realizar la configuraci\'{o}n de un arreglo RAID [] por software se realiza
 \begin{verbatim}
   aptitude install localepurge
   en_US.utf-8
+  echo 'Apt::Install-Recommends "false"' > /etc/apt/apt.conf.d/10Install-Recommends
 \end{verbatim}
 }
 
@@ -30,20 +41,45 @@ Para realizar la configuraci\'{o}n de un arreglo RAID [] por software se realiza
 Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguientes opciones:
 
 \begin{itemize}
-  \item Permitir el acceso al grupo de usuarios de la \textit{Unidad de C\'{o}mputo} de la \textsc{DICyG} (\textit{AllowGroups}).
-  \item  Mostrar una pantalla antes de iniciar la sesi\'{o}n en la que se listen las pol\'{i}ticas de uso del sistema (\textit{Banner}).
-  \item Evitar la desconexi\'{o}n manteniendo actividad en la sesi\'{o}n (\textit{TCPKeepAlive} y \textit{ClientAliveInterval}).
-  \item Evitar la redirecci\'{o}n de puertos y sesiones gr\'{a}ficas (\textit{AllowTCPForwarding}, \textit{GatewayPorts} y \textit{X11Forwarding}).
-  \item Desconectar al usuario si no inicia sesi\'{o}n en 60 segundos (\textit{LoginGraceTime}).
+  \item Restringir el acceso administrativo directo \'{u}nicamente mediante autenticaci\'{o}n de llave p\'{u}blica.
+\newline
+\verb|PermitRootLogin without-password|
+  \item Deshabilitar el acceso a cuentas que tengan una contrase\~{n}a vac\'{i}a.
+\newline
+\verb|PermitEmptyPasswords no|
+  \item Permitir el acceso al grupo de usuarios de la \textit{Unidad de C\'{o}mputo} de la \textsc{DICyG}.
+\newline
+\verb|AllowGroups adm staff support|
+  \item  Mostrar una pantalla antes de iniciar la sesi\'{o}n en la que se listen las pol\'{i}ticas de uso del sistema.
+\newline
+\verb|Banner /etc/issue.net|
+  \item Evitar la desconexi\'{o}n manteniendo actividad en la sesi\'{o}n.
+\newline
+\verb|TCPKeepAlive yes|
+\newline
+\verb|ClientAliveInterval 30|
+  \item Evitar la redirecci\'{o}n de puertos y sesiones gr\'{a}ficas.
+\newline
+\verb|AllowTCPForwarding no|
+\newline
+\verb|GatewayPorts no|
+\newline
+\verb|X11Forwarding no|
+  \item Desconectar al usuario si no inicia sesi\'{o}n en 60 segundos.
+\newline
+\verb|LoginGraceTime 60|
 \end{itemize}
 
-\ifdraft{Configuraci\'{o}n de \textsc{OpenSSH}.}{\verbatimincludebox{./etc/ssh/sshd_config}}
+%\ifdraft{Configuraci\'{o}n de \textsc{OpenSSH}.}{\verbatimincludebox{./etc/ssh/sshd_config}}
+%\verbatimincludebox{./etc/ssh/sshd_config}
+
+
 
       \subsection {OpenLDAP}
 
           \subsubsection {Instalaci\'{o}n de \textsc{OpenLDAP}}
 
-Se instala \textsc{OpenLDAP} utilizando aptitude, es necesario contestar \textbf{NO} en el cuadro de di\'{a}logo para seguir el asistente de instalaci\'{o}n:
+Se instala \textsc{OpenLDAP} utilizando el comando aptitude, es necesario contestar \textbf{NO} en el cuadro de di\'{a}logo para seguir el asistente de instalaci\'{o}n:
 
 {
 \scriptsize
@@ -128,7 +164,7 @@ A continuaci\'{o}n se pide que se introduzca la contrase\~{n}a que ser\'{a} util
 \end{verbatim}
 }
 
-La versi\'{o}n del protocolo \textsc{LDAPv2} es obsoleta y se recomienda deshabilitar el soporte para la misma, responder \textbf{NO} en el cuadro de di\'{a}logo.
+Se recomienda deshabilitar el soporte del protocolo \textsc{LDAPv2} puesto que es obsoleta, responder \textbf{NO} en el cuadro de di\'{a}logo.
 
 {
 \scriptsize
@@ -161,7 +197,7 @@ Se configur\'{o} el sistema operativo para permitir que los usuarios de \textsc{
 
 Adicionalmente se instalaron los demonios \textsc{NSCD} y \textsc{NSLCD} que se utilizan para guardar en \textit{cache} los resultados de las consultas al directorio y para representar los objetos \textit{posixAccount} de \textsc{LDAP} como cuentas est\'{a}ndar de \textsc{UNIX}.
 
-\ifdraft{Configuraci\'{o}n de \textsc{OpenLDAP}.}{\verbatimincludebox{./etc/ldap/ldap.conf}}
+%\ifdraft{Configuraci\'{o}n de \textsc{OpenLDAP}.}{\verbatimincludebox{./etc/ldap/ldap.conf}}
 
 {
 \scriptsize
@@ -216,12 +252,120 @@ Para la configuraci\'{o}n de \textsc{PAM}, se indica que se utilizar\'{a}n como 
 \end{verbatim}
 }
 
+          \subsubsection {Inicializaci\'{o}n del directorio \textsc{LDAP}}
+
+Una vez instalado el servicio de directorio, es necesario inicializar la estructura b\'{a}sica que comprende los contenedores de usuarios, materias y grupos. % mencionados en \cite{}... \ref{}...
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+  # ldapadd -Y external ... < xNAS-base.ldif
+  + users
+  +   staff
+  +   profesores
+  +   alumnos
+  + grupos
+  + materias
+\end{verbatim}
+}
+
+          \subsubsection {Carga de datos en el directorio \textsc{LDAP}}
+
+Para realizar la carga de la base de datos de materias, profesores, alumnos y grupos se desarroll\'{o} un programa en el lenguaje de programaci\'{o}n \textsl{Ruby} que lee los datos desde un archivo origen en formato \verb|CSV|, establece las relaciones entre los objetos y realiza el ingreso de los datos al directorio.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+  # ldapadd -Y external ... < xNAS-base.ldif
+  + users
+  +   staff
+  +   profesores
+  +   alumnos
+  + grupos
+  + materias
+\end{verbatim}
+}
+
+La arquitectura del subsistema de importaci\'{o}n comprende cuatro scripts que funcionan de manera similar de acuerdo a los siguientes lineamientos:
+
+\begin{itemize}
+  \item Realiza una conexi\'{o}n al directorio LDAP, a esta operaci\'{o}n se le denomina \textit{bind}.
+  \item Convierte el archivo de entrada a la codificaci\'{o}n \textsc{UTF-8}.
+  \item Lee cada rengl\'{o}n del archivo de entrada y verifica el contenido de cada campo contra una \textit{expresi\'{o}n regular} para identificar los renglones que no cumplan con el formato establecido.
+  \item Si el rengl\'{o}n cumple con el formato, se contin\'{u}a con el pr\'{o}ximo paso, de lo contrario se guarda en una lista de renglones conflictivos que debe ser revisada manualmente y salta al siguiente rengl\'{o}n.
+  \item Asigna los atributos de cada objeto LDAP de acuerdo al valor de cada campo.
+  \item Establece las relaciones necesarias con otros objetos y realiza una transacci\'{o}n para insertar los datos en el directorio.
+  \item Verifica que la inserci\'{o}n se haya realizado correctamente, en caso de existir alg\'{u}n error, se  realiza un rollback de las operaciones.
+\end{itemize}
+
+\diagramblock
+{Diagrama de bloques de los scripts de carga}
+{DiagramaScript}
+{
+  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+  {
+    \begin{pspicture}(0,-1.9053571)(11.5,1.9053571)
+    \rput[bl](0.33,1.1353571){\textbf{CSV}}
+    \rput[bl](4.07,1.0803571){./script.rb}
+    \rput[bl](3.295,-1.1396428){\textsl{Objetos Conflictivos}}
+    \rput[bl](3.345,-1.9053571){Verificaci\'{o}n manual}
+    \rput[bl](8.675,1.1353571){Directorio LDAP}
+    \psframe[linecolor=black, linewidth=0.04, dimen=outer](6.1,1.8953571)(3.6,0.6153571)
+    \psframe[linecolor=black, linewidth=0.04, dimen=outer](1.48,1.8953571)(0.0,0.6153571)
+    \psframe[linecolor=black, linewidth=0.04, dimen=outer](6.6,-0.51964283)(3.1,-1.4996428)
+    \psframe[linecolor=black, linewidth=0.04, dimen=outer](11.5,1.9053571)(8.48,0.6053571)
+    \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(1.5,1.2644575)(3.592381,1.2454098)
+    \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(6.087619,1.2553571)(8.506667,1.2553571)
+    \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(6.0971427,0.84988093)(7.0590477,0.84988093)(7.04,-1.0834523)(6.582857,-1.0929762)
+    \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.1161904,-1.1691667)(2.44,-1.1691667)(2.44,0.8213095)(3.6209524,0.8117857)
+    \end{pspicture}
+  }
+}
+
+Cada archivo de entrada \verb|CSV| tiene varias columnas que contienen informaci\'{o}n acerca del tipo de objeto que representan, a continuaci\'{o}n se muestran las columnas que se requieren en los archivos de entrada:
+
+{
+\begin{table}[H]
+\caption{Formato de los archivos \textsl{CSV}}{}
+\label{tab:csv-format}
+\noindent\makebox[\textwidth]{%
+\begin{tabular}[c]{c|c c c c c}
+%\hline
+\textbf{Archivo} & \multicolumn{5}{c}{\textbf{Columnas}} \\
+\hline \hline
+\textit{staff.csv} & usuario & nombre & correo & curp & \\
+\textit{materias.csv} & id & grupo & materia & rfc & profesor \\
+\textit{profesores.csv} & rfc & nombre & mail & & \\
+\textit{alumnos.csv} & cuenta & nombre & correo & asignatura & grupo \\
+%\hline
+\end{tabular}
+} % ending of \makebox
+\end{table}
+}
+
+Utilizando el script se inicializa cada parte por separado desde el archivo fuente en el siguiente orden:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+  # iconv ...
+  # ./magic.rb < staff.csv
+  # ./magic.rb < materias.csv
+  # ./magic.rb < profesores.csv
+  # ./magic.rb < alumnos.csv
+\end{verbatim}
+}
+
       \subsection {Apache httpd}
 
         \subsubsection {Esquema de configuraci\'{o}n}
 
 La configuraci\'{o}n de Apache \textit{httpd} comprende tres \verb/VirtualHost/ que sirven como puntos de entrada para el acceso de s\'{o}lo lectura o lectura y escritura a los archivos almacenados en el servidor.
 
+{
 \begin{table}[H]
 \caption{VirtualHost configurados en Apache HTTPD}{}
 \label{tab:virtualhost}
@@ -237,20 +381,48 @@ La configuraci\'{o}n de Apache \textit{httpd} comprende tres \verb/VirtualHost/ 
 \end{tabular}
 } % ending of \makebox
 \end{table}
+}
+
+\diagramblock
+{Diagrama Apache HTTPD VirtualHost}
+{DiagramaVirtualHost}
+{
+ \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ {
+  \begin{pspicture}(0,-2.2)(15.1,2.2)
+  \rput[bl](1.2,1.0){xnas.local}
+  \rput[bl](0.22,-0.2){reset.xnas.local}
+  \rput[bl](0.0,-1.4){admin.xnas.local}
+  \rput[bl](4.3,-0.2){443/tcp}
+  \rput[bl](6.67,0.2){Apache}
+  \rput[bl](6.72,-0.6){HTTPD}
+  \rput[bl](9.5,1.0){WebDAV}
+  \rput[bl](12.7,1.0){Archivos}
+  \rput[bl](12.7,0.6){Carpetas}
+  \rput[bl](9.79,-1.0){PHP}
+  \rput[bl](12.7,-0.6){ltb (reset)}
+  \rput[bl](12.7,-1.4){lam (admin)}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](15.1,2.2)(5.9,-2.2)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](8.3,1.8)(6.3,-1.8)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](11.5,0.2)(9.1,-1.8)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](11.5,1.8)(9.1,0.6)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(8.3,1.0)(9.1,1.0)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(8.3,-0.6)(9.1,-0.6)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dotted, dotsep=0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(8.3,-1.4)(9.1,-1.4)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(11.5,-0.6)(12.3,-0.6)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dotted, dotsep=0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(11.5,-1.4)(12.3,-1.4)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.1820512,0.95897436)(3.7739928,0.95897436)(4.217949,0.13846155)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.1820512,-0.2717949)(4.217949,-0.2717949)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dotted, dotsep=0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.1820512,-1.2974359)(3.7739928,-1.2974359)(4.217949,-0.6820513)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(11.5,1.0)(12.3,1.0)
+  \end{pspicture}
+ }
+}
 
 {
 \scriptsize
 \linespread{1}
 \begin{verbatim}
-                       +---------+         +--------+
-      xnas.local ____  |         |_________| WebDAV |____[Archivos y directorios]
-                     \ | Apache  |         +--------+
-                      \| httpd   |         +--------+
-reset.xnas.local ------x         |---------|        |----[(ltb) self-service-password ]
-                      /| 443/tcp |         |  PHP   |
-admin.xnas.local ..../ |         |.........|        |....[(lam) ldap-account-manager  ]
-                       +---------+         +--------+
-
 /opt/xNAS/
 + apache2
 | + ports.conf
@@ -409,16 +581,6 @@ Se instala el certificado, la llave privada y la configuraci\'{o}n del sitio, un
 \end{verbatim}
 }
 
-%         \subsubsection {Firewall}
-% 
-% Los reportes que elabora la herramienta son los siguientes:
-% 
-% \begin{itemize}
-%   \item N\'{u}mero de accesos por usuario.
-%   \item Espacio en disco utilizado por usuario.
-%   \item Estado del sistema.
-% \end{itemize}
-
       \subsection {Interfaz de cambio de contrase\~{n}a}
 
 Se descarga el paquete de instalaci\'{o}n del sitio web oficial y se extrae en el directorio \verb|ltb/htdocs|:
@@ -454,8 +616,6 @@ Se instala el certificado, la llave privada y la configuraci\'{o}n del \verb/Vir
 \end{verbatim}
 }
 
-
-
     \section {Hardening}
 
       \subsection {Sistema operativo}
@@ -485,17 +645,61 @@ Una parte importante de la configuraci\'{o}n de seguridad de un sistema radica e
 
         \subsubsection {Firewall}
 
-Para filtrar el tr\'{a}fico no deseado se establecieron las siguientes pol\'{i}ticas de \textit{firewall} de host en el equipo:
+Para filtrar el tr\'{a}fico de red se establecieron las siguientes pol\'{i}ticas de \textit{firewall} de host en el equipo:
 
 \begin{itemize}
   \item Se permite todo el tr\'{a}fico proveniente de la interfaz \textit{loopback}.
-  \item Las conexiones a trav\'{e}s de \textsc{SSH} se permiten \'{u}nicamente desde los siguientes segmentos de red:
+  \item Las conexiones a trav\'{e}s de \textsc{SSH} se permiten \'{u}nicamente desde los siguientes segmentos confiables de red:
   \begin{enumerate}
     \item Segmentos de \textsc{RedUNAM}: \verb|132.247.0.0/16| , \verb|132.248.0.0/16|
     \item Red interna de la \textsc{DICyG}.
   \end{enumerate}
-  \item Se permiten las conexiones al puerto de \textsc{HTTPS} desde cualquier host, ya sea de la red interna, segmentos de \textsc{RedUNAM} o Internet.
+  \item Se permiten las conexiones por \textsc{HTTPS} desde cualquier host, ya sea de la red interna, segmentos de \textsc{RedUNAM} o Internet.
+  \item Las conexiones al demonio de \textsc{LDAP} se permiten \'{u}nicamente desde \textit{localhost}.
 \end{itemize}
+
+\diagramblock
+{Trusted Networks}
+{TrustedNetworks}
+{
+ \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ {
+ \begin{pspicture}(0,-1.84)(3.68,1.84)
+ \rput[bl](1.225,1.48){Internet}
+ \rput[bl](0.89,0.46){\textsc{RedUNAM}}
+ \rput[bl](1.23,-0.76){\textsc{DICyG}}
+ \pscircle[linecolor=black, linewidth=0.04, dimen=outer](1.84,-0.58){0.78}
+ \pscircle[linecolor=black, linewidth=0.04, dimen=outer](1.84,-0.19){1.45}
+ \psframe[linecolor=black, linewidth=0.04, dimen=outer](3.68,1.84)(0.0,-1.84)
+ \end{pspicture}
+ }
+}
+
+Para implementar las reglas de firewall se utiliz\'{o} \textit{iptables}, el software est\'{a}ndar para filtrado de paquetes en \textsc{GNU/Linux} y el paquete \textit{iptables-persistent} que sirve para aplicar las reglas guardadas en cada inicio del sistema operativo. El programa se instala con \textit{aptitude} y al configurarlo pregunta si se guardar\'{a}n las reglas de \textsc{IPv4} e \textsc{IPv6}.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # aptitude install iptables-persistent
+
++--------------------| Configuring iptables-persistent |--------------------+
+|                                                                           |
+| Current iptables rules can be saved to the configuration file             |
+| /etc/iptables/rules.v4. These rules will then be loaded automatically     |
+| during system startup.                                                    |
+|                                                                           |
+| Rules are only saved automatically during package installation. See the   |
+| manual page of iptables-save(8) for instructions on keeping the rules     |
+| file up-to-date.                                                          |
+|                                                                           |
+| Save current IPv4 rules?                                                  |
+|                                                                           |
+|                    <Yes>                       <No>                       |
+|                                                                           |
++---------------------------------------------------------------------------+
+\end{verbatim}
+}
 
       \subsection {Servicios de red}
 

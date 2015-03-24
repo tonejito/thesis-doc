@@ -157,7 +157,7 @@ Si el medio de almacenamiento presenta da\~{n}o f\'{i}sico los datos almacenados
 
       \item \textbf{Fallo de componentes internos}
 
-Dependiendo del tipo de medio, la falla de componentes internos puede ser fatal, por ejemplo, si se tiene un disco \'{o}ptico y falla el lector de discos, basta con reemplazar la unidad para que el disco se pueda leido sin problemas, en cambio si falla el cabezal de un disco duro, ser\'{a} necesario un proceso m\'{a}s complicado y costoso para recuperar la informaci\'{o}n.
+Dependiendo del tipo de medio, la falla de componentes internos puede ser fatal, por ejemplo, si se tiene un disco \'{o}ptico y falla el lector de discos, basta con reemplazar la unidad para que el disco se pueda leido sin problemas, en cambio si falla el cabezal de un disco duro, ser\'{a} necesario un proceso m\'{a}s complicado y costoso para recuperar la informaci\'{o}n contenida.
 
     \end{itemize}
 
@@ -179,7 +179,7 @@ Para evitar el da\~{n}o por una descarga de electricidad est\'{a}tica o por la p
       \item \textbf{Protecci\'{o}n contra da\~{n}o f\'{i}sico}
 
 % ampliar
-El da\~{n}o f\'{i}sico se puede prevenir si se maneja el medio de almacenamiento con precauci\'{o}n y se guarda en un lugar fresco y seco que no tenga exposici\'{o}n directa a la luz solar y que est\'{e} fuera del alcance
+El da\~{n}o f\'{i}sico se puede prevenir si se maneja el medio de almacenamiento con precauci\'{o}n y se guarda en un lugar fresco y seco que no tenga exposici\'{o}n directa a la luz solar y que est\'{e} fuera del alcance de campos magn\'{e}ticos.
 
     \end{itemize}
 
@@ -187,14 +187,14 @@ El da\~{n}o f\'{i}sico se puede prevenir si se maneja el medio de almacenamiento
 
 % gloasario SOHO
 
-En un entorno de hogar u oficina peque\~{n}a (\textsc{SOHO}) el n\'{u}mero de usuario es reducido y se busca la manera de tener un almacenamiento centralizado, para resolver este problema varias tecnicas han aparecido a lo largo de los a\~{n}os:
+En un entorno de hogar u oficina peque\~{n}a (\textsc{soho}) el n\'{u}mero de usuarios es reducido y gradualmente se busca la manera de tener un almacenamiento centralizado, para resolver este problema varias tecnicas han aparecido a lo largo de los a\~{n}os:
 
     \begin{itemize}
       \item Grabar la informaci\'{o}n a discos \'{o}pticos como CDs y DVDs.
       \item Utilizar discos duros o unidades removibles como medio de respaldo.
       \item Compartir directorios a trav\'{e}s de la red para acceder archivos almacenados en equipos remotos.
-      \item Utilizar dispositivos de bloque compartidos en red para tener acceso a sistemas de archivos remotos.
-      \item Hacer uso de los servicios de almacenamiento en la nube (cloud storage) para guardar los archivos en un sitio remoto y accederlos a trav\'{e}s de Internet.
+      \item Utilizar dispositivos de bloque compartidos en red (\textsc{NBD} o \textsc{SAN}) para tener acceso a sistemas de archivos remotos.
+      \item Hacer uso de los servicios de almacenamiento en la nube (\textit{cloud storage}) para guardar los archivos en un sitio remoto y accederlos a trav\'{e}s de Internet.
     \end{itemize}
 
 La descripci\'{o}n de cada elemento se muestra a continuaci\'{o}n:
@@ -203,37 +203,37 @@ La descripci\'{o}n de cada elemento se muestra a continuaci\'{o}n:
 
       \item \textbf{Respaldo en medios \'{opticos}}
 
-Guardar informaci\'{o}n en discos \'{o}pticos deja la copia como s\'{o}lo lectura y aunque eso sea bueno para respaldos completos o archivado de datos, no lo es para guardar datos que van a cambiar como documentos que se est\'{a}n editando porque cada vez que se escriba al disco \'{o}ptico se guardar\'{a} una nueva copia del documento en lugar de reemplazar la existente.
+Guardar informaci\'{o}n en discos \'{o}pticos deja la copia como s\'{o}lo lectura y aunque sea ideal bueno para respaldos completos o archivado de datos, no es recomendable para guardar datos que van a cambiar porque cada vez que se escriba al disco \'{o}ptico se guardar\'{a} una nueva copia del documento en lugar de reemplazar la existente.
 
       \item \textbf{Respaldo en medios magn\'{e}ticos y unidades port\'{a}tiles}
 
-Desde la masificaci\'{o}n de los discos duros externos y las unidades port\'{a}tiles se han adoptado como medio de almacenamiento para los datos que cambian mucho. Gracias a que estos medios generalmente son de lectura y escritura, las modificaciones de los archivos pueden guardarse reemplazando la copia original y si un archivo es borrado se recupera el espacio en disco.
+Desde la masificaci\'{o}n de los discos duros externos y las unidades port\'{a}tiles, estos se han adoptado como medio de almacenamiento para los datos que cambian frecuentemente. Gracias a que estos medios generalmente son de lectura y escritura, las modificaciones de los archivos pueden guardarse reemplazando la copia original y si un archivo es borrado se recupera el espacio en disco.
 
-Una desventaja del uso de este tipo de medios radica en que se pueden editar tanto la copia local en la computadora como el archivo de respaldo produciendo diferentes versiones y el usuario es quien tiene que decidir que versi\'{o}n del archivo es la que debe considerarse la m\'{a}s actualizada.
+Una desventaja del uso de este tipo de medios radica en que se puede editar tanto la copia local en la computadora como el archivo de respaldo produciendo diferentes versiones y el usuario es quien tiene que decidir que versi\'{o}n del archivo es la que debe considerarse la m\'{a}s actualizada.
 
       \item \textbf{Recursos compartidos por red}
 
 Cuando se cuenta con una red de computadoras se puede utilizar otro mecanismo para almacenar datos en equipos remotos por medio de recursos compartidos en red. Dependiendo de la configuraci\'{o}n se pueden asignar permisos de s\'{o}lo lectura o lectura-escritura.
 
-A diferencia de la copia a unidades port\'{a}tiles, en este caso, se tiene una sola copia de la informaci\'{o}n por lo que no existe posibilidad de encontrar una versi\'{o}n desactualizada de los datos. La gran desventaja de los recursos compartidos entre varios equipos, es que los datos no se pueden acceder cuando el equipo que los almacena se encuentra apagado o con intermitencias de conectividad. Esta soluci\'{o}n funciona mejor cuando los equipos que comparten los recursos est\'{a}n encendidos la mayor\'{i}a del tiempo.
+A diferencia del m\'{e}todo de respaldo anterior, se tiene una sola copia de la informaci\'{o}n por lo que no existe posibilidad de encontrar una versi\'{o}n desactualizada de los datos. La gran desventaja de los recursos compartidos entre varios equipos, es que los datos no se pueden acceder cuando el equipo que los almacena se encuentra apagado o con intermitencias de conectividad. Esta soluci\'{o}n funciona mejor cuando los equipos que comparten los recursos est\'{a}n encendidos la mayor\'{i}a del tiempo.
 
-Los protocolos que com\'{u}nmente se utilizan para compartir recursos a trav\'{e}s de la red son \textsc{NFS} y \textsc{CIFS} (samba) siendo el primero el protocolo m\'{a}s utilizado en sistemas tipo \textsc{UNIX} y el segundo se utiliza mayormente en sistemas Windows, aunque se puede utilizar tambi\'{e}n en sistemas \textsc{UNIX} a trav\'{e}s de la suite de herramientas de samba \cite{_samba_????}.
+Los protocolos que com\'{u}nmente se utilizan para compartir recursos a trav\'{e}s de la red son \textsc{NFS} y \textsc{CIFS} (\textsc{SMB}) siendo el primero el protocolo m\'{a}s utilizado en sistemas tipo \textsc{UNIX} y el segundo se utiliza mayormente en sistemas Windows, aunque se puede utilizar tambi\'{e}n en sistemas \textsc{UNIX} a trav\'{e}s de la suite de herramientas de \textit{Samba} \cite{_samba_????}.
 
       \item \textbf{Dispositivos de bloque compartidos por red}
 
-Otra soluci\'{o}n popular en sistemas \textsc{UNIX} es compartir dispositivos de bloque a trav\'{e}s de la red para acceder a discos remotos como si fuesen locales, ejemplos de esto son Network Block Device en GNU/Linux y tecnolog\'{i}as \textsc{SAN} como iSCSI (Internet SCSI) o AoE (ATA over Ethernet). Este tipo de soluciones llegan a ser costosas y no se adaptan bien a ambientes como empresas peque\~{n}as u hogares.
+Otra soluci\'{o}n popular en sistemas \textsc{UNIX} es compartir dispositivos de bloque a trav\'{e}s de la red para acceder a discos remotos como si fuesen locales, ejemplos de esto son \textsc{NBD} (\textit{Network Block Device}) en \textsc{GNU/Linux} y tecnolog\'{i}as \textsc{SAN} como \textsc{iSCSI} (\textit{Internet SCSI}) o \textsc{AoE} (\textit{ATA over Ethernet}). Este tipo de soluciones llegan a ser costosas y no se adaptan bien a ambientes como empresas peque\~{n}as u hogares.
 
-      \item \textbf{Servicios de almacenamiento en la nube}
+      \item \textbf{Servicios de almacenamiento en la nube (\emph{Cloud Storage})}
 
 En los \'{u}ltimos a\~{n}os los servicios de almacenamiento en la nube han ganado popularidad por ser servicios administrados que no requieren mucha configuraci\'{o}n por parte del usuario. Algunos de estos servicios ofrecen una unidad virtual que se monta en el equipo local para acceder al contenido y agregar o modificar los archivos del usuario, mientras que otros sincronizan los archivos locales con el servidor remoto a trav\'{e}s de un programa que funge como intermediario.
 
-        \textsc{Nube p\'{u}blica}
+        \textbf{\textsl{Nube p\'{u}blica}}
 
-Los servicios de almacenamiento remotos en Internet son denominados \emph{Almacenamiento de Nube P\'{u}blica}, son \'{u}tiles cuando la velocidad de la conexi\'{o}n se ajusta a la demanda de los usuarios. Dado que los archivos residen en otro lugar, es necesario descargar y subir grandes cantidades de datos al servicio de almacenamiento remoto y si la conexi\'{o}n a Internet no es lo suficientemente r\'{a}pida, la experiencia del usuario se ven afectada.
+Los servicios de almacenamiento remotos en Internet son denominados \emph{Almacenamiento de Nube P\'{u}blica}, son \'{u}tiles cuando la velocidad de la conexi\'{o}n se ajusta a la demanda de los usuarios. Dado que los archivos residen en otro lugar, es necesario descargar y subir grandes cantidades de datos al servicio de almacenamiento remoto y si la conexi\'{o}n a Internet no es lo suficientemente r\'{a}pida, la experiencia del usuario se ve afectada.
 
 Com\'{u}nmente este tipo de servicios ofrece menos de 100GB de almacenamiento y al subir o descargar archivos de gran tama\~{n}o la copia es muy lenta.
 
-        \textsc{Nube privada}
+        \textbf{\textsl{Nube privada}}
 
 Cuando el servicio de almacenamiento se encuentra en la red local, se puede aprovechar de mejor manera, dado que la velocidad de transmisi\'{o}n en una red local es m\'{a}s r\'{a}pida que entre redes separadas. Adem\'{a}s el servicio no est\'{a} disponible para clientes de otras redes por lo que se denomina \emph{Privado}. En este caso los usuarios tienen una mejor experiencia al utilizar el servicio y los datos se quedan resguardados en un equipo dentro de la organizaci\'{o}n.
 
@@ -244,7 +244,7 @@ En este tipo de soluciones se pueden tener grandes vol\'{u}menes de datos dispon
   \subsection {Arreglos RAID}
   \label{Arreglos-RAID}
 
-El t\'{e}rmino \textsc{RAID} es un acr\'{o}nimo de \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Independientes) \cite{_bytepile.com_????} \footnote{Dependiendo de la bibliograf\'{i}a el t\'{e}rmino puede ser tambi\'{e}n referido como \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Baratos).}. Es una tecnolog\'{i}a que se basa en combinar m\'{u}ltiples discos para que se comporten como uno solo. Dependiendo el modo de operaci\'{o}n, ofrece la posibilidad de tomar varios discos y sumar el espacio de almacenamiento o bien replicar los datos escribiendolos en varios discos para tener tolerancia a fallos \cite{_raid_????-2}.
+El t\'{e}rmino \textsc{RAID} es un acr\'{o}nimo de \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Independientes) \footnote{Dependiendo de la bibliograf\'{i}a el t\'{e}rmino puede ser tambi\'{e}n referido como \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Baratos).} \cite{_bytepile.com_????} es una tecnolog\'{i}a que se basa en combinar m\'{u}ltiples discos para que se comporten como uno solo. Dependiendo el modo de operaci\'{o}n, ofrece la posibilidad de tomar varios discos y sumar el espacio de almacenamiento o bien replicar los datos escribiendolos en varios discos para tener tolerancia a fallos \cite{_raid_????-2}.
 
 Los arreglos de disco se pueden configurar por tarjetas dedicadas de hardware o mediante configuraci\'{o}n de software en el sistema operativo. En los \emph{arreglos por hardware} el firmware de la tarjeta controladora tiene los algoritmos encargados de leer, escribir y sincronizar los datos, mientras que en los \emph{arreglos por software} el kernel del sistema operativo es el encargado de realizar estas operaciones \cite{_chapter_????}.
 
@@ -256,26 +256,49 @@ A continuaci\'{o}n se muestra la descripci\'{o}n de los tipos de arreglo \textsc
 
   \item \textbf{Linear}
 
-En esta variante se combinan dos o mas discos como si fueran uno solo al \emph{concatenar} el espacio y s\'{o}lo se escribir\'{a} al disco 1 si el disco 0 se encuentra lleno.
+En esta variante se combinan dos o mas discos como si fueran uno solo al \emph{concatenar} el espacio y s\'{o}lo se escribir\'{a} al disco 1 si el disco 0 se encuentra completamente lleno.
 
 Para crear el arreglo no importa el tama\~{n}o de los discos. Si se acceden dos archivos que est\'{a}n almacenados en diferentes discos el rendimiento aumenta porque la lectura se realiza en paralelo.
 
 Este m\'{e}todo no ofrece redundancia, por lo que si falla un disco los datos contenidos en este se pierden. Es posible montar el sistema de archivos en un modo especial y recuperar los datos almacenados en los dem\'{a}s discos.
 
-%\includegraphics[keepaspectratio=true]{figures/000-Linear}
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%                +---------+---------+
+%                |AB   ... |  ...   Z|
+%SO -- Linear -- |  HDD 0  |  HDD 1  |
+%      A,B..Z    |         |         |
+%                +---------+---------+
+%\end{verbatim}
+%}
+\diagramblock
+{Diagrama de funcionamiento del arreglo \textit{Linear}}
+{LinearArray}
 {
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-                +---------+---------+
-                |AB   ... |  ...   Z|
-SO -- Linear -- |  HDD 0  |  HDD 1  |
-      A,B..Z    |         |         |
-                +---------+---------+
-\end{verbatim}
+ \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ {
+  \begin{pspicture}(0,-1.0)(11.8,1.0)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.0)(0.0,-1.0)
+  \rput[bl](0.56,0.1){Sistema}
+  \rput[bl](0.4,-0.4){Operativo}
+  \rput[bl](3.9234793,0.6){Arreglo}
+  \rput[bl](4.0234795,0.2){Linear}
+  \rput[bl](3.2234793,-0.9){A,B,C, ... ,X,Y,Z}
+  \rput[bl](7.4,-0.6){HDD-0}
+  \rput[bl](9.85,-0.6){HDD-1}
+  \rput[bl](7.24,0.2){A,B,C, ...}
+  \rput[bl](9.7,0.2){... ,X,Y,Z}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,1.0)(7.0,-1.0)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](11.8,1.0)(9.4,-1.0)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(2.8,0.0)(6.4,0.0)
+  \rput[bl](4.053479,-0.48181817){Datos}
+  \end{pspicture}
+ }
 }
 
-  \item \textbf{RAID 0}
+  \item \textbf{RAID 0 - \textit{Stripe}}
 
 Tambi\'{e}n llamado \emph{Stripe}, organiza los datos en bloques que se reparten en los discos copiando un bloque a cada disco.
 
@@ -283,26 +306,49 @@ Aunque es posible crear el arreglo con discos de diferente tama\~{n}o, se recomi
 
 No ofrece redundancia porque los bloques se reparten en todos los discos y si uno falla se perder\'{a}n partes de todos los archivos haciendo que el contenido no tenga coherencia.
 
-%\includegraphics[keepaspectratio=true]{figures/001-RAID0}
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%                    +---------+
+%                    |AC       |
+%                /-- |  HDD 0  |
+%                |   |         |
+%                |   +---------+
+%SO -- RAID  0 --+
+%      A,B,C,D   |   +---------+
+%                |   |BD       |
+%                \-- |  HDD 1  |
+%                    |         |
+%                    +---------+
+%\end{verbatim}
+%}
+\diagramblock
+{Diagrama de funcionamiento del arreglo \textit{RAID-0}}
+{RAID0-Array}
 {
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-                    +---------+
-                    |AC       |
-                /-- |  HDD 0  |
-                |   |         |
-                |   +---------+
-SO -- RAID  0 --+
-      A,B,C,D   |   +---------+
-                |   |BD       |
-                \-- |  HDD 1  |
-                    |         |
-                    +---------+
-\end{verbatim}
+ \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ {
+  \begin{pspicture}(0,-2.0)(9.4,2.0)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.0)(0.0,-1.0)
+  \rput[bl](0.56,0.1){Sistema}
+  \rput[bl](0.4,-0.4){Operativo}
+  \rput[bl](3.9234793,0.6){Arreglo}
+  \rput[bl](3.9334793,0.2){RAID-0}
+  \rput[bl](3.6034794,-0.9){A,B,C,D, ...}
+  \rput[bl](7.384,0.4){HDD-0}
+  \rput[bl](7.45,-1.6){HDD-1}
+  \rput[bl](7.384,1.2){A,C, ...}
+  \rput[bl](7.462,-0.8){B,D, ...}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,2.0)(7.0,0.0)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,0.0)(7.0,-2.0)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(2.8,0.0)(6.4,0.0)
+  \rput[bl](4.053479,-0.48181817){Datos}
+  \end{pspicture}
+ }
 }
 
-  \item \textbf{RAID 1}
+  \item \textbf{RAID 1 - \textit{Mirror}}
 
 Denominado \emph{Mirror}, guarda una copia exacta de los datos en ambos discos. Se requiere un m\'{i}nimo de dos discos de igual tama\~{n}o para hacer este arreglo, si los discos son de diferente capacidad, el espacio del arreglo ser\'{a} el del disco m\'{a}s peque\~{n}o.
 
@@ -310,26 +356,49 @@ Este tipo de arreglo es tolerante a fallos siempre y cuando un solo disco siga f
 
 El rendimiento de escritura es menor al que presenta un solo disco porque se deben de hacer copias exactas de la informaci\'{o}n en todos los discos pertenecientes al arreglo.
 
-%\includegraphics[keepaspectratio=true]{figures/002-RAID1}
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%                    +---------+
+%                    |ABCD     |
+%                /-- |  HDD 0  |
+%                |   |         |
+%                |   +---------+
+%SO -- RAID  1 --+
+%      A,B,C,D   |   +---------+
+%                |   |ABCD     |
+%                \-- |  HDD 1  |
+%                    |         |
+%                    +---------+
+%\end{verbatim}
+%}
+\diagramblock
+{Diagrama de funcionamiento del arreglo \textit{RAID-1}}
+{RAID1-Array}
 {
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-                    +---------+
-                    |ABCD     |
-                /-- |  HDD 0  |
-                |   |         |
-                |   +---------+
-SO -- RAID  1 --+
-      A,B,C,D   |   +---------+
-                |   |ABCD     |
-                \-- |  HDD 1  |
-                    |         |
-                    +---------+
-\end{verbatim}
+\psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ {
+  \begin{pspicture}(0,-2.0)(9.4,2.0)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.0)(0.0,-1.0)
+  \rput[bl](0.56,0.1){Sistema}
+  \rput[bl](0.4,-0.4){Operativo}
+  \rput[bl](3.9234793,0.6){Arreglo}
+  \rput[bl](3.9334793,0.2){RAID-1}
+  \rput[bl](3.6034794,-0.9){A,B,C,D, ...}
+  \rput[bl](7.444,0.4){HDD-0}
+  \rput[bl](7.516,-1.6){HDD-1}
+  \rput[bl](7.384,1.2){A,B,C,D}
+  \rput[bl](7.456,-0.8){A,B,C,D}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,2.0)(7.0,0.0)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,0.0)(7.0,-2.0)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(2.8,0.0)(6.4,0.0)
+  \rput[bl](4.053479,-0.48181817){Datos}
+  \end{pspicture}
+ }
 }
 
-  \item \textbf{RAID 5}
+  \item \textbf{RAID 5 - \textit{Stripe with distributed parity}}
 
 En este tipo de arreglo se dividen los datos en bloques como sucede en \textsc{RAID} 0 y adem\'{a}s se calcula un bloque de paridad que sirve para reconstruir los datos si uno de los discos falla.
 
@@ -337,30 +406,57 @@ Esta configuraci\'{o}n de \textsc{RAID} tiene tolerancia a fallos, siempre y cua
 
 Dado que se calcula la paridad de los bloques de datos , se debe restar el tama\~{n}o de un disco para obtener el espacio m\'{a}ximo utilizable.
 
-%\includegraphics[keepaspectratio=true]{figures/003-RAID5}
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%                      +---------+
+%                      | A, C,P2 |
+%                  /-- |  HDD 0  |
+%                  |   |         |
+%                  |   +---------+
+%                  |   +---------+
+%                  |   | B,P1, E |
+%SO --   RAID  5 --+-- |  HDD 1  |
+%      A,B,C,D,E,F |   |         |
+%                  |   +---------+
+%                  |   +---------+
+%                  |   |P0, D, F |
+%                  \-- |  HDD 2  |
+%                      |         |
+%                      +---------+
+%\end{verbatim}
+%}
+
+\diagramblock
+{Diagrama de funcionamiento del arreglo \textit{RAID-5}}
+{RAID5-Array}
 {
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-                      +---------+
-                      | A, C,P3 |
-                  /-- |  HDD 0  |
-                  |   |         |
-                  |   +---------+
-                  |   +---------+
-                  |   | B,P2, E |
-SO --   RAID  5 --+-- |  HDD 1  |
-      A,B,C,D,E,F |   |         |
-                  |   +---------+
-                  |   +---------+
-                  |   |P1, D, F |
-                  \-- |  HDD 2  |
-                      |         |
-                      +---------+
-\end{verbatim}
+ \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ {
+  \begin{pspicture}(0,-3.0)(9.4,3.0)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.0)(0.0,-1.0)
+  \rput[bl](0.56,0.1){Sistema}
+  \rput[bl](0.4,-0.4){Operativo}
+  \rput[bl](3.9234793,0.6){Arreglo}
+  \rput[bl](3.9334793,0.2){RAID-5}
+  \rput[bl](3.2834792,-0.9){A,B,C,D,E,F, ...}
+  \rput[bl](7.345,1.4){HDD-0}
+  \rput[bl](7.4,-0.6){HDD-1}
+  \rput[bl](7.375,2.2){A,C,P2}
+  \rput[bl](7.47,0.2){B,P1,E}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,3.0)(7.0,1.0)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,1.0)(7.0,-1.0)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(2.8,0.0)(6.4,0.0)
+  \rput[bl](4.053479,-0.48181817){Datos}
+  \rput[bl](7.4,-2.6){HDD-2}
+  \rput[bl](7.44,-1.8){P0,D,F}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,-1.0)(7.0,-3.0)
+  \end{pspicture}
+ }
 }
 
-  \item \textbf{RAID 6}
+  \item \textbf{RAID 6 - \textit{Stripe with \textsl{dual} distributed parity}}
 
 Su funcionamiento es similar al de \textsc{RAID} 5, s\'{o}lo que se calculan dos bloques de paridad para cada bloque de datos.
 
@@ -368,32 +464,62 @@ Esta configuraci\'{o}n de arreglo puede tolerar el fallo de hasta dos discos dur
 
 Las operaciones de escritura tardan mas porque se deben calcular dos bloques de paridad, las operaciones de lectura no se ven afectadas.
 
-%\includegraphics[keepaspectratio=true]{figures/004-RAID6}
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%                            +---------- +
+%                            | A, C,P2,Q3|
+%                        /-- |  HDD 0    |
+%                        |   |           |
+%                        |   +-----------+
+%                        |   +-----------+
+%                        |   | B,P1,Q2, G|
+%                        +-- |  HDD 1    |
+%                        |   |           |
+%SO --     RAID  6     --+   +-----------+
+%      A,B,C,D,E,F,G,H   |   +-----------+
+%                        |   |P0,Q1, E, H|
+%                        +-- |  HDD 2    |
+%                        |   |           |
+%                        |   +-----------+
+%                        |   +-----------+
+%                        |   |Q0, D, F,P3|
+%                        \-- |  HDD 3    |
+%                            |           |
+%                            +-----------+
+%\end{verbatim}
+%}
+
+\diagramblock
+{Diagrama de funcionamiento del arreglo \textit{RAID-6}}
+{RAID6-Array}
 {
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-                            +---------- +
-                            | A, C,P2,Q3|
-                        /-- |  HDD 0    |
-                        |   |           |
-                        |   +-----------+
-                        |   +-----------+
-                        |   | B,P1,Q2, G|
-                        +-- |  HDD 1    |
-                        |   |           |
-SO --     RAID  6     --+   +-----------+
-      A,B,C,D,E,F,G,H   |   +-----------+
-                        |   |P0,Q1, E, H|
-                        +-- |  HDD 2    |
-                        |   |           |
-                        |   +-----------+
-                        |   +-----------+
-                        |   |Q0, D, F,P3|
-                        \-- |  HDD 3    |
-                            |           |
-                            +-----------+
-\end{verbatim}
+ \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ {
+  \begin{pspicture}(0,-4.0)(9.4,4.0)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.0)(0.0,-1.0)
+  \rput[bl](0.56,0.1){Sistema}
+  \rput[bl](0.4,-0.4){Operativo}
+  \rput[bl](3.9234793,0.6){Arreglo}
+  \rput[bl](3.9334793,0.2){RAID-6}
+  \rput[bl](2.9034793,-0.9){A,B,C,D,E,F,G,H, ...}
+  \rput[bl](7.546,2.4){HDD-0}
+  \rput[bl](7.528,0.4){HDD-1}
+  \rput[bl](7.21,3.2){A,C,P2,Q3}
+  \rput[bl](7.204,1.2){B,P1,Q2,G}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,4.0)(7.0,2.0)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,2.0)(7.0,0.0)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(2.8,0.0)(6.4,0.0)
+  \rput[bl](4.053479,-0.48181817){Datos}
+  \rput[bl](7.492,-1.6){HDD-2}
+  \rput[bl](7.168,-0.8){P0,Q1,E,H}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,0.0)(7.0,-2.0)
+  \rput[bl](7.41,-3.6){HDD-3}
+  \rput[bl](7.168,-2.8){Q0,D,F,P3}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,-2.0)(7.0,-4.0)
+  \end{pspicture}
+ }
 }
 
 \end{itemize}
@@ -404,76 +530,160 @@ Los arreglos anidados \cite{_intro_????}
 
 \begin{itemize}
 
-  \item \textbf{RAID 10}
-
-Consiste en un arreglo \textsc{RAID} 0 conformado por dos o m\'{a}s arreglos \textsc{RAID} 1, el sistema operativo detecta la presencia de un solo disco mientras que este se conforma por un arreglo \textsc{RAID} 0 (Stripe) que une los dos arreglos \textsc{RAID} 1 (Mirror).
-
-Si un disco de alg\'{u}n arreglo \textsc{RAID} 1 falla, este entra en modo degradado y el funcionamiento del arreglo \textsc{RAID} 0 no se ve afectado \footnote{Salvo por la perdida de rendimiento en el arreglo.}, si fallan dos discos del mismo arreglo \textsc{RAID} 1 el arreglo \textsc{RAID} 0 pierde los datos. Se requieren por lo menos cuatro discos para hacer esta configuraci\'{o}n.
-
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-                               +---------+
-                               |AC       |
-                           /-- |  HDD 0  |
-                           |   |         |
-                +------+   |   +---------+
-            /-- |RAID 1| --+
-            |   +------+   |   +---------+
-            |              |   |AC       |
-            |              \-- |  HDD 1  |
-            |                  |         |
-+-------+   |                  +---------+
-|RAID  0| --+
-+-------+   |                  +---------+
- A,B,C,D    |                  |BD       |
-            |              /-- |  HDD 2  |
-            |              |   |         |
-            |   +------+   |   +---------+
-            \-- |RAID 1| --+
-                +------+   |   +---------+
-                           |   |BD       |
-                           \-- |  HDD 3  |
-                               |         |
-                               +---------+
-\end{verbatim}
-}
-
-  \item \textbf{RAID 01}
+  \item \textbf{RAID 01 / RAID 0+1}
 
 Se compone por un arreglo \textsc{RAID} 1 que replica los datos contenidos en dos arreglos \textsc{RAID} 0. Se requiere un m\'{i}nimo de cuatro discos para hacer esta configuraci\'{o}n.
 
 Si falla uno o dos discos del mismo arreglo \textsc{RAID} 0, todo el arreglo se pierde y el arreglo \textsc{RAID} 1 entra en modo degradado sin perder los datos, si adem\'{a}s falla un disco de otro arreglo \textsc{RAID} 0 todos los datos se pierden.
 
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%                               +---------+
+%                               |AC       |
+%                           /-- |  HDD 0  |
+%                           |   |         |
+%                +------+   |   +---------+
+%            /-- |RAID 0| --+
+%            |   +------+   |   +---------+
+%            |              |   |BD       |
+%            |              \-- |  HDD 1  |
+%            |                  |         |
+%+-------+   |                  +---------+
+%|RAID  1| --+
+%+-------+   |                  +---------+
+% A,B,C,D    |                  |AC       |
+%            |              /-- |  HDD 2  |
+%            |              |   |         |
+%            |   +------+   |   +---------+
+%            \-- |RAID 0| --+
+%                +------+   |   +---------+
+%                           |   |BD       |
+%                           \-- |  HDD 3  |
+%                               |         |
+%                               +---------+
+%\end{verbatim}
+%}
+
+\diagramblock
+{Diagrama de funcionamiento del arreglo \textit{RAID-01}}
+{RAID01-Array}
 {
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-                               +---------+
-                               |AC       |
-                           /-- |  HDD 0  |
-                           |   |         |
-                +------+   |   +---------+
-            /-- |RAID 0| --+
-            |   +------+   |   +---------+
-            |              |   |BD       |
-            |              \-- |  HDD 1  |
-            |                  |         |
-+-------+   |                  +---------+
-|RAID  1| --+
-+-------+   |                  +---------+
- A,B,C,D    |                  |AC       |
-            |              /-- |  HDD 2  |
-            |              |   |         |
-            |   +------+   |   +---------+
-            \-- |RAID 0| --+
-                +------+   |   +---------+
-                           |   |BD       |
-                           \-- |  HDD 3  |
-                               |         |
-                               +---------+
-\end{verbatim}
+ \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ {
+  \begin{pspicture}(0,-4.2)(10.6,4.2)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.2)(0.0,-0.8)
+  \rput[bl](0.57,0.3){Arreglo}
+  \rput[bl](0.58,-0.2){RAID-1}
+  \rput[bl](0.25,-1.9){A,B,C,D, ...}
+  \rput[bl](8.8,2.6){HDD-0}
+  \rput[bl](8.8,0.6){HDD-1}
+  \rput[bl](8.8,3.4){A,C, ...}
+  \rput[bl](8.8,-1.0){A,C, ...}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,4.2)(8.2,2.2)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,2.2)(8.2,0.2)
+  \rput[bl](0.7,-1.4818182){Datos}
+  \rput[bl](8.8,-1.8){HDD-2}
+  \rput[bl](8.81,1.4){B,D, ...}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,-0.2)(8.2,-2.2)
+  \rput[bl](8.8,-3.8){HDD-3}
+  \rput[bl](8.81,-3.0){B,D, ...}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,-2.2)(8.2,-4.2)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](6.4,3.2)(4.0,1.2)
+  \rput[bl](4.57,2.3){Arreglo}
+  \rput[bl](4.58,1.8){RAID-0}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](6.4,-1.2)(4.0,-3.2)
+  \rput[bl](4.57,-2.1){Arreglo}
+  \rput[bl](4.58,-2.6){RAID-0}
+  \psline[linecolor=black, linewidth=0.04](2.6,0.31111112)(3.711111,2.3111112)(3.711111,2.3111112)
+  \psline[linecolor=black, linewidth=0.04](2.6,0.31111112)(3.711111,-2.1333334)(3.711111,-2.1333334)
+  \psline[linecolor=black, linewidth=0.04](6.6,2.3111112)(7.9333334,3.4222221)(7.9333334,3.4222221)
+  \psline[linecolor=black, linewidth=0.04](6.6,2.3111112)(7.9333334,0.9777778)(7.9333334,0.9777778)
+  \psline[linecolor=black, linewidth=0.04](6.6,-2.088889)(7.9333334,-0.9777778)(7.9333334,-0.9777778)
+  \psline[linecolor=black, linewidth=0.04](6.6,-2.088889)(7.9333334,-3.4222221)(7.9333334,-3.4222221)
+  \rput[bl](4.25,0.5){A,B,C,D, ...}
+  \rput[bl](4.25,-3.9){A,B,C,D, ...}
+  \end{pspicture}
+ }
+}
+
+  \item \textbf{RAID 10 / RAID 1+0}
+
+Consiste en un arreglo \textsc{RAID} 0 conformado por dos o m\'{a}s arreglos \textsc{RAID} 1, el sistema operativo detecta la presencia de un solo disco mientras que este se conforma por un arreglo \textsc{RAID} 0 (Stripe) que une los dos arreglos \textsc{RAID} 1 (Mirror).
+
+Si un disco de alg\'{u}n arreglo \textsc{RAID} 1 falla, este entra en modo degradado y el funcionamiento del arreglo \textsc{RAID} 0 no se ve afectado \footnote{Salvo por la perdida de rendimiento en el arreglo.}, si fallan dos discos del mismo arreglo \textsc{RAID} 1 el arreglo \textsc{RAID} 0 pierde los datos. Se requieren por lo menos cuatro discos para hacer esta configuraci\'{o}n.
+
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%                               +---------+
+%                               |AC       |
+%                           /-- |  HDD 0  |
+%                           |   |         |
+%                +------+   |   +---------+
+%            /-- |RAID 1| --+
+%            |   +------+   |   +---------+
+%            |              |   |AC       |
+%            |              \-- |  HDD 1  |
+%            |                  |         |
+%+-------+   |                  +---------+
+%|RAID  0| --+
+%+-------+   |                  +---------+
+% A,B,C,D    |                  |BD       |
+%            |              /-- |  HDD 2  |
+%            |              |   |         |
+%            |   +------+   |   +---------+
+%            \-- |RAID 1| --+
+%                +------+   |   +---------+
+%                           |   |BD       |
+%                           \-- |  HDD 3  |
+%                               |         |
+%                               +---------+
+%\end{verbatim}
+%}
+
+\diagramblock
+{Diagrama de funcionamiento del arreglo \textit{RAID-10}}
+{RAID10-Array}
+{
+ \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ {
+  \begin{pspicture}(0,-4.2)(10.6,4.2)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.2)(0.0,-0.8)
+  \rput[bl](0.57,0.3){Arreglo}
+  \rput[bl](0.58,-0.2){RAID-0}
+  \rput[bl](0.25,-1.9){A,B,C,D, ...}
+  \rput[bl](8.8,2.6){HDD-0}
+  \rput[bl](8.8,0.6){HDD-1}
+  \rput[bl](8.8,3.4){A,C, ...}
+  \rput[bl](8.8,1.4){A,C, ...}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,4.2)(8.2,2.2)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,2.2)(8.2,0.2)
+  \rput[bl](0.7,-1.4818182){Datos}
+  \rput[bl](8.8,-1.8){HDD-2}
+  \rput[bl](8.81,-1.0){B,D, ...}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,-0.2)(8.2,-2.2)
+  \rput[bl](8.8,-3.8){HDD-3}
+  \rput[bl](8.81,-3.0){B,D, ...}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,-2.2)(8.2,-4.2)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](6.4,3.2)(4.0,1.2)
+  \rput[bl](4.57,2.3){Arreglo}
+  \rput[bl](4.58,1.8){RAID-1}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](6.4,-1.2)(4.0,-3.2)
+  \rput[bl](4.57,-2.1){Arreglo}
+  \rput[bl](4.58,-2.6){RAID-1}
+  \rput[bl](4.6,0.5){A,C, ...}
+  \rput[bl](4.61,-3.9){B,D, ...}
+  \psline[linecolor=black, linewidth=0.04](2.6,0.31111112)(3.711111,2.3111112)(3.711111,2.3111112)
+  \psline[linecolor=black, linewidth=0.04](2.6,0.31111112)(3.711111,-2.1333334)(3.711111,-2.1333334)
+  \psline[linecolor=black, linewidth=0.04](6.6,2.3111112)(7.9333334,3.4222221)(7.9333334,3.4222221)
+  \psline[linecolor=black, linewidth=0.04](6.6,2.3111112)(7.9333334,0.9777778)(7.9333334,0.9777778)
+  \psline[linecolor=black, linewidth=0.04](6.6,-2.088889)(7.9333334,-0.9777778)(7.9333334,-0.9777778)
+  \psline[linecolor=black, linewidth=0.04](6.6,-2.088889)(7.9333334,-3.4222221)(7.9333334,-3.4222221)
+  \end{pspicture}
+ }
 }
 
 \end{itemize}
@@ -500,9 +710,9 @@ Si falla uno o dos discos del mismo arreglo \textsc{RAID} 0, todo el arreglo se 
 \hline
 \textsc{RAID}  6  & \yesmark & \yesmark \tiny{doble} & 4+ & 2 Discos & Tolera el fallo de hasta dos discos. \\
 \hline
-\textsc{RAID} 10 & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} &  Tolera el fallo de discos de diferentes arreglos. \\
-\hline
 \textsc{RAID} 01 & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} & Tolera el fallo de arreglos completos. \\
+\hline
+\textsc{RAID} 10 & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} &  Tolera el fallo de discos de diferentes arreglos. \\
 %\hline
 \end{tabular}
 } % ending of \makebox
@@ -516,27 +726,27 @@ Un appliance es un conjunto de elementos (hardware, software y sistema operativo
 
 \begin{itemize}
 
-  \item Hardware
+  \item \textbf{Hardware}
 
 Los appliances de hardware son sistemas especializados dise\~{n}ados para realizar tareas espec\'{i}ficas, el fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta nueva funci\'{o}n \cite{}.
 
-Regularmente tienen una interfaz web para administraci\'{o}n, algunos integran un shell para realizar las funciones conectandose a trav\'{e}s de ssh y en otros casos integran adem\'{a}s soporte para \textsc{SNMP}.
+Regularmente tienen una interfaz web para administraci\'{o}n, algunos integran un \textit{shell} para realizar las funciones conectandose a trav\'{e}s de \textsc{ssh} y en otros casos integran adem\'{a}s soporte para \textsc{SNMP}.
 
-  \item Software
+  \item \textbf{Software}
 
 Los appliances de software pueden ser distribuidos en paquetes descomprimibles (tarballs) que contienen el instalador y todos los progamas necesarios para que funcione la soluci\'{o}n \cite{_bitnami:_????}.
 
-Estos integran s\'{o}lo la interfaz web, puesto que se ejecutan en un equipo existente y son independientes del shell o el soporte \textsc{SNMP} que se tenga en el mismo.
+Estos integran s\'{o}lo la interfaz web, puesto que se ejecutan en un equipo existente y son independientes del \textit{shell} o el soporte \textsc{SNMP} que se tenga en el mismo.
 
-  \item Virtual
+  \item \textbf{Virtual}
 
-Los appliances virtuales son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}ficamente dise\~{n}adas para un ambiente de virtualizaci\'{o}n que integran la funcionalidad de los appliances de hardware dentro de un equipo virtual. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual para procesar en paralelo las peticiones de los usuarios \cite{_why_????}.
+Este tipo de appliances son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}ficamente dise\~{n}adas para un ambiente de virtualizaci\'{o}n que integran la funcionalidad de los appliances de hardware dentro de un equipo virtual. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual para procesar en paralelo las peticiones de los usuarios \cite{_why_????}.
 
 \end{itemize}
 
 \section {Seguridad Inform\'{a}tica}
 
-La seguridad inform\'{a}tica se refiere a los procesos y metodolog\'{i}as dise\~{n}ados e implementados para proteger informaci\'{o}n sin importar que est\'{e} en medios impresos, electr\'{o}nicos o de otro tipo, esta puede ser confidencial, privada o sensible y se debe proteger de accesos no autorizados, uso, mal uso, revelaci\'{o}n, destrucci\'{o}n o modificaci\'{o}n \cite{_sans:_????}
+La seguridad inform\'{a}tica se refiere a los procesos y metodolog\'{i}as dise\~{n}ados e implementados para proteger informaci\'{o}n sin importar que est\'{e} en medios impresos, electr\'{o}nicos o de otro tipo, esta puede ser confidencial, privada o sensible y se debe proteger de accesos no autorizados, mal uso, revelaci\'{o}n, destrucci\'{o}n o modificaci\'{o}n \cite{_sans:_????}
 
   \subsection {Principios de seguridad inform\'{a}tica}
 
@@ -546,19 +756,19 @@ La seguridad inform\'{a}tica se refiere a los procesos y metodolog\'{i}as dise\~
 
 Este principio busca conservar los datos \'{u}nicamente para la persona que est\'{a} destinada a leerlos \cite{_nist_????}\cite{_information_????}.
 
-Por ejemplo, al cifrar un correo electr\'{o}nico o un archivo se garantiza que s\'{o}lo ser\'{a} visto por la persona que tenga los medios para descifrarlo (ya sea una llave privada o una contrase\~{n}a).
+Por ejemplo, al cifrar un un archivo se garantiza que s\'{o}lo ser\'{a} visto por la persona que tenga los medios para descifrarlo (ya sea una llave privada o una contrase\~{n}a).
 
   \item \textbf{Integridad}
 
 Este principio busca que la informaci\'{o}n no pueda ser alterada, ya sea por fallos en el medio de almacenamiento o modificaciones no autorizadas \cite{_nist_????}\cite{_information_????}.
 
-Por ejemplo, al firmar un archivo o un correo electr\'{o}nico la firma s\'{o}lo pasar\'{a} la prueba de verificaci\'{o}n si el mensaje est\'{a} integro, de lo contrario no podr\'{a} ser verificado satisfactoriamente.
+Por ejemplo, al firmar digitalmente un archivo la firma s\'{o}lo pasar\'{a} la prueba de verificaci\'{o}n si el mensaje est\'{a} integro, de lo contrario no podr\'{a} ser verificado satisfactoriamente.
 
   \item \textbf{Disponibilidad}
 
 Este principio dicta que la informaci\'{o}n debe poderse acceder cuando sea necesario o respetando el criterio de los tiempos establecidos \cite{_nist_????}\cite{_information_????}.
 
-Por ejemplo, un recurso en linea debe estar disponible siempre para que pueda ser accedido por las personas que har\'{a}n uso de \'{e}l, en caso de tener horarios de disponibilidad se debe garantizar que el recurso se pueda acceder durante ese periodo.
+Por ejemplo, un recurso en linea debe estar disponible siempre para que pueda ser accedido por las personas que har\'{a}n uso de \'{e}l, en caso de tener horarios de disponibilidad se debe garantizar que el recurso se pueda acceder durante ese periodo de tiempo.
 
 \end{itemize}
 
@@ -568,14 +778,15 @@ Una vulnerabilidad es un fallo en la l\'{o}gica o una situaci\'{o}n que se da en
 
   \subsection {Hardening}
 
-Se denomina \textit{hardening} al proceso de reforzar las configuraciones del sistema operativo y las aplicaciones para reducir la posibilidad de que una vulnerabilidad se presente \cite{padilla_buenas_2009}.
-
-El hardening se puede realizar en diferentes partes del sistema operativo como:
+Se denomina \textit{hardening} al proceso de reforzar las configuraciones del sistema operativo y las aplicaciones para reducir la posibilidad de que una vulnerabilidad se presente \cite{padilla_buenas_2009}. El fortalecimiento de las configuraciones se puede realizar en diferentes partes del sistema operativo como:
 
 \begin{itemize}
-  \item Configuraci\'{o}n de acceso f\'{i}sico.
   \item Configuraci\'{o}n de inicio.
+  \item Configuraci\'{o}n de acceso f\'{i}sico.
+  \item Permisos del sistema de archivos.
+  \item Cuotas de espacio en disco.
   \item Configuraci\'{o}n de acceso remoto.
+  \item Directivas de \textit{firewall} de host.
   \item Configuraci\'{o}n de las aplicaciones.
 \end{itemize}
 
@@ -630,23 +841,23 @@ Debian \footnote{El nombre \textit{Debian} proviene de la conjunci\'{o}n del nom
 
 Hoy en d\'{i}a Debian es la distribuci\'{o}n m\'{a}s significativa de GNU/Linux que no tiene fines comerciales, esta caracter\'{i}stica hace posible que el proyecto sea gestionado por una organizaci\'{o}n de individuos que velan por el proyecto y no por los intereses de la empresa que lo tiene a su cargo.
 
-\section {Protocolo HTTP}
+\section {Protocolo \textsc{HTTP}}
 
 El protocolo \textsc{HTTP} permite transferir datos a trav\'{e}s de Internet en un esquema cliente - servidor. La primer versi\'{o}n de este protocolo (\verb|HTTP/1.0|) fu\'{e} descrita en el \textsc{RFC} 1945 \cite{_rfc_????-1}, con la evoluci\'{o}n de Internet el protocolo fue mejorado y se le agregaron funciones como el control de transferencia o el soporte de mensajes \textit{MIME} que dieron origen a la versi\'{o}n actual (\verb|HTTP/1.1|) definida en el RFC 2616 \cite{_rfc_????}.
 
-  \subsection {HTTPS - HTTP over SSL}
+  \subsection {\textsc{HTTPS} - \textit{HTTP over SSL}}
 
 En el protocolo \textsc{HTTP} los datos se envian y reciben en claro, esto deja la informaci\'{o}n vulnerable puesto que se puede interceptar o incluso modificar afectando la confidencialidad o integidad de la misma.
 
 Para solventar estas debilidades se defini\'{o} \textsc{HTTPS} en el \textsc{RFC} 2818 \cite{_rfc_????-6} que cifra la conexi\'{o}n \textsc{HTTP} utilizando \textit{SSL} \footnote{Secure Socket Layer por sus siglas en ingl\'{e}s, definido en el \textsc{RFC} 6101 \cite{_rfc_????-4}.} o su sucesor \textit{TLS} \footnote{Transport Layer Security por sus siglas en ingl\'{e}s, definido en el \textsc{RFC} 5246 \cite{_rfc_????-3}}, garantizando as\'{i} la confidencialidad e integridad de la informaci\'{o}n.
 
-  \subsection {WebDAV}
+  \subsection {\textsc{WebDAV}}
 
 Web Distributed Authoring and Versioning es una extensi\'{o}n al protocolo \textsc{HTTP} que a\~{n}ade la capacidad de interactuar con archivos alnacendos en el servidor web.
 
 Est\'{a} definido en el \textsc{RFC} 4918 \cite{_rfc_????-2} y establece un conjunto de extensiones al protocolo \textsc{HTTP} que incluyen m\'{e}todos, cabeceras y formatos tanto de petici\'{o}n como de respuesta para interactuar con el servidor con la finalidad de crear, modificar y borrar archivos. Adem\'{a}s establece un mecanismo denominado \textit{File locking} que previene que dos personas editen el documento al mismo tiempo para no perder cambios.
 
-\section {Protocolo LDAP}
+\section {Protocolo \textsc{LDAP}}
 
 El protocolo \textsc{LDAP} \footnote{Ligthweight Directory Access Protocol por sus siglas en ingl\'{e}s.} est\'{a} definido en el \textsc{RFC} 4511 \cite{_rfc_????-5} y establece el directorio como una colecci\'{o}n de objetos que comparte a otros equipos y programas a trav\'{e}s de una conexi\'{o}n de red.
 
@@ -671,7 +882,7 @@ La nomenclatura de los objetos es similar a la de \textsc{DNS}, es decir, el niv
 } % ending of \makebox
 \end{table}
 
-Cada objeto tiene un identificador \'{u}nico en el directorio conocido como \textit{Distinguished Name} (\textbf{dn}) que ayuda a diferenciar los objetos entre si. Se listan a continuaci\'{o}n a manera de ejemplo dos de los diferentes nombres distinguidos que se utilizar\'{a}n en este documento.
+Cada objeto tiene un identificador \'{u}nico en el directorio conocido como \textit{Distinguished Name} (\textbf{dn}) que ayuda a diferenciar los objetos entre si. Se listan a continuaci\'{o}n, a manera de ejemplo, dos de los diferentes nombres distinguidos que se utilizar\'{a}n en este documento.
 
 {
 \scriptsize
@@ -710,22 +921,14 @@ En \textsc{LDAP}  los usuarios tienen ciertas propiedades como identificador, no
 \scriptsize
 \linespread{1}
 \begin{verbatim}
-simpleSecurityObject
-  cn
-  userPassword
-
-posixAccount
-  cn
-  userPassword
-  uid
-  gid
-  GECOS
-  home
-  shell
-
-posixGroup
-  gid
-  memberUid
+    simpleSecurityObject        posixAccount          posixGroup
+      cn                          cn                    gid
+      userPassword                userPassword          memberUid
+                                   uid                
+                                   gid                
+                                   GECOS              
+                                   home               
+                                   shell              
 \end{verbatim}
 }
 
@@ -736,7 +939,7 @@ El protocolo \textsc{SSH} \footnote{Secure Shell por sus siglas en ingl\'{e}s.} 
 Com\'{u}nmente se utiliza para conectarse a un servidor y utilizar la interfaz de l\'{i}nea de comandos, aunque el protocolo es muy flexible y se puede utilizar para cumplir las funciones que se listan a continuaci\'{o}n:
 
   \begin{itemize}
-    \item{Ejecutar un shell en el equipo remoto.}
+    \item{Ejecutar un \textit{shell} en el equipo remoto.}
     \item{Transferencia de archivos desde y hacia el equipo remoto.}
     \item{Creaci\'{o}n de t\'{u}neles para permitir que el equipo local alcance servicios remotos \textit{LocalForward}.}
     \item{Creaci\'{o}n de t\'{u}neles para que los equipos remotos puedan acceder a los servicios locales \textit{RemoteForward}.}
@@ -744,15 +947,15 @@ Com\'{u}nmente se utiliza para conectarse a un servidor y utilizar la interfaz d
     \item{Generar un proxy \textsc{SOCKS} para enviar el tr\'{a}fico local al equipo remoto \textit{DynamicForward}.}
   \end{itemize}
 
-  \subsection {SCP - Secure Copy}
-
-Este protocolo se utiliza para copiar archivos entre dos equipos, ya sea desde el equipo remoto hacia el local o viceversa y utiliza \textsc{SSH} como transporte para los datos. Est\'{a} basado en el programa de copia de archivos \textit{rcp} originario de la variante de \textsc{UNIX} \textsc{BSD} \cite{_scp_????}.
-
-  \subsection {SFTP - Secure FTP}
-
-El protocolo \textsc{SFTP} dise\~{n}ado por la \textsc{IETF} \footnote{Espec\'{i}ficamente por el grupo \textsc{SECSH} de la \textsc{IETF}.} es una extensi\'{o}n del protocolo \textsc{SSH} que a diferencia de \textsc{SCP} permite acceder, transferir y borrar archivos adem\'{a}s de listar los directorios del equipo remoto \cite{_chrooted_????}. La versi\'{o}n actual de este protocolo es la 6.0.
-
-  \subsection {SSHFS - Secure Shell Filesystem}
-
-\textsc{SSHFS} es un programa que hace uso de \textsc{SFTP} para \textit{montar} un directorio remoto en el equipo local utilizando \textsc{SSH} como transporte \cite{_sshfs_????} y hace uso de la biblioteca de sistemas de archivo \textsc{FUSE} \cite{_ssh_????} del lado del cliente para realizar el mapeo y manejo del sistema de archivos virtual. El funcionamiento de un directorio montado con \textsc{SSHFS} es similar a \textsc{NFS} o \textsc{CIFS} \cite{_sshfs:_????}.
-
+%  \subsection {SCP - Secure Copy}
+%
+%Este protocolo se utiliza para copiar archivos entre dos equipos, ya sea desde el equipo remoto hacia el local o viceversa y utiliza \textsc{SSH} como transporte para los datos. Est\'{a} basado en el programa de copia de archivos \textit{rcp} originario de la variante de \textsc{UNIX} \textsc{BSD} \cite{_scp_????}.
+%
+%  \subsection {SFTP - Secure FTP}
+%
+%El protocolo \textsc{SFTP} dise\~{n}ado por la \textsc{IETF} \footnote{Espec\'{i}ficamente por el grupo \textsc{SECSH} de la \textsc{IETF}.} es una extensi\'{o}n del protocolo \textsc{SSH} que a diferencia de \textsc{SCP} permite acceder, transferir y borrar archivos adem\'{a}s de listar los directorios del equipo remoto \cite{_chrooted_????}. La versi\'{o}n actual de este protocolo es la 6.0.
+%
+%  \subsection {SSHFS - Secure Shell Filesystem}
+%
+%\textsc{SSHFS} es un programa que hace uso de \textsc{SFTP} para \textit{montar} un directorio remoto en el equipo local utilizando \textsc{SSH} como transporte \cite{_sshfs_????} y hace uso de la biblioteca de sistemas de archivo \textsc{FUSE} \cite{_ssh_????} del lado del cliente para realizar el mapeo y manejo del sistema de archivos virtual. El funcionamiento de un directorio montado con \textsc{SSHFS} es similar a \textsc{NFS} o \textsc{CIFS} \cite{_sshfs:_????}.
+%
