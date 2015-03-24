@@ -1,6 +1,10 @@
 % Used to import eps graphics
 \usepackage[dvips]{graphicx}
 
+% Recommended by LaTeX-Draw
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+
 % 
 \usepackage{latexsym}
 
@@ -134,6 +138,7 @@
 
 }
 
+% Insert the following information in the final pdf
 \newcommand{\thesispdfinfo}[7]{%
   \hypersetup{
     bookmarks=true,      % show bookmarks bar?
@@ -156,6 +161,22 @@
     urlcolor=cyan        % color of external links
   }
 }
+
+\newcommand{\diagramblock}[3]{%
+{
+\linespread{1}
+\begin{figure}[h]
+\label{fig:#2}
+\begin{center}
+\footnotesize
+#3
+\end{center}
+\caption{#1}
+\end{figure}
+}
+}
+
+\linespread{1}
 
 % The \munepsfig command is used to insert a new EPS figure 
 % into our document.  Usage is:
@@ -379,8 +400,8 @@
 }
 
 % Use this package to draw diagrams
-\usepackage{tikz}
-\usetikzlibrary{shapes,arrows}
+%\usepackage{tikz}
+%\usetikzlibrary{shapes,arrows}
 
 % Extra fonts to draw checkmark instead of importing graphic
 %	http://tex.stackexchange.com/questions/132783/how-to-write-checkmark-in-latex
