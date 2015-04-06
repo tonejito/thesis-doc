@@ -111,7 +111,7 @@
 \hspace*{-1.3cm}
 \begin{tabular}{ c C{13cm} }
 % \hline
-\multirow{3}{*}{\includegraphics[keepaspectratio=true, width=90px]{figures/UNAM}} 
+\wireframebox{figures/UNAM}{3.18}{3.58}
   & \textbf{\Large #1} \\
   & \rule{\linewidth}{2.0mm} \\
   & \textbf{\Large #2} \\
@@ -127,7 +127,7 @@
   & \textbf{\Large #5} \tabularnewline \\
   & \tabularnewline \\
 % \hline
-\multirow{3}{*}{\includegraphics[keepaspectratio=true, width=90px]{figures/Ingenieria}} 
+\wireframebox{figures/Ingenieria}{3.18}{3.58}
   & \textbf{\large Director de Tesis} \\
   & \textbf{\Large #6} \tabularnewline \\
   & \textbf{\emph{#7}} \\ 
@@ -138,10 +138,33 @@
 
 }
 
+% Insert a 
+\newcommand{\wireframebox}[3]{%
+ \multirow{3}{*}
+ {
+  \ifdraft
+  {
+   \includegraphics[keepaspectratio=true, width=90px]{#1}
+  }
+  {
+   \psscalebox{1.0 1.0}
+   {
+    \begin{pspicture}(0,0)(#2,#3)
+    \psframe[linecolor=black, linewidth=0.01, linestyle=dotted, dotsep=0.1cm, dimen=outer](#2,#3)(0.0,0.0)
+    \psline[linecolor=black,  linewidth=0.02, linestyle=dotted, dotsep=0.1cm](0.0,0.0)(#2,#3)
+    \psline[linecolor=black,  linewidth=0.02, linestyle=dotted, dotsep=0.1cm](0.0,#3)(#2,0.0)
+    \end{pspicture}
+   }
+  }
+ }
+}
+
 % Insert the following information in the final pdf
+% https://www.tug.org/applications/hyperref/manual.html
 \newcommand{\thesispdfinfo}[7]{%
   \hypersetup{
     bookmarks=true,      % show bookmarks bar?
+    bookmarksopen=true, % If Acrobat bookmarks are requested, show them with all the subtrees expanded.
     unicode=false,       % non-Latin characters in Acrobat’s bookmarks
     pdftoolbar=true,     % show Acrobat’s toolbar?
     pdfmenubar=true,     % show Acrobat’s menu?
@@ -154,11 +177,18 @@
     pdfproducer={#4},    % producer of the document
     pdfkeywords={Tesis} {#5} {#6}, % list of keywords
     pdfnewwindow=true,   % links in new PDF window
-    colorlinks=false,    % false: boxed links; true: colored links
-    linkcolor=red,       % color of internal links (change box color with linkbordercolor)
-    citecolor=green,     % color of links to bibliography
-    filecolor=magenta,   % color of file links
-    urlcolor=cyan        % color of external links
+    pdfpagemode=UseOutlines, % Determines how the file is opening in Acrobat
+    pdfdisplaydoctitle=true, % display document title instead of file name in title bar
+    pdflang=es-MX,       % PDF language identifier (RFC 3066)
+    colorlinks=true,     % false: boxed links; true: colored links
+    allcolors=black,     % Set all color options (without border and field options).
+    allbordercolors=white, % Set all border color options
+    hidelinks,           % Hide links (removing color and border).
+%   breaklinks=true,     % allow links to break over lines by making links over multiple lines into PDF links to the same target
+    hyperfootnotes=true, % Makes the footnote marks into hyperlinks to the footnote text. Easily broken …
+    backref=true,        % do bibliographical back references
+    pdfborder=white,     % The style of box around links; defaults to a box with lines of 1pt thickness,
+                         % but the colorlinks option resets it to produce no border.
   }
 }
 
@@ -174,6 +204,14 @@
 \caption{#1}
 \end{figure}
 }
+}
+
+\newcommand{\code}[1]{%
+ {
+  \scriptsize
+  \newline
+  \texttt{#1}
+ }
 }
 
 \linespread{1}
