@@ -10,14 +10,71 @@ El sistema operativo que ser\'{a} utilizado para la implementaci\'{o}n es \texts
 
 Los discos duros del servidor ser\'{a}n configurados en un arreglo RAID debido a las ventajas que propone para el servicio\footnote{Ver p\'{a}gina \pageref{Arreglos-RAID} secci\'{o}n \ref{Arreglos-RAID}}. La configuraci\'{o}n en el servidor de pruebas se realizar\'{a} con un arreglo RAID [] por \textit{software}, mientras que en el servidor de producci\'{o}n se realizar\'{a} en un arreglo por \textit{hardware}.
 
-Para realizar la configuraci\'{o}n de un arreglo RAID [] por software se realiza lo siguiente:
+Para realizar la configuraci\'{o}n de un arreglo RAID 1 por software se realiza lo siguiente: \footnote{https://wiki.debian.org/SoftwareRAID}
 
 \begin{itemize}
-  \item Crear las particiones
+  \item Instalar el software para el arreglo por software
+    \code{\# apt-get install mdadm}
+  \item Crear las particiones de tipo \textit{Linux RAID Autodetect} en cada disco del arreglo
+    \begin{itemize}
+      \item Crear una partici\'{o}n primaria que ocupe todo el espacio del disco:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # /sbin/fdisk /dev/sdb
+
+    Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
+    Building a new DOS disklabel with disk identifier 0x00bab10c.
+    Changes will remain in memory only, until you decide to write them.
+    After that, of course, the previous content won't be recoverable.
+    
+    Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)
+    
+    Command (m for help): n
+    Partition type:
+       p   primary (0 primary, 0 extended, 4 free)
+       e   extended
+    Select (default p): p
+    Partition number (1-4, default 1): 1
+    First sector (2048-16777215, default 2048): 
+    Using default value 2048
+    Last sector, +sectors or +size{K,M,G} (2048-16777215, default 16777215): 
+    Using default value 16777215
+\end{verbatim}
+}
+
+      \item Cambiar el tipo de la partici\'{o}n a \texttt{0xfd} - \textit{Linux RAID Autodetect} y escribir la tabla de particiones al disco:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    Command (m for help): t
+    Selected partition 1
+    Hex code (type L to list codes): fd
+    Changed system type of partition 1 to fd (Linux raid autodetect)
+    
+    Command (m for help): w
+    The partition table has been altered!
+    
+    Calling ioctl() to re-read partition table.
+    Syncing disks.
+\end{verbatim}
+}
+
+    \end{itemize}
   \item Crear arreglo
-  \item Asignar tipo y punto de montaje
+    \code{\# mdadm --zero-superblock /dev/sdb1 /dev/sdc1}
+    \code{\# mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb1 /dev/sdc1}
   \item Formatear
-  \item guardar configuraci\'{o}n
+    \code{\# mkfs.ext4 /dev/md0}
+  \item Asignar tipo y punto de montaje en \texttt{/etc/fstab}
+    \code{/dev/md0 /home ext4 noatime,rw 0 0}
+  \item Guardar configuraci\'{o}n en el archivo \texttt{/etc/mdadm/mdadm.conf}
+    \code{ARRAY /dev/md0 devices=/dev/sdb1,/dev/sdc1 level=1 num-devices=2 auto=yes}
+    \code{DEVICE /dev/sdb1 /dev/sdc1}
 \end{itemize}
 
       \subsection {Reducci\'{o}n de componentes instalados}
@@ -28,7 +85,7 @@ Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los p
 \scriptsize
 \linespread{1}
 \begin{verbatim}
-  aptitude install localepurge
+  # aptitude install localepurge
   en_US.utf-8
   echo 'Apt::Install-Recommends "false"' > /etc/apt/apt.conf.d/10Install-Recommends
 \end{verbatim}
@@ -42,38 +99,23 @@ Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguient
 
 \begin{itemize}
   \item Restringir el acceso administrativo directo \'{u}nicamente mediante autenticaci\'{o}n de llave p\'{u}blica.
-\newline
-\verb|PermitRootLogin without-password|
+    \code{PermitRootLogin without-password}
   \item Deshabilitar el acceso a cuentas que tengan una contrase\~{n}a vac\'{i}a.
-\newline
-\verb|PermitEmptyPasswords no|
+    \code{PermitEmptyPasswords no}
   \item Permitir el acceso al grupo de usuarios de la \textit{Unidad de C\'{o}mputo} de la \textsc{DICyG}.
-\newline
-\verb|AllowGroups adm staff support|
+    \code{AllowGroups adm staff support}
   \item  Mostrar una pantalla antes de iniciar la sesi\'{o}n en la que se listen las pol\'{i}ticas de uso del sistema.
-\newline
-\verb|Banner /etc/issue.net|
+    \code{Banner /etc/issue.net}
   \item Evitar la desconexi\'{o}n manteniendo actividad en la sesi\'{o}n.
-\newline
-\verb|TCPKeepAlive yes|
-\newline
-\verb|ClientAliveInterval 30|
+    \code{TCPKeepAlive yes}
+    \code{ClientAliveInterval 30}
   \item Evitar la redirecci\'{o}n de puertos y sesiones gr\'{a}ficas.
-\newline
-\verb|AllowTCPForwarding no|
-\newline
-\verb|GatewayPorts no|
-\newline
-\verb|X11Forwarding no|
+    \code{AllowTCPForwarding no}
+    \code{GatewayPorts no}
+    \code{X11Forwarding no}
   \item Desconectar al usuario si no inicia sesi\'{o}n en 60 segundos.
-\newline
-\verb|LoginGraceTime 60|
+    \code{LoginGraceTime 60}
 \end{itemize}
-
-%\ifdraft{Configuraci\'{o}n de \textsc{OpenSSH}.}{\verbatimincludebox{./etc/ssh/sshd_config}}
-%\verbatimincludebox{./etc/ssh/sshd_config}
-
-
 
       \subsection {OpenLDAP}
 
@@ -185,7 +227,7 @@ Se recomienda deshabilitar el soporte del protocolo \textsc{LDAPv2} puesto que e
 
           \subsubsection {Configuraci\'{o}n de \textsc{OpenLDAP}}
 
-Se configur\'{o} el sistema operativo para permitir que los usuarios de \textsc{LDAP} puedan iniciar sesi\'{o}n en el equipo.
+Se configur\'{o} el sistema operativo para permitir que los usuarios de \textsc{LDAP} de tipo \textit{posixAccount} puedan iniciar sesi\'{o}n en el equipo.
 
 {
 \scriptsize
@@ -212,16 +254,8 @@ Adicionalmente se instalaron los demonios \textsc{NSCD} y \textsc{NSLCD} que se 
 | changes.                                                                    |
 |                                                                             |
 | Name services to configure:                                                 |
-|    [ ] aliases                                                              |
-|    [ ] ethers                                                               |
 |    [*] group                                                                |
-|    [ ] hosts                                                                |
-|    [ ] netgroup                                                             |
-|    [ ] networks                                                             |
 |    [*] passwd                                                               |
-|    [ ] protocols                                                            |
-|    [ ] rpc                                                                  |
-|    [ ] services                                                             |
 |    [*] shadow                                                               |
 |                                   <Ok>                                      |
 +-----------------------------------------------------------------------------+
@@ -272,7 +306,7 @@ Una vez instalado el servicio de directorio, es necesario inicializar la estruct
 
           \subsubsection {Carga de datos en el directorio \textsc{LDAP}}
 
-Para realizar la carga de la base de datos de materias, profesores, alumnos y grupos se desarroll\'{o} un programa en el lenguaje de programaci\'{o}n \textsl{Ruby} que lee los datos desde un archivo origen en formato \verb|CSV|, establece las relaciones entre los objetos y realiza el ingreso de los datos al directorio.
+Para realizar la carga de la base de datos de materias, profesores, alumnos y grupos se desarroll\'{o} un programa en el lenguaje de programaci\'{o}n \textsl{Ruby} que lee los datos desde un archivo origen en formato \texttt{CSV}, establece las relaciones entre los objetos y realiza el ingreso de los datos al directorio.
 
 {
 \scriptsize
@@ -324,7 +358,7 @@ La arquitectura del subsistema de importaci\'{o}n comprende cuatro scripts que f
   }
 }
 
-Cada archivo de entrada \verb|CSV| tiene varias columnas que contienen informaci\'{o}n acerca del tipo de objeto que representan, a continuaci\'{o}n se muestran las columnas que se requieren en los archivos de entrada:
+Cada archivo de entrada \texttt{CSV} tiene varias columnas que contienen informaci\'{o}n acerca del tipo de objeto que representan, a continuaci\'{o}n se muestran las columnas que se requieren en los archivos de entrada:
 
 {
 \begin{table}[H]
@@ -345,6 +379,17 @@ Cada archivo de entrada \verb|CSV| tiene varias columnas que contienen informaci
 \end{table}
 }
 
+Para la correcta ejecuci\'{o}n de los scripts es necesario instalar los paquetes \texttt{ruby} y \texttt{rubygems} y la gema de ruby que realiza la conexi\'{o}n con el directorio \textsc{LDAP}.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+  # aptitude install ruby rubygems ruby-json
+  # gem install net-ldap
+\end{verbatim}
+}
+
 Utilizando el script se inicializa cada parte por separado desde el archivo fuente en el siguiente orden:
 
 {
@@ -359,11 +404,13 @@ Utilizando el script se inicializa cada parte por separado desde el archivo fuen
 \end{verbatim}
 }
 
+\textbf{\texttt{./clean.rb} - Limpia el directorio LDAP}
+
       \subsection {Apache httpd}
 
         \subsubsection {Esquema de configuraci\'{o}n}
 
-La configuraci\'{o}n de Apache \textit{httpd} comprende tres \verb/VirtualHost/ que sirven como puntos de entrada para el acceso de s\'{o}lo lectura o lectura y escritura a los archivos almacenados en el servidor.
+La configuraci\'{o}n de Apache \textit{httpd} comprende tres \texttt{VirtualHost} que sirven como puntos de entrada para el acceso de s\'{o}lo lectura o lectura y escritura a los archivos almacenados en el servidor.
 
 {
 \begin{table}[H]
@@ -480,7 +527,7 @@ Se instalan los certificados \textsc{SSL} del servidor web mediante los siguient
 \end{verbatim}
 }
 
-Para configurar de manera adecuada la directiva \verb/NameVirtualHost/ para los sitios por \textsc{HTTPS} se copia el archivo \verb/ports.conf/ al directorio principal de Apache \textit{httpd}.
+Para configurar de manera adecuada la directiva \texttt{NameVirtualHost} para los sitios por \textsc{HTTPS} se copia el archivo \texttt{ports.conf} al directorio principal de Apache \textit{httpd}.
 
 {
 \scriptsize
@@ -493,7 +540,7 @@ Para configurar de manera adecuada la directiva \verb/NameVirtualHost/ para los 
 \end{verbatim}
 }
 
-Se habilita el acceso a las configuraciones espec\'{i}ficas del \textit{appliance} al hacer una \textit{liga simb\'{o}lica} al directorio \verb/extra/:
+Se habilita el acceso a las configuraciones espec\'{i}ficas del \textit{appliance} al hacer una \textit{liga simb\'{o}lica} al directorio \texttt{extra}:
 
 {
 \scriptsize
@@ -525,9 +572,17 @@ Se instalan y habilitan los m\'{odulos} necesarios para que las funcionalidades 
 
     \section {Implementaci\'{o}n de las interfaces de usuario}
 
+      \subsection {Acceso mediante cliente nativo de \textsc{WebDAV}}
+
+Para 
+
+        \subsubsection{P\'{a}gina de inicio del sitio web}
+
+Se desarroll\'{o} una p\'{a}gina para facilitar a los usuarios la b\'{u}squeda de los directorios asociados con sus materias
+
       \subsection {Interfaz de administraci\'{o}n \textit{LDAP Account Manager}}
 
-Se descarga el \textit{tarball} del c\'{o}digo fuente y se descomprime en el directorio \verb|lam/htdocs|:
+Se descarga el \textit{tarball} del c\'{o}digo fuente y se descomprime en el directorio \texttt{lam/htdocs}:
 
 {
 \scriptsize
@@ -540,7 +595,7 @@ Se descarga el \textit{tarball} del c\'{o}digo fuente y se descomprime en el dir
 \end{verbatim}
 }
 
-Se establecen permisos de escritura para el servidor web en los directorios \verb/sess/ y \verb/temp/:
+Se establecen permisos de escritura para el servidor web en los directorios \texttt{sess} y \texttt{temp}:
 
 {
 \scriptsize
@@ -583,7 +638,7 @@ Se instala el certificado, la llave privada y la configuraci\'{o}n del sitio, un
 
       \subsection {Interfaz de cambio de contrase\~{n}a}
 
-Se descarga el paquete de instalaci\'{o}n del sitio web oficial y se extrae en el directorio \verb|ltb/htdocs|:
+Se descarga el paquete de instalaci\'{o}n del sitio web oficial y se extrae en el directorio \texttt{ltb/htdocs}:
 
 {
 \scriptsize
@@ -597,7 +652,7 @@ Se descarga el paquete de instalaci\'{o}n del sitio web oficial y se extrae en e
 \end{verbatim}
 }
 
-Se instala el certificado, la llave privada y la configuraci\'{o}n del \verb/VirtualHost/, hecho esto se reinicia el servicio para reflejar los cambios.
+Se instala el certificado, la llave privada y la configuraci\'{o}n del \texttt{VirtualHost}, hecho esto se reinicia el servicio para reflejar los cambios.
 
 {
 \scriptsize
@@ -651,7 +706,7 @@ Para filtrar el tr\'{a}fico de red se establecieron las siguientes pol\'{i}ticas
   \item Se permite todo el tr\'{a}fico proveniente de la interfaz \textit{loopback}.
   \item Las conexiones a trav\'{e}s de \textsc{SSH} se permiten \'{u}nicamente desde los siguientes segmentos confiables de red:
   \begin{enumerate}
-    \item Segmentos de \textsc{RedUNAM}: \verb|132.247.0.0/16| , \verb|132.248.0.0/16|
+    \item Segmentos de \textsc{RedUNAM}: \texttt{132.247.0.0/16} , \texttt{132.248.0.0/16}
     \item Red interna de la \textsc{DICyG}.
   \end{enumerate}
   \item Se permiten las conexiones por \textsc{HTTPS} desde cualquier host, ya sea de la red interna, segmentos de \textsc{RedUNAM} o Internet.
@@ -714,12 +769,12 @@ Restricci\'{o}n de acceso
         \subsubsection {http}
 
 \begin{itemize}
-  \item Se restringe el acceso a cada \verb/VirtualHost/ desde determinado rango de direcciones IP
+  \item Se restringe el acceso a cada \texttt{VirtualHost} desde determinado rango de direcciones IP
 \end{itemize}
 
         \subsubsection {ldap}
 
 \begin{itemize}
-  \item Se permiten conexiones locales por \verb/socket/ \verb|ldapi:///| y conexiones al puerto 389 para diagn\'{o}stico
+  \item Se permiten conexiones locales por \texttt{socket} \texttt{ldapi:///} y conexiones al puerto 389 para diagn\'{o}stico
 \end{itemize}
 

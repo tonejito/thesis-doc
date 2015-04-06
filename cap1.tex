@@ -843,7 +843,7 @@ Hoy en d\'{i}a Debian es la distribuci\'{o}n m\'{a}s significativa de GNU/Linux 
 
 \section {Protocolo \textsc{HTTP}}
 
-El protocolo \textsc{HTTP} permite transferir datos a trav\'{e}s de Internet en un esquema cliente - servidor. La primer versi\'{o}n de este protocolo (\verb|HTTP/1.0|) fu\'{e} descrita en el \textsc{RFC} 1945 \cite{_rfc_????-1}, con la evoluci\'{o}n de Internet el protocolo fue mejorado y se le agregaron funciones como el control de transferencia o el soporte de mensajes \textit{MIME} que dieron origen a la versi\'{o}n actual (\verb|HTTP/1.1|) definida en el RFC 2616 \cite{_rfc_????}.
+El protocolo \textsc{HTTP} permite transferir datos a trav\'{e}s de Internet en un esquema cliente - servidor. La primer versi\'{o}n de este protocolo (\texttt{HTTP/1.0}) fu\'{e} descrita en el \textsc{RFC} 1945 \cite{_rfc_????-1}, con la evoluci\'{o}n de Internet el protocolo fue mejorado y se le agregaron funciones como el control de transferencia o el soporte de mensajes \textit{MIME} que dieron origen a la versi\'{o}n actual (\texttt{HTTP/1.1}) definida en el RFC 2616 \cite{_rfc_????}.
 
   \subsection {\textsc{HTTPS} - \textit{HTTP over SSL}}
 
@@ -888,9 +888,9 @@ Cada objeto tiene un identificador \'{u}nico en el directorio conocido como \tex
 \scriptsize
 \linespread{1}
 \begin{center}
-  \verb|dn: cn=admin,dc=tonejito,dc=org|
+  \texttt{dn: cn=admin,dc=tonejito,dc=org}
   \\
-  \verb|dn: uid=user,ou=users,dc=tonejito,dc=org|
+  \texttt{dn: uid=user,ou=users,dc=tonejito,dc=org}
 \end{center}
 }
 
@@ -915,7 +915,7 @@ Dentro del directorio se tienen almacenados los objetos en diferentes ramas del 
 
   \subsection {Directorio de usuarios}
 
-En \textsc{LDAP}  los usuarios tienen ciertas propiedades como identificador, nombre de usuario, contrase\~{n}a y otros. Existen dos tipos principales de usuario: \verb/simpleSecurityObject/ y \verb/posixAccount/. El primero utilizado s\'{o}lamente para autenticar un usuario en el directorio y el segundo tiene propiedades parecidas a una cuenta \textsc{UNIX} (\textit{uid}, \textit{gid}, \textit{GECOS}, entre otros).
+En \textsc{LDAP}  los usuarios tienen ciertas propiedades como identificador, nombre de usuario, contrase\~{n}a y otros. Existen dos tipos principales de usuario: \texttt{simpleSecurityObject} y \texttt{posixAccount}. El primero utilizado s\'{o}lamente para autenticar un usuario en el directorio y el segundo tiene propiedades parecidas a una cuenta \textsc{UNIX} (\textit{uid}, \textit{gid}, \textit{GECOS}, entre otros).
 
 {
 \scriptsize
