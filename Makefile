@@ -88,7 +88,7 @@ deps:
 
 # Preview automagically reload the document on change
 view:	
-	if [ -r $(MAIN).pdf -a -e ${VIEWER} ] ; \
+	if [ -r "$(MAIN).pdf" -a -e "${VIEWER}" ] ; \
 	then \
 	  if [ "`$(UNAME) -s`" = "CYGWIN_NT-6.1-WOW64" -a -e "$(RUN)" ] ; \
 	  then \
