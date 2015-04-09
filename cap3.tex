@@ -13,7 +13,7 @@ Los discos duros del servidor ser\'{a}n configurados en un arreglo RAID debido a
 Para realizar la configuraci\'{o}n de un arreglo RAID 1 por software se realiza lo siguiente: \footnote{https://wiki.debian.org/SoftwareRAID}
 
 \begin{itemize}
-  \item Instalar el software para el arreglo por software
+  \item Instalar el software para habilitar la compatibilidad con arreglos \textsc{RAID} por software:
     \code{\# apt-get install mdadm}
   \item Crear las particiones de tipo \textit{Linux RAID Autodetect} en cada disco del arreglo
     \begin{itemize}
@@ -29,18 +29,18 @@ Para realizar la configuraci\'{o}n de un arreglo RAID 1 por software se realiza 
     Building a new DOS disklabel with disk identifier 0x00bab10c.
     Changes will remain in memory only, until you decide to write them.
     After that, of course, the previous content won't be recoverable.
-    
+
     Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)
-    
+
     Command (m for help): n
     Partition type:
        p   primary (0 primary, 0 extended, 4 free)
        e   extended
     Select (default p): p
     Partition number (1-4, default 1): 1
-    First sector (2048-16777215, default 2048): 
+    First sector (2048-16777215, default 2048):
     Using default value 2048
-    Last sector, +sectors or +size{K,M,G} (2048-16777215, default 16777215): 
+    Last sector, +sectors or +size{K,M,G} (2048-16777215, default 16777215):
     Using default value 16777215
 \end{verbatim}
 }
@@ -54,11 +54,11 @@ Para realizar la configuraci\'{o}n de un arreglo RAID 1 por software se realiza 
     Command (m for help): t
     Selected partition 1
     Hex code (type L to list codes): fd
-    Changed system type of partition 1 to fd (Linux raid autodetect)
-    
+    Changed system type of partition 1 to fd (Linux RAID Autodetect)
+
     Command (m for help): w
     The partition table has been altered!
-    
+
     Calling ioctl() to re-read partition table.
     Syncing disks.
 \end{verbatim}
@@ -71,51 +71,13 @@ Para realizar la configuraci\'{o}n de un arreglo RAID 1 por software se realiza 
   \item Formatear
     \code{\# mkfs.ext4 /dev/md0}
   \item Asignar tipo y punto de montaje en \texttt{/etc/fstab}
-    \code{/dev/md0 /home ext4 noatime,rw 0 0}
+    \code{/dev/md0 /opt/xNAS/files ext4 noatime,rw 0 0}
   \item Guardar configuraci\'{o}n en el archivo \texttt{/etc/mdadm/mdadm.conf}
     \code{ARRAY /dev/md0 devices=/dev/sdb1,/dev/sdc1 level=1 num-devices=2 auto=yes}
     \code{DEVICE /dev/sdb1 /dev/sdc1}
 \end{itemize}
 
-      \subsection {Reducci\'{o}n de componentes instalados}
-
-Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los paquetes que se instalan en el sistema operativo para disminuir la ventana de posibilidades de tener una intrusi\'{o}n. Con la siguiente configuraci\'{o}n se guardan en disco \'{u}nicamente las paginas de manual en ingles y se evita la instalacion de paquetes no esenciales del sistema operativo \footnote{http://aptitude.alioth.debian.org/doc/en/ch02s05s05.html}
-
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-  # aptitude install localepurge
-  en_US.utf-8
-  echo 'Apt::Install-Recommends "false"' > /etc/apt/apt.conf.d/10Install-Recommends
-\end{verbatim}
-}
-
-    \section {Configuraci\'{o}n de las herramientas}
-
-      \subsection {OpenSSH}
-
-Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguientes opciones:
-
-\begin{itemize}
-  \item Restringir el acceso administrativo directo \'{u}nicamente mediante autenticaci\'{o}n de llave p\'{u}blica.
-    \code{PermitRootLogin without-password}
-  \item Deshabilitar el acceso a cuentas que tengan una contrase\~{n}a vac\'{i}a.
-    \code{PermitEmptyPasswords no}
-  \item Permitir el acceso al grupo de usuarios de la \textit{Unidad de C\'{o}mputo} de la \textsc{DICyG}.
-    \code{AllowGroups adm staff support}
-  \item  Mostrar una pantalla antes de iniciar la sesi\'{o}n en la que se listen las pol\'{i}ticas de uso del sistema.
-    \code{Banner /etc/issue.net}
-  \item Evitar la desconexi\'{o}n manteniendo actividad en la sesi\'{o}n.
-    \code{TCPKeepAlive yes}
-    \code{ClientAliveInterval 30}
-  \item Evitar la redirecci\'{o}n de puertos y sesiones gr\'{a}ficas.
-    \code{AllowTCPForwarding no}
-    \code{GatewayPorts no}
-    \code{X11Forwarding no}
-  \item Desconectar al usuario si no inicia sesi\'{o}n en 60 segundos.
-    \code{LoginGraceTime 60}
-\end{itemize}
+    \section {Configuraci\'{o}n de los servicios}
 
       \subsection {OpenLDAP}
 
@@ -306,7 +268,7 @@ Una vez instalado el servicio de directorio, es necesario inicializar la estruct
 
           \subsubsection {Carga de datos en el directorio \textsc{LDAP}}
 
-Para realizar la carga de la base de datos de materias, profesores, alumnos y grupos se desarroll\'{o} un programa en el lenguaje de programaci\'{o}n \textsl{Ruby} que lee los datos desde un archivo origen en formato \texttt{CSV}, establece las relaciones entre los objetos y realiza el ingreso de los datos al directorio.
+Para realizar la carga de la base de datos de usuarios y grupos se desarroll\'{o} una biblioteca y un script de carga en el lenguaje de programaci\'{o}n \textsl{Ruby} que lee los datos desde un archivo origen en formato \texttt{CSV}, establece las relaciones entre los objetos y realiza el ingreso de los datos al directorio.
 
 {
 \scriptsize
@@ -322,16 +284,17 @@ Para realizar la carga de la base de datos de materias, profesores, alumnos y gr
 \end{verbatim}
 }
 
-La arquitectura del subsistema de importaci\'{o}n comprende cuatro scripts que funcionan de manera similar de acuerdo a los siguientes lineamientos:
+%La arquitectura del subsistema de importaci\'{o}n comprende cuatro scripts que funcionan de manera similar de acuerdo a los siguientes lineamientos:
+La biblioteca que realiza la carga de objetos al directorio funciona de acuerdo al siguiente algoritmo:
 
 \begin{itemize}
   \item Realiza una conexi\'{o}n al directorio LDAP, a esta operaci\'{o}n se le denomina \textit{bind}.
   \item Convierte el archivo de entrada a la codificaci\'{o}n \textsc{UTF-8}.
-  \item Lee cada rengl\'{o}n del archivo de entrada y verifica el contenido de cada campo contra una \textit{expresi\'{o}n regular} para identificar los renglones que no cumplan con el formato establecido.
-  \item Si el rengl\'{o}n cumple con el formato, se contin\'{u}a con el pr\'{o}ximo paso, de lo contrario se guarda en una lista de renglones conflictivos que debe ser revisada manualmente y salta al siguiente rengl\'{o}n.
+  \item Lee cada rengl\'{o}n del archivo de entrada y verifica el contenido de cada campo contra una \textit{expresi\'{o}n regular} para identificar problemas.
+  \item Si el rengl\'{o}n cumple con el formato, se contin\'{u}a con el pr\'{o}ximo paso, de lo contrario se guarda en una lista que debe ser revisada manualmente y salta al siguiente.
   \item Asigna los atributos de cada objeto LDAP de acuerdo al valor de cada campo.
   \item Establece las relaciones necesarias con otros objetos y realiza una transacci\'{o}n para insertar los datos en el directorio.
-  \item Verifica que la inserci\'{o}n se haya realizado correctamente, en caso de existir alg\'{u}n error, se  realiza un rollback de las operaciones.
+  \item Verifica que la inserci\'{o}n se haya realizado correctamente, en caso de existir alg\'{u}n error, se realiza un \textit{rollback} de las operaciones.
 \end{itemize}
 
 \diagramblock
@@ -390,18 +353,25 @@ Para la correcta ejecuci\'{o}n de los scripts es necesario instalar los paquetes
 \end{verbatim}
 }
 
-Utilizando el script se inicializa cada parte por separado desde el archivo fuente en el siguiente orden:
+Utilizando el script \texttt{./load.rb} se inicializa cada contenedor del directorio y se crean diversos objetos de acuerdo al:
 
 {
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-  # iconv ...
-  # ./magic.rb < staff.csv
-  # ./magic.rb < materias.csv
-  # ./magic.rb < profesores.csv
-  # ./magic.rb < alumnos.csv
-\end{verbatim}
+\begin{table}[H]
+\caption{Script de carga de objetos en el directorio}{}
+\label{tab:load-rb}
+\noindent\makebox[\textwidth]{%
+\begin{tabular}[c]{c|c c}
+%\hline
+\textbf{Tipo} & \multicolumn{2}{c}{\textbf{Objetos creados en el directorio}} \\
+\hline \hline
+\textit{staff} & \textit{posixGroup} & \textit{posixAccount} \\
+\textit{profesores} & \textit{posixGroup} & \textit{posixAccount} \\
+\textit{materias} & \textit{organizationalRole} & \textit{groupOfNames} \\
+\textit{alumnos} & \multicolumn{2}{c}{\textit{simpleSecurityObject}} \\
+%\hline
+\end{tabular}
+} % ending of \makebox
+\end{table}
 }
 
 \textbf{\texttt{./clean.rb} - Limpia el directorio LDAP}
@@ -574,7 +544,7 @@ Se instalan y habilitan los m\'{odulos} necesarios para que las funcionalidades 
 
       \subsection {Acceso mediante cliente nativo de \textsc{WebDAV}}
 
-Para 
+Para
 
         \subsubsection{P\'{a}gina de inicio del sitio web}
 
@@ -645,7 +615,7 @@ Se descarga el paquete de instalaci\'{o}n del sitio web oficial y se extrae en e
 \linespread{1}
 \begin{verbatim}
     # cd /opt/xNAS/app/ltb
-    # wget -c 'http://tools.ltb-project.org/attachments/download/497/\ 
+    # wget -c 'http://tools.ltb-project.org/attachments/download/497/\
       ltb-project-self-service-password-0.8.tar.gz'
     # tar -xvvzf ltb-project-self-service-password-0.8.tar.gz -C /opt/xNAS/app/ltb
     # mv ltb-project-self-service-password-0.8 htdocs
@@ -679,24 +649,166 @@ Se instala el certificado, la llave privada y la configuraci\'{o}n del \texttt{V
 
 Una parte importante de la configuraci\'{o}n de seguridad de un sistema radica en la instalaci\'{o}n peri\'{o}dica de actualizaciones, al ejecutar el siguiente comando y responder \textbf{YES} en el cuadro de di\'{a}logo, se configura el sistema para descargar e instalar \emph{autom\'{a}ticamente} las actualizaciones de seguridad que sean liberadas por el fabricante del sistema operativo.
 
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-    # dpkg-reconfigure unattended-upgrades
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%    # dpkg-reconfigure unattended-upgrades
+%
+%+------------------------+ Configuring unattended-upgrades +------------------------+
+%| Applying updates on a frequent basis is an important part of keeping systems      |
+%| secure. By default, updates need to be applied manually using package management  |
+%| tools. Alternatively, you can choose to have this system automatically download   |
+%| and install security updates.                                                     |
+%|                                                                                   |
+%| Automatically download and install stable updates?                                |
+%|                       <Yes>                          <No>                         |
+%+-----------------------------------------------------------------------------------+
+%\end{verbatim}
+%}
 
-+------------------------+ Configuring unattended-upgrades +------------------------+
-|                                                                                   |
-| Applying updates on a frequent basis is an important part of keeping systems      |
-| secure. By default, updates need to be applied manually using package management  |
-| tools. Alternatively, you can choose to have this system automatically download   |
-| and install security updates.                                                     |
-|                                                                                   |
-| Automatically download and install stable updates?                                |
-|                       <Yes>                          <No>                         |
-+-----------------------------------------------------------------------------------+
-\end{verbatim}
-}
+      \subsection {Reducci\'{o}n de componentes instalados}
+
+Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los paquetes que se instalan en el sistema operativo para disminuir la ventana de posibilidades de tener una intrusi\'{o}n. Con la siguiente configuraci\'{o}n se guardan en disco \'{u}nicamente las paginas de manual en ingles y se evita la instalacion de paquetes no esenciales del sistema operativo \footnote{http://aptitude.alioth.debian.org/doc/en/ch02s05s05.html}
+
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%    # dpkg-reconfigure -p low locales
+%+----------------------------+ Configuring locales +--------------------------------+
+%| Locales are a framework to switch between multiple languages and allow users      |
+%| to use their language, country, characters, collation order, etc.                 |
+%|                                                                                   |
+%| Please choose which locales to generate. UTF-8 locales should be chosen by        |
+%| default, particularly for new installations. Other character sets may be useful   |
+%| for backwards compatibility with older systems and software.                      |
+%|                                                                                   |
+%| Locales to be generated:                                                          |
+%|                                                                                   |
+%|    [*] en_US.UTF-8 UTF-8                                                          |
+%|                                                                                   |
+%|                       <OK>                       <Cancel>                         |
+%+-----------------------------------------------------------------------------------+
+%\end{verbatim}
+%}
+%
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%  # aptitude install localepurge
+%+------------------------------+ Configuring locales +------------------------------+
+%| Many packages in Debian use locales to display text in the correct language for   |
+%| the user. You can choose a default locale for the system from the generated       |
+%| locales.                                                                          |
+%|                                                                                   |
+%| This will select the default language for the entire system. If this system is a  |
+%| multi-user system where not all users are able to speak the default language,     |
+%| they will experience difficulties.                                                |
+%|                                                                                   |
+%| Default locale for the system environment:                                        |
+%|                                                                                   |
+%|                                 en_US.UTF-8                                       |
+%|                                                                                   |
+%|                    <Ok>                        <Cancel>                           |
+%+-----------------------------------------------------------------------------------+
+%
+%Generating locales (this might take a while)...
+%  en_US.UTF-8... done
+%Generation complete.
+%
+%\end{verbatim}
+%}
+%
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%  # aptitude install localepurge
+%+----------------------------+ Configuring localepurge +----------------------------+
+%| localepurge will remove all locale files from your system but the ones for the    |
+%| language codes you select now. Usually two character locales like "de" or "pt"    |
+%| rather than "de_DE" or "pt_BR" contain the major portion of localizations. So     |
+%| please select both for best support of your national language settings.           |
+%| The entries from /etc/locale.gen will be preselected if no prior configuration    |
+%| has been successfully completed.                                                  |
+%|                                                                                   |
+%| Selecting locale files                                                            |
+%|                                                                                   |
+%|    [*] en                                                                         |
+%|    [*] en_US.UTF-8                                                                |
+%|                                   <Ok>                                            |
+%+-----------------------------------------------------------------------------------+
+%\end{verbatim}
+%}
+%
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%+----------------------------+ Configuring localepurge +----------------------------+
+%| Based on the same locale information you chose above, localepurge can also delete |
+%| superfluous localized man pages.                                                  |
+%|                                                                                   |
+%| Also delete localized man pages?                                                  |
+%|                                                                                   |
+%|                     <Yes>                        <No>                             |
+%+-----------------------------------------------------------------------------------+
+%\end{verbatim}
+%}
+%
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%No
+%+----------------------------+ Configuring localepurge +----------------------------+
+%| If you are content with the selection of locales you chose to keep and don't want |
+%| to care about whether to delete or keep newly found locales, just deselect this   |
+%| option to automatically remove new locales you probably wouldn't care about       |
+%| anyway. If you select this option, you will be given the opportunity to decide    |
+%| whether to keep or delete newly introduced locales.                               |
+%|                                                                                   |
+%| Inform about new locales?                                                         |
+%|                                                                                   |
+%|                     <Yes>                        <No>                             |
+%+-----------------------------------------------------------------------------------+
+%\end{verbatim}
+%}
+%
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%  echo 'Apt::Install-Recommends "false"'  /etc/apt/apt.conf.d/10Hardening
+%  echo 'Apt::Install-Suggests   "false"'  /etc/apt/apt.conf.d/10Hardening
+%\end{verbatim}
+%}
+
+      \subsection {OpenSSH}
+
+Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguientes opciones:
+
+\begin{itemize}
+  \item Restringir el acceso administrativo directo \'{u}nicamente mediante autenticaci\'{o}n de llave p\'{u}blica.
+    \code{PermitRootLogin without-password}
+  \item Deshabilitar el acceso a cuentas que tengan una contrase\~{n}a vac\'{i}a.
+    \code{PermitEmptyPasswords no}
+  \item Permitir el acceso al grupo de usuarios de la \textit{Unidad de C\'{o}mputo} de la \textsc{DICyG}.
+    \code{AllowGroups adm staff support}
+  \item  Mostrar una pantalla antes de iniciar la sesi\'{o}n en la que se listen las pol\'{i}ticas de uso del sistema.
+    \code{Banner /etc/issue.net}
+  \item Evitar la desconexi\'{o}n manteniendo actividad en la sesi\'{o}n.
+    \code{TCPKeepAlive yes}
+    \code{ClientAliveInterval 30}
+  \item Evitar la redirecci\'{o}n de puertos y sesiones gr\'{a}ficas.
+    \code{AllowTCPForwarding no}
+    \code{GatewayPorts no}
+    \code{X11Forwarding no}
+  \item Desconectar al usuario si no inicia sesi\'{o}n en 60 segundos.
+    \code{LoginGraceTime 60}
+\end{itemize}
 
         \subsubsection {Firewall}
 
