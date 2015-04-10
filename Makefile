@@ -184,8 +184,14 @@ $(MAIN).md:
 	$(PANDOC) --normalize --toc --standalone --self-contained --reference-links --preserve-tabs -B $(README) -A $(README) -r latex -w markdown > $(MAIN).md
 
 # Convert latex to HTML5 using pandoc(1)
+# Add bibliography if bibtools is compiled in pandoc (might not work if compiled with -static flag)
 $(MAIN).html:	
+ifeq ($(shell which pandoc | xargs ldd | grep -i bibutils | wc -l),1)
+	$(eval BIBLIOGRAPHY := --bibliography $(REF_BIB))
+else
+	$(eval BIBLIOGRAPHY := )
+endif
 	$(CAT) $(INTRO) $(CHAPTERS) | \
 	$(GREP) -v '\\label{[[:alnum:]]\+:[[:alnum:]]\+}' | \
-	$(PANDOC) --normalize --toc --standalone --self-contained --reference-links --preserve-tabs -B $(README) -A $(README) --bibliography $(REF_BIB) --biblatex -r latex -w html5 > $(MAIN).html
+	$(PANDOC) --normalize --toc --standalone --self-contained --reference-links --preserve-tabs -B $(README) -A $(README) $(BIBLIOGRAPHY) --biblatex -r latex -w html5 > $(MAIN).html
 
