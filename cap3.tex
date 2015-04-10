@@ -8,9 +8,7 @@ El sistema operativo que ser\'{a} utilizado para la implementaci\'{o}n es \texts
 
       \subsection {Arreglo de discos RAID}
 
-Los discos duros del servidor ser\'{a}n configurados en un arreglo RAID debido a las ventajas que propone para el servicio\footnote{Ver p\'{a}gina \pageref{Arreglos-RAID} secci\'{o}n \ref{Arreglos-RAID}}. La configuraci\'{o}n en el servidor de pruebas se realizar\'{a} con un arreglo RAID [] por \textit{software}, mientras que en el servidor de producci\'{o}n se realizar\'{a} en un arreglo por \textit{hardware}.
-
-Para realizar la configuraci\'{o}n de un arreglo RAID 1 por software se realiza lo siguiente: \footnote{https://wiki.debian.org/SoftwareRAID}
+Los discos duros del servidor ser\'{a}n configurados en un arreglo RAID debido a las ventajas que propone para el servicio\footnote{Ver p\'{a}gina \pageref{Arreglos-RAID} secci\'{o}n \ref{Arreglos-RAID}}. La configuraci\'{o}n en el servidor de pruebas se realizar\'{a} con un arreglo RAID 1 por \textit{software} que se configur\'{o} de la siguiente manera: \footnote{https://wiki.debian.org/SoftwareRAID}
 
 \begin{itemize}
   \item Instalar el software para habilitar la compatibilidad con arreglos \textsc{RAID} por software:
@@ -65,14 +63,14 @@ Para realizar la configuraci\'{o}n de un arreglo RAID 1 por software se realiza 
 }
 
     \end{itemize}
-  \item Crear arreglo
+  \item Crear arreglo:
     \code{\# mdadm --zero-superblock /dev/sdb1 /dev/sdc1}
     \code{\# mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb1 /dev/sdc1}
-  \item Formatear
+  \item Formatear el disco que representa el arreglo:
     \code{\# mkfs.ext4 /dev/md0}
-  \item Asignar tipo y punto de montaje en \texttt{/etc/fstab}
+  \item Asignar tipo y punto de montaje en el archivo \texttt{/etc/fstab}:
     \code{/dev/md0 /opt/xNAS/files ext4 noatime,rw 0 0}
-  \item Guardar configuraci\'{o}n en el archivo \texttt{/etc/mdadm/mdadm.conf}
+  \item Guardar configuraci\'{o}n en el archivo \texttt{/etc/mdadm/mdadm.conf}:
     \code{ARRAY /dev/md0 devices=/dev/sdb1,/dev/sdc1 level=1 num-devices=2 auto=yes}
     \code{DEVICE /dev/sdb1 /dev/sdc1}
 \end{itemize}
@@ -83,7 +81,7 @@ Para realizar la configuraci\'{o}n de un arreglo RAID 1 por software se realiza 
 
           \subsubsection {Instalaci\'{o}n de \textsc{OpenLDAP}}
 
-Se instala \textsc{OpenLDAP} utilizando el comando aptitude, es necesario contestar \textbf{NO} en el cuadro de di\'{a}logo para seguir el asistente de instalaci\'{o}n:
+Se instala \textsc{OpenLDAP} utilizando el comando \texttt{aptitude}, es necesario contestar \textbf{NO} en el cuadro de di\'{a}logo para seguir el asistente de instalaci\'{o}n:
 
 {
 \scriptsize
@@ -250,19 +248,49 @@ Para la configuraci\'{o}n de \textsc{PAM}, se indica que se utilizar\'{a}n como 
 
           \subsubsection {Inicializaci\'{o}n del directorio \textsc{LDAP}}
 
-Una vez instalado el servicio de directorio, es necesario inicializar la estructura b\'{a}sica que comprende los contenedores de usuarios, materias y grupos. % mencionados en \cite{}... \ref{}...
+Una vez instalado el servicio de directorio, es necesario inicializar la estructura b\'{a}sica que comprende los contenedores de usuarios, materias y grupos utilizandoel archivo \texttt{xNAS-base.ldif} y el comando \texttt{ldapadd}.
+
+% http://techiezone.rottigni.net/2011/12/change-root-dn-password-on-openldap/
+% http://www.linuxtopia.org/online_books//network_administration_guides/ldap_administration/slapdconf2_Configuration_Directives.html
 
 {
 \scriptsize
 \linespread{1}
 \begin{verbatim}
-  # ldapadd -Y external ... < xNAS-base.ldif
-  + users
-  +   staff
-  +   profesores
-  +   alumnos
-  + grupos
-  + materias
+Se instala el software necesario
+  # aptitude install ldap-utils
+Se verifica que no existan entradas, la salida del comando \texttt{ldapsearch} debe ser similar a la que se muestra
+  # ldapsearch -LLL -Y EXTERNAL -H ldapi:/// -b 'dc=xnas,dc=local'
+SASL/EXTERNAL authentication started
+SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth
+SASL SSF: 0
+dn: dc=xnas,dc=local
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+o: xNAS
+dc: xnas
+
+dn: cn=admin,dc=xnas,dc=local
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+description: LDAP administrator
+
+Se procede con la carga inicial
+  # ldapadd -x -W -D "cn=admin,dc=xnas,dc=local" -H 'ldapi:///' -f ./xNAS-base.ldif
+Enter LDAP Password: 
+adding new entry "ou=services,dc=xnas,dc=local"
+adding new entry "ou=materias,dc=xnas,dc=local"
+adding new entry "ou=users,dc=xnas,dc=local"
+adding new entry "ou=staff,ou=users,dc=xnas,dc=local"
+adding new entry "ou=profesores,ou=users,dc=xnas,dc=local"
+adding new entry "ou=grupos,ou=users,dc=xnas,dc=local"
+adding new entry "ou=alumnos,ou=users,dc=xnas,dc=local"
+adding new entry "ou=groups,dc=xnas,dc=local"
+adding new entry "ou=unix,ou=groups,dc=xnas,dc=local"
+adding new entry "ou=webdav,ou=groups,dc=xnas,dc=local"
+
 \end{verbatim}
 }
 
@@ -270,21 +298,6 @@ Una vez instalado el servicio de directorio, es necesario inicializar la estruct
 
 Para realizar la carga de la base de datos de usuarios y grupos se desarroll\'{o} una biblioteca y un script de carga en el lenguaje de programaci\'{o}n \textsl{Ruby} que lee los datos desde un archivo origen en formato \texttt{CSV}, establece las relaciones entre los objetos y realiza el ingreso de los datos al directorio.
 
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-  # ldapadd -Y external ... < xNAS-base.ldif
-  + users
-  +   staff
-  +   profesores
-  +   alumnos
-  + grupos
-  + materias
-\end{verbatim}
-}
-
-%La arquitectura del subsistema de importaci\'{o}n comprende cuatro scripts que funcionan de manera similar de acuerdo a los siguientes lineamientos:
 La biblioteca que realiza la carga de objetos al directorio funciona de acuerdo al siguiente algoritmo:
 
 \begin{itemize}
@@ -374,7 +387,18 @@ Utilizando el script \texttt{./load.rb} se inicializa cada contenedor del direct
 \end{table}
 }
 
-\textbf{\texttt{./clean.rb} - Limpia el directorio LDAP}
+          \subsubsection {Borrado de datos en el directorio \textsc{LDAP}}
+
+Se desarroll\'{o} un script que ayuda a limpiar el directorio cuando se pretenda carga una nueva base de datos en el mismo.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+  # make clean
+  # ./clean.rb
+\end{verbatim}
+}
 
       \subsection {Apache httpd}
 
@@ -649,142 +673,147 @@ Se instala el certificado, la llave privada y la configuraci\'{o}n del \texttt{V
 
 Una parte importante de la configuraci\'{o}n de seguridad de un sistema radica en la instalaci\'{o}n peri\'{o}dica de actualizaciones, al ejecutar el siguiente comando y responder \textbf{YES} en el cuadro de di\'{a}logo, se configura el sistema para descargar e instalar \emph{autom\'{a}ticamente} las actualizaciones de seguridad que sean liberadas por el fabricante del sistema operativo.
 
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%    # dpkg-reconfigure unattended-upgrades
-%
-%+------------------------+ Configuring unattended-upgrades +------------------------+
-%| Applying updates on a frequent basis is an important part of keeping systems      |
-%| secure. By default, updates need to be applied manually using package management  |
-%| tools. Alternatively, you can choose to have this system automatically download   |
-%| and install security updates.                                                     |
-%|                                                                                   |
-%| Automatically download and install stable updates?                                |
-%|                       <Yes>                          <No>                         |
-%+-----------------------------------------------------------------------------------+
-%\end{verbatim}
-%}
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # dpkg-reconfigure unattended-upgrades
+
++------------------------+ Configuring unattended-upgrades +------------------------+
+| Applying updates on a frequent basis is an important part of keeping systems      |
+| secure. By default, updates need to be applied manually using package management  |
+| tools. Alternatively, you can choose to have this system automatically download   |
+| and install security updates.                                                     |
+|                                                                                   |
+| Automatically download and install stable updates?                                |
+|                       <Yes>                          <No>                         |
++-----------------------------------------------------------------------------------+
+\end{verbatim}
+}
 
       \subsection {Reducci\'{o}n de componentes instalados}
 
 Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los paquetes que se instalan en el sistema operativo para disminuir la ventana de posibilidades de tener una intrusi\'{o}n. Con la siguiente configuraci\'{o}n se guardan en disco \'{u}nicamente las paginas de manual en ingles y se evita la instalacion de paquetes no esenciales del sistema operativo \footnote{http://aptitude.alioth.debian.org/doc/en/ch02s05s05.html}
 
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%    # dpkg-reconfigure -p low locales
-%+----------------------------+ Configuring locales +--------------------------------+
-%| Locales are a framework to switch between multiple languages and allow users      |
-%| to use their language, country, characters, collation order, etc.                 |
-%|                                                                                   |
-%| Please choose which locales to generate. UTF-8 locales should be chosen by        |
-%| default, particularly for new installations. Other character sets may be useful   |
-%| for backwards compatibility with older systems and software.                      |
-%|                                                                                   |
-%| Locales to be generated:                                                          |
-%|                                                                                   |
-%|    [*] en_US.UTF-8 UTF-8                                                          |
-%|                                                                                   |
-%|                       <OK>                       <Cancel>                         |
-%+-----------------------------------------------------------------------------------+
-%\end{verbatim}
-%}
-%
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%  # aptitude install localepurge
-%+------------------------------+ Configuring locales +------------------------------+
-%| Many packages in Debian use locales to display text in the correct language for   |
-%| the user. You can choose a default locale for the system from the generated       |
-%| locales.                                                                          |
-%|                                                                                   |
-%| This will select the default language for the entire system. If this system is a  |
-%| multi-user system where not all users are able to speak the default language,     |
-%| they will experience difficulties.                                                |
-%|                                                                                   |
-%| Default locale for the system environment:                                        |
-%|                                                                                   |
-%|                                 en_US.UTF-8                                       |
-%|                                                                                   |
-%|                    <Ok>                        <Cancel>                           |
-%+-----------------------------------------------------------------------------------+
-%
-%Generating locales (this might take a while)...
-%  en_US.UTF-8... done
-%Generation complete.
-%
-%\end{verbatim}
-%}
-%
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%  # aptitude install localepurge
-%+----------------------------+ Configuring localepurge +----------------------------+
-%| localepurge will remove all locale files from your system but the ones for the    |
-%| language codes you select now. Usually two character locales like "de" or "pt"    |
-%| rather than "de_DE" or "pt_BR" contain the major portion of localizations. So     |
-%| please select both for best support of your national language settings.           |
-%| The entries from /etc/locale.gen will be preselected if no prior configuration    |
-%| has been successfully completed.                                                  |
-%|                                                                                   |
-%| Selecting locale files                                                            |
-%|                                                                                   |
-%|    [*] en                                                                         |
-%|    [*] en_US.UTF-8                                                                |
-%|                                   <Ok>                                            |
-%+-----------------------------------------------------------------------------------+
-%\end{verbatim}
-%}
-%
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%+----------------------------+ Configuring localepurge +----------------------------+
-%| Based on the same locale information you chose above, localepurge can also delete |
-%| superfluous localized man pages.                                                  |
-%|                                                                                   |
-%| Also delete localized man pages?                                                  |
-%|                                                                                   |
-%|                     <Yes>                        <No>                             |
-%+-----------------------------------------------------------------------------------+
-%\end{verbatim}
-%}
-%
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%No
-%+----------------------------+ Configuring localepurge +----------------------------+
-%| If you are content with the selection of locales you chose to keep and don't want |
-%| to care about whether to delete or keep newly found locales, just deselect this   |
-%| option to automatically remove new locales you probably wouldn't care about       |
-%| anyway. If you select this option, you will be given the opportunity to decide    |
-%| whether to keep or delete newly introduced locales.                               |
-%|                                                                                   |
-%| Inform about new locales?                                                         |
-%|                                                                                   |
-%|                     <Yes>                        <No>                             |
-%+-----------------------------------------------------------------------------------+
-%\end{verbatim}
-%}
-%
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%  echo 'Apt::Install-Recommends "false"'  /etc/apt/apt.conf.d/10Hardening
-%  echo 'Apt::Install-Suggests   "false"'  /etc/apt/apt.conf.d/10Hardening
-%\end{verbatim}
-%}
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # dpkg-reconfigure -p low locales
++----------------------------+ Configuring locales +--------------------------------+
+| Locales are a framework to switch between multiple languages and allow users      |
+| to use their language, country, characters, collation order, etc.                 |
+|                                                                                   |
+| Please choose which locales to generate. UTF-8 locales should be chosen by        |
+| default, particularly for new installations. Other character sets may be useful   |
+| for backwards compatibility with older systems and software.                      |
+|                                                                                   |
+| Locales to be generated:                                                          |
+|                                                                                   |
+|    [*] en_US.UTF-8 UTF-8                                                          |
+|                                                                                   |
+|                       <OK>                       <Cancel>                         |
++-----------------------------------------------------------------------------------+
+\end{verbatim}
+}
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
++------------------------------+ Configuring locales +------------------------------+
+| Many packages in Debian use locales to display text in the correct language for   |
+| the user. You can choose a default locale for the system from the generated       |
+| locales.                                                                          |
+|                                                                                   |
+| This will select the default language for the entire system. If this system is a  |
+| multi-user system where not all users are able to speak the default language,     |
+| they will experience difficulties.                                                |
+|                                                                                   |
+| Default locale for the system environment:                                        |
+|                                                                                   |
+|                                 en_US.UTF-8                                       |
+|                                                                                   |
+|                    <Ok>                        <Cancel>                           |
++-----------------------------------------------------------------------------------+
+
+Generating locales (this might take a while)...
+  en_US.UTF-8... done
+Generation complete.
+
+\end{verbatim}
+}
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+  # aptitude install localepurge
++----------------------------+ Configuring localepurge +----------------------------+
+| localepurge will remove all locale files from your system but the ones for the    |
+| language codes you select now. Usually two character locales like "de" or "pt"    |
+| rather than "de_DE" or "pt_BR" contain the major portion of localizations. So     |
+| please select both for best support of your national language settings.           |
+| The entries from /etc/locale.gen will be preselected if no prior configuration    |
+| has been successfully completed.                                                  |
+|                                                                                   |
+| Selecting locale files                                                            |
+|                                                                                   |
+|    [*] en                                                                         |
+|    [*] en_US.UTF-8                                                                |
+|                                   <Ok>                                            |
++-----------------------------------------------------------------------------------+
+\end{verbatim}
+}
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+Yes
++----------------------------+ Configuring localepurge +----------------------------+
+| Based on the same locale information you chose above, localepurge can also delete |
+| superfluous localized man pages.                                                  |
+|                                                                                   |
+| Also delete localized man pages?                                                  |
+|                                                                                   |
+|                     <Yes>                        <No>                             |
++-----------------------------------------------------------------------------------+
+\end{verbatim}
+}
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+No
++----------------------------+ Configuring localepurge +----------------------------+
+| If you are content with the selection of locales you chose to keep and don't want |
+| to care about whether to delete or keep newly found locales, just deselect this   |
+| option to automatically remove new locales you probably wouldn't care about       |
+| anyway. If you select this option, you will be given the opportunity to decide    |
+| whether to keep or delete newly introduced locales.                               |
+|                                                                                   |
+| Inform about new locales?                                                         |
+|                                                                                   |
+|                     <Yes>                        <No>                             |
++-----------------------------------------------------------------------------------+
+\end{verbatim}
+}
+
+Para reducir los componentes instalados en el sistema se aplicaron políticas en el gestor de paquetes para evitar la instalación de software adicional cuando se agrega un paquete al sistema, esto ayuda tanto a reducir la complejidad del sistema, como el espacio en disco utilizado por el sistema operativo.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+# cat > /etc/apt/apt.conf.d/10Hardening << EOF
+Apt::Install-Recommends "false"
+Apt::Install-Suggests   "false"
+EOF
+
+\end{verbatim}
+}
 
       \subsection {OpenSSH}
 
