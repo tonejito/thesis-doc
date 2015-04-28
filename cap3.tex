@@ -248,7 +248,7 @@ Para la configuraci\'{o}n de \textsc{PAM}, se indica que se utilizar\'{a}n como 
 
           \subsubsection {Inicializaci\'{o}n del directorio \textsc{LDAP}}
 
-Una vez instalado el servicio de directorio, es necesario inicializar la estructura b\'{a}sica que comprende los contenedores de usuarios, materias y grupos utilizandoel archivo \texttt{xNAS-base.ldif} y el comando \texttt{ldapadd}.
+Una vez instalado el servicio de directorio, es necesario inicializar la estructura b\'{a}sica que comprende los contenedores de usuarios, materias y grupos utilizando el archivo \texttt{xNAS-base.ldif} y el comando \texttt{ldapadd}.
 
 % http://techiezone.rottigni.net/2011/12/change-root-dn-password-on-openldap/
 % http://www.linuxtopia.org/online_books//network_administration_guides/ldap_administration/slapdconf2_Configuration_Directives.html
@@ -257,10 +257,19 @@ Una vez instalado el servicio de directorio, es necesario inicializar la estruct
 \scriptsize
 \linespread{1}
 \begin{verbatim}
-Se instala el software necesario
-  # aptitude install ldap-utils
-Se verifica que no existan entradas, la salida del comando \texttt{ldapsearch} debe ser similar a la que se muestra
-  # ldapsearch -LLL -Y EXTERNAL -H ldapi:/// -b 'dc=xnas,dc=local'
+
+# aptitude install ldap-utils
+ \end{verbatim}
+}
+
+Se verifica que no existan objetos adicionales en el directorio, la salida del comando \texttt{ldapsearch} debe ser similar a la que se muestra a continuaci\'{o}n:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+
+# ldapsearch -LLL -Y EXTERNAL -H ldapi:/// -b 'dc=xnas,dc=local'
 SASL/EXTERNAL authentication started
 SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth
 SASL SSF: 0
@@ -276,9 +285,17 @@ objectClass: simpleSecurityObject
 objectClass: organizationalRole
 cn: admin
 description: LDAP administrator
+ \end{verbatim}
+}
 
-Se procede con la carga inicial
-  # ldapadd -x -W -D "cn=admin,dc=xnas,dc=local" -H 'ldapi:///' -f ./xNAS-base.ldif
+Se procede con la inicializaci\'{o}n de la estructura b\'{a}sica del directorio.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+
+# ldapadd -x -W -D "cn=admin,dc=xnas,dc=local" -H 'ldapi:///' -f ./xNAS-base.ldif
 Enter LDAP Password: 
 adding new entry "ou=services,dc=xnas,dc=local"
 adding new entry "ou=materias,dc=xnas,dc=local"
@@ -290,7 +307,6 @@ adding new entry "ou=alumnos,ou=users,dc=xnas,dc=local"
 adding new entry "ou=groups,dc=xnas,dc=local"
 adding new entry "ou=unix,ou=groups,dc=xnas,dc=local"
 adding new entry "ou=webdav,ou=groups,dc=xnas,dc=local"
-
 \end{verbatim}
 }
 
@@ -298,7 +314,7 @@ adding new entry "ou=webdav,ou=groups,dc=xnas,dc=local"
 
 Para realizar la carga de la base de datos de usuarios y grupos se desarroll\'{o} una biblioteca y un script de carga en el lenguaje de programaci\'{o}n \textsl{Ruby} que lee los datos desde un archivo origen en formato \texttt{CSV}, establece las relaciones entre los objetos y realiza el ingreso de los datos al directorio.
 
-La biblioteca que realiza la carga de objetos al directorio funciona de acuerdo al siguiente algoritmo:
+La biblioteca que realiza la carga de objetos funciona de acuerdo al siguiente algoritmo:
 
 \begin{itemize}
   \item Realiza una conexi\'{o}n al directorio LDAP, a esta operaci\'{o}n se le denomina \textit{bind}.
@@ -334,7 +350,7 @@ La biblioteca que realiza la carga de objetos al directorio funciona de acuerdo 
   }
 }
 
-Cada archivo de entrada \texttt{CSV} tiene varias columnas que contienen informaci\'{o}n acerca del tipo de objeto que representan, a continuaci\'{o}n se muestran las columnas que se requieren en los archivos de entrada:
+Cada archivo de entrada \texttt{CSV} tiene varias columnas que contienen informaci\'{o}n acerca del tipo de objeto que representa, a continuaci\'{o}n se muestran las columnas que se requieren en los archivos de entrada:
 
 {
 \begin{table}[H]
@@ -347,7 +363,7 @@ Cada archivo de entrada \texttt{CSV} tiene varias columnas que contienen informa
 \hline \hline
 \textit{staff.csv} & usuario & nombre & correo & curp & \\
 \textit{materias.csv} & id & grupo & materia & rfc & profesor \\
-\textit{profesores.csv} & rfc & nombre & mail & & \\
+\textit{profesores.csv} & rfc & nombre & correo & & \\
 \textit{alumnos.csv} & cuenta & nombre & correo & asignatura & grupo \\
 %\hline
 \end{tabular}
@@ -355,7 +371,7 @@ Cada archivo de entrada \texttt{CSV} tiene varias columnas que contienen informa
 \end{table}
 }
 
-Para la correcta ejecuci\'{o}n de los scripts es necesario instalar los paquetes \texttt{ruby} y \texttt{rubygems} y la gema de ruby que realiza la conexi\'{o}n con el directorio \textsc{LDAP}.
+Para la correcta ejecuci\'{o}n de los scripts es necesario instalar los paquetes \texttt{ruby}, \texttt{rubygems} y la gema de ruby que realiza la conexi\'{o}n con el directorio \textsc{LDAP}.
 
 {
 \scriptsize
@@ -366,7 +382,24 @@ Para la correcta ejecuci\'{o}n de los scripts es necesario instalar los paquetes
 \end{verbatim}
 }
 
-Utilizando el script \texttt{./load.rb} se inicializa cada contenedor del directorio y se crean diversos objetos de acuerdo al:
+Utilizando el script \texttt{./load.rb} se cargan los datos y se crean los objetos en el directorio:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+# ./load.rb
+
+xNAS - ./load.rb
+
+Enter username, press <ENTER> for default:
+    username    [cn=admin]
+
+Enter password (will not echo):
+    password
+\end{verbatim}
+}
+
 
 {
 \begin{table}[H]
@@ -397,6 +430,15 @@ Se desarroll\'{o} un script que ayuda a limpiar el directorio cuando se pretenda
 \begin{verbatim}
   # make clean
   # ./clean.rb
+
+xNAS - ./clean.rb
+
+Enter username, press <ENTER> for default:
+    username	[cn=admin]
+
+Enter password (will not echo):
+    password
+
 \end{verbatim}
 }
 
@@ -404,7 +446,7 @@ Se desarroll\'{o} un script que ayuda a limpiar el directorio cuando se pretenda
 
         \subsubsection {Esquema de configuraci\'{o}n}
 
-La configuraci\'{o}n de Apache \textit{httpd} comprende tres \texttt{VirtualHost} que sirven como puntos de entrada para el acceso de s\'{o}lo lectura o lectura y escritura a los archivos almacenados en el servidor.
+La configuraci\'{o}n de Apache \textit{httpd} comprende tres \texttt{VirtualHost} que sirven como puntos de entrada para el acceso de s\'{o}lo lectura o lectura y escritura a los archivos almacenados en el servidor. Se realiz\'{o} el registro de los nomrbres de dominio con \textsc{NicUNAM}, gracias a esto se pueden acceder desde cualquier navegador web.
 
 {
 \begin{table}[H]
@@ -506,7 +548,7 @@ La configuraci\'{o}n de Apache \textit{httpd} comprende tres \texttt{VirtualHost
 
         \subsubsection {Configuraci\'{o}n del servicio}
 
-Se instalan los certificados \textsc{SSL} del servidor web mediante los siguientes comandos:
+Se instala el certificado \textsc{SSL} en \texttt{/etc/ssl/certs} y la llave privada en \texttt{/etc/ssl/private} mediante los siguientes comandos:
 
 {
 \scriptsize
@@ -562,17 +604,108 @@ Se instalan y habilitan los m\'{odulos} necesarios para que las funcionalidades 
 \end{verbatim}
 }
 
-%\ifdraft{Configuraci\'{o}n de Apache \textsc{httpd}.}{\verbatimincludebox{./etc/apache2/apache2.conf}}
+        \subsubsection {Compatibilidad con clientes \textsc{WebDAV}}
+
+Aunque \textsc{WebDAV} es un est\'{a}ndar definido en el RFC4918 \footnote{http://tools.ietf.org/rfc/rfc4918.txt} existen varios clientes que ofrecen funcionalidades similares aunque son implementados de manera distinta, por ejemplo, los clientes de \textsc{Mac OS X} y \textsc{GNU/Linux} son los mas completos, mientras que el cliente nativo de Windows (\textit{Microsoft-WebDAV-MiniRedir}) tiene problemas de compatibilidad que lo hacen estar al borde de lo usable.
+
+Se utilizaron las directivas \texttt{BrowserMatch} y \texttt{BrowserMatchNoCase} para distinguir a los clientes problem\'{a}ticos que se conectan al servidor y darles un tratamiento especial. \footnote{http://serverfault.com/questions/478528/webdav-with-apache-2-2-simply-wont-work} \footnote{http://blog.toxa.de/archives/387} A continuaci\'{o}n se muestran las directivas que se utilizaron para darle un tratamiento especial a los clientes \textsc{WebDAV} nativos de Windows.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+Header add MS-Author-Via "DAV" 
+BrowserMatch "Microsoft-WebDAV-MiniRedir" redirect-carefully nokeepalive ssl-unclean-shutdown 
+\end{verbatim}
+}
+
+Para el caso espec\'{i}fico de Windows, es necesario deshabilitar la detecci\'{o}n autom\'{a}tica de proxy en la configuraci\'{o}n de \textit{Internet Explorer}, esto debido a que de manera predeterminada intenta encontrar un servidor proxy \textit{en cada petici\'{o}n que realiza al servidor}.
+\footnote{http://oddballupdate.com/2009/12/fix-slow-webdav-performance-in-windows-7/}
+\footnote{https://support.microsoft.com/en-us/kb/2445570/}
+\footnote{https://www.iis.net/learn/publish/using-webdav/using-the-webdav-redirector}
+
+        \subsubsection {Conexi\'{o}n al servidor \textsc{LDAP}}
+
+La conexi\'{o}n al servidor LDAP se configura con la directiva \texttt{AuthLDAPUrl} que especifica los par\'{a}metros de conexi\'{o}n, se compone de dos partes principales:
+
+\begin{itemize}
+  \item Cadena de conexi\'{o}n
+  \begin{itemize}
+    \item Protocolo
+    \item Host
+    \item Puerto
+  \end{itemize}
+  \item Filtro
+  \begin{itemize}
+    \item Contenedor
+    \item Atributos de \'{i}ndice
+    \item Profundidad de la b\'{u}squeda
+    \item Condiciones de b\'{u}squeda
+  \end{itemize}
+\end{itemize}
+
+        \subsubsection {B\'{u}squeda en el directorio}
+
+Esta operaci\'{o}n se realiza estableciendo una conexi\'{o}n al servidor para enviar el comando y los par\'{a}metros de b\'{u}squeda. La respuesta puede ser una lista de los identificadores \'{u}nicos de cada element encontrado o un resultado vac\'{i}o.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+AuthLDAPUrl "ldapi:///ou=users,dc=xnas,dc=local?uid,cn?sub?
+             (|(objectClass=posixAccount)(objectClass=simpleSecurityObject))"
+\end{verbatim}
+}
+
+
+Para esta URL se realizar\'{a} una b\'{u}squeda en el directorio en el contenedor principal de usuarios y el objetivo es encontrar objetos de tipo \texttt{posixAccount} o \textsl{simpleSecurityObject} que est\'{e}n indexados por el atributo \textsl{uid} o \textsl{cn}. El alcance de la b\'{u}squeda se establece para todos los objetos que se encuentren bajo esta rama del \'{a}rbol, si se desea que \'{u}nicamente se exploren los objetos en este nivel del directorio, se debe establecer el par\'{a}metro \textsl{one}.
+
+        \subsubsection {Grupos de \textsc{LDAP}}
+
+Para el manejo de permisos de acceso se utilizaron grupos de \textsc{LDAP} que representan a los alumnos que se encuentran inscritos a una materia. Se incluye la directiva \texttt{Require} para establecer en la configuraci\'{o}n que es necesario pertenecer a determinado grupo para tener acceso al recurso solicitado.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+Require ldap-group cn=1667-AORJ771312,ou=webdav,ou=groups,dc=xnas,dc=local
+\end{verbatim}
+}
+
+Al especificar la directiva \texttt{Require ldap-group} se realiza la b\'{u}squeda del usuario y adicionalmente del grupo con el objeto de encontrar todos sus miembros y poder verificar si el usuario en cuesti\'{o}n es uno de ellos.
+
 
     \section {Implementaci\'{o}n de las interfaces de usuario}
 
       \subsection {Acceso mediante cliente nativo de \textsc{WebDAV}}
 
-Para
+Para el acceso mediante el cliente nativo se utilizan los siguientes par\'{a}metros:, en el ap\'{e}ndice A se puede consultar el manual de conexi\'{o}n utilizando el cliente nativo
 
-        \subsubsection{P\'{a}gina de inicio del sitio web}
+{
+\begin{table}[H]
+\caption{Par\'{a}metros de conexi\'{o}n \texttt{WebDAV}}{}
+\label{tab:webdav-parameters}
+\noindent\makebox[\textwidth]{%
+\begin{tabular}[c]{c|c}
+%\hline
+\textbf{Par\'{a}metro} & \textbf{Valor} \\
+\hline \hline
+\textit{Endpoint} & \texttt{https://xnas.local/profesores} \\
+\textit{SSL} & \texttt{true} \\
+\textit{Authentication} & \textsc{basic} \\
+%\hline
+\end{tabular}
+} % ending of \makebox
+\end{table}
+}
 
-Se desarroll\'{o} una p\'{a}gina para facilitar a los usuarios la b\'{u}squeda de los directorios asociados con sus materias
+%        \subsubsection{P\'{a}gina de inicio del sitio web}
+%
+%Se desarroll\'{o} una p\'{a}gina para facilitar a los usuarios la b\'{u}squeda de los directorios asociados con sus materias
+
+      \subsection {Acceso mediante el navegador web}
+
+Para acceder mediante el navegador web, simplemente se accede a la URL, de manera predeterminada el servidor pide el usuario y el password del usuario para ofrecer el listado de  archivos y directorios disponible dependiendo de su nivel de acceso.
 
       \subsection {Interfaz de administraci\'{o}n \textit{LDAP Account Manager}}
 
@@ -667,9 +800,7 @@ Se instala el certificado, la llave privada y la configuraci\'{o}n del \texttt{V
 
     \section {Hardening}
 
-      \subsection {Sistema operativo}
-
-        \subsubsection {Actualizaciones desatendidas}
+      \subsection {Actualizaciones desatendidas}
 
 Una parte importante de la configuraci\'{o}n de seguridad de un sistema radica en la instalaci\'{o}n peri\'{o}dica de actualizaciones, al ejecutar el siguiente comando y responder \textbf{YES} en el cuadro de di\'{a}logo, se configura el sistema para descargar e instalar \emph{autom\'{a}ticamente} las actualizaciones de seguridad que sean liberadas por el fabricante del sistema operativo.
 
@@ -693,129 +824,87 @@ Una parte importante de la configuraci\'{o}n de seguridad de un sistema radica e
 
       \subsection {Reducci\'{o}n de componentes instalados}
 
-Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los paquetes que se instalan en el sistema operativo para disminuir la ventana de posibilidades de tener una intrusi\'{o}n. Con la siguiente configuraci\'{o}n se guardan en disco \'{u}nicamente las paginas de manual en ingles y se evita la instalacion de paquetes no esenciales del sistema operativo \footnote{http://aptitude.alioth.debian.org/doc/en/ch02s05s05.html}
-
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-    # dpkg-reconfigure -p low locales
-+----------------------------+ Configuring locales +--------------------------------+
-| Locales are a framework to switch between multiple languages and allow users      |
-| to use their language, country, characters, collation order, etc.                 |
-|                                                                                   |
-| Please choose which locales to generate. UTF-8 locales should be chosen by        |
-| default, particularly for new installations. Other character sets may be useful   |
-| for backwards compatibility with older systems and software.                      |
-|                                                                                   |
-| Locales to be generated:                                                          |
-|                                                                                   |
-|    [*] en_US.UTF-8 UTF-8                                                          |
-|                                                                                   |
-|                       <OK>                       <Cancel>                         |
-+-----------------------------------------------------------------------------------+
-\end{verbatim}
-}
-
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-+------------------------------+ Configuring locales +------------------------------+
-| Many packages in Debian use locales to display text in the correct language for   |
-| the user. You can choose a default locale for the system from the generated       |
-| locales.                                                                          |
-|                                                                                   |
-| This will select the default language for the entire system. If this system is a  |
-| multi-user system where not all users are able to speak the default language,     |
-| they will experience difficulties.                                                |
-|                                                                                   |
-| Default locale for the system environment:                                        |
-|                                                                                   |
-|                                 en_US.UTF-8                                       |
-|                                                                                   |
-|                    <Ok>                        <Cancel>                           |
-+-----------------------------------------------------------------------------------+
-
-Generating locales (this might take a while)...
-  en_US.UTF-8... done
-Generation complete.
-
-\end{verbatim}
-}
-
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-  # aptitude install localepurge
-+----------------------------+ Configuring localepurge +----------------------------+
-| localepurge will remove all locale files from your system but the ones for the    |
-| language codes you select now. Usually two character locales like "de" or "pt"    |
-| rather than "de_DE" or "pt_BR" contain the major portion of localizations. So     |
-| please select both for best support of your national language settings.           |
-| The entries from /etc/locale.gen will be preselected if no prior configuration    |
-| has been successfully completed.                                                  |
-|                                                                                   |
-| Selecting locale files                                                            |
-|                                                                                   |
-|    [*] en                                                                         |
-|    [*] en_US.UTF-8                                                                |
-|                                   <Ok>                                            |
-+-----------------------------------------------------------------------------------+
-\end{verbatim}
-}
-
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-Yes
-+----------------------------+ Configuring localepurge +----------------------------+
-| Based on the same locale information you chose above, localepurge can also delete |
-| superfluous localized man pages.                                                  |
-|                                                                                   |
-| Also delete localized man pages?                                                  |
-|                                                                                   |
-|                     <Yes>                        <No>                             |
-+-----------------------------------------------------------------------------------+
-\end{verbatim}
-}
-
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-No
-+----------------------------+ Configuring localepurge +----------------------------+
-| If you are content with the selection of locales you chose to keep and don't want |
-| to care about whether to delete or keep newly found locales, just deselect this   |
-| option to automatically remove new locales you probably wouldn't care about       |
-| anyway. If you select this option, you will be given the opportunity to decide    |
-| whether to keep or delete newly introduced locales.                               |
-|                                                                                   |
-| Inform about new locales?                                                         |
-|                                                                                   |
-|                     <Yes>                        <No>                             |
-+-----------------------------------------------------------------------------------+
-\end{verbatim}
-}
-
-Para reducir los componentes instalados en el sistema se aplicaron políticas en el gestor de paquetes para evitar la instalación de software adicional cuando se agrega un paquete al sistema, esto ayuda tanto a reducir la complejidad del sistema, como el espacio en disco utilizado por el sistema operativo.
+Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los paquetes que se instalan en el sistema operativo para disminuir la ventana de posibilidades de tener una intrusi\'{o}n. Con la siguiente configuraci\'{o}n del gestor de paquetes se evita la instalaci\'{o}n de software adicional cuando se agrega un paquete, esto ayuda a reducir la complejidad del sistema y reduce el espacio en disco utilizado. \footnote{http://aptitude.alioth.debian.org/doc/en/ch02s05s05.html}
 
 {
 \scriptsize
 \linespread{1}
 \begin{verbatim}
 # cat > /etc/apt/apt.conf.d/10Hardening << EOF
-Apt::Install-Recommends "false"
-Apt::Install-Suggests   "false"
+Apt::Install-Recommends "false";
+Apt::Install-Suggests "false";
 EOF
 
 \end{verbatim}
 }
 
-      \subsection {OpenSSH}
+      \subsection {Evitar el apagado o reinicio acidental del equipo}
+
+Al administrar un equipo de manera remota, se corre el riesgo de ejecutar por error el comando de apagado o reinicio. Al suceder esto, se pierde la sesi\'{o}n de todos los usuarios, los servicios se interrumpen y si se dio la \'{o}rden de apagado, ser\'{a} necesario acudir a la ubicaci\'{o}n f\'{i}sica del equipo y prenderlo manualmente. Para mitigar el riesgo se instal\'{o} el programa \texttt{molly-guard}.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # aptitude install molly-guard
+\end{verbatim}
+}
+
+      \subsection {Reenvio del correo electr\'{o}nico de \texttt{root}}
+
+Se instal\'{o} en el equipo el \textsl{MTA} \texttt{Postfix} configurado como \textit{Internet Site}. Para habilitar la redirecci\'{o}n de los mensajes de correo electr\'{o}nico dirigidos al administrador del sistema se realiz\'{o} lo siguiente:
+
+\begin{itemize}
+  \item Especificar la direccion de destino en el archivo \texttt{/etc/aliases}:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    root:	xnas@tonejito.org
+\end{verbatim}
+}
+
+  \item Regenerar la base de datos de \textit{aliases}:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # newaliases
+\end{verbatim}
+}
+
+  \item Recargar la configuraicon del servicio de correo:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # /etc/init.d/postfix reload
+\end{verbatim}
+}
+
+\end{itemize}
+
+      \subsection {Restricci\'{o}n de acceso para las tareas programadas}
+
+Para limitar la capacidad de los usuarios para programar la ejecuci\'{o}n de comandos en el sistema operativo se adopt\'{o} una politica restrictiva que consiste en tener una \textit{lista blanca} donde se inclyen los nombres de las cuentas que pueden hacer uso de trabajos de \textsl{cron} y \textsl{at}.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # cd /etc
+    # getent passwd | sort -g -t ":" -k 3,3 | awk -F: '$3<1000 {print $1}' | tee cron.allow
+    # ln -v cron.allow at.allow
+\end{verbatim}
+}
+\footnote{https://www.debian.org/doc/manuals/system-administrator/ch-sysadmin-users.html\#s8.1.1}
+\footnote{http://manpages.debian.org/cgi-bin/man.cgi?query=crontab\&manpath=Debian+7.0+wheezy}
+\footnote{http://linux.die.net/man/1/at}
+
+      \subsection {Configuraci\'{o}n de seguridad de OpenSSH}
 
 Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguientes opciones:
 
@@ -839,7 +928,7 @@ Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguient
     \code{LoginGraceTime 60}
 \end{itemize}
 
-        \subsubsection {Firewall}
+      \subsection {Reglas de Firewall}
 
 Para filtrar el tr\'{a}fico de red se establecieron las siguientes pol\'{i}ticas de \textit{firewall} de host en el equipo:
 
@@ -897,25 +986,80 @@ Para implementar las reglas de firewall se utiliz\'{o} \textit{iptables}, el sof
 \end{verbatim}
 }
 
-      \subsection {Servicios de red}
+      \subsection {Configuraci\'{o}n de seguridad de Apache HTTPD}
 
-Restricci\'{o}n de acceso
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+ServerSignature Off
+ServerTokens ProductOnly
+TraceEnable Off
+\end{verbatim}
+}
 
-        \subsubsection {ssh}
+        \subsubsection{Configuraci\'{o}n para \textsc{PHP}}
 
-\begin{itemize}
-  \item Se permite el acceso \'{u}nicamente al grupo de usuarios pertenecientes al staff de la DICyG
-\end{itemize}
+Se configur\'{o} \textsc{PHP} para que no muestre la versi\'{o}n en las cabeceras del protocolo \textsc{HTTP}, evitar la impresi\'{o}n de errores y para que guarde los errores encontrados en una bit\'{a}cora. Para lograr esto, se establecieron los siguientes valores en el archivo \texttt{php.ini}.
 
-        \subsubsection {http}
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+expose_php = Off
+display_errors = Off
+display_startup_errors = Off
+log_errors = On
+error_log = /var/log/apache2/error.log
+\end{verbatim}
+}
 
-\begin{itemize}
-  \item Se restringe el acceso a cada \texttt{VirtualHost} desde determinado rango de direcciones IP
-\end{itemize}
+        \subsubsection{Deshabilitar el soporte de archivos \texttt{.htaccess}}
 
-        \subsubsection {ldap}
+Se agreg\'{o} esta directiva de configuraci\'{o}n dentro de un bloque \texttt{<Directory>} para que el servidor ignore los archivos de configuraci\'{o}n \texttt{.htaccess} debido a que pueden ser modificados por los usuarios.
 
-\begin{itemize}
-  \item Se permiten conexiones locales por \texttt{socket} \texttt{ldapi:///} y conexiones al puerto 389 para diagn\'{o}stico
-\end{itemize}
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+AllowOverride none
+\end{verbatim}
+}
+
+        \subsubsection{Restricci\'{o}n de permisos de escritura}
+
+{
+\begin{table}[H]
+\caption{Clasificaci\'{o}n de m\'{e}todos \textsc{HTTP}}{}
+\label{tab:http-methods}
+\noindent\makebox[\textwidth]{%
+\begin{tabular}[c]{c|c c c}
+%\hline
+\textbf{Tipo} & \textbf{M\'{e}todos} \\
+\hline \hline
+\multirow{2}{*}{\textsl{S\'{o}lo lectura}} & \texttt{OPTIONS} & \texttt{PROPFIND} & \texttt{PROPPATCH} \\ 
+                                           & \texttt{HEAD}    & \texttt{GET}      & \\
+\hline
+\multirow{4}{*}{\textsl{Lectura y Escritura}} & \texttt{POST}      & \texttt{PUT}    & \texttt{MKCOL}  \\
+                                              & \texttt{COPY}      & \texttt{MOVE}   & \texttt{DELETE} \\
+                                              & \texttt{LOCK}      & \texttt{UNLOCK} & \texttt{PATCH}  \\
+                                              & \texttt{PROPPATCH} &                 & \\
+%\hline
+\end{tabular}
+} % ending of \makebox
+\end{table}
+}
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+<LimitExcept GET OPTIONS PROPFIND>
+  Satisfy ALL
+  Require ldap-group _
+  Order Allow,Deny
+  Deny From ALL
+</LimitExcept>
+\end{verbatim}
+}
 
