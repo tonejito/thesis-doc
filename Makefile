@@ -195,3 +195,6 @@ endif
 	$(GREP) -v '\\label{[[:alnum:]]\+:[[:alnum:]]\+}' | \
 	$(PANDOC) --normalize --toc --standalone --self-contained --reference-links --preserve-tabs -B $(README) -A $(README) $(BIBLIOGRAPHY) --biblatex -r latex -w html5 > $(MAIN).html
 
+# [texhax] Including tiff figures in LaTeX
+# https://www.tug.org/pipermail/texhax/2004-June/002252.html
+
