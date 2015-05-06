@@ -677,6 +677,10 @@ Al especificar la directiva \texttt{Require ldap-group} se realiza la b\'{u}sque
 
     \section {Implementaci\'{o}n de las interfaces de usuario}
 
+      \subsection {Acceso mediante el navegador web}
+
+Para acceder mediante el navegador web, simplemente se accede a la URL, de manera predeterminada el servidor pide el usuario y el password del usuario para ofrecer el listado de  archivos y directorios disponible dependiendo de su nivel de acceso.
+
       \subsection {Acceso mediante cliente nativo de \textsc{WebDAV}}
 
 Para el acceso mediante el cliente nativo se utilizan los siguientes par\'{a}metros:, en el ap\'{e}ndice A se puede consultar el manual de conexi\'{o}n utilizando el cliente nativo
@@ -702,10 +706,6 @@ Para el acceso mediante el cliente nativo se utilizan los siguientes par\'{a}met
 %        \subsubsection{P\'{a}gina de inicio del sitio web}
 %
 %Se desarroll\'{o} una p\'{a}gina para facilitar a los usuarios la b\'{u}squeda de los directorios asociados con sus materias
-
-      \subsection {Acceso mediante el navegador web}
-
-Para acceder mediante el navegador web, simplemente se accede a la URL, de manera predeterminada el servidor pide el usuario y el password del usuario para ofrecer el listado de  archivos y directorios disponible dependiendo de su nivel de acceso.
 
       \subsection {Interfaz de administraci\'{o}n \textit{LDAP Account Manager}}
 
@@ -904,9 +904,9 @@ Para limitar la capacidad de los usuarios para programar la ejecuci\'{o}n de com
 \footnote{http://manpages.debian.org/cgi-bin/man.cgi?query=crontab\&manpath=Debian+7.0+wheezy}
 \footnote{http://linux.die.net/man/1/at}
 
-      \subsection {Configuraci\'{o}n de seguridad de OpenSSH}
+      \subsection {Configuraci\'{o}n de seguridad de \textsl{OpenSSH}}
 
-Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguientes opciones:
+Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguientes opciones en el archivo de configuraci\'{o}n \texttt{/etc/ssh/sshd\_config}
 
 \begin{itemize}
   \item Restringir el acceso administrativo directo \'{u}nicamente mediante autenticaci\'{o}n de llave p\'{u}blica.
@@ -1028,16 +1028,18 @@ AllowOverride none
 
         \subsubsection{Restricci\'{o}n de permisos de escritura}
 
+Los m\'{e}todos \textsc{HTTP} se pueden clasificar de acuerdo al tipo de acceso que tienen, ya sea para obtener o enviar datos al servidor. En la siguiente tabla se muestra la clasificaci\'{o}n de acuerdo a este criterio:
+
 {
 \begin{table}[H]
-\caption{Clasificaci\'{o}n de m\'{e}todos \textsc{HTTP}}{}
+\caption{Clasificaci\'{o}n de m\'{e}todos \textsc{HTTP} de acuerdo al acceso a los datos}{}
 \label{tab:http-methods}
 \noindent\makebox[\textwidth]{%
 \begin{tabular}[c]{c|c c c}
 %\hline
 \textbf{Tipo} & \textbf{M\'{e}todos} \\
 \hline \hline
-\multirow{2}{*}{\textsl{S\'{o}lo lectura}} & \texttt{OPTIONS} & \texttt{PROPFIND} & \texttt{PROPPATCH} \\ 
+\multirow{2}{*}{\textsl{S\'{o}lo lectura}} & \texttt{OPTIONS} & \texttt{PROPFIND} &  \\ 
                                            & \texttt{HEAD}    & \texttt{GET}      & \\
 \hline
 \multirow{4}{*}{\textsl{Lectura y Escritura}} & \texttt{POST}      & \texttt{PUT}    & \texttt{MKCOL}  \\
@@ -1049,6 +1051,8 @@ AllowOverride none
 } % ending of \makebox
 \end{table}
 }
+
+Para establecer una restricci\'{o}n a los m\'{e}todos \textsc{HTTP} que pueden escribir datos en el servidor se utiliz\'{o} la directiva \texttt{LimitExcept} para definir los m\'{e}todos que se permiten en el servidor en determinado directorio \footnote{http://httpd.apache.org/docs/2.2/mod/core.html\#limit}. En el siguiente ejemplo se muestra la configuraci\'{o}n adoptada para permitir el acceso de solo lectura.
 
 {
 \scriptsize
