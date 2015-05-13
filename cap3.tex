@@ -199,8 +199,6 @@ Se configur\'{o} el sistema operativo para permitir que los usuarios de \textsc{
 
 Adicionalmente se instalaron los demonios \textsc{NSCD} y \textsc{NSLCD} que se utilizan para guardar en \textit{cache} los resultados de las consultas al directorio y para representar los objetos \textit{posixAccount} de \textsc{LDAP} como cuentas est\'{a}ndar de \textsc{UNIX}.
 
-%\ifdraft{Configuraci\'{o}n de \textsc{OpenLDAP}.}{\verbatimincludebox{./etc/ldap/ldap.conf}}
-
 {
 \scriptsize
 \linespread{1}
@@ -248,9 +246,8 @@ Para la configuraci\'{o}n de \textsc{PAM}, se indica que se utilizar\'{a}n como 
 
           \subsubsection {Inicializaci\'{o}n del directorio \textsc{LDAP}}
 
-Una vez instalado el servicio de directorio, es necesario inicializar la estructura b\'{a}sica que comprende los contenedores de usuarios, materias y grupos utilizando el archivo \texttt{xNAS-base.ldif} y el comando \texttt{ldapadd}.
+Una vez instalado el servicio de directorio, es necesario inicializar la estructura b\'{a}sica que comprende los contenedores de usuarios, materias y grupos utilizando el archivo \texttt{xNAS-base.ldif} y el comando \texttt{ldapadd}. En caso de requerir cambiar la contrase\~{n}a del administrador del directorio, seguir las indicaciones mostradas en la URL de la nota al pie\footnote{http://techiezone.rottigni.net/2011/12/change-root-dn-password-on-openldap/}.
 
-% http://techiezone.rottigni.net/2011/12/change-root-dn-password-on-openldap/
 % http://www.linuxtopia.org/online_books//network_administration_guides/ldap_administration/slapdconf2_Configuration_Directives.html
 
 {
