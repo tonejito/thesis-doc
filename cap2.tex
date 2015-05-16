@@ -50,24 +50,6 @@ El prototipo ser\'{a} implementado en un servidor proporcionado por la \textsc{D
 
       \subsection {Diagrama funcional}
 
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%                        +---------+       +-----+
-%                     22 | OpenSSH |------>| pam |----------+
-%                        +---------+       +-----+          |
-%                                                           v
-%                                                      +----------+
-%                                                      | OpenLDAP |
-%                                                      +----------+
-%      ro-------                                            ^
-%               \        +--------------+                   |
-%      rw--------+---443 | Apache HTTPD |-------------------+
-%               /        +--------------+
-%    reset------
-%\end{verbatim}
-%}
 \diagramblock
 {Diagrama funcional de la soluci\'{o}n propuesta.}
 {DiagramaFuncional}
@@ -177,7 +159,7 @@ Permite almacenar el cat\'{a}logo de las materias que se imparten en la divisi\'
 
 Contiene cuentas de usuario asociadas a servicios de sistema, se utiliza para almacenar las cuentas que realizan b\'{u}squedas en el directorio.
 
-\textbf{\\ Diagrama \\}
+\textbf{\\ Diagrama del \'{a}rbol de directorio \\}
 % Works with `pdflatex', not compatible with `latex'
 %\pdfannot{/Subtype/Text/Contents(TEXT)}
 
@@ -190,37 +172,37 @@ El siguiente diagrama muestra la estructura del \'{a}rbol del directorio \textsc
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
  {
   \begin{pspicture}(0,-2.6826556)(11.01282,2.6826556)
-  \rput[bl](4.2,2.3726556){dc=dicyg,dc=local}
+  \rput[bl](4.2,2.3726556){dc=xnas,dc=local}
   \rput[bl](2.4692307,1.5392582){cn=admin}
   \rput[bl](0.0,0.36118132){ou=users}
   \rput[bl](2.9615386,0.33118132){ou=groups}
   \rput[bl](6.6025643,0.32118133){ou=materias}
   \rput[bl](9.002564,0.31092492){ou=services}
   \rput[bl](6.951282,0.053296704){\small cn=1024}
-  \rput[bl](9.31282,-0.28728938){\small cn=...}
+  \rput[bl](9.312820,-0.28728938){\small cn=...}
   \rput[bl](3.3,0.027783882){\small ou=unix}
-  \rput[bl](0.3,-0.9467583){\small ou=profesores}
-  \rput[bl](0.3,-2.6826556){\small ou=grupos}
+  \rput[bl](0.3,-0.94675830){\small ou=profesores}
+  \rput[bl](0.3,-2.68265560){\small ou=grupos}
   \rput[bl](0.3,0.048296705){\small ou=staff}
-  \rput[bl](3.3,-0.8399634){\small ou=webdav}
-  \rput[bl](0.3,-1.7778938){\small ou=alumnos}
-  \rput[bl](0.6014652,-1.1713004){\footnotesize cn=AETA820507}
-  \rput[bl](0.6014652,-0.26600733){\footnotesize uid=andres}
-  \rput[bl](0.6014652,-0.5544506){\footnotesize uid=...}
-  \rput[bl](0.6014652,-1.4456594){\footnotesize cn=...}
-  \rput[bl](0.6014652,-2.061044){\footnotesize cn=302105966}
-  \rput[bl](0.6014652,-2.309762){\footnotesize cn=...}
+  \rput[bl](3.3,-0.83996340){\small ou=webdav}
+  \rput[bl](0.3,-1.77789380){\small ou=alumnos}
   \rput[bl](6.951282,-0.23600733){\small cn=...}
   \rput[bl](9.31282,-0.037985347){\small cn=apache2}
+  \rput[bl](0.6014652,-1.1713004){\footnotesize cn=AETA820507}
+  \rput[bl](0.6014652,-2.0610440){\footnotesize cn=302105966}
   \rput[bl](3.596337,-0.26600733){\footnotesize cn=AETA820507}
-  \rput[bl](3.596337,-1.1713004){\footnotesize cn=1024-AETA820507}
-  \rput[bl](3.596337,-1.4456594){\footnotesize cn=...}
+  \rput[bl](3.596337,-1.17130040){\footnotesize cn=1024-AETA820507}
+  \rput[bl](0.6014652,-0.2660073){\footnotesize uid=andres}
+  \rput[bl](0.6014652,-0.5544506){\footnotesize uid=...}
+  \rput[bl](0.6014652,-1.4456594){\footnotesize cn=...}
+  \rput[bl](0.6014652,-2.3097620){\footnotesize cn=...}
+  \rput[bl](3.596337,-1.44565940){\footnotesize cn=...}
   \rput[bl](3.596337,-0.51945055){\footnotesize cn=...}
-  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(5.702817,2.361388)(5.702817,1.0092754)(0.46338028,1.0092754)(0.46338028,0.5867402)
-  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(5.702817,1.0092754)(9.505633,1.0092754)(9.505633,0.5867402)
-  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(7.1394367,1.0092754)(7.1394367,0.5867402)
-  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.4211268,1.0092754)(3.4211268,0.5867402)
-  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(5.702817,1.6008247)(4.18169,1.6008247)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.0529166666666666cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(5.702817,2.361388)(5.702817,1.0092754)(0.46338028,1.0092754)(0.46338028,0.5867402)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.0529166666666666cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(5.702817,1.0092754)(9.505633,1.0092754)(9.505633,0.5867402)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.0529166666666666cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(7.1394367,1.0092754)(7.1394367,0.5867402)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.0529166666666666cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.4211268,1.0092754)(3.4211268,0.5867402)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.0529166666666666cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(5.702817,1.6008247)(4.18169,1.6008247)
   \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|}(0.11276596,0.33861312)(0.11276596,0.083293974)
   \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|}(0.11276596,0.083293974)(0.11276596,-0.85287625)
   \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|}(0.11276596,-0.85287625)(0.11276596,-1.70394)
@@ -293,70 +275,75 @@ En la siguiente secci\'{o}n se muestran las configuraciones del hardware y softw
 
       \section {Hardware}
 
-% Poner en esta seccion las caracteristicas del equipo de pruebas y de produccion donde se pondra el appliance
-
-\begin{table}[H]
-\caption{Recursos de hardware utilizados para el appliance}{}
-\label{tab:recursos-hardware}
-\noindent\makebox[\textwidth]{%
-\begin{tabular}[c]{c|c|c}
-%\hline
-\textbf{Elemento} & \textbf{M\'{i}nimo} & \textbf{Recomendado} \\
-\hline \hline
-\textit{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
-\hline
-\textit{CPU} & []x[] GHz & []x[] GHz \\
-\textit{RAM} & [] GHz & [] GHz \\
-\textit{Discos Duros} & []x[] GB & []x[] GB \\
-\textit{Arreglo RAID} & RAID[]: [] & RAID[]: [] \\
-%\hline
-\end{tabular}
-} % ending of \makebox
-\end{table}
+{
+ \begin{table}[H]
+ \caption{Recursos de hardware utilizados para el appliance}{}
+ \label{tab:recursos-hardware}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{c|c|c}
+  %\hline
+  \textbf{Elemento} & \textbf{M\'{i}nimo} & \textbf{Recomendado} \\
+  \hline \hline
+  \textit{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
+  \hline
+  \textit{CPU} & []x[] GHz & []x[] GHz \\
+  \textit{RAM} & [] GHz & [] GHz \\
+  \textit{Discos Duros} & []x[] GB & []x[] GB \\
+  \textit{Arreglo RAID} & RAID[]: [] & RAID[]: [] \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
+}
 
       \section {Software}
 
-% Poner en esta seccion las caracteristicas del equipo de pruebas y de produccion donde se pondra el appliance
-
-\begin{table}[H]
-\caption{Versiones de software utilizados para el appliance}{}
-\label{tab:versiones-software}
-\noindent\makebox[\textwidth]{%
-\begin{tabular}[c]{c|c|c}
-%\hline
-\textbf{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
-\hline \hline
-\textit{Sistema Operativo} & \multicolumn{2}{c}{Debian GNU/Linux 7 \textit{Wheezy}} \\
-\textit{OpenSSH} & [] & [] \\
-\textit{Apache httpd} & [] & [] \\
-\textit{OpenLDAP} & [] & [] \\
-\textit{PHP} & [] & [] \\
-\textit{LDAP Account Manager} & [] & [] \\
-\textit{LDAP Toolbox: Self Service Password} & [] & [] \\
-%\hline
-\end{tabular}
-} % ending of \makebox
-\end{table}
+{
+ \begin{table}[H]
+ \caption{Versiones de software utilizados para el appliance}{}
+ \label{tab:versiones-software}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{c|c|c}
+  %\hline
+  \textbf{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
+  \hline \hline
+  \textit{Sistema Operativo} & \multicolumn{2}{c}{Debian GNU/Linux 7 \textit{Wheezy}} \\
+  \textit{OpenSSH} & [] & [] \\
+  \textit{Apache httpd} & [] & [] \\
+  \textit{OpenLDAP} & [] & [] \\
+  \textit{PHP} & [] & [] \\
+  \textit{LDAP Account Manager} & [] & [] \\
+  \textit{LDAP Toolbox: Self Service Password} & [] & [] \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
+}
 
       \section {L\'{i}mites}
 
 El appliance est\'{a} configurado para alojar los archivos del staff de la \textit{unidad de c\'{o}mputo} y los archivos que cada profesor designe para la impartici\'{o}n de cada curso.
 
-\begin{table}[H]
-\caption{Limites establecidos en el appliance}{}
-\label{tab:limites-appliance}
-\noindent\makebox[\textwidth]{%
-\begin{tabular}[c]{c|c|c}
-%\hline
-\textbf{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
-\hline \hline
-% Se ve feo, mejorar el estilo visual
-\multirow{2}{*}{Cuotas} & Staff: []GB & Staff: []GB \\
-                        & Profesor: []GB & Profesor: []GB \\
-\textit{Temperatura} & [] & [] \\
-\textit{Voltaje} & []AC & []AC \\
-%\hline
-\end{tabular}
-} % ending of \makebox
-\end{table}
+{
+ \begin{table}[H]
+ \caption{Limites establecidos en el appliance}{}
+ \label{tab:limites-appliance}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{c|c|c}
+  %\hline
+  \textbf{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
+  \hline \hline
+  % Se ve feo, mejorar el estilo visual
+  \multirow{2}{*}{Cuotas} & Staff: []GB & Staff: []GB \\
+                          & Profesor: []GB & Profesor: []GB \\
+  \textit{Temperatura} & [] & [] \\
+  \textit{Voltaje} & []AC & []AC \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
+}
 

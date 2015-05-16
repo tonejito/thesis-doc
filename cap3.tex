@@ -327,45 +327,60 @@ La biblioteca que realiza la carga de objetos funciona de acuerdo al siguiente a
 {Diagrama de bloques de los scripts de carga}
 {DiagramaScript}
 {
-  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
-  {
-    \begin{pspicture}(0,-1.9053571)(11.5,1.9053571)
-    \rput[bl](0.33,1.1353571){\textbf{CSV}}
-    \rput[bl](4.07,1.0803571){./script.rb}
-    \rput[bl](3.295,-1.1396428){\textsl{Objetos Conflictivos}}
-    \rput[bl](3.345,-1.9053571){Verificaci\'{o}n manual}
-    \rput[bl](8.675,1.1353571){Directorio LDAP}
-    \psframe[linecolor=black, linewidth=0.04, dimen=outer](6.1,1.8953571)(3.6,0.6153571)
-    \psframe[linecolor=black, linewidth=0.04, dimen=outer](1.48,1.8953571)(0.0,0.6153571)
-    \psframe[linecolor=black, linewidth=0.04, dimen=outer](6.6,-0.51964283)(3.1,-1.4996428)
-    \psframe[linecolor=black, linewidth=0.04, dimen=outer](11.5,1.9053571)(8.48,0.6053571)
-    \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(1.5,1.2644575)(3.592381,1.2454098)
-    \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(6.087619,1.2553571)(8.506667,1.2553571)
-    \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(6.0971427,0.84988093)(7.0590477,0.84988093)(7.04,-1.0834523)(6.582857,-1.0929762)
-    \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.1161904,-1.1691667)(2.44,-1.1691667)(2.44,0.8213095)(3.6209524,0.8117857)
-    \end{pspicture}
-  }
+ \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ {
+  \begin{pspicture}(0,-2.275)(11.5,2.275)
+  \rput[bl](0.18,0.40){\scriptsize \textit{Archivos de entrada}}
+  \rput[bl](8.795,0.8467391){\scriptsize \textit{Archivos de salida}}
+  \rput[bl](6.85,-1.57){\scriptsize \textit{Salida de error}}
+  \rput[bl](4.92,0.20326087){\texttt{script.rb}}
+  \rput[bl](4.6,-0.225){\scriptsize \texttt{require xNAS.rb}}
+  \rput[bl](4.39,1.6902174){Directorio \textsc{LDAP}}
+  \rput[bl](8.88,0.4036232){Config Apache}
+  \rput[bl](8.83,0.05507246){Bit\'{a}cora \texttt{mkdir}}
+  \rput[bl](2.515,-1.57){\scriptsize \textsl{Revisi\'{o}n manual}}
+  \rput[bl](0.875,-0.1576087){\textsc{CSV} \scriptsize(4)}
+  \rput[bl](9.375,-0.4576087){\textsc{CSV} \scriptsize(4)}
+  \rput[bl](7.225,-2.025){\textsc{CSV} \scriptsize(4)}
+  \rput[bl](3.21,-2.025){\textsc{CSV}}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](7.25,0.775)(4.25,-0.425)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](7.25,2.275)(4.25,1.375)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](3.0,0.775)(0.0,-0.425)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.35,-1.075)(6.35,-2.275)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](11.5,1.175)(8.5,-0.525)
+  \psframe[linecolor=black, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, dimen=outer](5.1,-1.075)(2.1,-2.275)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{<->}(5.638506,1.3905172)(5.638506,0.7468391)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(7.22971,0.540942)(8.505073,0.540942)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(7.22971,0.16413043)(8.505073,0.16413043)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(7.227778,-0.175)(8.516666,-0.175)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(2.97,0.13166666)(4.25,0.13166666)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.6366668,-1.0683334)(3.6366668,0.13166666)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(6.3727274,-1.675)(5.077273,-1.675)
+  \psline[linecolor=black, linewidth=0.04, dotsize=0.07055555555555555cm 2.0,arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{*->}(7.85,-0.175)(7.85,-1.0861111)
+  \end{pspicture}
+ }
 }
 
 Cada archivo de entrada \texttt{CSV} tiene varias columnas que contienen informaci\'{o}n acerca del tipo de objeto que representa, a continuaci\'{o}n se muestran las columnas que se requieren en los archivos de entrada:
 
 {
-\begin{table}[H]
-\caption{Formato de los archivos \textsl{CSV}}{}
-\label{tab:csv-format}
-\noindent\makebox[\textwidth]{%
-\begin{tabular}[c]{c|c c c c c}
-%\hline
-\textbf{Archivo} & \multicolumn{5}{c}{\textbf{Columnas}} \\
-\hline \hline
-\textit{staff.csv} & usuario & nombre & correo & curp & \\
-\textit{materias.csv} & id & grupo & materia & rfc & profesor \\
-\textit{profesores.csv} & rfc & nombre & correo & & \\
-\textit{alumnos.csv} & cuenta & nombre & correo & asignatura & grupo \\
-%\hline
-\end{tabular}
-} % ending of \makebox
-\end{table}
+ \begin{table}[H]
+ \caption{Formato de los archivos \textsl{CSV}}{}
+ \label{tab:csv-format}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{c|c c c c c}
+  %\hline
+  \textbf{Archivo} & \multicolumn{5}{c}{\textbf{Columnas}} \\
+  \hline \hline
+  \textit{staff.csv} & usuario & nombre & correo & curp & \\
+  \textit{materias.csv} & id & grupo & materia & rfc & profesor \\
+  \textit{profesores.csv} & rfc & nombre & correo & & \\
+  \textit{alumnos.csv} & cuenta & nombre & correo & asignatura & grupo \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
 }
 
 Para la correcta ejecuci\'{o}n de los scripts es necesario instalar los paquetes \texttt{ruby}, \texttt{rubygems} y la gema de ruby que realiza la conexi\'{o}n con el directorio \textsc{LDAP}.
@@ -399,22 +414,23 @@ Enter password (will not echo):
 
 
 {
-\begin{table}[H]
-\caption{Script de carga de objetos en el directorio}{}
-\label{tab:load-rb}
-\noindent\makebox[\textwidth]{%
-\begin{tabular}[c]{c|c c}
-%\hline
-\textbf{Tipo} & \multicolumn{2}{c}{\textbf{Objetos creados en el directorio}} \\
-\hline \hline
-\textit{staff} & \textit{posixGroup} & \textit{posixAccount} \\
-\textit{profesores} & \textit{posixGroup} & \textit{posixAccount} \\
-\textit{materias} & \textit{organizationalRole} & \textit{groupOfNames} \\
-\textit{alumnos} & \multicolumn{2}{c}{\textit{simpleSecurityObject}} \\
-%\hline
-\end{tabular}
-} % ending of \makebox
-\end{table}
+ \begin{table}[H]
+ \caption{Script de carga de objetos en el directorio}{}
+ \label{tab:load-rb}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{c|c c}
+  %\hline
+  \textbf{Tipo} & \multicolumn{2}{c}{\textbf{Objetos creados en el directorio}} \\
+  \hline \hline
+  \textit{staff} & \textit{posixGroup} & \textit{posixAccount} \\
+  \textit{profesores} & \textit{posixGroup} & \textit{posixAccount} \\
+  \textit{materias} & \textit{organizationalRole} & \textit{groupOfNames} \\
+  \textit{alumnos} & \multicolumn{2}{c}{\textit{simpleSecurityObject}} \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
 }
 
           \subsubsection {Borrado de datos en el directorio \textsc{LDAP}}
@@ -446,21 +462,22 @@ Enter password (will not echo):
 La configuraci\'{o}n de Apache \textit{httpd} comprende tres \texttt{VirtualHost} que sirven como puntos de entrada para el acceso de s\'{o}lo lectura o lectura y escritura a los archivos almacenados en el servidor. Se realiz\'{o} el registro de los nomrbres de dominio con \textsc{NicUNAM}, gracias a esto se pueden acceder desde cualquier navegador web.
 
 {
-\begin{table}[H]
-\caption{VirtualHost configurados en Apache HTTPD}{}
-\label{tab:virtualhost}
-\noindent\makebox[\textwidth]{%
-\begin{tabular}[c]{c|c}
-%\hline
-\textbf{VirtualHost} & \textbf{Funci\'{o}n} \\
-\hline \hline
-\textit{xnas.local} & Acceso a los archivos por medio de \textsc{WebDAV} \\
-\textit{reset.xnas.local} & Interfaz de cambio de contrase\~{n}a \\
-\textit{admin.xnas.local} & Interfaz administrativa del directorio \textsc{LDAP} \\
-%\hline
-\end{tabular}
-} % ending of \makebox
-\end{table}
+ \begin{table}[H]
+ \caption{VirtualHost configurados en Apache HTTPD}{}
+ \label{tab:virtualhost}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{c|c}
+  %\hline
+  \textbf{VirtualHost} & \textbf{Funci\'{o}n} \\
+  \hline \hline
+  \texttt{xnas.local} & Acceso a los archivos por medio de \textsc{WebDAV} \\
+  \texttt{reset.xnas.local} & Interfaz de cambio de contrase\~{n}a \\
+  \texttt{admin.xnas.local} & Interfaz administrativa del directorio \textsc{LDAP} \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
 }
 
 \diagramblock
@@ -469,78 +486,111 @@ La configuraci\'{o}n de Apache \textit{httpd} comprende tres \texttt{VirtualHost
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
  {
-  \begin{pspicture}(0,-2.2)(15.1,2.2)
-  \rput[bl](1.2,1.0){xnas.local}
-  \rput[bl](0.22,-0.2){reset.xnas.local}
-  \rput[bl](0.0,-1.4){admin.xnas.local}
-  \rput[bl](4.3,-0.2){443/tcp}
-  \rput[bl](6.67,0.2){Apache}
-  \rput[bl](6.72,-0.6){HTTPD}
-  \rput[bl](9.5,1.0){WebDAV}
-  \rput[bl](12.7,1.0){Archivos}
-  \rput[bl](12.7,0.6){Carpetas}
-  \rput[bl](9.79,-1.0){PHP}
-  \rput[bl](12.7,-0.6){ltb (reset)}
-  \rput[bl](12.7,-1.4){lam (admin)}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](15.1,2.2)(5.9,-2.2)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](8.3,1.8)(6.3,-1.8)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](11.5,0.2)(9.1,-1.8)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](11.5,1.8)(9.1,0.6)
-  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(8.3,1.0)(9.1,1.0)
-  \psline[linecolor=black, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(8.3,-0.6)(9.1,-0.6)
-  \psline[linecolor=black, linewidth=0.04, linestyle=dotted, dotsep=0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(8.3,-1.4)(9.1,-1.4)
-  \psline[linecolor=black, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(11.5,-0.6)(12.3,-0.6)
-  \psline[linecolor=black, linewidth=0.04, linestyle=dotted, dotsep=0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(11.5,-1.4)(12.3,-1.4)
-  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.1820512,0.95897436)(3.7739928,0.95897436)(4.217949,0.13846155)
-  \psline[linecolor=black, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.1820512,-0.2717949)(4.217949,-0.2717949)
-  \psline[linecolor=black, linewidth=0.04, linestyle=dotted, dotsep=0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.1820512,-1.2974359)(3.7739928,-1.2974359)(4.217949,-0.6820513)
-  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(11.5,1.0)(12.3,1.0)
+  \begin{pspicture}(0,-1.8570131)(14.305195,1.8570131)
+  \rput[bl](0.48181817,1.6170132){Dominio DNS}
+  \rput[bl](0.99,0.41701317){\small \texttt{xnas.local}}
+  \rput[bl](-0.2,-0.68298686){\small \texttt{reset.xnas.local}}
+  \rput[bl](-0.2,-1.3829868){\small \texttt{admin.xnas.local}}
+  \rput[bl](3.1900268,1.1167102){\tiny 443/tcp}
+  \rput[bl](5.120027,-0.05571411){Apache}
+  \rput[bl](5.050027,-0.564502){HTTPD}
+  \rput[bl](7.9379673,0.46626446){\textsc{WebDAV}}
+  \rput[bl](8.367968,-0.9837355){\textsc{PHP}}
+  \rput[bl](10.681818,0.61701316){Archivos}
+  \rput[bl](10.672728,0.1533768){Carpetas}
+  \rput[bl](10.781818,-0.6466232){\scriptsize \textsc{LDAP} Toolbox}
+  \rput[bl](10.772727,-1.4102596){\scriptsize \textsc{LDAP} Account Manager}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](6.773262,1.095088)(4.5967913,-1.5284414)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.708556,1.1186174)(7.7673798,0.053911556)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.708556,-0.18138257)(7.7673798,-1.5460885)
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](14.305195,1.4287015)(4.3623376,-1.8570129)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.090909,0.5134941)(4.3715544,0.5134941)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dotted, dotsep=0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.090909,-1.2736027)(4.3715544,-1.2736027)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.090909,-0.5865059)(4.3715544,-0.5865059)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(6.7909093,0.5134941)(7.7715545,0.5134941)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dotted, dotsep=0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(6.7909093,-1.2736027)(7.7715545,-1.2736027)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(6.7909093,-0.5865059)(7.7715545,-0.5865059)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(9.690909,0.5134941)(10.671555,0.5134941)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dotted, dotsep=0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(9.690909,-1.2736027)(10.671555,-1.2736027)
+  \psline[linecolor=black, linewidth=0.04, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(9.690909,-0.5865059)(10.671555,-0.5865059)
+  \end{pspicture}
+ }
+}
+
+\diagramblock
+{Diagrama de configuraci\'{o}n de Apache HTTPD}
+{DiagramaConf}
+{
+ \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ {
+  \begin{pspicture}(0,-2.3535714)(10.61,2.3535714)
+  \rput[bl](4.2,2.0035715){\texttt{/opt/xNAS}}
+  \rput[bl](0.0,1.0035714){apache2}
+  \rput[bl](0.4,0.46357143){extra}
+  \rput[bl](0.4,0.03357143){sites-available}
+  \rput[bl](3.4,1.0035714){app}
+  \rput[bl](3.7,0.45357144){static}
+  \rput[bl](3.7,0.03357143){lam}
+  \rput[bl](4.0510206,-0.46142858){htdocs}
+  \rput[bl](4.0510206,-0.95357144){conf}
+  \rput[bl](3.7,-1.3964286){ltb}
+  \rput[bl](4.0510206,-1.8678571){htdocs}
+  \rput[bl](4.0510206,-2.3535714){conf}
+  \rput[bl](5.8,1.0035714){ssl}
+  \rput[bl](6.1,0.46357143){certs}
+  \rput[bl](6.1,0.0035714286){private}
+  \rput[bl](8.2,1.0035714){files}
+  \rput[bl](8.5,0.41357142){profesor}
+  \rput[bl](8.5,0.03357143){staff}
+  \rput[bl](8.5,-0.49642858){p \texttt{=\textgreater} profesor}
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(3.488889,0.98134923)(3.488889,0.13690476)
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(3.488889,0.98134923)(3.488889,0.53690475)
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(3.488889,0.98134923)(3.488889,-1.2630953)
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(5.888889,0.98134923)(5.888889,0.13690476)
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(8.288889,0.98134923)(8.288889,0.13690476)
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(5.888889,0.98134923)(5.888889,0.53690475)
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(8.288889,0.98134923)(8.288889,0.53690475)
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(8.288889,0.98134923)(8.288889,-0.36309522)
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(0.18888889,0.98134923)(0.18888889,0.13690476)
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(0.18888889,0.98134923)(0.18888889,0.53690475)
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(3.788889,-0.018650794)(3.8,-0.8964286)
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(3.788889,-0.018650794)(3.788889,-0.35783207)
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(3.8888888,-1.4186507)(3.9,-2.2964287)
+  \psline[linecolor=black, linewidth=0.04, tbarsize=0.07055555555555555cm 5.0]{-|*}(3.8888888,-1.4186507)(3.8888888,-1.757832)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(5.0,1.979762)(5.0,1.5988095)(3.5952382,1.622619)(3.5952382,1.2892857)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(5.0,1.9559524)(5.0,1.5988095)(5.8809524,1.5988095)(5.8809524,1.2178571)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(5.0,1.9559524)(5.0,1.5988095)(8.380953,1.5988095)(8.380953,1.2416667)
+  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(5.0,1.9559524)(5.0,1.5988095)(0.2857143,1.6702381)(0.2857143,1.3130952)
   \end{pspicture}
  }
 }
 
 {
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-/opt/xNAS/
-+ apache2
-| + ports.conf
-| + extra
-| \ sites-available
-+ app
-| + lam
-| | \ htdocs
-| + ltb
-| | \ htdocs
-| \ static
-+ ssl
-| + certs
-| \ private
-\ files
-  + staff
-  + profesor
-  \ p -> profesor
-
-/etc/apache2
-+ ports.conf
-+ extra -> /opt/xNAS/apache2/extra
-\ sites-available
-  + default -> /opt/xNAS/apache2/sites-available/xnas.local
-  + admin.xnas.local -> /opt/xNAS/apache2/sites-available/admin.xnas.local
-  \ reset.xnas.local -> /opt/xNAS/apache2/sites-available/reset.xnas.local
-
-/etc/ssl
-+ certs
-| + ca.thesis.tonejito.info.crt -> /opt/xNAS/ssl/certs/ca.thesis.tonejito.info.crt
-| + xnas.local.crt -> /opt/xNAS/ssl/certs/xnas.local.crt
-| + admin.xnas.local.crt -> /opt/xNAS/ssl/certs/admin.xnas.local.crt
-| \ reset.xnas.local.crt -> /opt/xNAS/ssl/certs/reset.xnas.local.crt
-\ private
-  + xnas.local.key -> /opt/xNAS/ssl/private/xnas.local.key
-  + admin.xnas.local.key -> /opt/xNAS/ssl/private/admin.xnas.local.key
-  \ reset.xnas.local.key -> /opt/xNAS/ssl/private/reset.xnas.local.key
-\end{verbatim}
+ \linespread{1}
+ \begin{table}[H]
+ \caption{Archivos de configuraci\'{o}n}{}
+ \label{tab:system-config}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{l|l}
+  %\hline
+  \multicolumn{1}{c}{\textbf{Liga simb\'{o}lica}} & \multicolumn{1}{c}{\textbf{Destino}} \\
+  \hline \hline
+  \scriptsize \texttt{/etc/apache2/extra}                            & \scriptsize \texttt{/opt/xNAS/apache2/extra} \\
+  \scriptsize \texttt{/etc/apache2/sites-available/xnas.local}       & \scriptsize \texttt{/opt/xNAS/apache2/sites-available/default} \\
+  \scriptsize \texttt{/etc/apache2/sites-available/reset.xnas.local} & \scriptsize \texttt{/opt/xNAS/apache2/sites-available/reset.xnas.local} \\
+  \scriptsize \texttt{/etc/apache2/sites-available/admin.xnas.local} & \scriptsize \texttt{/opt/xNAS/apache2/sites-available/admin.xnas.local} \\
+  \scriptsize \texttt{/etc/ssl/certs/ca.thesis.tonejito.info.crt}    & \scriptsize \texttt{/opt/xNAS/ssl/certs/ca.thesis.tonejito.info.crt} \\
+  \scriptsize \texttt{/etc/ssl/certs/xnas.local.crt}                 & \scriptsize \texttt{/opt/xNAS/ssl/certs/xnas.local.crt} \\
+  \scriptsize \texttt{/etc/ssl/certs/reset.xnas.local.crt}           & \scriptsize \texttt{/opt/xNAS/ssl/certs/reset.xnas.local.crt} \\
+  \scriptsize \texttt{/etc/ssl/certs/admin.xnas.local.crt}           & \scriptsize \texttt{/opt/xNAS/ssl/certs/admin.xnas.local.crt} \\
+  \scriptsize \texttt{/etc/ssl/certs/xnas.local.key}                 & \scriptsize \texttt{/opt/xNAS/ssl/certs/xnas.local.key} \\
+  \scriptsize \texttt{/etc/ssl/certs/reset.xnas.local.key}           & \scriptsize \texttt{/opt/xNAS/ssl/certs/reset.xnas.local.key} \\
+  \scriptsize \texttt{/etc/ssl/certs/admin.xnas.local.key}           & \scriptsize \texttt{/opt/xNAS/ssl/certs/admin.xnas.local.key} \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
 }
 
         \subsubsection {Configuraci\'{o}n del servicio}
@@ -683,21 +733,22 @@ Para acceder mediante el navegador web, simplemente se accede a la URL, de maner
 Para el acceso mediante el cliente nativo se utilizan los siguientes par\'{a}metros:, en el ap\'{e}ndice A se puede consultar el manual de conexi\'{o}n utilizando el cliente nativo
 
 {
-\begin{table}[H]
-\caption{Par\'{a}metros de conexi\'{o}n \texttt{WebDAV}}{}
-\label{tab:webdav-parameters}
-\noindent\makebox[\textwidth]{%
-\begin{tabular}[c]{c|c}
-%\hline
-\textbf{Par\'{a}metro} & \textbf{Valor} \\
-\hline \hline
-\textit{Endpoint} & \texttt{https://xnas.local/profesores} \\
-\textit{SSL} & \texttt{true} \\
-\textit{Authentication} & \textsc{basic} \\
-%\hline
-\end{tabular}
-} % ending of \makebox
-\end{table}
+ \begin{table}[H]
+ \caption{Par\'{a}metros de conexi\'{o}n \texttt{WebDAV}}{}
+ \label{tab:webdav-parameters}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{c|c}
+  %\hline
+  \textbf{Par\'{a}metro} & \textbf{Valor} \\
+  \hline \hline
+  \textit{Endpoint} & \texttt{https://xnas.local/profesores} \\
+  \textit{SSL} & \texttt{true} \\
+  \textit{Authentication} & \textsc{basic} \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
 }
 
 %        \subsubsection{P\'{a}gina de inicio del sitio web}
@@ -946,14 +997,14 @@ Para filtrar el tr\'{a}fico de red se establecieron las siguientes pol\'{i}ticas
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
  {
- \begin{pspicture}(0,-1.84)(3.68,1.84)
- \rput[bl](1.225,1.48){Internet}
- \rput[bl](0.89,0.46){\textsc{RedUNAM}}
- \rput[bl](1.23,-0.76){\textsc{DICyG}}
- \pscircle[linecolor=black, linewidth=0.04, dimen=outer](1.84,-0.58){0.78}
- \pscircle[linecolor=black, linewidth=0.04, dimen=outer](1.84,-0.19){1.45}
- \psframe[linecolor=black, linewidth=0.04, dimen=outer](3.68,1.84)(0.0,-1.84)
- \end{pspicture}
+  \begin{pspicture}(0,-1.84)(3.68,1.84)
+  \rput[bl](1.225,1.48){Internet}
+  \rput[bl](0.89,0.46){\textsc{RedUNAM}}
+  \rput[bl](1.23,-0.76){\textsc{DICyG}}
+  \pscircle[linecolor=black, linewidth=0.04, dimen=outer](1.84,-0.58){0.78}
+  \pscircle[linecolor=black, linewidth=0.04, dimen=outer](1.84,-0.19){1.45}
+  \psframe[linecolor=black, linewidth=0.04, dimen=outer](3.68,1.84)(0.0,-1.84)
+  \end{pspicture}
  }
 }
 
@@ -1028,25 +1079,27 @@ AllowOverride none
 Los m\'{e}todos \textsc{HTTP} se pueden clasificar de acuerdo al tipo de acceso que tienen, ya sea para obtener o enviar datos al servidor. En la siguiente tabla se muestra la clasificaci\'{o}n de acuerdo a este criterio:
 
 {
-\begin{table}[H]
-\caption{Clasificaci\'{o}n de m\'{e}todos \textsc{HTTP} de acuerdo al acceso a los datos}{}
-\label{tab:http-methods}
-\noindent\makebox[\textwidth]{%
-\begin{tabular}[c]{c|c c c}
-%\hline
-\textbf{Tipo} & \textbf{M\'{e}todos} \\
-\hline \hline
-\multirow{2}{*}{\textsl{S\'{o}lo lectura}} & \texttt{OPTIONS} & \texttt{PROPFIND} &  \\ 
-                                           & \texttt{HEAD}    & \texttt{GET}      & \\
-\hline
-\multirow{4}{*}{\textsl{Lectura y Escritura}} & \texttt{POST}      & \texttt{PUT}    & \texttt{MKCOL}  \\
-                                              & \texttt{COPY}      & \texttt{MOVE}   & \texttt{DELETE} \\
-                                              & \texttt{LOCK}      & \texttt{UNLOCK} & \texttt{PATCH}  \\
-                                              & \texttt{PROPPATCH} &                 & \\
-%\hline
-\end{tabular}
-} % ending of \makebox
-\end{table}
+ \linespread{1}
+ \begin{table}[H]
+ \caption{Clasificaci\'{o}n de m\'{e}todos \textsc{HTTP} de acuerdo al acceso a los datos}{}
+ \label{tab:http-methods}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{c|c c c}
+  %\hline
+  \textbf{Tipo} & & \textbf{M\'{e}todos} & \\
+  \hline \hline
+  \multirow{2}{*}{\textsl{S\'{o}lo lectura}} & \texttt{OPTIONS} & \texttt{PROPFIND} &  \\ 
+                                             & \texttt{HEAD}    & \texttt{GET}      & \\
+  \hline
+  \multirow{4}{*}{\textsl{Lectura y Escritura}} & \texttt{POST}      & \texttt{PUT}    & \texttt{MKCOL}  \\
+                                                & \texttt{COPY}      & \texttt{MOVE}   & \texttt{DELETE} \\
+                                                & \texttt{LOCK}      & \texttt{UNLOCK} & \texttt{PATCH}  \\
+                                                & \texttt{PROPPATCH} &                 & \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
 }
 
 Para establecer una restricci\'{o}n a los m\'{e}todos \textsc{HTTP} que pueden escribir datos en el servidor se utiliz\'{o} la directiva \texttt{LimitExcept} para definir los m\'{e}todos que se permiten en el servidor en determinado directorio \footnote{http://httpd.apache.org/docs/2.2/mod/core.html\#limit}. En el siguiente ejemplo se muestra la configuraci\'{o}n adoptada para permitir el acceso de solo lectura.

@@ -104,46 +104,50 @@ Es un nuevo medio de almacenamiento a\'{u}n en desarrollo que ofrece un m\'{e}to
 
       \subsection {Comparativa de medios de almacenamiento actuales}
 
-\begin{table}[H]
-\caption{Comparativa de medios de almacenamiento}{}
-\label{tab:comparativa}
-\noindent\makebox[\textwidth]{%
-% manually center the table in page
-\hspace*{-1.1cm}
-\begin{tabular}{c|c|c|c|c|c}
-%\hline
-\multirow{2}{*}{\textbf{Medio}} & \multirow{2}{*}{\textbf{Capacidad}} & \multirow{2}{*}{\textbf{Persistente}} & \textbf{Acceso} & \textbf{Lectura y} & \multirow{2}{*}{\textbf{Vulnerabilidades}} \\
- & & & \textbf{aleatorio} & \textbf{escritura} & \\
-\hline
-\hline
-\textsc{RAM} & MB & \nomark & \yesmark & \yesmark & \multirow{5}{*}{Electricidad est\'{a}tica} \\
-\cline{1-5}
-\textsc{NVRAM} & MB & \yesmark & \yesmark & \yesmark &  \\
-\cline{1-5}
-\textsc{ROM} & MB & \yesmark & \yesmark & \nomark &  \\
-\cline{1-5}
-\textsc{EEPROM} & MB & \yesmark & \yesmark & \nomark &  \\
-\cline{1-5}
-\textsc{FLASH / SSD} & GB & \yesmark & \yesmark & \yesmark &  \\
-\hline
-Cinta & TB & \yesmark & \nomark & \yesmark & \multirow{3}{*}{Campos magn\'{e}ticos} \\
-\cline{1-5}
-Disco Flexible & MB & \yesmark & \yesmark & \yesmark &  \\
-\cline{1-5}
-Disco Duro & TB & \yesmark & \yesmark & \yesmark &  \\
-\hline
-\multirow{2}{*}{Disco MO} & \multirow{2}{*}{MB/GB} & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\yesmark} & Campos magn\'{e}ticos\\
- & & & & & Rayaduras \\
-\hline
-Disco \'{O}ptico & MB/GB & \yesmark & \yesmark & \nomark & \multirow{3}{*}{Rayaduras} \\
-\cline{1-5}
-Disco Regrabable & MB/GB & \yesmark & \yesmark & \yesmark &  \\
-\cline{1-5}
-Disco Hologr\'{a}fico & GB & \yesmark & \yesmark & \yesmark & \\
-%\hline
-\end{tabular}
-} % ending of \makebox
-\end{table}
+{
+ \linespread{1.15}
+ \begin{table}[H]
+ \caption{Comparativa de medios de almacenamiento}{}
+ \label{tab:comparativa}
+ \noindent\makebox[\textwidth]
+ {%
+  % manually center the table in page
+%  \hspace*{-1.1cm}
+  \begin{tabular}{c|c|c|c|c|c}
+  %\hline
+  \multirow{2}{*}{\textbf{Medio}} & \multirow{2}{*}{\textbf{Capacidad}} & \multirow{2}{*}{\textbf{Persistente}} & \textbf{Acceso} & \textbf{Lectura y} & \multirow{2}{*}{\textbf{Vulnerabilidades}} \\
+   & & & \textbf{aleatorio} & \textbf{escritura} & \\
+  \hline
+  \hline
+  \textsc{RAM} & MB & \nomark & \yesmark & \yesmark & \multirow{5}{*}{Electricidad est\'{a}tica} \\
+%  \cline{1-5}
+  \textsc{NVRAM} & MB & \yesmark & \yesmark & \yesmark &  \\
+%  \cline{1-5}
+  \textsc{ROM} & MB & \yesmark & \yesmark & \nomark &  \\
+%  \cline{1-5}
+  \textsc{EEPROM} & MB & \yesmark & \yesmark & \nomark &  \\
+%  \cline{1-5}
+  \textsc{FLASH / SSD} & GB & \yesmark & \yesmark & \yesmark &  \\
+  \hline
+  Cinta & TB & \yesmark & \nomark & \yesmark & \multirow{3}{*}{Campos magn\'{e}ticos} \\
+%  \cline{1-5}
+  Disco Flexible & MB & \yesmark & \yesmark & \yesmark &  \\
+%  \cline{1-5}
+  Disco Duro & TB & \yesmark & \yesmark & \yesmark &  \\
+  \hline
+  \multirow{2}{*}{Disco MO} & \multirow{2}{*}{MB/GB} & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\yesmark} & Campos magn\'{e}ticos\\
+   & & & & & Rayaduras \\
+  \hline
+  Disco \'{O}ptico & MB/GB & \yesmark & \yesmark & \nomark & \multirow{3}{*}{Rayaduras} \\
+%  \cline{1-5}
+  Disco Regrabable & MB/GB & \yesmark & \yesmark & \yesmark &  \\
+%  \cline{1-5}
+  Disco Hologr\'{a}fico & GB & \yesmark & \yesmark & \yesmark & \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
+}
 
   \subsection {Escenarios de falla}
 
@@ -262,17 +266,6 @@ Para crear el arreglo no importa el tama\~{n}o de los discos. Si se acceden dos 
 
 Este m\'{e}todo no ofrece redundancia, por lo que si falla un disco los datos contenidos en este se pierden. Es posible montar el sistema de archivos en un modo especial y recuperar los datos almacenados en los dem\'{a}s discos.
 
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%                +---------+---------+
-%                |AB   ... |  ...   Z|
-%SO -- Linear -- |  HDD 0  |  HDD 1  |
-%      A,B..Z    |         |         |
-%                +---------+---------+
-%\end{verbatim}
-%}
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textit{Linear}}
 {LinearArray}
@@ -306,23 +299,6 @@ Aunque es posible crear el arreglo con discos de diferente tama\~{n}o, se recomi
 
 No ofrece redundancia porque los bloques se reparten en todos los discos y si uno falla se perder\'{a}n partes de todos los archivos haciendo que el contenido no tenga coherencia.
 
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%                    +---------+
-%                    |AC       |
-%                /-- |  HDD 0  |
-%                |   |         |
-%                |   +---------+
-%SO -- RAID  0 --+
-%      A,B,C,D   |   +---------+
-%                |   |BD       |
-%                \-- |  HDD 1  |
-%                    |         |
-%                    +---------+
-%\end{verbatim}
-%}
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textit{RAID-0}}
 {RAID0-Array}
@@ -356,23 +332,6 @@ Este tipo de arreglo es tolerante a fallos siempre y cuando un solo disco siga f
 
 El rendimiento de escritura es menor al que presenta un solo disco porque se deben de hacer copias exactas de la informaci\'{o}n en todos los discos pertenecientes al arreglo.
 
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%                    +---------+
-%                    |ABCD     |
-%                /-- |  HDD 0  |
-%                |   |         |
-%                |   +---------+
-%SO -- RAID  1 --+
-%      A,B,C,D   |   +---------+
-%                |   |ABCD     |
-%                \-- |  HDD 1  |
-%                    |         |
-%                    +---------+
-%\end{verbatim}
-%}
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textit{RAID-1}}
 {RAID1-Array}
@@ -405,28 +364,6 @@ En este tipo de arreglo se dividen los datos en bloques como sucede en \textsc{R
 Esta configuraci\'{o}n de \textsc{RAID} tiene tolerancia a fallos, siempre y cuando no falle m\'{a}s de un disco en el arreglo. Se requieren por lo menos tres discos para hacer el arreglo.
 
 Dado que se calcula la paridad de los bloques de datos , se debe restar el tama\~{n}o de un disco para obtener el espacio m\'{a}ximo utilizable.
-
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%                      +---------+
-%                      | A, C,P2 |
-%                  /-- |  HDD 0  |
-%                  |   |         |
-%                  |   +---------+
-%                  |   +---------+
-%                  |   | B,P1, E |
-%SO --   RAID  5 --+-- |  HDD 1  |
-%      A,B,C,D,E,F |   |         |
-%                  |   +---------+
-%                  |   +---------+
-%                  |   |P0, D, F |
-%                  \-- |  HDD 2  |
-%                      |         |
-%                      +---------+
-%\end{verbatim}
-%}
 
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textit{RAID-5}}
@@ -463,33 +400,6 @@ Su funcionamiento es similar al de \textsc{RAID} 5, s\'{o}lo que se calculan dos
 Esta configuraci\'{o}n de arreglo puede tolerar el fallo de hasta dos discos duros, mismos que se reconstruyen utilizando los bloques de paridad. Se requieren al menos cuatro discos para hacer un arreglo \textsc{RAID} 6.
 
 Las operaciones de escritura tardan mas porque se deben calcular dos bloques de paridad, las operaciones de lectura no se ven afectadas.
-
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%                            +---------- +
-%                            | A, C,P2,Q3|
-%                        /-- |  HDD 0    |
-%                        |   |           |
-%                        |   +-----------+
-%                        |   +-----------+
-%                        |   | B,P1,Q2, G|
-%                        +-- |  HDD 1    |
-%                        |   |           |
-%SO --     RAID  6     --+   +-----------+
-%      A,B,C,D,E,F,G,H   |   +-----------+
-%                        |   |P0,Q1, E, H|
-%                        +-- |  HDD 2    |
-%                        |   |           |
-%                        |   +-----------+
-%                        |   +-----------+
-%                        |   |Q0, D, F,P3|
-%                        \-- |  HDD 3    |
-%                            |           |
-%                            +-----------+
-%\end{verbatim}
-%}
 
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textit{RAID-6}}
@@ -535,36 +445,6 @@ Los arreglos anidados \cite{_intro_????}
 Se compone por un arreglo \textsc{RAID} 1 que replica los datos contenidos en dos arreglos \textsc{RAID} 0. Se requiere un m\'{i}nimo de cuatro discos para hacer esta configuraci\'{o}n.
 
 Si falla uno o dos discos del mismo arreglo \textsc{RAID} 0, todo el arreglo se pierde y el arreglo \textsc{RAID} 1 entra en modo degradado sin perder los datos, si adem\'{a}s falla un disco de otro arreglo \textsc{RAID} 0 todos los datos se pierden.
-
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%                               +---------+
-%                               |AC       |
-%                           /-- |  HDD 0  |
-%                           |   |         |
-%                +------+   |   +---------+
-%            /-- |RAID 0| --+
-%            |   +------+   |   +---------+
-%            |              |   |BD       |
-%            |              \-- |  HDD 1  |
-%            |                  |         |
-%+-------+   |                  +---------+
-%|RAID  1| --+
-%+-------+   |                  +---------+
-% A,B,C,D    |                  |AC       |
-%            |              /-- |  HDD 2  |
-%            |              |   |         |
-%            |   +------+   |   +---------+
-%            \-- |RAID 0| --+
-%                +------+   |   +---------+
-%                           |   |BD       |
-%                           \-- |  HDD 3  |
-%                               |         |
-%                               +---------+
-%\end{verbatim}
-%}
 
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textit{RAID-01}}
@@ -614,36 +494,6 @@ Consiste en un arreglo \textsc{RAID} 0 conformado por dos o m\'{a}s arreglos \te
 
 Si un disco de alg\'{u}n arreglo \textsc{RAID} 1 falla, este entra en modo degradado y el funcionamiento del arreglo \textsc{RAID} 0 no se ve afectado \footnote{Salvo por la perdida de rendimiento en el arreglo.}, si fallan dos discos del mismo arreglo \textsc{RAID} 1 el arreglo \textsc{RAID} 0 pierde los datos. Se requieren por lo menos cuatro discos para hacer esta configuraci\'{o}n.
 
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%                               +---------+
-%                               |AC       |
-%                           /-- |  HDD 0  |
-%                           |   |         |
-%                +------+   |   +---------+
-%            /-- |RAID 1| --+
-%            |   +------+   |   +---------+
-%            |              |   |AC       |
-%            |              \-- |  HDD 1  |
-%            |                  |         |
-%+-------+   |                  +---------+
-%|RAID  0| --+
-%+-------+   |                  +---------+
-% A,B,C,D    |                  |BD       |
-%            |              /-- |  HDD 2  |
-%            |              |   |         |
-%            |   +------+   |   +---------+
-%            \-- |RAID 1| --+
-%                +------+   |   +---------+
-%                           |   |BD       |
-%                           \-- |  HDD 3  |
-%                               |         |
-%                               +---------+
-%\end{verbatim}
-%}
-
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textit{RAID-10}}
 {RAID10-Array}
@@ -690,33 +540,38 @@ Si un disco de alg\'{u}n arreglo \textsc{RAID} 1 falla, este entra en modo degra
 
       \subsection {Comparativa de tipos de arreglo RAID}
 
-\begin{table}[H]
-\caption{Comparativa de arreglos \textsc{RAID}}{}
-\label{tab:comparativa}
-\noindent\makebox[\textwidth]{%
-% manually center the table in page
-\hspace*{-1.1cm}
-\begin{tabular}[c]{c|c|c|c|c|p{5.95cm}}
-%\hline
-\textbf{Tipo} & \textbf{Redundancia} & \textbf{Paridad} & \textbf{Discos} & \textbf{Capacidad \'{u}til} & \multicolumn{1}{c}{\textbf{Ventajas}} \\
-\hline \hline
-\multirow{3}{*}{Linear}  & \multirow{3}{*}{\nomark} & \multirow{3}{*}{\nomark} & \multirow{3}{*}{2+} & \multirow{3}{*}{Todos los discos} & Los datos se escriben en el siguente disco cuando el actual se llena. \\
-\hline
-\multirow{2}{*}{\textsc{RAID} 0}  & \multirow{2}{*}{\nomark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{2+} & \multirow{2}{*}{Todos los discos} & Los bloques se escriben en paralelo en los discos. \\
-\hline
-\multirow{2}{*}{\textsc{RAID} 1}  & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{2+} & \multirow{2}{*}{1 Disco}  & Se tiene una copia exacta de los datos en los discos. \\
-\hline
-\textsc{RAID}  5  & \yesmark & \yesmark \tiny{simple} & 3+ & 2 Discos & Tolera el fallo de un disco. \\
-\hline
-\textsc{RAID}  6  & \yesmark & \yesmark \tiny{doble} & 4+ & 2 Discos & Tolera el fallo de hasta dos discos. \\
-\hline
-\textsc{RAID} 01 & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} & Tolera el fallo de arreglos completos. \\
-\hline
-\textsc{RAID} 10 & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} &  Tolera el fallo de discos de diferentes arreglos. \\
-%\hline
-\end{tabular}
-} % ending of \makebox
-\end{table}
+{
+ \small
+ \linespread{1.15}
+ \begin{table}[H]
+ \caption{Comparativa de arreglos \textsc{RAID}}{}
+ \label{tab:comparativa}
+ \noindent\makebox[\textwidth]
+ {%
+  % manually center the table in page
+%  \hspace*{-1.1cm}
+  \begin{tabular}[c]{c|c|c|c|c|p{4.5cm}}
+  %\hline
+  \textbf{Tipo} & \textbf{Redundancia} & \textbf{Paridad} & \textbf{Discos} & \textbf{Capacidad \'{u}til} & \multicolumn{1}{c}{\textbf{Ventajas}} \\
+  \hline \hline
+  \multirow{2}{*}{Linear}  & \multirow{2}{*}{\nomark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{2+} & \multirow{2}{*}{Todos los discos} & Se escribe en el disco \textsl{n} cuando \textsl{n-1} se llena \\
+  \hline
+  \multirow{2}{*}{\textsc{RAID} 0}  & \multirow{2}{*}{\nomark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{2+} & \multirow{2}{*}{Todos los discos} & Los bloques se escriben en paralelo en los discos \\
+  \hline
+  \multirow{2}{*}{\textsc{RAID} 1}  & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{2+} & \multirow{2}{*}{1 Disco}  & Se tiene una copia exacta de los datos en los discos \\
+  \hline
+  \multirow{2}{*}{\textsc{RAID} 5}  & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\yesmark \tiny{simple}} & \multirow{2}{*}{3+} & \multirow{2}{*}{2 Discos} & Tolera el fallo de un solo disco del arreglo \\
+  \hline
+  \multirow{2}{*}{\textsc{RAID} 6}  & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\yesmark \tiny{doble}}  & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} & Tolera el fallo de hasta dos discos del arreglo \\
+  \hline
+  \multirow{2}{*}{\textsc{RAID} 01} & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} & Tolera el fallo de arreglos completos \\
+  \hline
+  \multirow{2}{*}{\textsc{RAID} 10} & \multirow{2}{*}{\yesmark} & \multirow{2}{*}{\nomark} & \multirow{2}{*}{4+} & \multirow{2}{*}{2 Discos} &  Tolera el fallo de discos de diferentes arreglos \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
+}
 
     \section {Appliances}
 
@@ -867,20 +722,23 @@ Dentro del directorio los objetos se organizan en una estructura jer\'{a}rquica 
 
 La nomenclatura de los objetos es similar a la de \textsc{DNS}, es decir, el nivel m\'{a}s general se indica a la derecha y el nivel m\'{a}s espec\'{i}fico se indica a la izquierda \cite{_appendix_????}. La ra\'{i}z del \'{a}rbol se puede escribir de manera similar al dominio \textsc{DNS} en una notaci\'{o}n denominada \textit{Domain Component} (\textbf{dc}) o utilizando el nombre de la organizaci\'{o}n (\textbf{o}).
 
-\begin{table}[H]
-\caption{Nomenclatura del nodo ra\'{i}z de \textsc{LDAP}}{}
-\label{tab:nomenclatura-ldap-root}
-\noindent\makebox[\textwidth]{%
-\begin{tabular}[c]{c|c}
-%\hline
-\textbf{Nomenclatura} & \textbf{Formato del nodo ra\'{i}z} \\
-\hline \hline
-\textit{Domain Component} & dc=tonejito,dc=org \\
-\textit{Organization} & o=tonejito \\
-%\hline
-\end{tabular}
-} % ending of \makebox
-\end{table}
+{
+ \begin{table}[H]
+ \caption{Nomenclatura del nodo ra\'{i}z de \textsc{LDAP}}{}
+ \label{tab:nomenclatura-ldap-root}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{c|c}
+  %\hline
+  \textbf{Nomenclatura} & \textbf{Formato del nodo ra\'{i}z} \\
+  \hline \hline
+  \textit{Domain Component} & dc=tonejito,dc=org \\
+  \textit{Organization} & o=tonejito \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
+}
 
 Cada objeto tiene un identificador \'{u}nico en el directorio conocido como \textit{Distinguished Name} (\textbf{dn}) que ayuda a diferenciar los objetos entre si. Se listan a continuaci\'{o}n, a manera de ejemplo, dos de los diferentes nombres distinguidos que se utilizar\'{a}n en este documento.
 
@@ -912,6 +770,16 @@ Dentro del directorio se tienen almacenados los objetos en diferentes ramas del 
      attrib: value2
 \end{verbatim}
 }
+\diagramblock
+{Contenedores del directorio}
+{ldap-containers}
+{
+ \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ {
+  \begin{pspicture}(0.0,0.0)(0.0,0.0)
+  \end{pspicture}
+ }
+}
 
   \subsection {Directorio de usuarios}
 
@@ -930,6 +798,16 @@ En \textsc{LDAP}  los usuarios tienen ciertas propiedades como identificador, no
                                    home               
                                    shell              
 \end{verbatim}
+}
+\diagramblock
+{Atributos de autenticaci\'{o}n de objetos LDAP}
+{ldap-attributes}
+{
+ \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ {
+  \begin{pspicture}(0.0,0.0)(0.0,0.0)
+  \end{pspicture}
+ }
 }
 
 \section {Protocolo SSH}
