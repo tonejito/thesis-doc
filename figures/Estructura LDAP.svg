@@ -377,12 +377,12 @@
             <latexdraw:magneticGrid>true</latexdraw:magneticGrid>
             <latexdraw:version>3.3.1</latexdraw:version>
             <latexdraw:size>
-                <latexdraw:width>1362</latexdraw:width>
-                <latexdraw:height>771</latexdraw:height>
+                <latexdraw:width>1368</latexdraw:width>
+                <latexdraw:height>743</latexdraw:height>
             </latexdraw:size>
             <latexdraw:position>
-                <latexdraw:x>1359.0</latexdraw:x>
-                <latexdraw:y>-1.0</latexdraw:y>
+                <latexdraw:x>-1.0</latexdraw:x>
+                <latexdraw:y>26.0</latexdraw:y>
             </latexdraw:position>
         </latexdraw:metadata>
     </metadata>
