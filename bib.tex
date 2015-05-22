@@ -1,10 +1,16 @@
 % Custom bibliography layout
 % http://ctan.math.utah.edu/ctan/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
+
 \begin{flushleft}
-\addcontentsline{toc}{chapter}{Bibliograf\'{i}a}
+\cleardoublepage  
+\phantomsection  
+\addcontentsline{toc}{chapter}{\bibname}
+\label{chap:bib}
+
 {
  \linespread{0.5}
  \footnotesize
  \bibliography{ref}
 }
+
 \end{flushleft}
