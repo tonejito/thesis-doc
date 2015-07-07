@@ -78,6 +78,24 @@ Los discos duros del servidor ser\'{a}n configurados en un arreglo RAID debido a
     \code{DEVICE /dev/sdb1 /dev/sdc1}
 \end{itemize}
 
+      \subsection {Punto de montaje de s\'{o}lo lectura}
+
+Para evitar el acceso de escritura a los archivos pertenecientes a los profesores, se realiz\'{o} un montaje de tipo \textit{bind} con permisos de s\'{o}lo lectura. Debido a que se realizan dos operaciones de montaje, esta funcionalidad se implement\'{o} dentro del \textit{script} \texttt{/etc/rc.local}.
+
+% http://linux.die.net/man/8/mount
+% https://lwn.net/Articles/281157/
+% http://karelzak.blogspot.mx/2011/04/bind-mounts-mtab-and-read-only.html
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+PREFIX=/opt/xNAS/files
+mount --bind $PREFIX/profesor $PREFIX/p
+mount -o remount,ro,bind $PREFIX/profesor $PREFIX/p
+\end{verbatim}
+}
+
     \section {Configuraci\'{o}n de los servicios}
 
       \subsection {OpenLDAP}
