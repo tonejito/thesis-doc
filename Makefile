@@ -29,14 +29,23 @@ FIGDIR = figures
 FIGURES =	$(FIGDIR)/UNAM.eps		\
 		$(FIGDIR)/Ingenieria.eps
 
-CHAPTERS = cap1.tex cap2.tex cap3.tex cap4.tex cap5.tex
+ABSTRACT = abstract.tex
 
-FILES = thesis.tex thesis.sty						\
-	abstract.tex ack.tex contents.tex tables.tex figures.tex	\
-	$(CHAPTERS)							\
-	bib.tex ${REF_BIB} apdxa.tex
+ACK = ack.tex
+
+APDX = apdxa.tex
 
 INTRO = intro.tex
+
+CHAPTERS = cap1.tex cap2.tex cap3.tex cap4.tex cap5.tex
+
+FILES = thesis.tex thesis.sty \
+	${ABSTRACT} ${ACK} \
+	contents.tex tables.tex figures.tex \
+	$(INTRO) \
+	$(CHAPTERS) \
+	bib.tex ${REF_BIB} \
+	${APDX}
 
 REF_BIB = ref.bib
 
@@ -144,7 +153,7 @@ clean:	clean.doc
 accents:	
 	if [ -n "${BACKUP_SUFFIX}" ] ; \
 	then \
-	  for chapter in $(CHAPTERS) ; \
+	  for chapter in $(ABSTRACT) $(ACK) $(INTRO) $(CHAPTERS) $(APDX) ; \
 	  do \
 	    $(SED) -e "s/á/\\\'{a}/g" \
 	           -e "s/é/\\\'{e}/g" \
