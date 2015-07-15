@@ -726,7 +726,7 @@ AuthLDAPUrl "ldapi:///ou=users,dc=xnas,dc=local?uid,cn?sub?
 }
 
 
-Para esta URL se realizar\'{a} una b\'{u}squeda en el directorio en el contenedor principal de usuarios y el objetivo es encontrar objetos de tipo \texttt{posixAccount} o \textsl{simpleSecurityObject} que est\'{e}n indexados por el atributo \textsl{uid} o \textsl{cn}. El alcance de la b\'{u}squeda se establece para todos los objetos que se encuentren bajo esta rama del \'{a}rbol, si se desea que \'{u}nicamente se exploren los objetos en este nivel del directorio, se debe establecer el par\'{a}metro \textsl{one}.
+Para esta URL se realizar\'{a} una b\'{u}squeda en el directorio en el contenedor principal de usuarios y el objetivo es encontrar objetos de tipo \texttt{posixAccount} o \texttt{simpleSecurityObject} que est\'{e}n indexados por el atributo \textsl{uid} o \textsl{cn}. El alcance de la b\'{u}squeda se establece para todos los objetos que se encuentren bajo esta rama del \'{a}rbol, si se desea que \'{u}nicamente se exploren los objetos en este nivel del directorio, se debe establecer el par\'{a}metro \textsl{one}.
 
         \subsubsection {Grupos de \textsc{LDAP}}
 
@@ -907,7 +907,7 @@ EOF
 \end{verbatim}
 }
 
-      \subsection {Evitar el apagado o reinicio acidental del equipo}
+      \subsection {Evitar el apagado o reinicio accidental del equipo}
 
 Al administrar un equipo de manera remota, se corre el riesgo de ejecutar por error el comando de apagado o reinicio. Al suceder esto, se pierde la sesi\'{o}n de todos los usuarios, los servicios se interrumpen y si se dio la \'{o}rden de apagado, ser\'{a} necesario acudir a la ubicaci\'{o}n f\'{i}sica del equipo y prenderlo manualmente. Para mitigar el riesgo se instal\'{o} el programa \texttt{molly-guard}.
 
@@ -1085,7 +1085,7 @@ error_log = /var/log/apache2/error.log
 
         \subsubsection{Deshabilitar el soporte de archivos \texttt{.htaccess}}
 
-Se agreg\'{o} esta directiva de configuraci\'{o}n dentro de un bloque \texttt{<Directory>} para que el servidor ignore los archivos de configuraci\'{o}n \texttt{.htaccess} debido a que pueden ser modificados por los usuarios.
+Se agreg\'{o} esta directiva de configuraci\'{o}n dentro de un bloque \texttt{<Directory>} para que el servidor ignore los archivos de configuraci\'{o}n \texttt{.htaccess} debido a que podr\'{i}an ser modificados por los usuarios.
 
 {
 \scriptsize

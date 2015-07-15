@@ -5,13 +5,13 @@
   \label{chap:cap1}
 }
 
-    \section {Sistemas de almacenamiento}
+  \section {Sistemas de almacenamiento}
 
 Los medios de almacenamiento guardan los programas o los datos del usuario para que despu\'{e}s puedan ser leidos o modificados, el m\'{e}todo de lectura y escritura dependen en gran medida del tipo de medio que se utilice, a continuaci\'{o}n se hace una clasificaci\'{o}n de los medios comunes de almacenamiento de acuerdo a su tipo.
 
-\subsection {Clasificaci\'{o}n por tipo de medio}
+    \subsection {Clasificaci\'{o}n por tipo de medio}
 
-\textbf{\\ Medios basados en circuitos \\}
+      \subsubsection*{Medios basados en circuitos}
 
 Estos medios de almacenamiento son circuitos individuales o arreglos de circuitos que se utilizan para almacenar datos, la informaci\'{o}n guardada se lee haciendo referencia a la ubicaci\'{o}n de memoria y el tama\~{n}o de los datos que se lee muchas veces es fijo.
 
@@ -43,7 +43,7 @@ Un medio de almacenamiento relativamente reciente, utiliza arreglos de circuitos
 
 \end{itemize}
 
-\textbf{\\ Medios Magn\'{e}ticos \\}
+      \subsubsection*{Medios Magn\'{e}ticos}
 
 Este tipo de medios se caracterizan porque el acceso a los datos se realiza mediante un cabezal que lee o escribe el campo magn\'{e}tico impreso en el material que lo guarda. Son susceptibles a fallar si se exponen a campos magn\'{e}ticos, golpes o temperaturas extremas.
 
@@ -65,11 +65,13 @@ Los discos flexibles almacenan los datos dividiendo el plato en circulos conc\'{
 
 Similar al disco flexible, el disco duro tiene una estructura formada por varios platos, cada uno leido por una cabeza diferente. De manera l\'{o}gica el espacio se organiza en circulos conc\'{e}ntricos (cilindros), platos (cabezas) y arcos (sectores), en modelos modernos se utiliza \emph{Logical Block Addressing} para asignar el espacio \cite{_introduction_????}.
 
-Parecidos a los discos flexibles, estos medios tienen mayor capacidad y actualmente son el medio primordial de almacenar informaci\'{o}n en los equipos de c\'{o}mputo. A diferencia de los discos flexibles, tienen los componentes mec\'{a}nicos dentro del armaz\'{o}n del disco y pueden almacenar grandes cantidades de informaci\'{o}n gracias a que se apilan varios discos en una estructura cilindrica. Para buscar un dato se debe hacer referencia al plato donde est\'{a}, al sector del disco y a la cabeza de lectura que corresponda.
+Parecidos a los discos flexibles, estos medios tienen mayor capacidad y actualmente son el medio primordial de almacenar informaci\'{o}n en los equipos de c\'{o}mputo. A diferencia de los discos flexibles, tienen los componentes mec\'{a}nicos dentro del armaz\'{o}n del disco y pueden almacenar grandes cantidades de informaci\'{o}n gracias a que se apilan varios discos en una estructura cilindrica.
+
+Para buscar un dato se debe hacer referencia al plato donde est\'{a}, al sector del disco y a la cabeza de lectura que corresponda.
 
 \end{itemize}
 
-\textbf{\\ Medios Magneto-\'{o}pticos \\}
+      \subsubsection*{Medios Magneto-\'{o}pticos}
 
 \begin{itemize}
 
@@ -81,7 +83,9 @@ Para escribir los datos calientan la superficie del disco y se aplica un campo m
 
 \end{itemize}
 
-\textbf{\\ Medios \'{O}pticos \\}
+\newpage
+
+      \subsubsection*{Medios \'{O}pticos}
 
 \begin{itemize}
 
@@ -97,7 +101,7 @@ Los discos regrabables (\textsc{CD-RW}, \textsc{DVD+RW}, \textsc{DVD-RW}, \texts
 
 \end{itemize}
 
-\textbf{\\ Medios Hologr\'{a}ficos \\}
+      \subsubsection*{Medios Hologr\'{a}ficos }
 
 \begin{itemize}
 
@@ -156,7 +160,7 @@ Es un nuevo medio de almacenamiento a\'{u}n en desarrollo que ofrece un m\'{e}to
 
   \subsection {Escenarios de falla}
 
-A continuaci\'{o}n se presentan dos de las causas m\'{a}s comunes que causan el funcionamiento incorrecto de un medio de almacenamiento:
+A continuaci\'{o}n se presentan dos de las causas m\'{a}s comunes que ocasionan el funcionamiento incorrecto de un medio de almacenamiento:
 
     \begin{itemize}
 
@@ -166,7 +170,7 @@ Si el medio de almacenamiento presenta da\~{n}o f\'{i}sico los datos almacenados
 
       \item \textbf{Fallo de componentes internos}
 
-Dependiendo del tipo de medio, la falla de componentes internos puede ser fatal, por ejemplo, si se tiene un disco \'{o}ptico y falla el lector de discos, basta con reemplazar la unidad para que el disco se pueda leido sin problemas, en cambio si falla el cabezal de un disco duro, ser\'{a} necesario un proceso m\'{a}s complicado y costoso para recuperar la informaci\'{o}n contenida.
+Dependiendo del tipo de medio, la falla de componentes internos puede ser fatal, por ejemplo, si se tiene un disco \'{o}ptico y falla el lector de discos, basta con reemplazar la unidad para que el disco pueda ser leido sin problemas, en cambio si falla el cabezal de un disco duro, ser\'{a} necesario un proceso m\'{a}s complicado y costoso para recuperar la informaci\'{o}n contenida.
 
     \end{itemize}
 
@@ -196,7 +200,7 @@ El da\~{n}o f\'{i}sico se puede prevenir si se maneja el medio de almacenamiento
 
 % gloasario SOHO
 
-En un entorno de hogar u oficina peque\~{n}a (\textsc{soho}) el n\'{u}mero de usuarios es reducido y gradualmente se busca la manera de tener un almacenamiento centralizado, para resolver este problema varias tecnicas han aparecido a lo largo de los a\~{n}os:
+En un entorno de hogar u oficina peque\~{n}a (\textsc{soho}) el n\'{u}mero de usuarios es reducido y gradualmente se busca la manera de tener un almacenamiento centralizado, para resolver este problema varias t\'{e}cnicas han aparecido a lo largo de los a\~{n}os:
 
     \begin{itemize}
       \item Grabar la informaci\'{o}n a discos \'{o}pticos como CDs y DVDs.
@@ -206,13 +210,15 @@ En un entorno de hogar u oficina peque\~{n}a (\textsc{soho}) el n\'{u}mero de us
       \item Hacer uso de los servicios de almacenamiento en la nube (\textit{cloud storage}) para guardar los archivos en un sitio remoto y accederlos a trav\'{e}s de Internet.
     \end{itemize}
 
+\newpage
+
 La descripci\'{o}n de cada elemento se muestra a continuaci\'{o}n:
 
     \begin{itemize}
 
       \item \textbf{Respaldo en medios \'{opticos}}
 
-Guardar informaci\'{o}n en discos \'{o}pticos deja la copia como s\'{o}lo lectura y aunque sea ideal bueno para respaldos completos o archivado de datos, no es recomendable para guardar datos que van a cambiar porque cada vez que se escriba al disco \'{o}ptico se guardar\'{a} una nueva copia del documento en lugar de reemplazar la existente.
+Guardar informaci\'{o}n en discos \'{o}pticos deja la copia como s\'{o}lo lectura y aunque sea ideal para respaldos completos o archivado de datos, no es recomendable para guardar datos que van a cambiar porque cada vez que se escriba al disco \'{o}ptico se guardar\'{a} una nueva copia del documento en lugar de reemplazar la existente.
 
       \item \textbf{Respaldo en medios magn\'{e}ticos y unidades port\'{a}tiles}
 
@@ -236,13 +242,13 @@ Otra soluci\'{o}n popular en sistemas \textsc{UNIX} es compartir dispositivos de
 
 En los \'{u}ltimos a\~{n}os los servicios de almacenamiento en la nube han ganado popularidad por ser servicios administrados que no requieren mucha configuraci\'{o}n por parte del usuario. Algunos de estos servicios ofrecen una unidad virtual que se monta en el equipo local para acceder al contenido y agregar o modificar los archivos del usuario, mientras que otros sincronizan los archivos locales con el servidor remoto a trav\'{e}s de un programa que funge como intermediario.
 
-        \textbf{\textsl{Nube p\'{u}blica}}
+        \subparagraph*{Nube p\'{u}blica \\}
 
 Los servicios de almacenamiento remotos en Internet son denominados \emph{Almacenamiento de Nube P\'{u}blica}, son \'{u}tiles cuando la velocidad de la conexi\'{o}n se ajusta a la demanda de los usuarios. Dado que los archivos residen en otro lugar, es necesario descargar y subir grandes cantidades de datos al servicio de almacenamiento remoto y si la conexi\'{o}n a Internet no es lo suficientemente r\'{a}pida, la experiencia del usuario se ve afectada.
 
 Com\'{u}nmente este tipo de servicios ofrece menos de 100GB de almacenamiento y al subir o descargar archivos de gran tama\~{n}o la copia es muy lenta.
 
-        \textbf{\textsl{Nube privada}}
+        \subparagraph*{Nube privada \\}
 
 Cuando el servicio de almacenamiento se encuentra en la red local, se puede aprovechar de mejor manera, dado que la velocidad de transmisi\'{o}n en una red local es m\'{a}s r\'{a}pida que entre redes separadas. Adem\'{a}s el servicio no est\'{a} disponible para clientes de otras redes por lo que se denomina \emph{Privado}. En este caso los usuarios tienen una mejor experiencia al utilizar el servicio y los datos se quedan resguardados en un equipo dentro de la organizaci\'{o}n.
 
@@ -255,9 +261,9 @@ En este tipo de soluciones se pueden tener grandes vol\'{u}menes de datos dispon
 
 El t\'{e}rmino \textsc{RAID} es un acr\'{o}nimo de \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Independientes) \footnote{Dependiendo de la bibliograf\'{i}a el t\'{e}rmino puede ser tambi\'{e}n referido como \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Baratos).} \cite{_bytepile.com_????} es una tecnolog\'{i}a que se basa en combinar m\'{u}ltiples discos para que se comporten como uno solo. Dependiendo el modo de operaci\'{o}n, ofrece la posibilidad de tomar varios discos y sumar el espacio de almacenamiento o bien replicar los datos escribiendolos en varios discos para tener tolerancia a fallos \cite{_raid_????-2}.
 
-Los arreglos de disco se pueden configurar por tarjetas dedicadas de hardware o mediante configuraci\'{o}n de software en el sistema operativo. En los \emph{arreglos por hardware} el firmware de la tarjeta controladora tiene los algoritmos encargados de leer, escribir y sincronizar los datos, mientras que en los \emph{arreglos por software} el kernel del sistema operativo es el encargado de realizar estas operaciones \cite{_chapter_????}.
+Los arreglos de disco se pueden configurar por tarjetas dedicadas de hardware o mediante configuraci\'{o}n de software en el sistema operativo. En los \emph{arreglos por hardware} el firmware de la tarjeta controladora tiene los algoritmos encargados de leer, escribir y sincronizar los datos, mientras que en los \emph{arreglos por software} el \textit{kernel} del sistema operativo es el encargado de realizar estas operaciones \cite{_chapter_????}.
 
-\textbf{Tipo de arreglos RAID}
+\subsubsection*{Tipos de arreglo RAID}
 
 A continuaci\'{o}n se muestra la descripci\'{o}n de los tipos de arreglo \textsc{RAID} que se pueden implementar tanto en hardware y en software con las tarjetas controladoras actuales \footnote{Los tipos 2, 3 y 4 de \textsc{RAID} no son comunes y generalmente no son soportados.}.
 
@@ -439,9 +445,9 @@ Las operaciones de escritura tardan mas porque se deben calcular dos bloques de 
 
 \end{itemize}
 
-Arreglos anidados
+\subsubsection*{Arreglos RAID anidados}
 
-Los arreglos anidados \cite{_intro_????}
+ Los arreglos anidados \cite{_intro_????}
 
 \begin{itemize}
 
@@ -495,7 +501,7 @@ Si falla uno o dos discos del mismo arreglo \textsc{RAID} 0, todo el arreglo se 
 
   \item \textbf{RAID 10 / RAID 1+0}
 
-Consiste en un arreglo \textsc{RAID} 0 conformado por dos o m\'{a}s arreglos \textsc{RAID} 1, el sistema operativo detecta la presencia de un solo disco mientras que este se conforma por un arreglo \textsc{RAID} 0 (Stripe) que une los dos arreglos \textsc{RAID} 1 (Mirror).
+Consiste en un arreglo \textsc{RAID} 0 conformado por dos o m\'{a}s arreglos \textsc{RAID} 1, el sistema operativo detecta la presencia de un solo disco mientras que este se conforma por un arreglo \textsc{RAID} 0 (Stripe) que une los dos arreglos \textsc{RAID} 1 (\textit{Mirror}).
 
 Si un disco de alg\'{u}n arreglo \textsc{RAID} 1 falla, este entra en modo degradado y el funcionamiento del arreglo \textsc{RAID} 0 no se ve afectado \footnote{Salvo por la perdida de rendimiento en el arreglo.}, si fallan dos discos del mismo arreglo \textsc{RAID} 1 el arreglo \textsc{RAID} 0 pierde los datos. Se requieren por lo menos cuatro discos para hacer esta configuraci\'{o}n.
 
@@ -588,19 +594,19 @@ Un appliance es un conjunto de elementos (hardware, software y sistema operativo
 
   \item \textbf{Hardware}
 
-Los appliances de hardware son sistemas especializados dise\~{n}ados para realizar tareas espec\'{i}ficas, el fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta nueva funci\'{o}n \cite{}.
+Los \textit{appliances} de hardware son sistemas especializados dise\~{n}ados para realizar tareas espec\'{i}ficas, el fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta nueva funci\'{o}n \cite{}.
 
 Regularmente tienen una interfaz web para administraci\'{o}n, algunos integran un \textit{shell} para realizar las funciones conectandose a trav\'{e}s de \textsc{ssh} y en otros casos integran adem\'{a}s soporte para \textsc{SNMP}.
 
   \item \textbf{Software}
 
-Los appliances de software pueden ser distribuidos en paquetes descomprimibles (tarballs) que contienen el instalador y todos los progamas necesarios para que funcione la soluci\'{o}n \cite{_bitnami:_????}.
+Los \textit{appliances} de software pueden ser distribuidos en paquetes descomprimibles (\textit{tarballs}) que contienen el instalador y todos los progamas necesarios para que funcione la soluci\'{o}n \cite{_bitnami:_????}.
 
 Estos integran s\'{o}lo la interfaz web, puesto que se ejecutan en un equipo existente y son independientes del \textit{shell} o el soporte \textsc{SNMP} que se tenga en el mismo.
 
   \item \textbf{Virtual}
 
-Este tipo de appliances son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}ficamente dise\~{n}adas para un ambiente de virtualizaci\'{o}n que integran la funcionalidad de los appliances de hardware dentro de un equipo virtual. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual para procesar en paralelo las peticiones de los usuarios \cite{_why_????}.
+Este tipo de \textit{appliances} son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}ficamente dise\~{n}adas para un ambiente de virtualizaci\'{o}n que integran la funcionalidad de los \textit{appliances} de hardware dentro de un equipo virtual. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual para procesar en paralelo las peticiones de los usuarios \cite{_why_????}.
 
 \end{itemize}
 
@@ -616,7 +622,7 @@ La seguridad inform\'{a}tica se refiere a los procesos y metodolog\'{i}as dise\~
 
 Este principio busca conservar los datos \'{u}nicamente para la persona que est\'{a} destinada a leerlos \cite{_nist_????}\cite{_information_????}.
 
-Por ejemplo, al cifrar un un archivo se garantiza que s\'{o}lo ser\'{a} visto por la persona que tenga los medios para descifrarlo (ya sea una llave privada o una contrase\~{n}a).
+Por ejemplo, al cifrar un archivo se garantiza que s\'{o}lo ser\'{a} visto por la persona que tenga los medios para descifrarlo (ya sea una llave privada o una contrase\~{n}a).
 
   \item \textbf{Integridad}
 
@@ -660,13 +666,13 @@ En 1983 Richard Stallman inici\'{o} el proyecto \textsc{GNU} \footnote{Acr\'{o}n
 
 En 1987 el profesor Andrew S. Tannenbaum public\'{o} un libro titulado \textit{Sistemas Operativos Dise\~{n}o e Implementaci\'{o}n} \cite{tanenbaum_operating_2006} donde explica varios conceptos y aspectos clave de los sistemas operativos, en las \'{u}ltima secci\'{o}n viene incluido el c\'{o}digo fuente del sistema operativo \textsc{MINIX} que \'{e}l mismo desarroll\'{o} como un clon de \textsc{UNIX} para prop\'{o}sitos educativos. \cite{_complete_????}.
 
-En 1991 Linus Torvalds que estudiaba la maestr\'{i}a en ciencias de la computaci\'{o}n en Helsinki Finlandia \cite{_staff_????}, inspirado en \textsc{MINIX}, decidi\'{o} escribir un sistema operativo compatible con UNIX que cumpliera con el est\'{a}ndar \textsc{POSIX} y el 25 de agosto public\'{o} una entrada en el foro \textsc{usenet} de \textsc{MINIX} \cite{_history_????} explicando su proyecto y pidiendo retroalimentaci\'{o}n, esto di\'{o} origen a una ola de desarrollo que hizo que el kernel Linux creciera, la licencia original de Linux prohib\'{i}a el uso comercial pero se cambi\'{o} para que fuese liberado con la licencia \textsc{GPL} de \textsc{GNU} que permite el uso comercial siempre y cuando se liberen las modificaciones hechas al software y se permita distribuir copias modificadas \cite{_linux_????-3} \footnote{Visitar \cite{_linuxs_????} para ver la lista completa de mensajes \textsc{usenet}.}.
+En 1991 Linus Torvalds que estudiaba la maestr\'{i}a en ciencias de la computaci\'{o}n en Helsinki Finlandia \cite{_staff_????}, inspirado en \textsc{MINIX}, decidi\'{o} escribir un sistema operativo compatible con UNIX que cumpliera con el est\'{a}ndar \textsc{POSIX} y el 25 de agosto public\'{o} una entrada en el foro \textsc{usenet} de \textsc{MINIX} \cite{_history_????} explicando su proyecto y pidiendo retroalimentaci\'{o}n, esto dio origen a una ola de desarrollo que hizo que el kernel Linux creciera, la licencia original de Linux prohib\'{i}a el uso comercial pero se cambi\'{o} para que fuese liberado con la licencia \textsc{GPL} de \textsc{GNU} que permite el uso comercial siempre y cuando se liberen las modificaciones hechas al software y se permita distribuir copias modificadas \cite{_linux_????-3} \footnote{Visitar \cite{_linuxs_????} para ver la lista completa de mensajes \textsc{usenet}.}.
 
 % ligar con el estado actual
 
   \subsection {Distribuciones de GNU/Linux}
 
-Una distribuci\'{o}n es un conjunto de paquetes que permiten instalar, actualizar y borrar programas de una manera sencilla gracias a que resuelven las dependencias \footnote{Las dependencias son programas o bibliotecas adicionales requeridos para que se ejecute el programa.} de forma autom\'{a}tica. Generalmente se instalan \textit{paquetes binarios} que contienen los programas ejecutables o scripts que conforman la aplicaci\'{o}n deseada.
+Una distribuci\'{o}n es un conjunto de paquetes que permiten instalar, actualizar y borrar programas de una manera sencilla gracias a que resuelven las dependencias \footnote{Las dependencias son programas o bibliotecas adicionales requeridos para que se ejecute el programa.} de forma autom\'{a}tica. Generalmente se instalan \textit{paquetes binarios} que contienen los programas ejecutables o \textit{scripts} que conforman la aplicaci\'{o}n deseada.
 
 Existen tambi\'{e}n \textit{paquetes de c\'{o}digo fuente} que permiten instalar los archivos de desarrollo (archivos de cabecera) de un paquete en espec\'{i}fico, esto permite compilar un software que requiera bibliotecas adicionales sin especificarlas expl\'{i}citamente gracias a que se resuelven autom\'{a}ticamente porque est\'{a}n en las rutas del sistema.
 
@@ -713,7 +719,7 @@ Para solventar estas debilidades se defini\'{o} \textsc{HTTPS} en el \textsc{RFC
 
   \subsection {\textsc{WebDAV}}
 
-Web Distributed Authoring and Versioning es una extensi\'{o}n al protocolo \textsc{HTTP} que a\~{n}ade la capacidad de interactuar con archivos alnacendos en el servidor web.
+\textit{Web Distributed Authoring and Versioning} es una extensi\'{o}n al protocolo \textsc{HTTP} que a\~{n}ade la capacidad de interactuar con archivos almacendos en el servidor web.
 
 Est\'{a} definido en el \textsc{RFC} 4918 \cite{_rfc_????-2} y establece un conjunto de extensiones al protocolo \textsc{HTTP} que incluyen m\'{e}todos, cabeceras y formatos tanto de petici\'{o}n como de respuesta para interactuar con el servidor con la finalidad de crear, modificar y borrar archivos. Adem\'{a}s establece un mecanismo denominado \textit{File locking} que previene que dos personas editen el documento al mismo tiempo para no perder cambios.
 
