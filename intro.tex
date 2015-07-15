@@ -5,6 +5,34 @@
   \addcontentsline{toc}{section}{Objetivo}
   \section*{Objetivo}
 
+Implementar un servidor dedicado de almacenamiento que incluya las cuentas de usuario desde un directorio \textsc{LDAP} y que transmita la informaci\'{o}n por medio de \textsc{WebDAV} a trav\'{e}s de un canal cifrado.
+
   \addcontentsline{toc}{section}{Estructura de la tesis}
   \section*{Estructura de la tesis}
+
+    \subsection*{Cap\'{i}tulo~\ref{chap:cap1}}
+
+En el primer cap\'{i}tulo se da a conocer el funcionamiento y clasificaci\'{o}n de los medios de almacenamiento que se utilizan en la actualidad. Se enuncian los mecanismos de protecci\'{o}n para los medios seg\'{u}n su tipo y se da una descripci\'{o}n de las t\'{e}cnicas de respaldo que se utilizan para el almacenamiento en medios separados, respaldos en red y el uso de \textit{Cloud Storage}.
+
+Por \'{u}ltimo se aborda una comparativa de los arreglos RAID simples y compuestos de los cuales se lista su funcionamiento y se presenta un diagrama que muestra el flujo de los datos en cada tipo de arreglo.
+
+    \subsection*{Cap\'{i}tulo~\ref{chap:cap2}}
+
+En el segundo cap\'{i}tulo se define el problema y se plantea la soluci\'{o}n utilizando un servicio de directorio para guardar a los usuarios, un servicio web que implementa el est\'{a}ndar \textsc{WebDAV} para acceder a los archivos y se mencionan las interfaces para administrar el directorio de usuarios y para que los usuarios puedan cambiar su contrase\~{n}a.
+
+    \subsection*{Cap\'{i}tulo~\ref{chap:cap3}}
+
+En el tercer cap\'{i}tulo se realiza la configuraci\'{o}n de los servicios que forman parte de la soluci\'{o}n a implementar, se realiza la configuraci\'{o}n del directorio \textsc{LDAP} y se mencionan los mecanismos utilizados para cargar y borrar de forma masiva los usuarios en el directorio.
+
+Se presenta tambi\'{e}n la configuraci\'{o}n del servicio de \textsc{HTTP} con el m\'{o}dulo de \textsc{WebDAV} y la conexi\'{o}n a \textsc{LDAP}, as\'{i} como la interfaz de administraci\'{o}n \textit{LDAP Account Manager} y la interfaz de cambio de contrase\~{n}a \textit{LDAP Toolbox}.
+
+Por \'{u}ltimo se aplican las configuraciones de seguridad necesarias para restringir el acceso a la cuenta de adminsitrador \texttt{root}, habilitar el envio de reportes de actividad inusual por correo electr\'{o}nico, habilitar un perfil de reglas de \textit{firewall} en el equipo y aplicar directivas de seguridad para el servicio \textsc{HTTP}.
+
+    \subsection*{Cap\'{i}tulo~\ref{chap:cap4}}
+
+En el cuarto cap\'{i}tulo se muestran las pruebas realizadas tomando como grupo de control los cursos intersemestrales que ofrece la \textsl{Unidad de C\'{o}mputo} donde se verific\'{o} la compatibilidad de la soluci\'{o}n con diversas plataformas de escritorio como GNU/Linux, Mac OS X y Windows y sistemas operativos de m\'{o}viles como Apple iOS y Android.
+
+    \subsection*{Cap\'{i}tulo~\ref{chap:cap5}}
+
+En el quinto cap\'{i}tulo se presentan las conclusiones y se listan los resultados obtenidos durante la implementaci\'{o}n y pruebas de la soluci\'{o}n propuesta, as\'{i} como las oportunidades de mejora que puede tener el proyecto en futuras versiones.
 
