@@ -7,11 +7,11 @@
 
     \section {Configuraci\'{o}n del sistema operativo}
 
-El sistema operativo que ser\'{a} utilizado para la implementaci\'{o}n es \textsc{Debian GNU/Linux} 7.0 \textit{\guillemotleft wheezy\guillemotright} que se instalar\'{a} de manera nativa en el servidor y se le aplicar\'{a}n configuraciones personalizadas para ejecutar el software que ser\'{a} implementado, ajustar el rendimiento y reforzar la seguridad de los servicios que ofrezca.
+El sistema operativo que ser\'{a} utilizado para la implementaci\'{o}n es \textsc{Debian GNU/Linux} 7 \textit{\guillemotleft wheezy\guillemotright} que se instalar\'{a} de manera nativa en el servidor y se le aplicar\'{a}n configuraciones personalizadas para ejecutar el software que ser\'{a} implementado, ajustar el rendimiento y reforzar la seguridad de los servicios que ofrezca.
 
-      \subsection {Arreglo de discos RAID}
+      \subsection {Arreglo de discos \textsc{RAID}}
 
-Los discos duros del servidor ser\'{a}n configurados en un arreglo RAID debido a las ventajas que propone para el servicio\footnote{Ver p\'{a}gina \pageref{Arreglos-RAID} secci\'{o}n \ref{Arreglos-RAID}}. La configuraci\'{o}n en el servidor de pruebas se realizar\'{a} con un arreglo RAID 1 por \textit{software} que se configur\'{o} de la siguiente manera: \footnote{https://wiki.debian.org/SoftwareRAID}
+Los discos duros del servidor ser\'{a}n configurados en un arreglo \textsc{RAID} debido a las ventajas que ofrece\footnote{Ver p\'{a}gina \pageref{Arreglos-RAID} secci\'{o}n \ref{Arreglos-RAID}}. La configuraci\'{o}n en el servidor de pruebas se realizar\'{a} con un arreglo \textsc{RAID} 1 por \textit{software} que se configur\'{o} de la siguiente manera: \footnote{https://wiki.debian.org/SoftwareRAID}
 
 \begin{itemize}
   \item Instalar el software para habilitar la compatibilidad con arreglos \textsc{RAID} por software:
@@ -714,7 +714,7 @@ La conexi\'{o}n al servidor LDAP se configura con la directiva \texttt{AuthLDAPU
 
         \subsubsection {B\'{u}squeda en el directorio}
 
-Esta operaci\'{o}n se realiza estableciendo una conexi\'{o}n al servidor para enviar el comando y los par\'{a}metros de b\'{u}squeda. La respuesta puede ser una lista de los identificadores \'{u}nicos de cada element encontrado o un resultado vac\'{i}o.
+Esta operaci\'{o}n se realiza estableciendo una conexi\'{o}n al servidor para enviar el comando y los par\'{a}metros de b\'{u}squeda. La respuesta puede ser una lista de los identificadores \'{u}nicos de cada elemento encontrado o un resultado vac\'{i}o.
 
 {
 \scriptsize
@@ -910,6 +910,8 @@ EOF
       \subsection {Evitar el apagado o reinicio accidental del equipo}
 
 Al administrar un equipo de manera remota, se corre el riesgo de ejecutar por error el comando de apagado o reinicio. Al suceder esto, se pierde la sesi\'{o}n de todos los usuarios, los servicios se interrumpen y si se dio la \'{o}rden de apagado, ser\'{a} necesario acudir a la ubicaci\'{o}n f\'{i}sica del equipo y prenderlo manualmente. Para mitigar el riesgo se instal\'{o} el programa \texttt{molly-guard}.
+
+Al detectar el uso de comandos para apagar o reiniciar el sistema desde una sesi\'{o}n remota, \texttt{molly-guard} preguntar\'{a} el nombre del equipo para hacer una verificaci\'{o}n adicional y evitar que un equipo remoto sea apagado o reiniciado accidentalmente de manera remota.
 
 {
 \scriptsize

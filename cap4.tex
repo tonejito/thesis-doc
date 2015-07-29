@@ -5,16 +5,40 @@
   \label{chap:cap4}
 }
 
+Con el objeto de dar soporte a las plataformas m\'{a}s comunes, se realizaron pruebas sobre los principales sistemas operativos de escritorio y m\'{o}viles. Gracias a que el protocolo \textsc{WebDAV} es est\'{a}ndar, solo es cuesti\'{o}n de instalar un cliente en el sistema operativo o verificar si incorpora la funcionalidad para acceder a servidores de archivos \textsc{WebDAV}.
+
     \section {Compatibilidad multiplataforma}
-      \subsection {GNU/Linux}
+
+Para cada sistema operativo se lista si la conexi\'{o}n con \textsc{WebDAV} se realiza a trav\'{e}s de los mecanismos nativos o si se debe instalar un cliente adicional para habilitar la conexi\'{o}n. Tambi\'{e}n se listan los pasos necesarios para realizar la conexi\'{o}n al servidor.
+
+      \subsection {\textsc{GNU/Linux}}
+
+En \textsc{GNU/Linux} la funcionalidad de conexi\'{o}n a \textsc{WebDAV} ya viene incluida en el entorno de escritorio \textit{Gnome}, para realizar la conexi\'{o}n al servidor se deben realizar los siguientes pasos:
+
+\begin{itemize}
+  \item Abrir \textsl{Nautilus}.
+  \item Seleccionar el men\'{u} \textsl{Go} y la opci\'{o}n \textsl{Connect to server...}
+  \item Escribir el nombre del servidor \texttt{xnas.local}, seleccionar el tipo de conexi\'{o}n \textsl{Secure WebDAV (https)} y escribir el nombre de usuario y la contrase\~{n}a.
+  \item Seleccionar la opci\'{o}n \textsl{Remember for this session} para recordar la contrase\~{n}a mientras el usuario tiene la sesi\'{o}n gr\'{a}fica abierta.
+  \item Dar clic en el bot\'{o}n \textsl{OK} para establecer la conexi\'{o}n al servidor de archivos.
+\end{itemize}
+
       \subsection {Mac OS X}
+
+El soporte nativo para \textsc{WebDAV} est\'{a} incluido en \textsc{Mac OS X} desde las primeras versiones, los pasos a seguir para establecer una conexi\'{o}n son:
+
+\begin{itemize}
+  \item Abrir una nueva ventana de \textsl{Finder} \cmdkey + n
+  \item Ir al men\'{u} \textsl{Go} y a la opci\'{o}n \textsl{Connect to server...}, o bien presionar \cmdkey + k
+  \item Escribir la URL del servidor en el cuadro de texto \texttt{https://xnas.local/profesor} y dar clic en \textsl{Connect}
+  \item El servidor pedir\'{a} las credenciales de acceso y al aceptarlas la unidad ser\'{a} visible en la barra lateral de \textsl{Finder}
+\end{itemize}
+
       \subsection {Apple iOS}
       \subsection {Android}
       \subsection {Windows}
     \section {Pruebas de carga al sistema}
       \subsection {N\'{u}mero m\'{a}ximo de usuarios}
-      \subsection {Rendimiento del arreglo RAID}
     \section {Pruebas de seguridad}
-      \subsection {SQLi - SQL Injection}
-      \subsection {XSS - Cross-site scripting}
-      \subsection {Directory traversal}
+      \subsection {Autenticaci\'{o}n}
+      \subsection {\textit{Directory Traversal}}

@@ -42,7 +42,7 @@ La implementaci\'{o}n del servidor de almacenamiento ayudar\'{a} a liberar espac
 Para la implementaci\'{o}n de este proyecto se utilizar\'{a}n las siguientes tecnolog\'{i}as:
 
 \begin{itemize}
-  \item Debian GNU/Linux como sistema operativo del appliance.
+  \item Debian GNU/Linux como sistema operativo del \textit{appliance}.
   \item Apache HTTPD para proveer el servicio de HTTPS.
   \item OpenLDAP para implementar el directorio de usuarios.
   \item OpenSSH para el acceso remoto por linea de comandos.
@@ -263,7 +263,7 @@ Los sistemas operativos m\'{o}viles como \textsc{Android} y Apple \textsc{iOS} e
 
       \subsection {Interfaces de usuario}
 
-Adem\'{a}s del acceso por \textsc{WebDAV} y por medio de un navegador web el appliance tendr\'{a} una interfaz de administraci\'{o}n para ver y modificar los atributos de los usuarios y una interfaz para que los usuarios puedan cambiar su contrase\~{n}a sin necesidad de acudir con el administrador.
+Adem\'{a}s del acceso por \textsc{WebDAV} y por medio de un navegador web el \textit{appliance} tendr\'{a} una interfaz de administraci\'{o}n para ver y modificar los atributos de los usuarios y una interfaz para que los usuarios puedan cambiar su contrase\~{n}a sin necesidad de acudir con el administrador.
 
         \subsubsection {Interfaz de administraci\'{o}n}
 
@@ -273,15 +273,15 @@ La interfaz de administraci\'{o}n que se propone permite ver, agregar, modificar
 
 Esta interfaz permite tanto al personal de la \textit{Unidad de C\'{o}mputo} como a los profesores cambiar la contrase\~{n}a de acceso que tienen asignada y al realizar esta acci\'{o}n env\'{i}a un correo para notificar que se llev\'{o} acabo dicho cambio.
 
-    \subsection {Especificaci\'{o}n del appliance}
+    \subsection {Especificaci\'{o}n del \textit{appliance}}
 
-En la siguiente secci\'{o}n se muestran las configuraciones del hardware y software que tendr\'{a} el appliance, as\'{i} como los l\'{i}mites que soportar\'{a}.
+En la siguiente secci\'{o}n se muestran las configuraciones del hardware y software que tendr\'{a} el \textit{appliance}.
 
       \section {Hardware}
 
 {
  \begin{table}[H]
- \caption{Recursos de hardware utilizados para el appliance}{}
+ \caption{Recursos de hardware utilizados para el \textit{appliance}}{}
  \label{tab:recursos-hardware}
  \noindent\makebox[\textwidth]
  {%
@@ -289,12 +289,12 @@ En la siguiente secci\'{o}n se muestran las configuraciones del hardware y softw
   %\hline
   \textbf{Elemento} & \textbf{M\'{i}nimo} & \textbf{Recomendado} \\
   \hline \hline
-  \textit{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
-  \hline
-  \textit{CPU} & []x[] GHz & []x[] GHz \\
-  \textit{RAM} & [] GHz & [] GHz \\
-  \textit{Discos Duros} & []x[] GB & []x[] GB \\
-  \textit{Arreglo RAID} & RAID[]: [] & RAID[]: [] \\
+%  \textit{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
+%  \hline
+  \textit{CPU} & 1x 1 GHz & 2x 2 GHz \\
+  \textit{RAM} & 1 GB & 4 GB \\
+  \textit{Discos Duros} & 1x 80 GB & 2x 500 GB \\
+  \textit{Arreglo RAID} & Sin RAID & RAID1 \\
   %\hline
   \end{tabular}
  } % ending of \makebox
@@ -305,49 +305,49 @@ En la siguiente secci\'{o}n se muestran las configuraciones del hardware y softw
 
 {
  \begin{table}[H]
- \caption{Versiones de software utilizados para el appliance}{}
+ \caption{Versiones de software utilizados para el \textit{appliance}}{}
  \label{tab:versiones-software}
  \noindent\makebox[\textwidth]
  {%
   \begin{tabular}[c]{c|c|c}
   %\hline
-  \textbf{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
-  \hline \hline
-  \textit{Sistema Operativo} & \multicolumn{2}{c}{Debian GNU/Linux 7 \textit{Wheezy}} \\
-  \textit{OpenSSH} & [] & [] \\
-  \textit{Apache httpd} & [] & [] \\
-  \textit{OpenLDAP} & [] & [] \\
-  \textit{PHP} & [] & [] \\
-  \textit{LDAP Account Manager} & [] & [] \\
-  \textit{LDAP Toolbox: Self Service Password} & [] & [] \\
+  \textbf{Software} & \textbf{Versi\'{o}n} \\
+  \hline
+  \textit{Sistema Operativo} & Debian GNU/Linux 7 \textit{Wheezy} \\
+  \textit{OpenSSH} & v6.0 \\
+  \textit{Apache httpd} & v2.2 \\
+  \textit{OpenLDAP} & v2.4 \\
+  \textit{PHP} & v5.4 \\
+  \textit{LDAP Account Manager} & v4.8 \\
+  \textit{LDAP Toolbox: Self Service Password} & v0.8 \\
   %\hline
   \end{tabular}
  } % ending of \makebox
  \end{table}
 }
 
-      \section {L\'{i}mites}
-
-El appliance est\'{a} configurado para alojar los archivos del staff de la \textit{unidad de c\'{o}mputo} y los archivos que cada profesor designe para la impartici\'{o}n de cada curso.
-
-{
- \begin{table}[H]
- \caption{Limites establecidos en el appliance}{}
- \label{tab:limites-appliance}
- \noindent\makebox[\textwidth]
- {%
-  \begin{tabular}[c]{c|c|c}
-  %\hline
-  \textbf{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
-  \hline \hline
-  % Se ve feo, mejorar el estilo visual
-  \multirow{2}{*}{Cuotas} & Staff: []GB & Staff: []GB \\
-                          & Profesor: []GB & Profesor: []GB \\
-  \textit{Temperatura} & [] & [] \\
-  \textit{Voltaje} & []AC & []AC \\
-  %\hline
-  \end{tabular}
- } % ending of \makebox
- \end{table}
-}
+%      \section {L\'{i}mites}
+%
+%El \textit{appliance} est\'{a} configurado para alojar los archivos del staff de la \textit{unidad de c\'{o}mputo} y los archivos que cada profesor designe para la impartici\'{o}n de cada curso.
+%
+%{
+% \begin{table}[H]
+% \caption{Limites establecidos en el \textit{appliance}}{}
+% \label{tab:limites-appliance}
+% \noindent\makebox[\textwidth]
+% {%
+%  \begin{tabular}[c]{c|c|c}
+%  %\hline
+%  \textbf{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
+%  \hline \hline
+%  % Se ve feo, mejorar el estilo visual
+%  \multirow{2}{*}{Cuotas} & Staff: []GB & Staff: []GB \\
+%                          & Profesor: []GB & Profesor: []GB \\
+%  \textit{Temperatura} & [] & [] \\
+%  \textit{Voltaje} & []AC & []AC \\
+%  %\hline
+%  \end{tabular}
+% } % ending of \makebox
+% \end{table}
+%}
 
