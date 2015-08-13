@@ -18,6 +18,8 @@ SUDO=		sudo
 APTITUDE=	aptitude
 PORT=		/opt/local/bin/port
 
+VIM=		vim
+
 .SUFFIXES:	.tex .dvi .eps .ps .pdf
 
 MAIN = thesis
@@ -106,6 +108,9 @@ view:
 	    ${VIEWER} $(MAIN).pdf & \
 	  fi \
 	fi ;
+
+edit:
+	$(VIM) $(ABSTRACT) $(ACK) $(INTRO) $(CHAPTERS) $(APDX)
 
 # Optimize pdf for print size
 optimize:	
