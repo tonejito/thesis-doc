@@ -24,6 +24,9 @@
 \usepackage{float}
 % Fix table float
 \restylefloat{table}
+% Set border around figures
+\floatstyle{boxed} 
+%\restylefloat{figure}
 
 % Try uncommenting the following line if fonts don't
 % display correctly in the PDF file.
@@ -164,6 +167,19 @@
    }
   }
  }
+}
+
+\newcommand{\picturebox}[4]{%
+  \begin{figure}[H]
+    \centering
+    \ifdraft
+    {
+      \includegraphics[draft=true,width=#4\textwidth,natwidth=#2,natheight=#3]{#1}
+    }
+    {
+      \includegraphics[draft=false,width=#4\textwidth,natwidth=#2,natheight=#3]{#1}
+    }
+  \end{figure}
 }
 
 % Insert the following information in the final pdf
@@ -455,5 +471,5 @@
 % For Lorem Ipsum
 \usepackage{blindtext}
 
-\usepackage{./lib/applekeys/applekeys}
+%\usepackage{./lib/applekeys/applekeys}
 
