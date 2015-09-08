@@ -13,6 +13,7 @@ GREP=		grep
 EGREP=		egrep
 CAT=		cat
 PANDOC=		pandoc
+MAN=		man
 
 SUDO=		sudo
 APTITUDE=	aptitude
@@ -211,4 +212,22 @@ endif
 
 # [texhax] Including tiff figures in LaTeX
 # https://www.tug.org/pipermail/texhax/2004-June/002252.html
+
+$(MAN):	$(MAN).tex
+	for ext in out log dvi ps pdf ; \
+	do \
+	  if [ -e $(MAN).$$ext ] ; \
+	  then \
+	    rm $(MAN).$$ext ; \
+	  fi ; \
+	done ;
+	$(LATEX) $(MAN).tex; 
+	$(DVIPS) -Ppdf -G0 -t $(PAPERSIZE) -o $(MAN).ps $(MAN).dvi
+	$(PS2PDF) -sPAPERSIZE=$(PAPERSIZE) $(MAN).ps $(MAN).pdf
+	#$(GS) -sPAPERSIZE=$(PAPERSIZE) -sProcessColorModel=DeviceCMYK -q \
+	#-dPDFA -dBATCH -dNOPAUSE -dNOOUTERSAVE -dUseCIEColor \
+	#-sDEVICE=pdfwrite -sOutputFile=$(MAN).pdf $(MAN).ps
+	#$(GS) $(GS_QUIET) -dBATCH -dNOPAUSE -sPAPERSIZE=$(PAPERSIZE) \
+	#-sDEVICE=pdfwrite -dPDFSETTINGS=/$(PDFSETTINGS) -dUseCIEColor=true \
+	#-sOutputFile=$(MAN).pdf $(MAN).pdf
 
