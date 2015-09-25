@@ -31,3 +31,5 @@ thesis.html
 thesis.md
 thesis.pdf
 man.pdf
+figures/*.png
+figures/*.tiff
