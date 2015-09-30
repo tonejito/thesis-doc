@@ -5,15 +5,36 @@
   \label{chap:cap4}
 }
 
-Con el objeto de dar soporte a las plataformas m\'{a}s comunes, se realizaron pruebas sobre los principales sistemas operativos de escritorio y m\'{o}viles. Gracias a que el protocolo \textsc{WebDAV} es est\'{a}ndar, solo es cuesti\'{o}n de instalar un cliente en el sistema operativo o verificar si ya incorpora la funcionalidad para acceder a servidores de archivos de este tipo.
+Con el objeto de dar soporte a las plataformas m\'{a}s comunes, se realizaron pruebas sobre los principales sistemas operativos de escritorio y m\'{o}viles. Gracias a que el protocolo \textsc{WebDAV} es est\'{a}ndar, solo es cuesti\'{o}n de instalar un cliente en el sistema operativo o verificar si esta funcionalidad ya est\'{a} incorporada para acceder a servidores de archivos de este tipo.
 
     \section {Compatibilidad multiplataforma}
 
 En el \textsl{Ap\'{e}ndice \ref{apdx:a}}\footnote{P\'{a}gina \pageref{apdx:a}} se muestran los pasos necesarios para realizar la conexi\'{o}n al servidor \textsc{WebDAV} tanto en sistemas operativos de escritorio como en plataformas de m\'{o}viles.
 
     \section {Pruebas de roles de usuario}
-      \subsection {Profesor}
-      \subsection {Alumno}
+
+El sistema de almacenamiento presenta tres perfiles de usuario: staff, profesor y alumno. Los dos primeros tienen privilegios de lectura-escritura y el \'{u}ltimo tiene acceso de s\'{o}lo lectura. El personal de la \textit{Unidad de C\'{o}mouto} verific\'{o} que cada perfil cumpliera con los requerimientos de acceso.
+
+{
+ \linespread{1}
+ \begin{table}[H]
+ \caption{Perfiles de usuario y tipo de acceso}{}
+ \label{tab:user-profiles}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{c|l}
+  \textbf{Perfil de usuario}      & \multicolumn{1}{c}{\textbf{Descripci\'{o}n}} \\
+  \hline \hline
+  \multirow{2}{*}{\textit{Staff}} & Acceso de lectura y escritura a su carpeta de usuario \\
+                                  & Acceso de lectura a la secci\'{o}n de profesores \\
+  \textit{Profesor}               & Acceso de lectura y escritura a su carpeta de usuario \\
+  \textit{Alumno}                 & Acceso de s\'{o}lo lectura a las carpetas de profesor \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
+}
+
     \section {Pruebas de seguridad}
       \subsection {Autenticaci\'{o}n}
       \subsection {\textit{Directory Traversal}}
