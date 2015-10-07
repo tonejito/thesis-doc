@@ -17,6 +17,7 @@ MAN=		man
 
 SUDO=		sudo
 APTITUDE=	aptitude
+YUM=		yum
 PORT=		/opt/local/bin/port
 
 VIM=		vim
@@ -66,7 +67,19 @@ GS_QUIET =
 ifeq ($(shell uname -s),Linux)
   BACKUP_SUFFIX=-i''
   VIEWER=$(shell which evince)
-  INSTALL=$(APTITUDE)
+  # apt / aptitude
+  ifeq ($(wildcard /etc/debian_version),/etc/debian_version)
+    INSTALL=$(APTITUDE)
+    PACKAGES=pandoc texlive \
+             texlive-latex-extra  texlive-bibtex-extra \
+             texlive-lang-english texlive-lang-spanish
+  endif
+  # yum / rpm
+  ifeq ($(wildcard /etc/redhat-release),/etc/redhat-release)
+    INSTALL=$(YUM)
+    PACKAGES=pandoc texlive texlive-latex \
+             texlive-texmf-latex texlive-texmf-errata-latex
+  endif
 endif
 # Darwin / Mac OS X
 ifeq ($(shell uname -s),Darwin)
@@ -93,10 +106,7 @@ endif
 
 # Install dependencies
 deps:
-	$(SUDO) $(INSTALL) install \
-	pandoc texlive \
-	texlive-latex-extra  texlive-bibtex-extra \
-	texlive-lang-english texlive-lang-spanish ;
+	$(SUDO) $(INSTALL) install $(PACKAGES)
 
 # Preview automagically reload the document on change
 view:	
