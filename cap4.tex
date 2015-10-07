@@ -13,7 +13,7 @@ En el \textsl{Ap\'{e}ndice \ref{apdx:a}}\footnote{P\'{a}gina \pageref{apdx:a}} s
 
     \section {Pruebas de roles de usuario}
 
-El sistema de almacenamiento presenta tres perfiles de usuario: staff, profesor y alumno. Los dos primeros tienen privilegios de lectura-escritura y el \'{u}ltimo tiene acceso de s\'{o}lo lectura. El personal de la \textit{Unidad de C\'{o}mouto} verific\'{o} que cada perfil cumpliera con los requerimientos de acceso.
+El sistema de almacenamiento presenta tres perfiles de usuario: staff, profesor y alumno. Los dos primeros tienen privilegios de lectura-escritura y el \'{u}ltimo tiene acceso de s\'{o}lo lectura. El personal de la \textit{Unidad de C\'{o}mputo} verific\'{o} que cada tipo de usario cumpliera con los requerimientos de acceso y adem\'{a}s que la conexi\'{o}n al servidor se pudiera realizar de manera exitosa siguiendo los manuales presentados en el \textsl{Ap\'{e}ndice \ref{apdx:a}}.
 
 {
  \linespread{1}
@@ -27,7 +27,9 @@ El sistema de almacenamiento presenta tres perfiles de usuario: staff, profesor 
   \hline \hline
   \multirow{2}{*}{\textit{Staff}} & Acceso de lectura y escritura a su carpeta de usuario \\
                                   & Acceso de lectura a la secci\'{o}n de profesores \\
+  \hline
   \textit{Profesor}               & Acceso de lectura y escritura a su carpeta de usuario \\
+  \hline
   \textit{Alumno}                 & Acceso de s\'{o}lo lectura a las carpetas de profesor \\
   %\hline
   \end{tabular}
@@ -36,6 +38,73 @@ El sistema de almacenamiento presenta tres perfiles de usuario: staff, profesor 
 }
 
     \section {Pruebas de seguridad}
+
+      \subsection {Detecci\'{o}n de puertos abiertos}
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+# nmap -v -r -O -sS -sV --version-all -T 5 -p 0-65535 -oA xnas xnas.tonejito.org
+NSE: Loaded 17 scripts for scanning.
+Initiating Ping Scan at 01:08
+Scanning xnas.tonejito.org (132.248.139.147) [4 ports]
+Completed Ping Scan at 01:08, 0.18s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 01:08
+Completed Parallel DNS resolution of 1 host. at 01:08, 0.01s elapsed
+Initiating SYN Stealth Scan at 01:08
+Scanning xnas.tonejito.org (132.248.139.147) [65536 ports]
+Discovered open port 22/tcp on 132.248.139.147
+Discovered open port 80/tcp on 132.248.139.147
+Discovered open port 443/tcp on 132.248.139.147
+\end{verbatim}
+}
+
+
       \subsection {Autenticaci\'{o}n}
-      \subsection {\textit{Directory Traversal}}
+
+Las pruebas de autenticaci\'{o}n se realizaron de manera automatizada utilizando el siguiente algoritmo para iterar entre los usuarios y carpetas:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+  para cada usuario u
+    para cada carpeta c
+      intenta acceder como el usuario u a la carpeta c
+      el servidor dio acceso
+        agrega el usuario y la carpeta a la lista de accesos exitosos
+      caso contrario
+        agrega el usuario y la carpeta a la lista de accesos fallidos
+      fin de condicional
+    fin de ciclo de carpetas
+  fin de ciclo de usuarios
+\end{verbatim}
+}
+
+      \subsection {Par\'{a}metros de cifrado para \texttt{HTTPS}}
+
+Al realizar una verificaci\'{o}n de seguridad del cifrado \texttt{SSL} utiilizado en el \textsl{appliance}, se obtuvo una calificaci\'{o}n regular \textbf{C} y se encontraron los siguientes problemas con la configuraci\'{o}n predeterminada:
+
+\begin{itemize}
+  \item Vulnerabilidad al ataque \texttt{POODLE} \footnote{Padding Oracle On Downgraded Legacy Encryption}
+% https://www.us-cert.gov/ncas/alerts/TA14-290A
+% https://www.openssl.org/~bodo/ssl-poodle.pdf
+% https://googleonlinesecurity.blogspot.mx/2014/10/this-poodle-bites-exploiting-ssl-30.html
+% https://blog.mozilla.org/security/2014/10/14/the-poodle-attack-and-the-end-of-ssl-3-0/
+% https://community.qualys.com/blogs/securitylabs/2014/10/15/ssl-3-is-dead-killed-by-the-poodle-attack
+
+  \item El servidor soporta el algoritmo cifrado \texttt{RC4}, mismo que es clasificado como d\'{e}bil
+% https://community.qualys.com/blogs/securitylabs/2013/03/19/rc4-in-tls-is-broken-now-what
+
+  \item La configuraci\'{o}n de \texttt{SSL} aplicada no permite el uso de \textsl{Perfect Forward Secrecy}
+% https://en.wikipedia.org/wiki/Forward_secrecy
+\end{itemize}
+
+  \picturebox{figures/SSL-Labs_Test-Default}{855}{663}{0.9}
+
+Para resolver los problemas encontrados se tomaron en cuenta los requerimientos para \texttt{SSL} del est\'{a}ndar \texttt{PCI-DSS}, deshabilitando por completo el soporte de \texttt{RC4} y \texttt{SSLv3}. Gracias a la configuraci\'{o}n aplicada se obtuvo una calificaci\'{o}n buena \textbf{A}.
+% https://www.ssllabs.com/ssltest/analyze.html?d=xnas.tonejito.org&hideResults=on&clearCache=on
+
+  \picturebox{figures/SSL-Labs_Test-Enhanced}{855}{533}{0.9}
 
