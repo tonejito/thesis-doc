@@ -86,6 +86,9 @@ ifeq ($(shell uname -s),Darwin)
   BACKUP_SUFFIX=-i ''
   VIEWER=$(shell which open)
   INSTALL=$(PORT)
+  PACKAGES=pandoc texlive \
+           texlive-latex-extra  texlive-bibtex-extra \
+           texlive-lang-english texlive-lang-spanish
 endif
 # Cygwin
 ifeq ($(shell uname -s),CYGWIN_NT-6.1-WOW64)
