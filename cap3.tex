@@ -1000,6 +1000,7 @@ Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguient
 \end{itemize}
 
       \subsection {Reglas de Firewall}
+      \label{subsec:fw-rules}
 
 Para filtrar el tr\'{a}fico de red se establecieron las siguientes pol\'{i}ticas de \textit{firewall} de host en el equipo:
 
@@ -1057,16 +1058,67 @@ Para implementar las reglas de firewall se utiliz\'{o} \textit{iptables}, el sof
 \end{verbatim}
 }
 
-      \subsection {Configuraci\'{o}n de seguridad de Apache HTTPD}
+        \subsubsection {Protecci\'{o}n contra ataques de fuerza bruta con \texttt{fail2ban}}
+
+Este software realiza un seguimiento de las conexiones que se realizan al equipo e identifica los ataques de fuerza bruta contra el servicio de \textsc{SSH}. Al detectar un ataque, realiza un bloqueo de la direcci\'{o}n \textsc{IP} del atacante por un tiempo determinado.
+
+Es necesario instalar el software y hacer una copia del archivo \texttt{jail.conf} con el nombre \texttt{jail.local} donde se realizar\'{a}n ajustes a la configuraci\'{o}n del servicio.
 
 {
 \scriptsize
 \linespread{1}
 \begin{verbatim}
-ServerSignature Off
-ServerTokens ProductOnly
-TraceEnable Off
+# aptitude install fail2ban
+# cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 \end{verbatim}
+}
+
+Una vez copiado el archivo de configuraci\'{o}n, se agregan los bloques \textsc{CIDR} definidos en el \textsc{RFC1918} y los segmentos de \textsc{RedUNAM} que se definieron en la secci\'{o}n \ref{subsec:fw-rules} en la p\'{a}gina \pageref{subsec:fw-rules}. Adicionalmente se incrementa el tiempo de bloqueo de la direcci\'{o}n IP del atacante de 600 segundos a 3600 (una hora).
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+[DEFAULT]
+# "ignoreip" can be an IP address, a CIDR mask or a DNS host
+ignoreip = 127.0.0.0/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 132.247.0.0/16 132.248.0.0/16
+# seconds
+bantime  = 3600
+maxretry = 3
+\end{verbatim}
+}
+
+Al finalizar el ajuste de los par\'{a}metros de configuraci\'{o}n, se reinicia el servicio.
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+# service fail2ban restart
+\end{verbatim}
+}
+
+      \subsection {Configuraci\'{o}n de seguridad de Apache HTTPD}
+
+Se establecieron los valores recomendados en las siguientes directivas, con el objetivo de evitar la divulgaci\'{o}n de informaci\'{o}n acerca del software del servidor web y el sistema operativo. Estas directivas se encuentran presentes en el archivo \texttt{/etc/apache2/conf.d/security}.
+
+{
+ \begin{table}[H]
+ \caption{Directivas de seguridad de Apache \textsc{HTTPD}}{}
+ \label{tab:apache-hardening}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{r|c}
+  %\hlinoo
+  \multicolumn{1}{c}{\textbf{Directiva}} & \multicolumn{1}{c}{\textbf{Valor}} \\
+  \hline \hline
+  \texttt{ServerSignature} & Off         \\
+  \texttt{ServerTokens}    & ProductOnly \\
+  \texttt{TraceEnable}     & Off         \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
 }
 
         \subsubsection{Configuraci\'{o}n para \textsc{PHP}}
@@ -1074,15 +1126,24 @@ TraceEnable Off
 Se configur\'{o} \textsc{PHP} para que no muestre la versi\'{o}n en las cabeceras del protocolo \textsc{HTTP}, evitar la impresi\'{o}n de errores y para que guarde los errores encontrados en una bit\'{a}cora. Para lograr esto, se establecieron los siguientes valores en el archivo \texttt{php.ini}.
 
 {
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-expose_php = Off
-display_errors = Off
-display_startup_errors = Off
-log_errors = On
-error_log = /var/log/apache2/error.log
-\end{verbatim}
+ \begin{table}[H]
+ \caption{Directivas de seguridad de \textsc{PHP}}{}
+% \label{tab:php-hardening}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{r|c}
+  %\hline
+  \multicolumn{1}{c}{\textbf{Directiva}} & \multicolumn{1}{c}{\textbf{Valor}} \\
+  \hline \hline
+  \texttt{expose\_php}              & Off \\
+  \texttt{display\_errors}          & Off \\
+  \texttt{display\_startup\_errors} & Off \\
+  \texttt{log\_errors}              & On  \\
+  \texttt{error\_log}               & /var/log/apache2/error.log  \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
 }
 
         \subsubsection{Deshabilitar el soporte de archivos \texttt{.htaccess}}
@@ -1112,7 +1173,7 @@ Los m\'{e}todos \textsc{HTTP} se pueden clasificar de acuerdo al tipo de acceso 
   %\hline
   \textbf{Tipo} & & \textbf{M\'{e}todos} & \\
   \hline \hline
-  \multirow{2}{*}{\textsl{S\'{o}lo lectura}} & \texttt{OPTIONS} & \texttt{PROPFIND} &  \\ 
+  \multirow{2}{*}{\textsl{S\'{o}lo lectura}} & \texttt{OPTIONS} & \texttt{PROPFIND} & \\ 
                                              & \texttt{HEAD}    & \texttt{GET}      & \\
   \hline
   \multirow{4}{*}{\textsl{Lectura y Escritura}} & \texttt{POST}      & \texttt{PUT}    & \texttt{MKCOL}  \\
@@ -1139,5 +1200,4 @@ Para establecer una restricci\'{o}n a los m\'{e}todos \textsc{HTTP} que pueden e
 </LimitExcept>
 \end{verbatim}
 }
-
 
