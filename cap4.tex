@@ -13,7 +13,9 @@ En el \textsl{Ap\'{e}ndice \ref{apdx:a}}\footnote{P\'{a}gina \pageref{apdx:a}} s
 
     \section {Pruebas de roles de usuario}
 
-El sistema de almacenamiento presenta tres perfiles de usuario: staff, profesor y alumno. Los dos primeros tienen privilegios de lectura-escritura y el \'{u}ltimo tiene acceso de s\'{o}lo lectura. El personal de la \textit{Unidad de C\'{o}mputo} verific\'{o} que cada tipo de usario cumpliera con los requerimientos de acceso y adem\'{a}s que la conexi\'{o}n al servidor se pudiera realizar de manera exitosa siguiendo los manuales presentados en el \textsl{Ap\'{e}ndice \ref{apdx:a}}.
+El sistema de almacenamiento presenta tres perfiles de usuario: staff, profesor y alumno. Los dos primeros tienen privilegios de lectura-escritura y el \'{u}ltimo tiene acceso de s\'{o}lo lectura.
+
+El personal de la \textit{Unidad de C\'{o}mputo} verific\'{o} que cada tipo de usario cumpliera con los requerimientos de acceso y adem\'{a}s que la conexi\'{o}n al servidor se pudiera realizar de manera exitosa siguiendo los manuales presentados en el \textsl{Ap\'{e}ndice \ref{apdx:a}}.
 
 {
  \linespread{1}
@@ -45,25 +47,26 @@ El sistema de almacenamiento presenta tres perfiles de usuario: staff, profesor 
 \scriptsize
 \linespread{1}
 \begin{verbatim}
-# nmap -v -r -O -sS -sV --version-all -T 5 -p 0-65535 -oA xnas xnas.tonejito.org
-NSE: Loaded 17 scripts for scanning.
-Initiating Ping Scan at 01:08
-Scanning xnas.tonejito.org (132.248.139.147) [4 ports]
-Completed Ping Scan at 01:08, 0.18s elapsed (1 total hosts)
-Initiating Parallel DNS resolution of 1 host. at 01:08
-Completed Parallel DNS resolution of 1 host. at 01:08, 0.01s elapsed
-Initiating SYN Stealth Scan at 01:08
-Scanning xnas.tonejito.org (132.248.139.147) [65536 ports]
-Discovered open port 22/tcp on 132.248.139.147
-Discovered open port 80/tcp on 132.248.139.147
-Discovered open port 443/tcp on 132.248.139.147
+# nmap -r -sS -sV --version-all -T 5 -oA xnas-harden xnas.tonejito.org
+
+Starting Nmap 6.00 ( http://nmap.org ) at 2015-09-28 00:00 EDT
+Nmap scan report for xnas.tonejito.org (132.248.139.147)
+Host is up (0.064s latency).
+Not shown: 65533 closed ports
+PORT    STATE SERVICE  VERSION
+22/tcp  open  ssh      OpenSSH 6.0p1 (protocol 2.0)
+80/tcp  open  http     Apache httpd
+443/tcp open  ssl/http Apache httpd
+
+Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 256.32 seconds
 \end{verbatim}
 }
 
 
       \subsection {Autenticaci\'{o}n}
 
-Las pruebas de autenticaci\'{o}n se realizaron de manera automatizada utilizando el siguiente algoritmo para iterar entre los usuarios y carpetas:
+Las pruebas de autenticaci\'{o}n se realizaron de manera automatizada utilizando el siguiente algoritmo para iterar entre los usuarios y carpetas utilizando el cliente \textsc{WebDAV} \textsl{cadaver}:
 
 {
 \scriptsize
