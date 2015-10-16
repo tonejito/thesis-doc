@@ -1060,7 +1060,7 @@ Para implementar las reglas de firewall se utiliz\'{o} \textit{iptables}, el sof
 
         \subsubsection {Protecci\'{o}n contra ataques de fuerza bruta con \texttt{fail2ban}}
 
-Este software realiza un seguimiento de las conexiones que se realizan al equipo e identifica los ataques de fuerza bruta contra el servicio de \textsc{SSH}. Al detectar un ataque, realiza un bloqueo de la direcci\'{o}n \textsc{IP} del atacante por un tiempo determinado.
+Este software realiza un seguimiento de las conexiones que se realizan al equipo e identifica los ataques de fuerza bruta contra el servicio de \textsc{SSH}. Al detectar un ataque, realiza un bloqueo de la direcci\'{o}n \textsc{IP} de origen por un tiempo determinado.
 
 Es necesario instalar el software y hacer una copia del archivo \texttt{jail.conf} con el nombre \texttt{jail.local} donde se realizar\'{a}n ajustes a la configuraci\'{o}n del servicio.
 
@@ -1165,7 +1165,7 @@ Los m\'{e}todos \textsc{HTTP} se pueden clasificar de acuerdo al tipo de acceso 
 {
  \linespread{1}
  \begin{table}[H]
- \caption{Clasificaci\'{o}n de m\'{e}todos \textsc{HTTP} de acuerdo al acceso a los datos}{}
+ \caption{Clasificaci\'{o}n de m\'{e}todos \textsc{HTTP} de acuerdo al tipo de acceso}{}
  \label{tab:http-methods}
  \noindent\makebox[\textwidth]
  {%
