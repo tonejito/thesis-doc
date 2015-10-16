@@ -7,30 +7,83 @@
 
     \section {Resultados obtenidos}
 
-Objetivos cumplidos:
+% Objetivos cumplidos:
+% 
+% \begin{itemize}
+%   \item Compatibilidad con los clientes \textsc{WebDAV} nativos de Windows
+%   \item Carga de usuarios
+%   \item Tipos de cuentas de usuario (staff, profesor, alumno)
+%   \item Restricci\'{o}n de acceso para usuarios autenticados
+%   \item Acceso por \textsc{HTTPS}
+%   \item Scripts de instalaci\'{o}n para Windows
+%   \item Restricci\'{o}n de permisos de escritura por perfil de usuario
+%   \item Compatibilidad multiplataforma, incluso con navegadores web
+% \end{itemize}
 
 \begin{itemize}
-  \item Tipos de cuentas de usuario (staff, profesor, alumno)
-  \item Restricci\'{o}n de acceso para usuarios autenticados
-  \item Carga de usuarios
-  \item Compatibilidad con los clientes \textsc{WebDAV} nativos de Windows
-  \item Acceso por \textsc{HTTPS}
-  \item Scripts de instalaci\'{o}n para Windows
-  \item Restricci\'{o}n de permisos de escritura por perfil de usuario
-  \item Compatibilidad multiplataforma, incluso con navegadores web
+  \item \textbf{WebDAV}
+
+Gracias a que la soluci\'{o}n desarrollada utiliza el protocolo est\'{a}ndar \textsc{WebDAV} que es una extensi\'{o}n de \textsc{HTTP} se tiene un alto grado de compatibilidad con clientes \textsc{WebDAV}, navegadores web, utilidades de l\'{i}nea de comandos y se puede integrar con otras plataformas.
+
+  \item \textbf{HTTPS}
+
+Para resguardar la confidencialidad de la contrase\~{n}a del usuario e integridad de los datos transmitidos, el mecanismo de acceso a los archivos es \'{u}nicamente a trav\'{e}s de \textsc{HTTPS}. Esto adem\'{a}s de ser una pr\'{a}ctica recomendada, es un requisito para poder utilizar servicios \textsc{WebDAV} en Windows.
+
+  \item \textbf{Compatibilidad multiplataforma}
+
+Durante el desarrollo de este proyecto se realizaron ajustes de los componentes utilizados en la implementaci\'{o}n para que el servidor de archivos fuera compatible con el cliente \textsc{WebDAV} del sistema operativo Windows.
+
+De igual manera, se investigaron e implementaron mecanismos que permitieran instalar de manera automatizada el certificado de la autoridad ra\'{i}z en el sistema y que no tuvieran dependencias adicionales para ejecutarse.
+
+  \item \textbf{Directorio LDAP}
+
+% Con el objetivo de buscar a futuro unificar la autenticaci\'{o}n de usuarios en los sistemas de la \textsc{DICyG}, se utiliz\'{o} el sistema de directorio de usuarios \textsc{LDAP}.
+
+Para agilizar la carga de los usuarios, se desarrollaron una serie de \textit{scripts} que realizan la carga desde un archivo separado por comas e insertan los objetos en el directorio \textsc{LDAP}. La carga de usuarios se puede realizar de manera parcial o en una sola operaci\'{o}n sin presentar dificultades en el sistema.
+
+% El acceso a los archivos almacenados en el servidor queda restringido a aquellos usuarios que tengan una contrase\~{n}a v\'{a}lida, misma que puede ser cambiada en el \textsl{portal de autoservicio} sin necesidad de acudir con el administrador del sistema.
+
 \end{itemize}
+
+% Durante el desarrollo de este proyecto se fueron modelando, desarollando, integrando y probando todas y cada una de las partes que lo conforman, 
 
     \section {Oportunidades de Mejora}
 
-\begin{itemize}
-  \item \textsc{RAID}
-  \item Cuotas
-  \item Uso de directivas wilcard de Apache 2.4
-  \item Integraci\'{o}n del servicio \textsc{WebDAV} como almacenamiento secundario de \textsc{OwnCloud}
-  \item Integraci\'{o}n del servicio \textsc{LDAP} como mecanismo de autenticaci\'{o}n para otras aplicaciones
-  \item Uso del servicio \textsc{LDAP} de \textsc{Zimbra} para la autenticaci\'{o}n de los usuarios
-  \item Uso del servicio \textsc{LDAP} de \textsc{Zentyal} para la autenticaci\'{o}n de los usuarios
-  \item Uso de una base de datos \textsc{SQL} para la autorizaci\'{o}n de los usuarios
-\end{itemize}
+% \begin{itemize}
+%   \item \textsc{RAID}
+%   \item Cuotas
+%   \item Uso de directivas wilcard de Apache 2.4
+%   \item Integraci\'{o}n del servicio \textsc{WebDAV} como almacenamiento secundario de \textsc{OwnCloud}
+%   \item Integraci\'{o}n del servicio \textsc{LDAP} como mecanismo de autenticaci\'{o}n para otras aplicaciones
+%   \item Uso del servicio \textsc{LDAP} de \textsc{Zimbra} para la autenticaci\'{o}n de los usuarios
+%   \item Uso del servicio \textsc{LDAP} de \textsc{Zentyal} para la autenticaci\'{o}n de los usuarios
+%   \item Uso de una base de datos \textsc{SQL} para la autorizaci\'{o}n de los usuarios
+% \end{itemize}
 
+Se identificaron los siguientes elementos que se pueden utilizar para extender y mejorar la funcionalidad de este sistema y que pueden ser integrados o implementados en futuras versiones del sistema.
+
+\begin{itemize}
+  \item \textbf{Implementaci\'{o}n de cuotas de usuario}
+
+Para evitar que un solo usuario ocupe todo el espacio disponible en el disco, se pueden implementar cuotas para los usuarios que tienen permisos de escritura en el sistema, esto requerir\'{a} aplicar directivas de \textsc{ACL} en las carpetas de cada usuario para mantener el grupo asociado al usuario en cad archivo que este cree. 
+
+  \item \textbf{Apache HTTPD 2.4}
+
+Utilizar directivas din\'{a}micas de control de acceso puede smplificar las directivas de control de acceso utilizadas en el sistema, esta caracter\'{i}stica esta disponible en Apache \textsc{HTTPD} 2.4. % http://httpd.apache.org/docs/2.4/mod/mod_authz_core.html#reqexpr http://httpd.apache.org/docs/2.4/mod/mod_authnz_ldap.html#AuthLDAPSubGroupAttribute
+
+  \item \textbf{Integraci\'{o}n con bases de datos y directorios de usuarios}
+
+%Es posible utilizar el directorio \textsc{LDAP} del sistema para autenticar usuarios de otras aplicaciones de la \textsc{DICyG} y de esta manera centralizar la autenticaci\'{o}n.
+
+Como alternativa para evitar el uso de un directorio, es posible utilizar una base de datos para autenticar a los usuarios mediante el m\'{o}dulo \texttt{mod\_authn\_dbd} de Apache \textsc{HTTPD} que se comunica con una base de datos y ejecuta sentencias \textsc{SQL} para autenticar y autorizar al usuario .% http://httpd.apache.org/docs/2.2/mod/mod_authn_dbd.html
+
+En caso de utilizar un directorio externo de usuarios \textsc{LDAP}, ser\'{a} necesario modificar las directivas de autenticaci\'{o}n que utiliza este sistema para realizar la b\'{u}squeda del usuario y la validaci\'{o}n de sus credenciales.
+
+Ejemplos de otros sistemas que ofrecen directorios de usuarios son las suites de colaboraci\'{o}n \textsl{Zimbra} y \textsl{Zentyal}.  Existen otros servicios de directorio compatibles como \textit{OpenLDAP}, \textit{Apache Directory Server}, \textit{OpenDirectory} de Mac OS X Server, \textit{389 Directory Server} de Red Hat, \textit{Tivoli Directory Server} de IBM y \textit{Active Directory} de Microsoft.
+
+  \item \textbf{Integraci\'{o}n con ownCloud}
+
+Este \textsl{appliance} puede ser utilizado como fuente de autenticaci\'{o}n en \textsc{ownCloud} para validar las credenciales de los usuarios antes de que accedan al sistema y adicionalmente cada usuario puede integrar el almacenamiento que provee este proyecto como un \textsl{directorio virtual} dentro de su cuenta de \textsc{ownCloud} para expandir el almacenamiento o bien, mover sus archivos de una plataforma a otra.
+
+\end{itemize}
 
