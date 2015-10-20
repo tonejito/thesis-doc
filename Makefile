@@ -4,6 +4,7 @@ LS=		ls
 MV=		mv
 RM=		rm
 LATEX=		latex
+PDFLATEX=	pdflatex
 BIBTEX=		bibtex
 DVIPS=		dvips
 PS2PDF=		ps2pdf
@@ -23,6 +24,8 @@ PORT=		/opt/local/bin/port
 VIM=		vim
 
 .SUFFIXES:	.tex .dvi .eps .ps .pdf
+
+PRESENTATION = presentation
 
 MAIN = thesis
 
@@ -244,4 +247,7 @@ $(MAN):	$(MAN).tex
 	#$(GS) $(GS_QUIET) -dBATCH -dNOPAUSE -sPAPERSIZE=$(PAPERSIZE) \
 	#-sDEVICE=pdfwrite -dPDFSETTINGS=/$(PDFSETTINGS) -dUseCIEColor=true \
 	#-sOutputFile=$(MAN).pdf $(MAN).pdf
+
+$(PRESENTATION): $(PRESENTATION).tex
+	$(PDFLATEX) $(PRESENTATION).tex
 
