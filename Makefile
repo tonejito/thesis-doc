@@ -88,7 +88,8 @@ ifeq ($(shell uname -s),Darwin)
   INSTALL=$(PORT)
   PACKAGES=pandoc texlive \
            texlive-latex-extra  texlive-bibtex-extra \
-           texlive-lang-english texlive-lang-spanish
+           texlive-lang-english texlive-lang-spanish \
+           tex-beamerposter
 endif
 # Cygwin
 ifeq ($(shell uname -s),CYGWIN_NT-6.1-WOW64)
