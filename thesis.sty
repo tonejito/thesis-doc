@@ -473,3 +473,15 @@
 
 %\usepackage{./lib/applekeys/applekeys}
 
+% Custom header and footer
+%	http://tex.stackexchange.com/a/87772
+\usepackage{scrlayer-scrpage} % header and footer for KOMA-Script
+\clearscrheadfoot             % deletes header/footer
+\pagestyle{scrheadings}       % use following definitions for header/footer
+% definitions/configuration for the header
+\lohead[]{xNAS: Appliance de almacenamiento en red por medio de WebDAV} % even outer
+\rehead[]{Andr\'{e}s Leonardo Hern\'{a}ndez Berm\'{u}dez}               % odd  outer
+% definitions/configuration for the footer
+\lofoot[\pagemark]{\pagemark}     % even outer
+\refoot[\pagemark]{\pagemark}     % odd  outer
+
