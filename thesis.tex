@@ -3,8 +3,10 @@
 %\documentclass[draft,dvips,letterpaper,12pt]{report}
 
 % Spanish language package
+% CentOS
 %\usepackage[spanish]{babel}
 %	http://tex.stackexchange.com/questions/48761/arrows-with-tikz-package
+% Debian / Mac OS X
 \usepackage[spanish,es-noquoting]{babel}
 
 % Use thesis.sty
@@ -46,9 +48,9 @@
 }
 \pagenumbering{arabic}
 % Temporary section to show the index progress
-{
-\pagestyle{scrheadings}
 \include{intro}
+{
+\pagestyle{headings}
 \include{cap1}
 \include{cap2}
 \include{cap3}
@@ -59,7 +61,7 @@
 \include{apdxa}
 }
 {
-\pagestyle{empty}
+%\pagestyle{empty}
 \include{bib}
 %\include{glossary}
 

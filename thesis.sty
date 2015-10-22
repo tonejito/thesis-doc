@@ -43,8 +43,8 @@
 \oddsidemargin = .5in
 \textwidth = 6in
 
-\headheight = 0in
-\headsep = 0in
+\headheight = 12pt
+\headsep = 25pt
 \topmargin = .25in
 \textheight = 8.5in
 
@@ -203,13 +203,14 @@
     pdfpagemode=UseOutlines, % Determines how the file is opening in Acrobat
     pdfdisplaydoctitle=true, % display document title instead of file name in title bar
     pdflang=es-MX,       % PDF language identifier (RFC 3066)
+    hyperfootnotes=true, % Makes the footnote marks into hyperlinks to the footnote text. Easily broken …
+    backref=true,        % do bibliographical back references
+% not compatible with CentOS
     colorlinks=true,     % false: boxed links; true: colored links
     allcolors=black,     % Set all color options (without border and field options).
     allbordercolors=white, % Set all border color options
     hidelinks,           % Hide links (removing color and border).
 %   breaklinks=true,     % allow links to break over lines by making links over multiple lines into PDF links to the same target
-    hyperfootnotes=true, % Makes the footnote marks into hyperlinks to the footnote text. Easily broken …
-    backref=true,        % do bibliographical back references
     pdfborder=white,     % The style of box around links; defaults to a box with lines of 1pt thickness,
                          % but the colorlinks option resets it to produce no border.
   }
@@ -474,14 +475,10 @@
 %\usepackage{./lib/applekeys/applekeys}
 
 % Custom header and footer
-%	http://tex.stackexchange.com/a/87772
-\usepackage{scrlayer-scrpage} % header and footer for KOMA-Script
-\clearscrheadfoot             % deletes header/footer
-\pagestyle{scrheadings}       % use following definitions for header/footer
-% definitions/configuration for the header
-\lohead[]{xNAS: Appliance de almacenamiento en red por medio de WebDAV} % even outer
-\rehead[]{Andr\'{e}s Leonardo Hern\'{a}ndez Berm\'{u}dez}               % odd  outer
-% definitions/configuration for the footer
-\lofoot[\pagemark]{\pagemark}     % even outer
-\refoot[\pagemark]{\pagemark}     % odd  outer
+%	https://en.wikibooks.org/wiki/LaTeX/Page_Layout#Page_styles
+\pagestyle{headings}
+\markboth
+{xNAS: Appliance de almacenamiento en red por medio de WebDAV} % left
+{Andr\'{e}s Leonardo Hern\'{a}ndez Berm\'{u}dez}               % right
+\newcommand{\headrulewidth}{0.5pt}
 
