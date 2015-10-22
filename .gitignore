@@ -30,6 +30,9 @@
 thesis.html
 thesis.md
 thesis.pdf
-man.pdf
+*.pdf
+figures/*.svg
 figures/*.png
 figures/*.tiff
+*.tar.gz
+.DS_Store
