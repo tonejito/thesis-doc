@@ -249,5 +249,10 @@ $(MAN):	$(MAN).tex
 	#-sOutputFile=$(MAN).pdf $(MAN).pdf
 
 $(PRESENTATION): $(PRESENTATION).tex
-	$(PDFLATEX) $(PRESENTATION).tex
+	for i in {1..2} ; \
+	do \
+	  $(LATEX) $(PRESENTATION).tex ; \
+	done ;
+	$(DVIPS) -Ppdf -G0 -o $(PRESENTATION).ps $(PRESENTATION).dvi
+	$(PS2PDF) $(PRESENTATION).ps $(PRESENTATION).pdf
 
