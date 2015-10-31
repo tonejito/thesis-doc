@@ -51,6 +51,9 @@
 \usepackage{tikz}
 % </LatexDraw>
 
+% http://latex-beamer-class.10966.n7.nabble.com/justified-text-in-beamer-td1491.html
+\usepackage{ragged2e}
+
 % Placeholders
 \newcommand{\UniversityName}{Universidad Nacional Aut\'{o}noma de M\'{e}xico}
 \newcommand{\UniversityShortName}{UNAM}
@@ -127,19 +130,41 @@
 \begin{frame}
 \frametitle{Problem\'{a}tica}
 
-Content.\\~\\
-
-Content.\\~\\
+\begin{itemize}
+\justifying
+  \item Los profesores de la Divisi\'{o}n de Ingenier\'{i}as Civil y Geom\'{a}tica utilizan medios de almacenamiento externos como memorias USB y discos duros externos para distribuir la informaci\'{o}n que utilizan para sus cursos.
+\\~\\
+  \item El personal de la Unidad de C\'{o}mputo utiliza discos \'{o}pticos para instalar el software en los equipos a los que da servicio.
+\end{itemize}
 
 \include{figures/media}
 
 \end{frame}
 %------------------------------------------------
 \begin{frame}
+\frametitle{Problem\'{a}tica}
+\framesubtitle{Desventajas}
+\justifying
 
-\frametitle{Objetivos}
+\begin{itemize}
+\justifying
+  \item No existen controles de acceso a los archivos
+\\~\\
+  \item Es propenso a borrado accidental de archivos
+\\~\\
+  \item La velocidad de transferencia es baja
+\\~\\
+  \item Puede propagar infecciones de \textit{malware}
+\\~\\
+  \item No soporta la copia simultanea de archivos
+\end{itemize}
 
-\framesubtitle{Lorem ipsum}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+
+\frametitle{Objetivo}
+\justifying
 
 Implementar un servidor dedicado de almacenamiento que incluya las cuentas de usuario desde un directorio \textsc{LDAP} y que transmita la informaci\'{o}n por medio de \textsc{WebDAV} a trav\'{e}s de un canal cifrado.
 
@@ -149,23 +174,57 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Desarrollo}
-\framesubtitle{Estrategia}
-Globalement, les couts de production et d'installation des panneaux solaires sont en baisse alors meme que la production mondiale augmente.
-\begin{figure}
-%\includegraphics[width=0.55\textwidth]{images/historique_des_couts.png}
-\end{figure}
-\begin{figure}
-%\includegraphics[width=0.55\textwidth]{images/evolution_de_la_production.png}
-\end{figure}
+\frametitle{Objetivo}
+\framesubtitle{Ventajas}
+\justifying
+
+\begin{itemize}
+\justifying
+  \item Servicio de almacenamiento \textit{on-premises}
+\\~\\
+  \item Utiliza un protocolo est\'{a}ndar
+\\~\\
+  \item Compatibilidad multiplataforma
+\\~\\
+  \item Control de acceso para lectura y escritura
+\\~\\
+  \item Soporta la descarga simultanea de archivos
+\end{itemize}
 
 \end{frame}
 %------------------------------------------------
 
 \begin{frame}
 \frametitle{Desarrollo}
-\framesubtitle{Implementaci\'{o}n}
-Les technologies photovoltaiques de demain auront pour objectifs d'augmenter les rendements, de diminuer les couts de production mais egalement de limiter l'impact environnemental de la construction et du demantelement des panneaux. Les cellules organiques promettent un rendement de l'ordre de 5 a 10 pourcent  pour un processus de fabrication simple et bon marche. La technologie est actuellement au stade de recherche.
+\framesubtitle{Componentes}
+\justifying
+
+\begin{itemize}
+\justifying
+%  \item Debian GNU/Linux como sistema operativo del \textit{appliance}.
+  \item Sistema operativo Debian GNU/Linux 7 \guillemotleft wheezy\guillemotright
+\\~\\
+%  \item OpenSSH para el acceso remoto por linea de comandos.
+  \item Servicio SSH (OpenSSH)
+\\~\\
+%  \item Apache HTTPD para proveer el servicio de HTTPS.
+  \item Servicio HTTP (Apache HTTPD)
+\\~\\
+%  \item OpenLDAP para implementar el directorio de usuarios.
+  \item Servicio LDAP (OpenLDAP)
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Desarrollo}
+\framesubtitle{Diagrama de bloques}
+\centering
+ \psscalebox{0.9 0.9} % Change this value to rescale the drawing.
+ {
+  \input{figures/diagrama-funcional}
+ }
 
 \end{frame}
 %------------------------------------------------
