@@ -25,6 +25,7 @@ Es un medio de almacenamiento vol\'{a}til que se utiliza para guardar datos temp
 
 Es una variante de la memoria \textsc{RAM} donde se almacena la informaci\'{o}n de manera no vol\'{a}til, generalmente su capacidad es peque\~{n}a y este tipo de memoria se utiliza para fines muy especializados, por ejemplo para guardar las configuraciones de algunos sistemas embebidos \cite{veenstra_random_1986}.
 
+\newpage
   \item \textbf{ROM}
 
 Es una memoria de s\'{o}lo lectura que puede ser grabada una sola vez, generalmente se utilizaba para almacenar el firmware de dispositivos o alg\'{u}n programa embebido en hardware que requiere una salida fija para una entrada determinada \cite{_rom_????}.
@@ -55,6 +56,7 @@ Las unidades de cinta son medios que almacenan de manera secuencial los datos y 
 
 Generalmente tienen capacidades que oscilan entre los \textsc{GB} y \textsc{TB}  \cite{_powervault_????} y son utilizadas para archivar informaci\'{o}n.
 
+\newpage
   \item \textbf{Discos Flexibles}
 
 Este tipo de discos puede acceder de manera aleatoria a los datos almacenados, cuentan con un plato magn\'{e}tico rodeado de un material protector contenido en un armaz\'{o}n de pl\'{a}stico con una abertura que permite a la cabeza lectora tener acceso al medio \cite{_anatomy_????}.
@@ -111,6 +113,7 @@ Es un nuevo medio de almacenamiento a\'{u}n en desarrollo que ofrece un m\'{e}to
 
 \end{itemize}
 
+\newpage
       \subsection {Comparativa de medios de almacenamiento actuales}
 
 {
@@ -211,9 +214,6 @@ En un entorno de hogar u oficina peque\~{n}a (\textsc{soho}) el n\'{u}mero de us
     \end{itemize}
 
 \newpage
-
-La descripci\'{o}n de cada elemento se muestra a continuaci\'{o}n:
-
     \begin{itemize}
 
       \item \textbf{Respaldo en medios \'{opticos}}
@@ -234,6 +234,7 @@ A diferencia del m\'{e}todo de respaldo anterior, se tiene una sola copia de la 
 
 Los protocolos que com\'{u}nmente se utilizan para compartir recursos a trav\'{e}s de la red son \textsc{NFS} y \textsc{CIFS} (\textsc{SMB}) siendo el primero el protocolo m\'{a}s utilizado en sistemas tipo \textsc{UNIX} y el segundo se utiliza mayormente en sistemas Windows, aunque se puede utilizar tambi\'{e}n en sistemas \textsc{UNIX} a trav\'{e}s de la suite de herramientas de \textit{Samba} \cite{_samba_????}.
 
+\newpage
       \item \textbf{Dispositivos de bloque compartidos por red}
 
 Otra soluci\'{o}n popular en sistemas \textsc{UNIX} es compartir dispositivos de bloque a trav\'{e}s de la red para acceder a discos remotos como si fuesen locales, ejemplos de esto son \textsc{NBD} (\textit{Network Block Device}) en \textsc{GNU/Linux} y tecnolog\'{i}as \textsc{SAN} como \textsc{iSCSI} (\textit{Internet SCSI}) o \textsc{AoE} (\textit{ATA over Ethernet}). Este tipo de soluciones llegan a ser costosas y no se adaptan bien a ambientes como empresas peque\~{n}as u hogares.
@@ -256,6 +257,7 @@ En este tipo de soluciones se pueden tener grandes vol\'{u}menes de datos dispon
 
     \end{itemize}
 
+\newpage
   \subsection {Arreglos RAID}
   \label{Arreglos-RAID}
 
@@ -283,22 +285,7 @@ Este m\'{e}todo no ofrece redundancia, por lo que si falla un disco los datos co
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
  {
-  \begin{pspicture}(0,-1.0)(11.8,1.0)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.0)(0.0,-1.0)
-  \rput[bl](0.56,0.1){Sistema}
-  \rput[bl](0.4,-0.4){Operativo}
-  \rput[bl](3.9234793,0.6){Arreglo}
-  \rput[bl](4.0234795,0.2){Linear}
-  \rput[bl](3.2234793,-0.9){A,B,C, ... ,X,Y,Z}
-  \rput[bl](7.4,-0.6){HDD-0}
-  \rput[bl](9.85,-0.6){HDD-1}
-  \rput[bl](7.24,0.2){A,B,C, ...}
-  \rput[bl](9.7,0.2){... ,X,Y,Z}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,1.0)(7.0,-1.0)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](11.8,1.0)(9.4,-1.0)
-  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(2.8,0.0)(6.4,0.0)
-  \rput[bl](4.053479,-0.48181817){Datos}
-  \end{pspicture}
+  \input{figures/raid-linear}
  }
 }
 
@@ -316,22 +303,7 @@ No ofrece redundancia porque los bloques se reparten en todos los discos y si un
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
  {
-  \begin{pspicture}(0,-2.0)(9.4,2.0)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.0)(0.0,-1.0)
-  \rput[bl](0.56,0.1){Sistema}
-  \rput[bl](0.4,-0.4){Operativo}
-  \rput[bl](3.9234793,0.6){Arreglo}
-  \rput[bl](3.9334793,0.2){RAID-0}
-  \rput[bl](3.6034794,-0.9){A,B,C,D, ...}
-  \rput[bl](7.384,0.4){HDD-0}
-  \rput[bl](7.45,-1.6){HDD-1}
-  \rput[bl](7.384,1.2){A,C, ...}
-  \rput[bl](7.462,-0.8){B,D, ...}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,2.0)(7.0,0.0)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,0.0)(7.0,-2.0)
-  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(2.8,0.0)(6.4,0.0)
-  \rput[bl](4.053479,-0.48181817){Datos}
-  \end{pspicture}
+  \input{figures/raid-0}
  }
 }
 
@@ -349,25 +321,10 @@ El rendimiento de escritura es menor al que presenta un solo disco porque se deb
 {
 \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
  {
-  \begin{pspicture}(0,-2.0)(9.4,2.0)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.0)(0.0,-1.0)
-  \rput[bl](0.56,0.1){Sistema}
-  \rput[bl](0.4,-0.4){Operativo}
-  \rput[bl](3.9234793,0.6){Arreglo}
-  \rput[bl](3.9334793,0.2){RAID-1}
-  \rput[bl](3.6034794,-0.9){A,B,C,D, ...}
-  \rput[bl](7.444,0.4){HDD-0}
-  \rput[bl](7.516,-1.6){HDD-1}
-  \rput[bl](7.384,1.2){A,B,C,D}
-  \rput[bl](7.456,-0.8){A,B,C,D}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,2.0)(7.0,0.0)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,0.0)(7.0,-2.0)
-  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(2.8,0.0)(6.4,0.0)
-  \rput[bl](4.053479,-0.48181817){Datos}
-  \end{pspicture}
+  \input{figures/raid-1}
  }
 }
-
+\newpage
   \item \textbf{RAID 5 - \textit{Stripe with distributed parity}}
 
 En este tipo de arreglo se dividen los datos en bloques como sucede en \textsc{RAID} 0 y adem\'{a}s se calcula un bloque de paridad que sirve para reconstruir los datos si uno de los discos falla.
@@ -382,28 +339,10 @@ Dado que se calcula la paridad de los bloques de datos , se debe restar el tama\
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
  {
-  \begin{pspicture}(0,-3.0)(9.4,3.0)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.0)(0.0,-1.0)
-  \rput[bl](0.56,0.1){Sistema}
-  \rput[bl](0.4,-0.4){Operativo}
-  \rput[bl](3.9234793,0.6){Arreglo}
-  \rput[bl](3.9334793,0.2){RAID-5}
-  \rput[bl](3.2834792,-0.9){A,B,C,D,E,F, ...}
-  \rput[bl](7.345,1.4){HDD-0}
-  \rput[bl](7.4,-0.6){HDD-1}
-  \rput[bl](7.375,2.2){A,C,P2}
-  \rput[bl](7.47,0.2){B,P1,E}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,3.0)(7.0,1.0)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,1.0)(7.0,-1.0)
-  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(2.8,0.0)(6.4,0.0)
-  \rput[bl](4.053479,-0.48181817){Datos}
-  \rput[bl](7.4,-2.6){HDD-2}
-  \rput[bl](7.44,-1.8){P0,D,F}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,-1.0)(7.0,-3.0)
-  \end{pspicture}
+  \input{figures/raid-5}
  }
 }
-
+\newpage
   \item \textbf{RAID 6 - \textit{Stripe with \textsl{dual} distributed parity}}
 
 Su funcionamiento es similar al de \textsc{RAID} 5, s\'{o}lo que se calculan dos bloques de paridad para cada bloque de datos.
@@ -418,36 +357,13 @@ Las operaciones de escritura tardan mas porque se deben calcular dos bloques de 
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
  {
-  \begin{pspicture}(0,-4.0)(9.4,4.0)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.0)(0.0,-1.0)
-  \rput[bl](0.56,0.1){Sistema}
-  \rput[bl](0.4,-0.4){Operativo}
-  \rput[bl](3.9234793,0.6){Arreglo}
-  \rput[bl](3.9334793,0.2){RAID-6}
-  \rput[bl](2.9034793,-0.9){A,B,C,D,E,F,G,H, ...}
-  \rput[bl](7.546,2.4){HDD-0}
-  \rput[bl](7.528,0.4){HDD-1}
-  \rput[bl](7.21,3.2){A,C,P2,Q3}
-  \rput[bl](7.204,1.2){B,P1,Q2,G}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,4.0)(7.0,2.0)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,2.0)(7.0,0.0)
-  \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291666666666667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(2.8,0.0)(6.4,0.0)
-  \rput[bl](4.053479,-0.48181817){Datos}
-  \rput[bl](7.492,-1.6){HDD-2}
-  \rput[bl](7.168,-0.8){P0,Q1,E,H}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,0.0)(7.0,-2.0)
-  \rput[bl](7.41,-3.6){HDD-3}
-  \rput[bl](7.168,-2.8){Q0,D,F,P3}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](9.4,-2.0)(7.0,-4.0)
-  \end{pspicture}
+  \input{figures/raid-6}
  }
 }
 
 \end{itemize}
 
 \subsubsection*{Arreglos RAID anidados}
-
- Los arreglos anidados \cite{_intro_????}
 
 \begin{itemize}
 
@@ -461,94 +377,32 @@ Si falla uno o dos discos del mismo arreglo \textsc{RAID} 0, todo el arreglo se 
 {Diagrama de funcionamiento del arreglo \textit{RAID-01}}
 {RAID01-Array}
 {
- \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ \psscalebox{0.65 0.65} % Change this value to rescale the drawing.
  {
-  \begin{pspicture}(0,-4.2)(10.6,4.2)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.2)(0.0,-0.8)
-  \rput[bl](0.57,0.3){Arreglo}
-  \rput[bl](0.58,-0.2){RAID-1}
-  \rput[bl](0.25,-1.9){A,B,C,D, ...}
-  \rput[bl](8.8,2.6){HDD-0}
-  \rput[bl](8.8,0.6){HDD-1}
-  \rput[bl](8.8,3.4){A,C, ...}
-  \rput[bl](8.8,-1.0){A,C, ...}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,4.2)(8.2,2.2)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,2.2)(8.2,0.2)
-  \rput[bl](0.7,-1.4818182){Datos}
-  \rput[bl](8.8,-1.8){HDD-2}
-  \rput[bl](8.81,1.4){B,D, ...}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,-0.2)(8.2,-2.2)
-  \rput[bl](8.8,-3.8){HDD-3}
-  \rput[bl](8.81,-3.0){B,D, ...}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,-2.2)(8.2,-4.2)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](6.4,3.2)(4.0,1.2)
-  \rput[bl](4.57,2.3){Arreglo}
-  \rput[bl](4.58,1.8){RAID-0}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](6.4,-1.2)(4.0,-3.2)
-  \rput[bl](4.57,-2.1){Arreglo}
-  \rput[bl](4.58,-2.6){RAID-0}
-  \psline[linecolor=black, linewidth=0.04](2.6,0.31111112)(3.711111,2.3111112)(3.711111,2.3111112)
-  \psline[linecolor=black, linewidth=0.04](2.6,0.31111112)(3.711111,-2.1333334)(3.711111,-2.1333334)
-  \psline[linecolor=black, linewidth=0.04](6.6,2.3111112)(7.9333334,3.4222221)(7.9333334,3.4222221)
-  \psline[linecolor=black, linewidth=0.04](6.6,2.3111112)(7.9333334,0.9777778)(7.9333334,0.9777778)
-  \psline[linecolor=black, linewidth=0.04](6.6,-2.088889)(7.9333334,-0.9777778)(7.9333334,-0.9777778)
-  \psline[linecolor=black, linewidth=0.04](6.6,-2.088889)(7.9333334,-3.4222221)(7.9333334,-3.4222221)
-  \rput[bl](4.25,0.5){A,B,C,D, ...}
-  \rput[bl](4.25,-3.9){A,B,C,D, ...}
-  \end{pspicture}
+  \input{figures/raid-01}
  }
 }
 
+\newpage
   \item \textbf{RAID 10 / RAID 1+0}
 
 Consiste en un arreglo \textsc{RAID} 0 conformado por dos o m\'{a}s arreglos \textsc{RAID} 1, el sistema operativo detecta la presencia de un solo disco mientras que este se conforma por un arreglo \textsc{RAID} 0 (Stripe) que une los dos arreglos \textsc{RAID} 1 (\textit{Mirror}).
 
 Si un disco de alg\'{u}n arreglo \textsc{RAID} 1 falla, este entra en modo degradado y el funcionamiento del arreglo \textsc{RAID} 0 no se ve afectado \footnote{Salvo por la perdida de rendimiento en el arreglo.}, si fallan dos discos del mismo arreglo \textsc{RAID} 1 el arreglo \textsc{RAID} 0 pierde los datos. Se requieren por lo menos cuatro discos para hacer esta configuraci\'{o}n.
 
+\end{itemize}
+
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textit{RAID-10}}
 {RAID10-Array}
 {
- \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+ \psscalebox{0.65 0.65} % Change this value to rescale the drawing.
  {
-  \begin{pspicture}(0,-4.2)(10.6,4.2)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](2.4,1.2)(0.0,-0.8)
-  \rput[bl](0.57,0.3){Arreglo}
-  \rput[bl](0.58,-0.2){RAID-0}
-  \rput[bl](0.25,-1.9){A,B,C,D, ...}
-  \rput[bl](8.8,2.6){HDD-0}
-  \rput[bl](8.8,0.6){HDD-1}
-  \rput[bl](8.8,3.4){A,C, ...}
-  \rput[bl](8.8,1.4){A,C, ...}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,4.2)(8.2,2.2)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,2.2)(8.2,0.2)
-  \rput[bl](0.7,-1.4818182){Datos}
-  \rput[bl](8.8,-1.8){HDD-2}
-  \rput[bl](8.81,-1.0){B,D, ...}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,-0.2)(8.2,-2.2)
-  \rput[bl](8.8,-3.8){HDD-3}
-  \rput[bl](8.81,-3.0){B,D, ...}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](10.6,-2.2)(8.2,-4.2)
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](6.4,3.2)(4.0,1.2)
-  \rput[bl](4.57,2.3){Arreglo}
-  \rput[bl](4.58,1.8){RAID-1}
-  \psframe[linecolor=black, linewidth=0.04, dimen=outer](6.4,-1.2)(4.0,-3.2)
-  \rput[bl](4.57,-2.1){Arreglo}
-  \rput[bl](4.58,-2.6){RAID-1}
-  \rput[bl](4.6,0.5){A,C, ...}
-  \rput[bl](4.61,-3.9){B,D, ...}
-  \psline[linecolor=black, linewidth=0.04](2.6,0.31111112)(3.711111,2.3111112)(3.711111,2.3111112)
-  \psline[linecolor=black, linewidth=0.04](2.6,0.31111112)(3.711111,-2.1333334)(3.711111,-2.1333334)
-  \psline[linecolor=black, linewidth=0.04](6.6,2.3111112)(7.9333334,3.4222221)(7.9333334,3.4222221)
-  \psline[linecolor=black, linewidth=0.04](6.6,2.3111112)(7.9333334,0.9777778)(7.9333334,0.9777778)
-  \psline[linecolor=black, linewidth=0.04](6.6,-2.088889)(7.9333334,-0.9777778)(7.9333334,-0.9777778)
-  \psline[linecolor=black, linewidth=0.04](6.6,-2.088889)(7.9333334,-3.4222221)(7.9333334,-3.4222221)
-  \end{pspicture}
+  \input{figures/raid-10}
  }
 }
 
-\end{itemize}
-
+\newpage
       \subsection {Comparativa de tipos de arreglo RAID}
 
 {
@@ -598,6 +452,7 @@ Los \textit{appliances} de hardware son sistemas especializados dise\~{n}ados pa
 
 Regularmente tienen una interfaz web para administraci\'{o}n, algunos integran un \textit{shell} para realizar las funciones conectandose a trav\'{e}s de \textsc{ssh} y en otros casos integran adem\'{a}s soporte para \textsc{SNMP}.
 
+\newpage
   \item \textbf{Software}
 
 Los \textit{appliances} de software pueden ser distribuidos en paquetes descomprimibles (\textit{tarballs}) que contienen el instalador y todos los progamas necesarios para que funcione la soluci\'{o}n \cite{_bitnami:_????}.
@@ -630,6 +485,7 @@ Este principio busca que la informaci\'{o}n no pueda ser alterada, ya sea por fa
 
 Por ejemplo, al firmar digitalmente un archivo la firma s\'{o}lo pasar\'{a} la prueba de verificaci\'{o}n si el mensaje est\'{a} integro, de lo contrario no podr\'{a} ser verificado satisfactoriamente.
 
+\newpage
   \item \textbf{Disponibilidad}
 
 Este principio dicta que la informaci\'{o}n debe poderse acceder cuando sea necesario o respetando el criterio de los tiempos establecidos \cite{_nist_????}\cite{_information_????}.
@@ -656,6 +512,7 @@ Se denomina \textit{hardening} al proceso de reforzar las configuraciones del si
   \item Configuraci\'{o}n de las aplicaciones.
 \end{itemize}
 
+\newpage
 \section {GNU/Linux}
 
 El sistema operativo GNU/Linux es la combinaci\'{o}n del conjunto de utilerias del sistema operativo GNU y el kernel Linux \cite{_linux_????}.
@@ -767,6 +624,7 @@ Cada objeto tiene un identificador \'{u}nico en el directorio conocido como \tex
 
 Dentro del directorio se tienen almacenados los objetos en diferentes ramas del \'{a}rbol que pueden ser vistas como carpetas en un sistema de archivos. Cada contenedor es denominado \textit{Organizational Unit} (\textbf{ou}) o Unidad Organizacional y es utilizado para almacenar otros objetos, incluyendo otras unidades organizacionales para darle estructura al \'{a}rbol del directorio \cite{_appendix_????}.
 
+\newpage
 {
 \scriptsize
 \linespread{1}
@@ -821,6 +679,7 @@ En \textsc{LDAP}  los usuarios tienen ciertas propiedades como identificador, no
  }
 }
 
+\newpage
 \section {Protocolo SSH}
 \label{Protocolo-SSH}
 El protocolo \textsc{SSH} \footnote{Secure Shell por sus siglas en ingl\'{e}s.} sirve para establecer sesiones remotas cifradas entre dos equipos \cite{_ssh_????-1}. Utiliza cifrado asim\'{e}trico para proteger la conexi\'{o}n y soporta m\'{u}ltiples m\'{e}todos de autenticaci\'{o}n lo que permite que sea flexible y f\'{a}cil de incluir en varios sistemas operativos.
