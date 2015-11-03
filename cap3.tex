@@ -175,15 +175,6 @@ A continuaci\'{o}n se pide que se introduzca la contrase\~{n}a que ser\'{a} util
 | **********____________________________________________________________     |
 |                                 <Ok>                                       |
 +----------------------------------------------------------------------------+
-
-+---------------------------+ Configuring slapd +----------------------------+
-| Please enter the admin password for your LDAP directory again to verify    |
-| that you have typed it correctly.                                          |
-|                                                                            |
-| Confirm password:                                                          |
-| **********_______________________________________________________________  |
-|                                  <Ok>                                      |
-+----------------------------------------------------------------------------+
 \end{verbatim}
 }
 
@@ -328,6 +319,7 @@ adding new entry "ou=webdav,ou=groups,dc=xnas,dc=local"
 \end{verbatim}
 }
 
+\newpage
           \subsubsection {Carga de datos en el directorio \textsc{LDAP}}
 
 Para realizar la carga de la base de datos de usuarios y grupos se desarroll\'{o} una biblioteca y un script de carga en el lenguaje de programaci\'{o}n \textsl{Ruby} que lee los datos desde un archivo origen en formato \texttt{CSV}, establece las relaciones entre los objetos y realiza el ingreso de los datos al directorio.
