@@ -137,7 +137,10 @@
   \item El personal de la Unidad de C\'{o}mputo utiliza discos \'{o}pticos para instalar el software en los equipos a los que da servicio.
 \end{itemize}
 
-\include{figures/media}
+ \psscalebox{0.5 0.5} % Change this value to rescale the drawing.
+ {
+  \input{figures/media}
+ }
 
 \end{frame}
 %------------------------------------------------
@@ -168,7 +171,10 @@
 
 Implementar un servidor dedicado de almacenamiento que incluya las cuentas de usuario desde un directorio \textsc{LDAP} y que transmita la informaci\'{o}n por medio de \textsc{WebDAV} a trav\'{e}s de un canal cifrado.
 
-\include{figures/rack-servers}
+ \psscalebox{0.5 0.5} % Change this value to rescale the drawing.
+ {
+  \input{figures/rack-servers}
+ }
 
 \end{frame}
 %------------------------------------------------
@@ -199,20 +205,18 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 \framesubtitle{Componentes}
 \justifying
 
-\begin{itemize}
-\justifying
-%  \item Debian GNU/Linux como sistema operativo del \textit{appliance}.
-  \item Sistema operativo Debian GNU/Linux 7 \guillemotleft wheezy\guillemotright
-\\~\\
-%  \item OpenSSH para el acceso remoto por linea de comandos.
-  \item Servicio SSH (OpenSSH)
-\\~\\
-%  \item Apache HTTPD para proveer el servicio de HTTPS.
-  \item Servicio HTTP (Apache HTTPD)
-\\~\\
-%  \item OpenLDAP para implementar el directorio de usuarios.
-  \item Servicio LDAP (OpenLDAP)
-\end{itemize}
+\begin{block}{Debian GNU/Linux 7 \guillemotleft wheezy\guillemotright}
+ Sistema operativo del \textsl{appliance}
+\end{block}
+\begin{block}{OpenSSH}
+ Administraci\'{o}n por l\'{i}nea de comandos
+\end{block}
+\begin{block}{Apache HTTPD}
+ Servicio HTTPS para el acceso a los archivos a trav\'{e}s de WebDAV
+\end{block}
+\begin{block}{OpenLDAP}
+ Servicio LDAP para autenticaci\'{o}n centralizada
+\end{block}
 
 \end{frame}
 %------------------------------------------------
@@ -221,7 +225,7 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 \frametitle{Desarrollo}
 \framesubtitle{Diagrama de bloques}
 \centering
- \psscalebox{0.9 0.9} % Change this value to rescale the drawing.
+ \psscalebox{0.9 0.9}
  {
   \input{figures/diagrama-funcional}
  }
@@ -230,8 +234,126 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Introdution}
-\framesubtitle{Vehicules Solaires}
+\frametitle{Desarrollo}
+\framesubtitle{\'{A}rbol de directorio}
+\centering
+ \psscalebox{0.9 0.9}
+ {
+  \input{figures/directory-tree}
+ }
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Desarrollo}
+\framesubtitle{Carga de usuarios}
+\centering
+ \psscalebox{0.9 0.9}
+ {
+  \input{figures/load-script-diagram}
+ }
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Desarrollo}
+\framesubtitle{Formato de archivos CSV}
+\centering
+{
+ \begin{table}[H]
+% \caption{Formato de los archivos \textsl{CSV}}{}
+ \label{tab:csv-format}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{c|c c c c c}
+  %\hline
+  \textbf{Archivo} & \multicolumn{5}{c}{\textbf{Columnas}} \\
+  \hline \hline
+  \textit{staff.csv} & usuario & nombre & correo & curp & \\
+  \textit{materias.csv} & id & grupo & materia & rfc & profesor \\
+  \textit{profesores.csv} & rfc & nombre & correo & & \\
+  \textit{alumnos.csv} & cuenta & nombre & correo & asignatura & grupo \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
+}
+
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Desarrollo}
+\framesubtitle{VirtualHost de Apache HTTPD}
+\centering
+{
+ \begin{table}[H]
+% \caption{VirtualHost configurados en Apache HTTPD}{}
+ \label{tab:virtualhost}
+ \noindent\makebox[\textwidth]
+ {%
+  \begin{tabular}[c]{c|c}
+  %\hline
+  \textbf{VirtualHost} & \textbf{Funci\'{o}n} \\
+  \hline \hline
+  \texttt{xnas.local} & Acceso a los archivos por medio de \textsc{WebDAV} \\
+  \texttt{reset.xnas.local} & Interfaz de cambio de contrase\~{n}a \\
+  \texttt{admin.xnas.local} & Interfaz administrativa del directorio \textsc{LDAP} \\
+  %\hline
+  \end{tabular}
+ } % ending of \makebox
+ \end{table}
+}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Desarrollo}
+\framesubtitle{Diagrama de VirtualHost}
+\centering
+ \psscalebox{0.75 0.75}
+ {
+  \input{figures/apache-vhost}
+ }
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Desarrollo}
+\framesubtitle{Configuraci\'{o}n de Apache HTTPD}
+\centering
+ \psscalebox{0.9 0.9}
+ {
+  \input{figures/apache-config}
+ }
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Desarrollo}
+\framesubtitle{\textsl{Hardening}}
+\justifying
+\begin{itemize}
+ \item Actualizaciones desatendidas
+\\~\\
+ \item Reducci\'{o}n de componentes instalados
+\\~\\
+ \item Configuraci\'{o}n de seguridad de OpenSSH
+\\~\\
+ \item Reglas de Firewall
+\end{itemize}
 
 \end{frame}
 
@@ -239,209 +361,71 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 
 \begin{frame}
 \frametitle{Pruebas}
-\framesubtitle{Historique}
-"Si tous les avions devenaient solaires, ce serait formidable." - Yann-Arthus Bertrand
+\justifying
 
-\begin{figure}
-%\includegraphics[width=0.7\textwidth]{images/solar-impulse.png}
-\end{figure}
-
-\end{frame}
-
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Resultados}
-\framesubtitle{Historique}
-\begin{block}{Juillet 2010}
-L'aventure Solar Impulse commence avec un 1er avion prototype immatricule HB-SIA. 
+\begin{block}{Compatibilidad multiplataforma}
+ \begin{itemize}
+  \item GNU/Linux, Mac OS X, Android, iOS y Windows
+  \item Navegadores web
+ \end{itemize}
 \end{block}
 
-\begin{block}{Juillet 2011}
-Mise en chantier du 2eme avion immatricule HB-SIB. Solar Impulse 2 devra pouvoir voler plus de cent-vingt heures d'affilee, cinq jours et cinq nuits, le temps dont il a besoin pour traverser le Pacifique ou l'Atlantique.
+% The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+\begin{columns}[c] 
+
+\column{.45\textwidth}
+\begin{block}{Roles de usuario}
+ \begin{itemize}
+  \item S\'{o}lo lectura
+  \item Lectura / Escritura
+ \end{itemize}
 \end{block}
 
-\begin{block}{Juin 2014}
-1er essaie de vol avec succes pour le HB-SIB.
+\column{.45\textwidth}
+\begin{block}{Seguridad}
+ \begin{itemize}
+  \item Autenticaci\'{o}n
+  \item Revisi\'{o}n de seguridad
+ \end{itemize}
 \end{block}
-
-
-\begin{block}{Avril-Juillet 2015}
-Tour du monde prevu en 2015 au depart d'Ahbu Dahbi pour une periode de 5 mois avec des vols prevu jusqu'a 5 jours sans escale. 
-\end{block}
-
-\end{frame}
-
-
-%-------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Solar Impulse}
-\framesubtitle{Comparaison HB-SIA/HB-SIB}
-
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-\column{.45\textwidth} % Left column and width
-\textbf{SIA}
-\begin{enumerate}
-\item Envergure: 63.4m
-\item Taille du Cockpit: 1.6m3
-\item Poids: 1.3 tonnes
-\end{enumerate}
-
-\column{.5\textwidth} % Right column and width
-\textbf{SIB}
-\begin{enumerate}
-\item Envergure: 72m
-\item Taille du Cockpit: 3.8m3
-\item Poids: 2.3 tonnes
-\end{enumerate}
 
 \end{columns}
 
-L'avion HB-SIB:
+\end{frame}
+
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Conclusiones}
+\framesubtitle{Resultados obtenidos}
+\justifying
 \begin{itemize}
-\item Charge utile sera augmentee
-\item Circuits electriques rendus etanches pour pouvoir voler sous la pluie
-\item Systemes redondants ameliorent la fiabilite
-\item Bayer Material Sciences fait profiter le projet de ses nanotechnologies 
-\item Decision utilise de fibres de carbones d'une legerete jamais vues jusqu'a aujourd'hui.
+ \item WebDAV
+\\~\\
+ \item HTTPS
+\\~\\
+ \item Compatibilidad multiplataforma
+\\~\\
+ \item Autenticaci\'{o}n LDAP
 \end{itemize}
 \end{frame}
 
-
 %------------------------------------------------
 
-
 \begin{frame}
-\frametitle{Solar Impulse}
-\framesubtitle{Les caracteristiques et le  « fonctionnement » du Solar Impulse SIB}
-
-Le projet Solar Impulse totalise aujourd'hui plus de 12 annees d'etudes de faisabilite, de conception, design et construction. Le Solar Impulse :\\
-
+\frametitle{Conclusiones}
+\framesubtitle{Oportunidades de mejora}
+\justifying
 \begin{itemize}
-\item est compose de 80 ingenieurs et techniciens de Solar Impulse
-\item 80 partenaires technologies
-\item plus de 100 conseillers et fournisseurs
-\item investissement d'environ 100 millions d'euros
-
-
+ \item Cuotas de disco duro
+\\~\\
+ \item Otros mecanismos de autenticaci\'{o}n
+\\~\\
+ \item Integraci\'{o}n con \textsl{ownCloud}
+\\~\\
+ \item Autenticaci\'{o}n LDAP
 \end{itemize}
-
-\end{frame}
-
-%------------------------------------------------
-\begin{frame}
-\frametitle{Solar Impulse}
-\framesubtitle{Principe du Vol}
-
-
-
-
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Solar Impulse}
-\framesubtitle{Propositions d'amellioration}
-
-
-
-
-\end{frame}
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Conclusion}
-
-
-
-
-
-\end{frame}
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Sources}
-
-
-
-
-
-\end{frame}
-%------------------------------------------------
-\begin{frame}
-\frametitle{Table}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Verbatim}
-\begin{example}[Theorem Slide Code]
-\begin{verbatim}
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}\end{verbatim}
-\end{example}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Figure}
-Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
-%\begin{figure}
-%\includegraphics[width=0.8\linewidth]{test}
-%\end{figure}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Citation}
-An example of the \verb|\cite| command to cite within the presentation:\\~
-
-This statement requires citation \cite{p1}.
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{References}
-\footnotesize{
-\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem[Smith, 2012]{p1} John Smith (2012)
-\newblock Title of the publication
-\newblock \emph{Journal Name} 12(3), 45 -- 678.
-\end{thebibliography}
-}
 \end{frame}
 
 %------------------------------------------------
@@ -450,6 +434,6 @@ This statement requires citation \cite{p1}.
 \Huge{\centerline{Gracias}}
 \end{frame}
 
-%----------------------------------------------------------------------------------------
+%------------------------------------------------
 
 \end{document}
