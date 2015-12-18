@@ -47,7 +47,7 @@ El personal de la \textit{Unidad de C\'{o}mputo} verific\'{o} que cada tipo de u
 \scriptsize
 \linespread{1}
 \begin{verbatim}
-# nmap -r -sS -sV --version-all -T 5 -oA xnas-harden xnas.tonejito.org
+# nmap -Pn -sS -sV --version-all -T 5 -p 0-65535 -oA xnas xnas.tonejito.org
 
 Starting Nmap 6.00 ( http://nmap.org ) at 2015-09-28 00:00 EDT
 Nmap scan report for xnas.tonejito.org (132.248.139.147)
