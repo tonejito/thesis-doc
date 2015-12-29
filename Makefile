@@ -159,16 +159,20 @@ $(EMAIN).pdf:	$(MAIN).ps
 	$(PS2PDF) -sPAPERSIZE=$(PAPERSIZE) $< $@
 
 clean.doc:	
-	$(RM) -f *.aux \
-		$(MAIN).dvi $(MAIN).ps $(MAIN).pdf $(EMAIN).pdf \
-		$(MAIN).md  $(MAIN).html $(MAIN)..pdf \
+	for ext in aux dvi ps md html pdf .pdf ; \
+	do \
+	  $(RM) -f *.aux \
+		$(MAIN).$$ext $(EMAIN).$$ext $(PRESENTATION).$$ext $(MAN).$$ext ; \
+	done \
 	;
 
 # Suggested by Neil B.
 clean:	clean.doc
-	$(RM) -f *.aux \
-		$(MAIN).log $(MAIN).blg $(MAIN).bbl \
-		$(MAIN).lot $(MAIN).lof $(MAIN).toc \
+	for ext in aux out log lot lof blg bbl toc nav snm vrb brf glo ist ; \
+	do \
+	  $(RM) -f *.aux \
+		$(MAIN).$$ext $(PRESENTATION).$$ext $(MAN).$$ext ; \
+	done \
 	;
 
 # Translate spanish accents to LaTeX-friendly character sequences
