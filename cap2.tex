@@ -57,6 +57,8 @@ El prototipo ser\'{a} implementado en un servidor proporcionado por la \textsc{D
 
       \subsection {Diagrama funcional}
 
+En el siguiente diagrama se muestra la interfaz de administraci\'{o}n \textsc{SSH} y la interfaz de acceso a los archivos \textsc{WebDAV} sobre \textsc{HTTPS}, ambas utilizan el directorio \textsc{OpenLDAP} para autenticar a los usuarios de manera centralizada.
+
 \diagramblock
 {Diagrama funcional de la soluci\'{o}n propuesta.}
 {DiagramaFuncional}
@@ -66,6 +68,7 @@ El prototipo ser\'{a} implementado en un servidor proporcionado por la \textsc{D
   \input{figures/diagrama-funcional}
  }
 }
+\newpage
 
       \subsection {Autenticaci\'{o}n centralizada}
 
@@ -79,7 +82,7 @@ Para tener un esquema de autenticaci\'{o}n centralizada se tendr\'{a} un directo
 
 La estructura propuesta comprende varios contenedores que sirven para separar los tipos de objeto que forman parte del directorio. Cada contenedor est\'{a} representado por una \textit{unidad organizacional} cuyo atributo \'{u}nico es el nombre \textbf{ou}. Los contenedores principales en la ra\'{i}z del directorio son los siguientes:
 
-\newpage
+%\newpage
 \begin{itemize}
   \item Contenedor de usuarios
   \item Contenedor de grupos
@@ -151,7 +154,7 @@ El siguiente diagrama muestra la estructura del \'{a}rbol del directorio \textsc
  }
 }
 
-\newpage
+%\newpage
       \subsection {Mecanismos de acceso a los archivos}
 
 Se propone establecer el acceso a los archivos utilizando mecanismos como \textsc{HTTP} est\'{a}ndar y \textsc{WebDAV}.
@@ -194,11 +197,12 @@ La interfaz de administraci\'{o}n que se propone permite ver, agregar, modificar
 
 Esta interfaz permite tanto al personal de la \textit{Unidad de C\'{o}mputo} como a los profesores cambiar la contrase\~{n}a de acceso que tienen asignada y al realizar esta acci\'{o}n env\'{i}a un correo para notificar que se llev\'{o} acabo dicho cambio.
 
+\newpage
     \subsection {Especificaci\'{o}n del \textit{appliance}}
 
 En la siguiente secci\'{o}n se muestran las configuraciones del hardware y software que tendr\'{a} el \textit{appliance}.
 
-      \section {Hardware}
+      \subsubsection {Hardware}
 
 {
  \begin{table}[H]
@@ -222,7 +226,7 @@ En la siguiente secci\'{o}n se muestran las configuraciones del hardware y softw
  \end{table}
 }
 
-      \section {Software}
+      \subsubsection {Software}
 
 {
  \begin{table}[H]

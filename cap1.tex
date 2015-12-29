@@ -448,7 +448,7 @@ Un appliance es un conjunto de elementos (hardware, software y sistema operativo
 
   \item \textbf{Hardware}
 
-Los \textit{appliances} de hardware son sistemas especializados dise\~{n}ados para realizar tareas espec\'{i}ficas. El fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad, puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta nueva funci\'{o}n \cite{}.
+Los \textit{appliances} de hardware son sistemas especializados dise\~{n}ados para realizar tareas espec\'{i}ficas. El fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad, puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta nueva funci\'{o}n.
 
 Regularmente tienen una interfaz web para administraci\'{o}n, algunos integran un \textit{shell} para realizar las funciones conectandose a trav\'{e}s de \textsc{SSH} y en otros casos integran adem\'{a}s soporte para \textsc{SNMP}.
 
@@ -609,7 +609,7 @@ La nomenclatura de los objetos es similar a la que utiliza \textsc{DNS}, es deci
 Cada objeto tiene un identificador \'{u}nico en el directorio conocido como \textit{Distinguished Name} (\textbf{dn}) que ayuda a diferenciar los objetos entre si. Se listan a continuaci\'{o}n, a manera de ejemplo, dos de los diferentes nombres distinguidos que se utilizar\'{a}n en este documento.
 
 {
-\scriptsize
+\normalsize
 \linespread{1}
 \begin{center}
   \texttt{dn: cn=admin,dc=tonejito,dc=org}
@@ -622,31 +622,31 @@ Cada objeto tiene un identificador \'{u}nico en el directorio conocido como \tex
 
 Dentro del directorio se tienen almacenados los objetos en diferentes ramas del \'{a}rbol que pueden ser vistas como carpetas en un sistema de archivos. Cada contenedor es denominado \textit{Organizational Unit} (\textbf{ou}) o Unidad Organizacional y es utilizado para almacenar objetos, incluyendo otras unidades organizacionales para darle estructura al \'{a}rbol del directorio \cite{_appendix_????}.
 
-\newpage
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-+- dc=root
-|+- ou=other container
-\+- ou=container
- \=- uid=object,ou=container,dc=root
-     cn: common name
-     comment: something
-     attrib: value1
-     attrib: value2
-\end{verbatim}
-}
-\diagramblock
-{Contenedores del directorio}
-{ldap-containers}
-{
- \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
- {
-  \begin{pspicture}(0.0,0.0)(0.0,0.0)
-  \end{pspicture}
- }
-}
+%\newpage
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%+- dc=root
+%|+- ou=other container
+%\+- ou=container
+% \=- uid=object,ou=container,dc=root
+%     cn: common name
+%     comment: something
+%     attrib: value1
+%     attrib: value2
+%\end{verbatim}
+%}
+%\diagramblock
+%{Contenedores del directorio}
+%{ldap-containers}
+%{
+% \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+% {
+%  \begin{pspicture}(0.0,0.0)(0.0,0.0)
+%  \end{pspicture}
+% }
+%}
 
   \subsection {Directorio de usuarios}
 
@@ -677,7 +677,6 @@ En \textsc{LDAP}  los usuarios tienen ciertas propiedades como identificador, no
 % }
 %}
 
-\newpage
 \section {Protocolo \textsc{SSH}}
 \label{Protocolo-SSH}
 El protocolo \textsc{SSH} \footnote{Secure Shell por sus siglas en ingl\'{e}s.} sirve para establecer sesiones remotas cifradas entre dos equipos \cite{_ssh_????-1}. Utiliza cifrado asim\'{e}trico para proteger la conexi\'{o}n y soporta m\'{u}ltiples m\'{e}todos de autenticaci\'{o}n lo que permite que sea flexible y f\'{a}cil de incluir en varios sistemas operativos.

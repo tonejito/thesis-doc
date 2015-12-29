@@ -350,7 +350,7 @@ Cada archivo de entrada \texttt{CSV} tiene varias columnas que contienen informa
 
 {
  \begin{table}[H]
- \caption{Formato de los archivos \textsl{CSV}}{}
+ \caption{Formato de los archivos \textsl{CSV} para la carga de datos}{}
  \label{tab:csv-format}
  \noindent\makebox[\textwidth]
  {%
@@ -397,7 +397,6 @@ Enter password (will not echo):
 \end{verbatim}
 }
 
-
 {
  \begin{table}[H]
  \caption{Script de carga de objetos en el directorio}{}
@@ -440,7 +439,9 @@ Enter password (will not echo):
 \end{verbatim}
 }
 
-      \subsection {Apache httpd}
+      \subsection {Apache \textsc{httpd}}
+
+En esta secci\'{o}n se describe el procedimiento que se realiz\'{o} para configurar el servicio de \textsc{HTTP} con \textsc{WebDAV} sobre \textsc{SSL}.
 
         \subsubsection {Esquema de configuraci\'{o}n}
 
@@ -465,7 +466,7 @@ La configuraci\'{o}n de Apache \textit{httpd} comprende tres \texttt{VirtualHost
  \end{table}
 }
 
-Si el usuario accede al appliance utilizando el nombre de dominio principal o la dirección IP, se presenta la interfaz de acceso a los archivos. Para acceder a la interfaz de administración del directorio o para cambiar la contraseña, se debe acceder utilizando el nombre de dominio designado en la tabla anterior.
+Si el usuario accede al \textit{appliance} utilizando el nombre de dominio principal o la direcci\'{o}n IP, se presenta la interfaz de acceso a los archivos. Para acceder a la interfaz de administraci\'{o}n del directorio o para cambiar la contrase\~{n}a, se debe acceder utilizando el nombre de dominio designado en la tabla anterior.
 
 \diagramblock
 {Diagrama Apache HTTPD VirtualHost}
@@ -477,6 +478,7 @@ Si el usuario accede al appliance utilizando el nombre de dominio principal o la
  }
 }
 
+\newpage
 El conjunto de archivos y configuraciones que forman parte del \textit{appliance} se organizan en diferentes carpetas como se muestra en la siguiente ilustraci\'{o}n:
 
 \diagramblock
@@ -494,7 +496,7 @@ Se ingresaron en el sistema de archivos varias ligas simb\'{o}licas que apuntan 
 {
  \linespread{1}
  \begin{table}[H]
- \caption{Archivos de configuraci\'{o}n}{}
+ \caption{Archivos de configuraci\'{o}n de Apache \textsc{httpd}}{}
  \label{tab:system-config}
  \noindent\makebox[\textwidth]
  {%
@@ -951,7 +953,7 @@ Para implementar las reglas de \textit{firewall} se utiliz\'{o} \texttt{iptables
 \end{verbatim}
 }
 
-        \subsubsection {Protecci\'{o}n contra ataques de fuerza bruta con \texttt{fail2ban}}
+        \subsubsection {Protecci\'{o}n contra ataques de fuerza bruta con \textit{fail2ban}}
 
 Este software realiza un seguimiento de las conexiones que se realizan al equipo e identifica los ataques de fuerza bruta contra el servicio de \textsc{SSH}. Al detectar un ataque, realiza un bloqueo de la direcci\'{o}n \textsc{IP} de origen por un tiempo determinado.
 
