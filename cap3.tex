@@ -682,9 +682,38 @@ Para el acceso mediante el cliente nativo se utilizan los siguientes par\'{a}met
  \end{table}
 }
 
-%        \subsubsection{P\'{a}gina de inicio del sitio web}
-%
-%Se desarroll\'{o} una p\'{a}gina para facilitar a los usuarios la b\'{u}squeda de los directorios asociados con sus materias
+        \subsubsection {Conector \textsc{WebDAV} desarrollado en \textsl{PowerShell}}
+
+Se desarroll\'{o} una interfaz \textit{frontend} para facilitar a los usuarios de Windows la conexi\'{o}n al servidor \textsc{WebDAV}. Se utiliz\'{o} el lenguaje de programaci\'{o}n \textsl{PowerShell} para lograr que el \textit{script} se pueda ejecutar en versiones recientes de Windows sin necesidad de utilizar alguna otra dependencia.
+
+El programa utiliza de manera interna el comando \texttt{net use} \footnote{https://technet.microsoft.com/en-us/library/gg651155.aspx} que permite montar una carpeta del servidor \textsc{WebDAV} con una letra de unidad local (Ej. \texttt{Z:}). Es una alternativa a la interfaz est\'{a}ndar que presenta el \textit{Explorador de Windows} \footnote{http://windows.microsoft.com/en-us/windows/create-shortcut-map-network-drive}
+
+Una vez que se toman los datos de la \textsc{URL}, el nombre de usuario y la contrase\~{n}a, se llama al comando \texttt{net use} para montar la unidad de red. La interfaz \textit{frontend} tambi\'{e}n toma en cuenta si se desea realizar la operaci\'{o}n en modo persistente, es decir, que la unidad permanezca montada a\'{u}n cuando se reinicie el equipo.
+
+{
+\footnotesize
+\linespread{1}
+\begin{verbatim}
+C:\> net use  *  https://xnas.tonejito.org/profesor/<nombre-del-profesor> \
+                 /user:<usuario>        <password>                        \
+                 /persistent:<boolean>
+\end{verbatim}
+}
+
+        \subsubsection {Instalaci\'{o}n del conector \textsc{WebDAV} y certificado ra\'{i}z}
+
+Para hacer uso del conector desarrollado en \textsl{PowerShell} o de la interfaz nativa de windows, es necesario instalar el certificado ra\'{i}z de la \textsc{CA} para que el dominio pueda ser validado. 
+
+El \textit{script} \textit{bootstrap} de instalaci\'{o}n \texttt{install.cmd} realiza las siguientes acciones en el equipo:
+
+\begin{itemize}
+  \item Descarga y ejecuta el archivo \texttt{install.ps1} con la l\'{o}gica principal del instalador.
+  \item Crea el directorio \texttt{C:{\textbackslash}xNAS}.
+  \item Descarga el certificado ra\'{i}z \texttt{ca.crt}.
+  \item Instala el certificado ra\'{i}z dentro de las \textit{Autoridades Certificadoras de Confianza} utilizando el comando \texttt{certutil}.
+  \item Reinicia el servicio \texttt{WebClient} puesto que es utilizado para las conexiones a \textsc{WebDAV}.
+  \item Descarga el script \texttt{xNAS-Connector.ps1} y crea un acceso directo en el escritorio.
+\end{itemize}
 
       \subsection {Interfaz de administraci\'{o}n \textit{LDAP Account Manager}}
 
