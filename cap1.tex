@@ -25,7 +25,6 @@ Es un medio de almacenamiento vol\'{a}til que se utiliza para guardar datos temp
 
 Es una variante de la memoria \textsc{RAM} donde se almacena la informaci\'{o}n de manera no vol\'{a}til, generalmente su capacidad es peque\~{n}a y este tipo de memoria se utiliza para fines muy especializados, por ejemplo para guardar las configuraciones de algunos sistemas embebidos \cite{veenstra_random_1986}.
 
-\newpage
   \item \textbf{ROM}
 
 Es una memoria de s\'{o}lo lectura que puede ser grabada una sola vez, generalmente se utilizaba para almacenar el firmware de dispositivos o alg\'{u}n programa embebido en hardware que requiere una salida fija para una entrada determinada \cite{_rom_????}.
@@ -42,8 +41,19 @@ Una variante m\'{a}s de los medios de almacenamiento basados en circuitos es est
 
 Un medio de almacenamiento relativamente reciente, utiliza arreglos de circuitos para guardar la informaci\'{o}n, generalmente se utiliza memoria tipo \textsc{NAND} para mantener los datos y a diferencia de los discos duros no tiene partes m\'{o}viles por lo que es menos propensa a fallos y disipa menos calor \cite{_ssd-faq-us.pdf_????}.
 
+\diagramblock
+{Medios de almacenamiento basados en circuitos}
+{media-circuit}
+{
+ \psscalebox{1.0 1.0}
+ {
+  \input{figures/media-circuit}
+ }
+}
+
 \end{itemize}
 
+\newpage
       \subsubsection*{Medios Magn\'{e}ticos}
 
 Este tipo de medios se caracterizan porque el acceso a los datos se realiza mediante un cabezal que lee o escribe el campo magn\'{e}tico impreso en el material que lo guarda. Son susceptibles a fallar si se exponen a campos magn\'{e}ticos, golpes o temperaturas extremas.
@@ -56,7 +66,6 @@ Las unidades de cinta son medios que almacenan de manera secuencial los datos y 
 
 Generalmente tienen capacidades que oscilan entre los \textsc{GB} y \textsc{TB}  \cite{_powervault_????} y son utilizadas para archivar informaci\'{o}n.
 
-\newpage
   \item \textbf{Discos Flexibles}
 
 En este tipo de discos se puede acceder de manera aleatoria a los datos almacenados, tienen un plato magn\'{e}tico rodeado de un material protector que viene contenido en un armaz\'{o}n de pl\'{a}stico y cuenta con con una abertura que permite a la cabeza lectora tener acceso al medio \cite{_anatomy_????}.
@@ -66,12 +75,20 @@ Los discos flexibles almacenan los datos dividiendo el plato en circulos conc\'{
   \item \textbf{Discos Duros}
 
 Similar al disco flexible, el disco duro tiene una estructura formada por varios platos, cada uno leido por una cabeza diferente. De manera l\'{o}gica el espacio se organiza en circulos conc\'{e}ntricos (cilindros), platos (cabezas) y arcos (sectores), en modelos modernos se utiliza \emph{Logical Block Addressing} para asignar el espacio \cite{_introduction_????}.
+%Para buscar un dato se debe hacer referencia al plato donde est\'{a}, al sector del disco y a la cabeza de lectura que corresponda.
 
 Parecidos a los discos flexibles, estos medios tienen mayor capacidad y actualmente son el medio primordial de almacenar informaci\'{o}n en los equipos de c\'{o}mputo. A diferencia de los discos flexibles, tienen los componentes mec\'{a}nicos dentro del armaz\'{o}n del disco y pueden almacenar grandes cantidades de informaci\'{o}n gracias a que se apilan varios discos en una estructura cilindrica.
-
-Para buscar un dato se debe hacer referencia al plato donde est\'{a}, al sector del disco y a la cabeza de lectura que corresponda.
-
 \end{itemize}
+
+\diagramblock
+{Medios de almacenamiento magn\'{e}ticos}
+{media-magnetic}
+{
+ \psscalebox{0.8 0.8}
+ {
+  \input{figures/media-magnetic}
+ }
+}
 
       \subsubsection*{Medios Magneto-\'{o}pticos}
 
@@ -85,7 +102,15 @@ Para escribir los datos calientan la superficie del disco y se aplica un campo m
 
 \end{itemize}
 
-\newpage
+\diagramblock
+{Disco magn\'{e}to-\'{o}ptico}
+{media-magneto-optic}
+{
+ \psscalebox{1.0 1.0}
+ {
+  \input{figures/media-magneto-optic}
+ }
+}
 
       \subsubsection*{Medios \'{O}pticos}
 
@@ -97,11 +122,22 @@ Los discos pre-masterizados (\textsc{CD-ROM}, \textsc{DVD-ROM}, \textsc{BD-ROM})
 
 Los discos grabables (\textsc{CD-R}, \textsc{DVD+R}, \textsc{DVD-R} y \textsc{BD-R}) pueden ser escritos mediante un laser al fundir una capa de policarbonato en la superficie inferior del disco para ingresar los bits. El formato de los bits generalmente va de acuerdo al est\'{a}ndar \textsc{ISO-9660} \cite{_further_????}.
 
+\newpage
   \item \textbf{Discos regrabables}
 
-Los discos regrabables (\textsc{CD-RW}, \textsc{DVD+RW}, \textsc{DVD-RW}, \textsc{BD-RE}) tienen una ventaja adicional comparados con los discos grabables de una sola vez, gracias a que es posible borrar la informaci\'{o}n contenida para almacenar nuevos datos en el medio. Esto se logra inicializar parcial o totalmente los sectores del disco para que este pueda admitir nuevos datos \cite{_odd_????}.
+Los discos regrabables (\textsc{CD-RW}, \textsc{DVD+RW}, \textsc{DVD-RW}, \textsc{BD-RE}) tienen una ventaja adicional comparados con los discos grabables de una sola vez, gracias a que es posible borrar la informaci\'{o}n contenida para almacenar nuevos datos en el medio. Esto se logra al inicializar parcial o totalmente los sectores del disco para que este pueda admitir nuevos datos \cite{_odd_????}.
 
 \end{itemize}
+
+\diagramblock
+{Disco \'{o}ptico}
+{media-optical}
+{
+ \psscalebox{1.0 1.0}
+ {
+  \input{figures/media-optical}
+ }
+}
 
       \subsubsection*{Medios Hologr\'{a}ficos }
 
@@ -517,6 +553,8 @@ Se denomina \textit{hardening} al proceso de reforzar las configuraciones del si
 
 El sistema operativo GNU/Linux es la combinaci\'{o}n del conjunto de utilerias del sistema operativo GNU y el kernel Linux \cite{_linux_????}.
 
+\picturebox{figures/gnu-linux}{797}{386}{0.5}{\textsc{GNU}/\textsc{Linux}}{gnu-linux}
+
   \subsection {Historia}
 
 En 1983 Richard Stallman inici\'{o} el proyecto \textsc{GNU} \footnote{Acr\'{o}nimo recursivo que significa \textit{GNU is Not Unix}.} cuyo prop\'{o}sito es hacer un sistema operativo compatible con \textsc{UNIX} que cumpla con las cuatro libertades del software \footnote{Para m\'{a}s informaci\'{o}n ver el ap\'{e}ndice A.} y desarroll\'{o} junto con otros colegas una serie de utilerias y programas como el compilador \textsc{GNU} para el lenguage \textsc{C} (\textit{gcc}) \cite{_about_????}. Sin embargo el proyecto ten\'{i}a pr\'{a}cticamente todos los programas del sistema operativo pero le faltaba la parte escencial: el \textit{kernel}.
@@ -524,8 +562,6 @@ En 1983 Richard Stallman inici\'{o} el proyecto \textsc{GNU} \footnote{Acr\'{o}n
 En 1987 el profesor Andrew S. Tannenbaum public\'{o} un libro titulado \textit{Sistemas Operativos Dise\~{n}o e Implementaci\'{o}n} \cite{tanenbaum_operating_2006} donde explica varios conceptos y aspectos clave de los sistemas operativos, en las \'{u}ltima secci\'{o}n viene incluido el c\'{o}digo fuente del sistema operativo \textsc{MINIX} que \'{e}l mismo desarroll\'{o} como un clon de \textsc{UNIX} para prop\'{o}sitos educativos. \cite{_complete_????}.
 
 En 1991 Linus Torvalds que estudiaba la maestr\'{i}a en ciencias de la computaci\'{o}n en Helsinki Finlandia \cite{_staff_????}, inspirado en \textsc{MINIX}, decidi\'{o} escribir un sistema operativo compatible con UNIX que cumpliera con el est\'{a}ndar \textsc{POSIX} y el 25 de agosto public\'{o} una entrada en el foro \textsc{USENET} de \textsc{MINIX} \cite{_history_????} explicando su proyecto y pidiendo retroalimentaci\'{o}n. Esto dio origen a una ola de desarrollo que hizo que el \textit{kernel} Linux creciera, la licencia original de Linux prohib\'{i}a el uso comercial pero se cambi\'{o} para que fuese liberado con la licencia \textsc{GPL} de \textsc{GNU}, que permite el uso comercial siempre y cuando se liberen las modificaciones hechas al software y se permita distribuir copias modificadas \cite{_linux_????-3} \footnote{Visitar \cite{_linuxs_????} para ver la lista completa de mensajes \textsc{usenet}.}.
-
-% ligar con el estado actual
 
   \subsection {Distribuciones de GNU/Linux}
 
@@ -537,30 +573,31 @@ Aunque todas las distribuciones se apegan al est\'{a}ndar \textsc{FHS}, \cite{_f
 
 Tradicionalmente se utilizaba el sistema de inicio basado en \textsc{SystemV} (\textit{sysvrc}) que lanza los servicios de manera secuencial. Recientemente se han implementado otros sistemas de inicio que pueden lanzar servicios en paralelo si no tienen relaci\'{o}n entre si, un ejemplo es \textit{insserv} propuesto por \textsc{LSB} \cite{_lsbinitscripts_????}\cite{_lsbinitscripts/dependencybasedboot_????} \footnote{\textit{Linux Standard Base} por sus siglas en ingl\'{e}s.}, \textit{OpenRC} utilizado principalmente en \textit{Gentoo} \cite{_gentoo_????}\cite{_openrc_????}\cite{_openrc_????-1}, \textit{upstart} utilizado en \textit{Ubuntu} y sus derivados \cite{_upstart_????} y \textit{systemd} utilizado en \textit{Arch Linux} y \textit{Debian 8} \cite{_systemd_????}.
 
-%\includegraphics[keepaspectratio=true, width=400px]{figures/linux-distributions}
+\picturebox{figures/distros}{515}{42}{1.0}{Distribuciones de \textsc{GNU}/\textsc{Linux}}{linux-distributions}
 
   \subsection {Uso de GNU/Linux en la industria}
 
 El sistema operativo GNU/Linux tiene un gran auge en la industria siendo la plataforma m\'{a}s utilizada para aplicaciones embebidas, \textit{clusters} de superc\'{o}mputo con 9 de las 10 computadoras m\'{a}s poderosas, los servicios web m\'{a}s famosos como Google, Twitter, Facebook y Amazon corren sobre GNU/Linux \cite{_how_????}. Desde hace m\'{a}s de 15 a\~{n}os ha estado presente en diversas aplicaciones como:
 
+\newpage
 \begin{itemize}
-  \item Clusters de superc\'{o}mputo (94\% de los sistemas de c\'{o}mputo de alto rendimiento se ejecuta sobre GNU/Linux). \cite{_tic_????}\cite{_94_????}.
+  \item \textit{Clusters} de superc\'{o}mputo (94\% de los sistemas de c\'{o}mputo de alto rendimiento se ejecuta sobre GNU/Linux). \cite{_tic_????}\cite{_94_????}.
   \item Sistemas embebidos con aplicaciones m\'{e}dicas, militares y civiles \cite{_elinux.org_????}\cite{_rtos_????}.
   \item Sistemas embebidos de control y \textsc{RTOS} \footnote{\textit{Real Time Operating System} por sus siglas en ingl\'{e}s.} \cite{_uclinux_????}\cite{_rtos_????}.
-  \item Appliances de red y \textit{firewalls} \cite{_router/bridge_????}\cite{_endian_????}
-  \item Proxys y sistemas de seguridad \cite{_f5_????}\cite{_junos_????}\cite{_infoblox_????}
+  \item \textit{Appliances} de red y \textit{firewalls} \cite{_router/bridge_????}\cite{_endian_????}
+  \item \textit{Proxys} y sistemas de seguridad \cite{_f5_????}\cite{_junos_????}\cite{_infoblox_????}
   \item \textsc{HTPC} (Dispositivos de entretenimiento casero) \cite{_openelec_????}
   \item Dispositivos m\'{o}viles como celulares y tablets (Android \cite{_android_????}, Firefox OS \cite{_firefox_????}, HP WebOS \cite{_hp_????}, TizenOS \cite{_tizen_????}, Maemo \cite{_maemo.org_????}, Ubuntu Phone \cite{_ubuntu_????})
   \item Consolas de videojuegos (PlayStation 2 \cite{_ps2_????}, PlayStation 3 \cite{_open_????}, SteamOS y Nvidia Shield)
 \end{itemize}
 
-%\includegraphics[keepaspectratio=true, width=400px]{figures/LinuxDistributions}
-
   \subsection {Debian GNU/Linux}
 
-Debian \footnote{El nombre \textit{Debian} proviene de la conjunci\'{o}n del nombre de su creador Ian y el nombre de su esposa Debra.} es una de las primeras distribuciones de GNU/Linux que existieron, fu\'{e} creado en agosto de 1993 por Ian Murdock qui\'{e}n pens\'{o} en hacer un proyecto en el que cualquiera pudiera colaborar sin importar si fuera un usuario o desarrollador \cite{_debian_????}.
+Debian \footnote{El nombre \textit{Debian} proviene de la conjunci\'{o}n del nombre de su creador Ian Murdock ( \textborn 28 de abril de 1973 – \textdagger 28 de diciembre de 2015) y el nombre de su esposa Debra.} es una de las primeras distribuciones de GNU/Linux que existieron, fu\'{e} creado en agosto de 1993 por Ian Murdock qui\'{e}n pens\'{o} en hacer un proyecto en el que cualquiera pudiera colaborar sin importar si fuera un usuario o desarrollador \cite{_debian_????}.
 
 Hoy en d\'{i}a Debian es la distribuci\'{o}n m\'{a}s significativa de GNU/Linux sin fines comerciales, esta caracter\'{i}stica hace posible que el proyecto sea gestionado por una organizaci\'{o}n de individuos que velan por el proyecto y no por los intereses de la empresa que lo tiene a su cargo.
+
+\picturebox{figures/debian-logo}{60}{75}{0.15}{Debian \textsc{GNU}/\textsc{Linux}}{debian-gnu-linux}
 
 \section {Protocolo \textsc{HTTP}}
 
@@ -677,6 +714,7 @@ En \textsc{LDAP}  los usuarios tienen ciertas propiedades como identificador, no
 % }
 %}
 
+\newpage
 \section {Protocolo \textsc{SSH}}
 \label{Protocolo-SSH}
 El protocolo \textsc{SSH} \footnote{Secure Shell por sus siglas en ingl\'{e}s.} sirve para establecer sesiones remotas cifradas entre dos equipos \cite{_ssh_????-1}. Utiliza cifrado asim\'{e}trico para proteger la conexi\'{o}n y soporta m\'{u}ltiples m\'{e}todos de autenticaci\'{o}n lo que permite que sea flexible y f\'{a}cil de incluir en varios sistemas operativos.
@@ -691,6 +729,8 @@ Com\'{u}nmente se utiliza para conectarse a un servidor y utilizar la interfaz d
     \item{Ejecutar programas gr\'{a}ficos en el equipo remoto y visualizar la interfaz como si fuese un programa local (\textit{X11Forward}).}
     \item{Generar un \textit{proxy} \textsc{SOCKS} para enviar el tr\'{a}fico local al equipo remoto (\textit{DynamicForward}).}
   \end{itemize}
+
+\picturebox{figures/OpenSSH}{500}{492}{0.25}{\textsc{OpenSSH}}{openssh-logo}
 
 %  \subsection {SCP - Secure Copy}
 %

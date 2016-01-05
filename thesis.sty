@@ -170,13 +170,13 @@
 }
 
 \newcommand{\picturebox}[6]{%
- \begin{figure}[H]
  % If arg #6 is not empty
  \ifthenelse { \equal {#6} {} }
  {}
  {
   \label{fig:#6}
  }
+ \begin{figure}[H]
   \centering
   \ifdraft
   {
@@ -493,4 +493,9 @@
 {xNAS: Appliance de almacenamiento en red por medio de WebDAV} % left
 {Andr\'{e}s Leonardo Hern\'{a}ndez Berm\'{u}dez}               % right
 \newcommand{\headrulewidth}{0.5pt}
+
+% For born - deceased symbols
+% http://hevea.inria.fr/examples/test/sym.html
+% http://tex.stackexchange.com/a/38678
+\usepackage{textcomp}
 

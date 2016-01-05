@@ -15,7 +15,15 @@ Los discos duros del servidor ser\'{a}n configurados en un arreglo \textsc{RAID}
 
 \begin{itemize}
   \item Instalar el software para habilitar la compatibilidad con arreglos \textsc{RAID} por software:
-    \code{\# apt-get install mdadm}
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # apt-get install mdadm
+\end{verbatim}
+}
+
   \item Crear las particiones de tipo \textit{Linux RAID Autodetect} en cada disco del arreglo
     \begin{itemize}
       \item Crear una partici\'{o}n primaria que ocupe todo el espacio del disco:
@@ -67,15 +75,47 @@ Los discos duros del servidor ser\'{a}n configurados en un arreglo \textsc{RAID}
 
     \end{itemize}
   \item Crear arreglo:
-    \code{\# mdadm --zero-superblock /dev/sdb1 /dev/sdc1}
-    \code{\# mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb1 /dev/sdc1}
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # mdadm --zero-superblock /dev/sdb1 /dev/sdc1
+    # mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb1 /dev/sdc1
+\end{verbatim}
+}
+
   \item Dar formato al disco que representa el arreglo:
-    \code{\# mkfs.ext4 /dev/md0}
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    # mkfs.ext4 /dev/md0
+\end{verbatim}
+}
+
   \item Asignar tipo y punto de montaje en el archivo \texttt{/etc/fstab}:
-    \code{/dev/md0 /opt/xNAS/files ext4 noatime,rw 0 0}
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    /dev/md0 /opt/xNAS/files ext4 noatime,rw 0 0
+\end{verbatim}
+}
+
   \item Guardar configuraci\'{o}n en el archivo \texttt{/etc/mdadm/mdadm.conf}:
-    \code{ARRAY /dev/md0 devices=/dev/sdb1,/dev/sdc1 level=1 num-devices=2 auto=yes}
-    \code{DEVICE /dev/sdb1 /dev/sdc1}
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+    ARRAY /dev/md0 devices=/dev/sdb1,/dev/sdc1 level=1 num-devices=2 auto=yes
+    DEVICE /dev/sdb1 /dev/sdc1
+\end{verbatim}
+}
+
 \end{itemize}
 
       \subsection {Punto de montaje de s\'{o}lo lectura}
@@ -90,9 +130,9 @@ Para evitar el acceso de escritura a los archivos pertenecientes a los profesore
 \scriptsize
 \linespread{1}
 \begin{verbatim}
-PREFIX=/opt/xNAS/files
-mount --bind $PREFIX/profesor $PREFIX/p
-mount -o remount,ro,bind $PREFIX/profesor $PREFIX/p
+	PREFIX=/opt/xNAS/files
+	mount --bind $PREFIX/profesor $PREFIX/p
+	mount -o remount,ro,bind $PREFIX/profesor $PREFIX/p
 \end{verbatim}
 }
 
@@ -266,7 +306,6 @@ Una vez instalado el servicio de directorio, es necesario inicializar la estruct
 \scriptsize
 \linespread{1}
 \begin{verbatim}
-
 # aptitude install ldap-utils
  \end{verbatim}
 }
@@ -277,7 +316,6 @@ Se verifica que no existan objetos adicionales en el directorio. La salida del c
 \scriptsize
 \linespread{1}
 \begin{verbatim}
-
 # ldapsearch -LLL -Y EXTERNAL -H ldapi:/// -b 'dc=xnas,dc=local'
 SASL/EXTERNAL authentication started
 SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth
@@ -303,7 +341,6 @@ Se procede con la inicializaci\'{o}n de la estructura b\'{a}sica del directorio.
 \scriptsize
 \linespread{1}
 \begin{verbatim}
-
 # ldapadd -x -W -D "cn=admin,dc=xnas,dc=local" -H 'ldapi:///' -f ./xNAS-base.ldif
 Enter LDAP Password: 
 adding new entry "ou=services,dc=xnas,dc=local"
@@ -510,10 +547,10 @@ Se ingresaron en el sistema de archivos varias ligas simb\'{o}licas que apuntan 
   \scriptsize \texttt{/etc/apache2/sites-available/admin.xnas.local} & \scriptsize \texttt{/opt/xNAS/apache2/sites-available/admin.xnas.local} \\
   \scriptsize \texttt{/etc/ssl/certs/ca.thesis.tonejito.info.crt}    & \scriptsize \texttt{/opt/xNAS/ssl/certs/ca.thesis.tonejito.info.crt} \\
   \scriptsize \texttt{/etc/ssl/certs/xnas.local.crt}                 & \scriptsize \texttt{/opt/xNAS/ssl/certs/xnas.local.crt} \\
-  \scriptsize \texttt{/etc/ssl/certs/reset.xnas.local.crt}           & \scriptsize \texttt{/opt/xNAS/ssl/certs/reset.xnas.local.crt} \\
+%  \scriptsize \texttt{/etc/ssl/certs/reset.xnas.local.crt}           & \scriptsize \texttt{/opt/xNAS/ssl/certs/reset.xnas.local.crt} \\
   \scriptsize \texttt{/etc/ssl/certs/admin.xnas.local.crt}           & \scriptsize \texttt{/opt/xNAS/ssl/certs/admin.xnas.local.crt} \\
   \scriptsize \texttt{/etc/ssl/certs/xnas.local.key}                 & \scriptsize \texttt{/opt/xNAS/ssl/certs/xnas.local.key} \\
-  \scriptsize \texttt{/etc/ssl/certs/reset.xnas.local.key}           & \scriptsize \texttt{/opt/xNAS/ssl/certs/reset.xnas.local.key} \\
+%  \scriptsize \texttt{/etc/ssl/certs/reset.xnas.local.key}           & \scriptsize \texttt{/opt/xNAS/ssl/certs/reset.xnas.local.key} \\
   \scriptsize \texttt{/etc/ssl/certs/admin.xnas.local.key}           & \scriptsize \texttt{/opt/xNAS/ssl/certs/admin.xnas.local.key} \\
   %\hline
   \end{tabular}
@@ -585,14 +622,14 @@ Aunque \textsc{WebDAV} es un est\'{a}ndar definido en el RFC4918 \footnote{http:
 
 Se utilizaron las directivas \texttt{BrowserMatch} y \texttt{BrowserMatchNoCase} para distinguir a los clientes problem\'{a}ticos que se conectan al servidor y darles un tratamiento especial. \footnote{http://serverfault.com/questions/478528/webdav-with-apache-2-2-simply-wont-work} \footnote{http://blog.toxa.de/archives/387} A continuaci\'{o}n se muestran las directivas que se utilizaron para darle un tratamiento especial a los clientes \textsc{WebDAV} nativos de Windows.
 
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-Header add MS-Author-Via "DAV" 
-BrowserMatch "Microsoft-WebDAV-MiniRedir" redirect-carefully nokeepalive ssl-unclean-shutdown 
-\end{verbatim}
-}
+%{
+%\scriptsize
+%\linespread{1}
+%\begin{verbatim}
+%Header add MS-Author-Via "DAV" 
+%BrowserMatch "Microsoft-WebDAV-MiniRedir" redirect-carefully nokeepalive ssl-unclean-shutdown 
+%\end{verbatim}
+%}
 
 Para el caso espec\'{i}fico de Windows, es necesario deshabilitar la detecci\'{o}n autom\'{a}tica de proxy en la configuraci\'{o}n de \textit{Internet Explorer}, esto debido a que de manera predeterminada intenta encontrar un servidor proxy \textit{en cada petici\'{o}n que realiza al servidor}.
 \footnote{http://oddballupdate.com/2009/12/fix-slow-webdav-performance-in-windows-7/}
@@ -613,9 +650,9 @@ La conexi\'{o}n al servidor LDAP se configura con la directiva \texttt{AuthLDAPU
   %\hline
   \textbf{Cadena de conexi\'{o}n} & \textbf{Filtro} \\
   \hline \hline
-  \textit{Protocolo} & \texttt{Contenedor} \\
-  \textit{Host}      & \texttt{Atributos de \'{i}ndice} \\
-  \textit{Puerto}    & \textsc{Profundidad y condiciones de la b\'{u}squeda} \\
+  \textit{Protocolo} & \textsl{Contenedor} \\
+  \textit{Host}      & \textsl{Atributos de \'{i}ndice} \\
+  \textit{Puerto}    & \textsl{Profundidad y condiciones de la b\'{u}squeda} \\
   %\hline
   \end{tabular}
  } % ending of \makebox
@@ -646,7 +683,7 @@ Para el manejo de permisos de acceso se utilizaron grupos de \textsc{LDAP} que r
 \footnotesize
 \linespread{1}
 \begin{verbatim}
-Require ldap-group cn=1667-AORJ771312,ou=webdav,ou=groups,dc=xnas,dc=local
+Require ldap-group cn=1024-HEBA861228,ou=webdav,ou=groups,dc=xnas,dc=local
 \end{verbatim}
 }
 
@@ -686,7 +723,7 @@ Para el acceso mediante el cliente nativo se utilizan los siguientes par\'{a}met
 
 Se desarroll\'{o} una interfaz \textit{frontend} para facilitar a los usuarios de Windows la conexi\'{o}n al servidor \textsc{WebDAV}. Se utiliz\'{o} el lenguaje de programaci\'{o}n \textsl{PowerShell} para lograr que el \textit{script} se pueda ejecutar en versiones recientes de Windows sin necesidad de utilizar alguna otra dependencia.
 
-El programa utiliza de manera interna el comando \texttt{net use} \footnote{https://technet.microsoft.com/en-us/library/gg651155.aspx} que permite montar una carpeta del servidor \textsc{WebDAV} con una letra de unidad local (Ej. \texttt{Z:}). Es una alternativa a la interfaz est\'{a}ndar que presenta el \textit{Explorador de Windows} \footnote{http://windows.microsoft.com/en-us/windows/create-shortcut-map-network-drive}
+El programa utiliza de manera interna el comando \texttt{net use} \footnote{https://technet.microsoft.com/en-us/library/gg651155.aspx} que permite montar una carpeta del servidor \textsc{WebDAV} con una letra de unidad local (Ej. \texttt{Z:}). Es una alternativa a la interfaz est\'{a}ndar que presenta el \textit{Explorador de Windows}. \footnote{http://windows.microsoft.com/en-us/windows/create-shortcut-map-network-drive}
 
 Una vez que se toman los datos de la \textsc{URL}, el nombre de usuario y la contrase\~{n}a, se llama al comando \texttt{net use} para montar la unidad de red. La interfaz \textit{frontend} tambi\'{e}n toma en cuenta si se desea realizar la operaci\'{o}n en modo persistente, es decir, que la unidad permanezca montada a\'{u}n cuando se reinicie el equipo.
 
@@ -840,7 +877,7 @@ Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los p
 \begin{verbatim}
 # cat > /etc/apt/apt.conf.d/10Hardening << EOF
 Apt::Install-Recommends "false";
-Apt::Install-Suggests "false";
+Apt::Install-Suggests   "false";
 EOF
 
 \end{verbatim}
@@ -867,13 +904,9 @@ Se instal\'{o} en el equipo el \textsl{MTA} \texttt{Postfix} configurado como \t
 \begin{itemize}
   \item Especificar la direccion de destino en el archivo \texttt{/etc/aliases}:
 
-{
-\scriptsize
-\linespread{1}
 \begin{verbatim}
     root:	xnas@tonejito.org
 \end{verbatim}
-}
 
   \item Regenerar la base de datos de \textit{aliases}:
 
@@ -900,6 +933,9 @@ Se instal\'{o} en el equipo el \textsl{MTA} \texttt{Postfix} configurado como \t
       \subsection {Restricci\'{o}n de acceso para las tareas programadas}
 
 Para limitar la capacidad de los usuarios para programar la ejecuci\'{o}n de comandos en el sistema operativo se adopt\'{o} una politica restrictiva que consiste en tener una \textit{lista blanca} donde \'{u}nicamente los usuarios del sistema \footnote{Con \textbf{uid} menor a 1000} pueden hacer uso de trabajos de \textsl{cron} y \textsl{at}.
+\footnote{https://www.debian.org/doc/manuals/system-administrator/ch-sysadmin-users.html\#s8.1.1}
+\footnote{http://manpages.debian.org/cgi-bin/man.cgi?query=crontab\&manpath=Debian+7.0+wheezy}
+\footnote{http://linux.die.net/man/1/at}
 
 {
 \scriptsize
@@ -910,9 +946,6 @@ Para limitar la capacidad de los usuarios para programar la ejecuci\'{o}n de com
     # ln -v cron.allow at.allow
 \end{verbatim}
 }
-\footnote{https://www.debian.org/doc/manuals/system-administrator/ch-sysadmin-users.html\#s8.1.1}
-\footnote{http://manpages.debian.org/cgi-bin/man.cgi?query=crontab\&manpath=Debian+7.0+wheezy}
-\footnote{http://linux.die.net/man/1/at}
 
       \subsection {Configuraci\'{o}n de seguridad de \textsl{OpenSSH}}
 
@@ -1075,7 +1108,7 @@ Se configur\'{o} \textsc{PHP} para que no muestre la versi\'{o}n en las cabecera
 Se agreg\'{o} esta directiva de configuraci\'{o}n dentro de un bloque \texttt{<Directory>} para que el servidor ignore los archivos de configuraci\'{o}n \texttt{.htaccess} debido a que podr\'{i}an ser modificados por los usuarios.
 
 {
-\scriptsize
+\normalsize
 \linespread{1}
 \begin{verbatim}
 AllowOverride none
