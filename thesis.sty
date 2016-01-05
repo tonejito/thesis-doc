@@ -169,12 +169,12 @@
  }
 }
 
-\newcommand{\picturebox}[6]{%
- % If arg #6 is not empty
- \ifthenelse { \equal {#6} {} }
+\newcommand{\picturebox}[7]{%
+ % If arg #5 is not empty
+ \ifthenelse { \equal {#5} {} }
  {}
  {
-  \label{fig:#6}
+  \label{fig:#5}
  }
  \begin{figure}[H]
   \centering
@@ -185,11 +185,17 @@
   {
     \includegraphics[draft=false,width=#4\textwidth,natwidth=#2,natheight=#3]{#1}
   }
- % If arg #5 is not empty
- \ifthenelse { \equal {#5} {} }
+ % If arg #6 is not empty
+ \ifthenelse { \equal {#6} {} }
  {}
  {
-  \caption{#5}
+  \ifthenelse { \equal {#7} {} }
+  {
+   \caption{#6}
+  }
+  {
+   \caption{#6}{#7}
+  }
  }
  \end{figure}
 }
