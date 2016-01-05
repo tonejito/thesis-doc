@@ -203,6 +203,10 @@ ref-url:
 	${SED} -e 's/en-{US/en-US/g' -e 's/\(howpublished\ =\ \){\{1,\}\(.*\)}\{1,\},/\1{\\newline \\begin{footnotesize} \2 \\end{footnotesize}},/g' -e 's/}\(\ \\end\)/\1/g' ${BACKUP_SUFFIX} ${REF_BIB}
 #	${SED} -e 's/\(howpublished\ =\ \){\{1,\}\(.*\)}\{1,\},/\1{\\newline \\begin{footnotesize} \\texttt{\2} \\end{footnotesize}},/g' -e 's/}\(}\ \\end\)/\1/g' ${BACKUP_SUFFIX} ${REF_BIB}
 
+# Convert BibTeX urldate into notes for print
+ref-date:
+	${SED} -e 's/urldate = {\([[:digit:]]\{4\}\(-[[:digit:]]\{2\}\)\{2\}\)}/note = {Fecha de consulta: \1}/g' ${BACKUP_SUFFIX} ${REF_BIB}
+
 # Check for embedded references in the chapters and search them within the BibTeX references
 extract-url:	
 	for chapter in ${CHAPTERS} ; \
