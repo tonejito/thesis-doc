@@ -101,6 +101,10 @@ ifeq ($(shell uname -s),CYGWIN_NT-6.1-WOW64)
   VIEWER=/cygdrive/z/PortableApps/EvincePortable/EvincePortable.exe
 endif
 
+# Default target is to rebuild all
+.PHONY: all
+all:	clean $(MAIN) man presentation
+
 # Make pdf, clean all temporary files by default and open the document with
 # the platform pdf viewer
 # Added by Andrés Hernández
@@ -137,8 +141,10 @@ optimize:
 
 $(MAIN).dvi:	$(MAIN).tex $(FIGURES) $(FILES)
 	$(LATEX) $*.tex; 
+	$(LATEX) $*.tex; 
 	$(BIBTEX) $*;
 	$(LATEX) $*.tex;
+	$(LATEX) $*.tex; 
 	#while grep -s 'Rerun' $*.log 2> /dev/null; do	\
 	#	$(LATEX) $*.tex;			\
 	#done
@@ -204,14 +210,15 @@ ref-url:
 #	${SED} -e 's/\(howpublished\ =\ \){\{1,\}\(.*\)}\{1,\},/\1{\\newline \\begin{footnotesize} \\texttt{\2} \\end{footnotesize}},/g' -e 's/}\(}\ \\end\)/\1/g' ${BACKUP_SUFFIX} ${REF_BIB}
 
 # Convert BibTeX urldate into notes for print
-ref-date:
+ref-fields:
+	${SED} -e 's/\(url = {\(.*\)},\)/\1\n\thowpublished = {\2},/g' ${BACKUP_SUFFIX} ${REF_BIB}
 	${SED} -e 's/urldate = {\([[:digit:]]\{4\}\(-[[:digit:]]\{2\}\)\{2\}\)}/note = {Fecha de consulta: \1}/g' ${BACKUP_SUFFIX} ${REF_BIB}
 
 # Check for embedded references in the chapters and search them within the BibTeX references
 extract-url:	
 	for chapter in ${CHAPTERS} ; \
 	do \
-	  for url in `${EGREP} '^[[:space:]]*%[[:space:]]*http://' $$chapter` ; \
+	  for url in `${EGREP} '^[[:space:]]*%[[:space:]]*https?://' $$chapter` ; \
 	  do \
 	    ${GREP} "$$url" ${REF_BIB} ; \
 	  done ; \
