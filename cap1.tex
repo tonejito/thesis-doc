@@ -289,7 +289,7 @@ Com\'{u}nmente este tipo de servicios ofrece menos de 100GB de almacenamiento y 
 
 Cuando el servicio de almacenamiento se encuentra en la red local se puede aprovechar de mejor manera gracias a que la velocidad de transmisi\'{o}n es m\'{a}s r\'{a}pida que entre redes separadas. Adem\'{a}s el servicio no est\'{a} disponible para clientes de otras redes por lo que se denomina \emph{Privado}. En este caso los usuarios tienen una mejor experiencia al utilizar el servicio y los datos se quedan resguardados en un equipo dentro de la organizaci\'{o}n.
 
-En este tipo de soluciones se pueden tener grandes vol\'{u}menes de datos disponibles para los usuarios, aprovechando as\'{i}, la rapidez de la red local para manipular archivos de gran tama\~{n}o.
+En este tipo de soluciones se pueden tener grandes vol\'{u}menes de datos disponibles para los usuarios, aprovechando as\'{i}, la rapidez de la red local para manipular archivos de gran tama\~{n}o. %\cite{_intel-cloud_????}
 
     \end{itemize}
 
@@ -569,9 +569,9 @@ Una distribuci\'{o}n es un conjunto de paquetes que permiten instalar, actualiza
 
 Existen tambi\'{e}n \textit{paquetes de c\'{o}digo fuente} que permiten instalar los archivos de cabecera de un paquete en espec\'{i}fico. Esto permite compilar un software que requiera bibliotecas adicionales sin especificarlas expl\'{i}citamente gracias a que se resuelven autom\'{a}ticamente porque est\'{a}n en las rutas est\'{a}ndar del sistema.
 
-Aunque todas las distribuciones se apegan al est\'{a}ndar \textsc{FHS}, \cite{_filesystem_????} \footnote{Est\'{a}ndar publicado que se refiere a la estructura del sistema de archivos en sistemas operativos compatibles con \textsc{UNIX} \cite{_fhs_????}.} la ubicaci\'{o}n de los archivos de configuraci\'{o}n y de los binarios var\'{i}a entre distribuciones y generalmente la estructura del sistema de archivos se hereda entre distribuciones derivadas (ej. Ubuntu es derivado de Debian y tiene una estructura de directorios bastante similar).
+Aunque todas las distribuciones se apegan al est\'{a}ndar \textsc{FHS} \footnote{\textit{Filesystem Hierarchy Standard} por sus siglas en ingl\'{e}s. Est\'{a}ndar publicado que se refiere a la estructura del sistema de archivos en sistemas operativos compatibles con \textsc{UNIX} \cite{_fhs_????}.} \cite{_filesystem_????} la ubicaci\'{o}n de los archivos de configuraci\'{o}n y de los binarios var\'{i}a entre distribuciones y generalmente la estructura del sistema de archivos se hereda entre distribuciones derivadas (ej. Ubuntu es derivado de Debian y tiene una estructura de directorios bastante similar).
 
-Tradicionalmente se utilizaba el sistema de inicio basado en \textsc{SystemV} (\textit{sysvrc}) que lanza los servicios de manera secuencial. Recientemente se han implementado otros sistemas de inicio que pueden lanzar servicios en paralelo si no tienen relaci\'{o}n entre si, un ejemplo es \textit{insserv} propuesto por \textsc{LSB} \cite{_lsbinitscripts_????}\cite{_lsbinitscripts/dependencybasedboot_????} \footnote{\textit{Linux Standard Base} por sus siglas en ingl\'{e}s.}, \textit{OpenRC} utilizado principalmente en \textit{Gentoo} \cite{_gentoo_????}\cite{_openrc_????}\cite{_openrc_????-1}, \textit{upstart} utilizado en \textit{Ubuntu} y sus derivados \cite{_upstart_????} y \textit{systemd} utilizado en \textit{Arch Linux} y \textit{Debian 8} \cite{_systemd_????}.
+Tradicionalmente se utilizaba el sistema de inicio basado en \textsc{SystemV} (\textit{sysvrc}) que lanza los servicios de manera secuencial. Recientemente se han implementado otros sistemas de inicio que pueden lanzar servicios en paralelo si no tienen relaci\'{o}n entre si, un ejemplo es \textit{insserv} propuesto por \textsc{LSB} \footnote{\textit{Linux Standard Base} por sus siglas en ingl\'{e}s.} \cite{_lsbinitscripts_????} \cite{_lsbinitscripts/dependencybasedboot_????}, \textit{OpenRC} utilizado principalmente en \textit{Gentoo} \cite{_gentoo_????}\cite{_openrc_????}\cite{_openrc_????-1}, \textit{upstart} utilizado en \textit{Ubuntu} y sus derivados \cite{_upstart_????} y \textit{systemd} utilizado en \textit{Arch Linux} y \textit{Debian 8} \cite{_systemd_????}.
 
 \picturebox{figures/distros}{515}{42}{1.0}{linux-distributions}{Distribuciones de \textsc{GNU}/\textsc{Linux}}{}
 
@@ -717,7 +717,7 @@ En \textsc{LDAP}  los usuarios tienen ciertas propiedades como identificador, no
 \newpage
 \section {Protocolo \textsc{SSH}}
 \label{Protocolo-SSH}
-El protocolo \textsc{SSH} \footnote{Secure Shell por sus siglas en ingl\'{e}s.} sirve para establecer sesiones remotas cifradas entre dos equipos \cite{_ssh_????-1}. Utiliza cifrado asim\'{e}trico para proteger la conexi\'{o}n y soporta m\'{u}ltiples m\'{e}todos de autenticaci\'{o}n lo que permite que sea flexible y f\'{a}cil de incluir en varios sistemas operativos.
+El protocolo \textsc{SSH} \footnote{\textit{Secure Shell} por sus siglas en ingl\'{e}s.} sirve para establecer sesiones remotas cifradas entre dos equipos \cite{_ssh_????-1}. Utiliza cifrado asim\'{e}trico para proteger la conexi\'{o}n y soporta m\'{u}ltiples m\'{e}todos de autenticaci\'{o}n lo que permite que sea flexible y f\'{a}cil de incluir en varios sistemas operativos.
 
 Com\'{u}nmente se utiliza para conectarse a un servidor y utilizar la interfaz de l\'{i}nea de comandos, aunque el protocolo es muy flexible y se puede utilizar para cumplir las funciones que se listan a continuaci\'{o}n:
 

@@ -11,7 +11,7 @@ El sistema operativo que ser\'{a} utilizado para la implementaci\'{o}n es \texts
 
       \subsection {Arreglo de discos \textsc{RAID}}
 
-Los discos duros del servidor ser\'{a}n configurados en un arreglo \textsc{RAID} debido a las ventajas que ofrece\footnote{Ver p\'{a}gina \pageref{Arreglos-RAID} secci\'{o}n \ref{Arreglos-RAID}}. La configuraci\'{o}n en el servidor de pruebas se realizar\'{a} con un arreglo \textsc{RAID} 1 por \textit{software} que se configur\'{o} de la siguiente manera: \footnote{https://wiki.debian.org/SoftwareRAID}
+Los discos duros del servidor ser\'{a}n configurados en un arreglo \textsc{RAID} debido a las ventajas que ofrece\footnote{Ver p\'{a}gina \pageref{Arreglos-RAID} secci\'{o}n \ref{Arreglos-RAID}}. La configuraci\'{o}n en el servidor de pruebas se realizar\'{a} con un arreglo \textsc{RAID} 1 por \textit{software} que se configur\'{o} de la siguiente manera: \cite{_softwareraid_????}
 
 \begin{itemize}
   \item Instalar el software para habilitar la compatibilidad con arreglos \textsc{RAID} por software:
@@ -32,6 +32,7 @@ Los discos duros del servidor ser\'{a}n configurados en un arreglo \textsc{RAID}
 \scriptsize
 \linespread{1}
 \begin{verbatim}
+
     # /sbin/fdisk /dev/sdb
 
     Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -120,11 +121,7 @@ Los discos duros del servidor ser\'{a}n configurados en un arreglo \textsc{RAID}
 
       \subsection {Punto de montaje de s\'{o}lo lectura}
 
-Para evitar el acceso de escritura a los archivos pertenecientes a los profesores, se realiz\'{o} un montaje de tipo \textit{bind} con permisos de s\'{o}lo lectura. Debido a que se realizan dos operaciones de montaje, es necesario agregar las siguientes l\'{i}neas al \textit{script} \texttt{/etc/rc.local}.
-
-% http://linux.die.net/man/8/mount
-% https://lwn.net/Articles/281157/
-% http://karelzak.blogspot.mx/2011/04/bind-mounts-mtab-and-read-only.html
+Para evitar el acceso de escritura a los archivos pertenecientes a los profesores, se realiz\'{o} un montaje de tipo \textit{bind} con permisos de s\'{o}lo lectura. Debido a que se realizan dos operaciones de montaje, es necesario agregar las siguientes l\'{i}neas al \textit{script} \texttt{/etc/rc.local}. \cite{_mount_????} \cite{_read-only_????} \cite{_karel_????}
 
 {
 \scriptsize
@@ -298,9 +295,7 @@ Para la configuraci\'{o}n de \textsc{PAM}, se indica que se utilizar\'{a}n como 
 
           \subsubsection {Inicializaci\'{o}n del directorio \textsc{LDAP}}
 
-Una vez instalado el servicio de directorio, es necesario inicializar la estructura b\'{a}sica que comprende los contenedores de usuarios, materias y grupos utilizando el archivo \texttt{xNAS-base.ldif} y el comando \texttt{ldapadd}. En caso de requerir cambiar la contrase\~{n}a del administrador del directorio, seguir las indicaciones mostradas en la URL de la nota al pie\footnote{http://techiezone.rottigni.net/2011/12/change-root-dn-password-on-openldap/}.
-
-% http://www.linuxtopia.org/online_books//network_administration_guides/ldap_administration/slapdconf2_Configuration_Directives.html
+Una vez instalado el servicio de directorio, es necesario inicializar la estructura b\'{a}sica que comprende los contenedores de usuarios, materias y grupos utilizando el archivo \texttt{xNAS-base.ldif} y el comando \texttt{ldapadd}. En caso de requerir cambiar la contrase\~{n}a del administrador del directorio, seguir las indicaciones mostradas en las siguientes referencias \cite{_change_????} \cite{_openldap_????}
 
 {
 \scriptsize
@@ -317,9 +312,11 @@ Se verifica que no existan objetos adicionales en el directorio. La salida del c
 \linespread{1}
 \begin{verbatim}
 # ldapsearch -LLL -Y EXTERNAL -H ldapi:/// -b 'dc=xnas,dc=local'
+
 SASL/EXTERNAL authentication started
 SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth
 SASL SSF: 0
+
 dn: dc=xnas,dc=local
 objectClass: top
 objectClass: dcObject
@@ -342,7 +339,9 @@ Se procede con la inicializaci\'{o}n de la estructura b\'{a}sica del directorio.
 \linespread{1}
 \begin{verbatim}
 # ldapadd -x -W -D "cn=admin,dc=xnas,dc=local" -H 'ldapi:///' -f ./xNAS-base.ldif
+
 Enter LDAP Password: 
+
 adding new entry "ou=services,dc=xnas,dc=local"
 adding new entry "ou=materias,dc=xnas,dc=local"
 adding new entry "ou=users,dc=xnas,dc=local"
@@ -618,23 +617,20 @@ Se instalan y habilitan los m\'{odulos} necesarios para que las funcionalidades 
 
         \subsubsection {Compatibilidad con clientes \textsc{WebDAV}}
 
-Aunque \textsc{WebDAV} es un est\'{a}ndar definido en el RFC4918 \footnote{http://tools.ietf.org/rfc/rfc4918.txt}, existen varios clientes que ofrecen funcionalidades similares aunque son implementados de manera distinta. Por ejemplo, los clientes de \textsc{Mac OS X} y \textsc{GNU/Linux} son los mas completos, mientras que el cliente nativo de Windows (\textit{Microsoft-WebDAV-MiniRedir}) tiene muchos problemas de compatibilidad.
+Aunque \textsc{WebDAV} es un est\'{a}ndar definido en el RFC4918 \cite{_rfc_????-2}, existen varios clientes que ofrecen funcionalidades similares aunque son implementados de manera distinta. Por ejemplo, los clientes de \textsc{Mac OS X} y \textsc{GNU/Linux} son los mas completos, mientras que el cliente nativo de Windows (\textit{Microsoft-WebDAV-MiniRedir}) tiene muchos problemas de compatibilidad.
 
-Se utilizaron las directivas \texttt{BrowserMatch} y \texttt{BrowserMatchNoCase} para distinguir a los clientes problem\'{a}ticos que se conectan al servidor y darles un tratamiento especial. \footnote{http://serverfault.com/questions/478528/webdav-with-apache-2-2-simply-wont-work} \footnote{http://blog.toxa.de/archives/387} A continuaci\'{o}n se muestran las directivas que se utilizaron para darle un tratamiento especial a los clientes \textsc{WebDAV} nativos de Windows.
+Se utilizaron las directivas \texttt{BrowserMatch} y \texttt{BrowserMatchNoCase} para distinguir a los clientes problem\'{a}ticos que se conectan al servidor y darles un tratamiento especial \cite{_webdav_????} \cite{_fixing_????}. A continuaci\'{o}n se muestran las directivas que se utilizaron para darle un tratamiento especial a los clientes \textsc{WebDAV} nativos de Windows.
 
-%{
-%\scriptsize
-%\linespread{1}
-%\begin{verbatim}
-%Header add MS-Author-Via "DAV" 
-%BrowserMatch "Microsoft-WebDAV-MiniRedir" redirect-carefully nokeepalive ssl-unclean-shutdown 
-%\end{verbatim}
-%}
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+Header add MS-Author-Via "DAV" 
+BrowserMatch "Microsoft-WebDAV-MiniRedir" redirect-carefully nokeepalive ssl-unclean-shutdown 
+\end{verbatim}
+}
 
-Para el caso espec\'{i}fico de Windows, es necesario deshabilitar la detecci\'{o}n autom\'{a}tica de proxy en la configuraci\'{o}n de \textit{Internet Explorer}, esto debido a que de manera predeterminada intenta encontrar un servidor proxy \textit{en cada petici\'{o}n que realiza al servidor}.
-\footnote{http://oddballupdate.com/2009/12/fix-slow-webdav-performance-in-windows-7/}
-\footnote{https://support.microsoft.com/en-us/kb/2445570/}
-\footnote{https://www.iis.net/learn/publish/using-webdav/using-the-webdav-redirector}
+Para el caso espec\'{i}fico de Windows, es necesario deshabilitar la detecci\'{o}n autom\'{a}tica de proxy en la configuraci\'{o}n de \textit{Internet Explorer}, esto debido a que de manera predeterminada intenta encontrar un servidor proxy \textit{en cada petici\'{o}n que realiza al servidor} \cite{oddball_fix_????} \cite{_slow_????} \cite{_using_????}.
 
         \subsubsection {Conexi\'{o}n al servidor \textsc{LDAP}}
 
@@ -723,7 +719,7 @@ Para el acceso mediante el cliente nativo se utilizan los siguientes par\'{a}met
 
 Se desarroll\'{o} una interfaz \textit{frontend} para facilitar a los usuarios de Windows la conexi\'{o}n al servidor \textsc{WebDAV}. Se utiliz\'{o} el lenguaje de programaci\'{o}n \textsl{PowerShell} para lograr que el \textit{script} se pueda ejecutar en versiones recientes de Windows sin necesidad de utilizar alguna otra dependencia.
 
-El programa utiliza de manera interna el comando \texttt{net use} \footnote{https://technet.microsoft.com/en-us/library/gg651155.aspx} que permite montar una carpeta del servidor \textsc{WebDAV} con una letra de unidad local (Ej. \texttt{Z:}). Es una alternativa a la interfaz est\'{a}ndar que presenta el \textit{Explorador de Windows}. \footnote{http://windows.microsoft.com/en-us/windows/create-shortcut-map-network-drive}
+El programa utiliza de manera interna el comando \texttt{net use} \cite{_net_????} que permite montar una carpeta del servidor \textsc{WebDAV} con una letra de unidad local (Ej. \texttt{Z:}). Es una alternativa a la interfaz est\'{a}ndar que presenta el \textit{Explorador de Windows}. \cite{_create_????}
 
 Una vez que se toman los datos de la \textsc{URL}, el nombre de usuario y la contrase\~{n}a, se llama al comando \texttt{net use} para montar la unidad de red. La interfaz \textit{frontend} tambi\'{e}n toma en cuenta si se desea realizar la operaci\'{o}n en modo persistente, es decir, que la unidad permanezca montada a\'{u}n cuando se reinicie el equipo.
 
@@ -731,12 +727,13 @@ Una vez que se toman los datos de la \textsc{URL}, el nombre de usuario y la con
 \footnotesize
 \linespread{1}
 \begin{verbatim}
-C:\> net use  *  https://xnas.tonejito.org/profesor/<nombre-del-profesor> \
-                 /user:<usuario>        <password>                        \
+C:\> net use  *  https://xnas.tonejito.org/profesor/<nombre-del-profesor>  \
+                 /user:<usuario>        <password>                         \
                  /persistent:<boolean>
 \end{verbatim}
 }
 
+\newpage
         \subsubsection {Instalaci\'{o}n del conector \textsc{WebDAV} y certificado ra\'{i}z}
 
 Para hacer uso del conector desarrollado en \textsl{PowerShell} o de la interfaz nativa de windows, es necesario instalar el certificado ra\'{i}z de la \textsc{CA} para que el dominio pueda ser validado. 
@@ -869,7 +866,7 @@ Una parte importante de la configuraci\'{o}n de seguridad de un sistema radica e
 
       \subsection {Reducci\'{o}n de componentes instalados}
 
-Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los paquetes que se instalan en el sistema operativo para disminuir la ventana de posibilidades de tener una intrusi\'{o}n. Con la siguiente configuraci\'{o}n del gestor de paquetes se evita la instalaci\'{o}n de software adicional cuando se agrega un paquete. Esto ayuda a reducir la complejidad del sistema y reduce el espacio en disco utilizado. \footnote{http://aptitude.alioth.debian.org/doc/en/ch02s05s05.html}
+Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los paquetes que se instalan en el sistema operativo para disminuir la ventana de posibilidades de tener una intrusi\'{o}n. Con la siguiente configuraci\'{o}n del gestor de paquetes se evita la instalaci\'{o}n de software adicional cuando se agrega un paquete. Esto ayuda a reducir la complejidad del sistema y reduce el espacio en disco utilizado. \cite{_configuration_????}
 
 {
 \scriptsize
@@ -879,7 +876,6 @@ Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los p
 Apt::Install-Recommends "false";
 Apt::Install-Suggests   "false";
 EOF
-
 \end{verbatim}
 }
 
@@ -904,9 +900,13 @@ Se instal\'{o} en el equipo el \textsl{MTA} \texttt{Postfix} configurado como \t
 \begin{itemize}
   \item Especificar la direccion de destino en el archivo \texttt{/etc/aliases}:
 
+{
+\scriptsize
+\linespread{1}
 \begin{verbatim}
     root:	xnas@tonejito.org
 \end{verbatim}
+}
 
   \item Regenerar la base de datos de \textit{aliases}:
 
@@ -932,10 +932,7 @@ Se instal\'{o} en el equipo el \textsl{MTA} \texttt{Postfix} configurado como \t
 
       \subsection {Restricci\'{o}n de acceso para las tareas programadas}
 
-Para limitar la capacidad de los usuarios para programar la ejecuci\'{o}n de comandos en el sistema operativo se adopt\'{o} una politica restrictiva que consiste en tener una \textit{lista blanca} donde \'{u}nicamente los usuarios del sistema \footnote{Con \textbf{uid} menor a 1000} pueden hacer uso de trabajos de \textsl{cron} y \textsl{at}.
-\footnote{https://www.debian.org/doc/manuals/system-administrator/ch-sysadmin-users.html\#s8.1.1}
-\footnote{http://manpages.debian.org/cgi-bin/man.cgi?query=crontab\&manpath=Debian+7.0+wheezy}
-\footnote{http://linux.die.net/man/1/at}
+Para limitar la capacidad de los usuarios para programar la ejecuci\'{o}n de comandos en el sistema operativo se adopt\'{o} una politica restrictiva que consiste en tener una \textit{lista blanca} donde \'{u}nicamente los usuarios del sistema \footnote{Con \textbf{uid} menor a 1000} pueden hacer uso de trabajos de \textsl{cron} y \textsl{at}. \cite{_debian_????-1} \cite{_crontab_????} \cite{_at_????}
 
 {
 \scriptsize
@@ -1108,7 +1105,7 @@ Se configur\'{o} \textsc{PHP} para que no muestre la versi\'{o}n en las cabecera
 Se agreg\'{o} esta directiva de configuraci\'{o}n dentro de un bloque \texttt{<Directory>} para que el servidor ignore los archivos de configuraci\'{o}n \texttt{.htaccess} debido a que podr\'{i}an ser modificados por los usuarios.
 
 {
-\normalsize
+\scriptsize
 \linespread{1}
 \begin{verbatim}
 AllowOverride none
@@ -1143,10 +1140,11 @@ Los m\'{e}todos \textsc{HTTP} se pueden clasificar de acuerdo al tipo de acceso 
  \end{table}
 }
 
-Para establecer una restricci\'{o}n a los m\'{e}todos \textsc{HTTP} que pueden escribir datos en el servidor se utiliz\'{o} la directiva \texttt{LimitExcept} para definir los m\'{e}todos que se permiten en el servidor en determinado directorio \footnote{http://httpd.apache.org/docs/2.2/mod/core.html\#limit}. En el siguiente ejemplo se muestra la configuraci\'{o}n adoptada para permitir el acceso de solo lectura.
+Para establecer una restricci\'{o}n a los m\'{e}todos \textsc{HTTP} que pueden escribir datos en el servidor se utiliz\'{o} la directiva \texttt{LimitExcept} para definir los m\'{e}todos que se permiten en el servidor en determinado directorio \cite{_core_????}. En el siguiente ejemplo se muestra la configuraci\'{o}n adoptada para permitir el acceso de solo lectura.
+
 
 {
-\normalsize
+\scriptsize
 \linespread{1}
 \begin{verbatim}
 <LimitExcept GET OPTIONS PROPFIND>

@@ -69,15 +69,14 @@ Para evitar que un solo usuario ocupe todo el espacio disponible en el disco, se
 
   \item \textbf{Apache HTTPD 2.4}
 
-Utilizar directivas din\'{a}micas de control de acceso puede smplificar las directivas de control de acceso utilizadas en el sistema. Esta caracter\'{i}stica esta disponible en Apache \textsc{HTTPD} 2.4.
-% http://httpd.apache.org/docs/2.4/mod/mod_authz_core.html#reqexpr http://httpd.apache.org/docs/2.4/mod/mod_authnz_ldap.html#AuthLDAPSubGroupAttribute
+Utilizar directivas din\'{a}micas de control de acceso puede smplificar las directivas de control de acceso utilizadas en el sistema. Esta caracter\'{i}stica esta disponible en Apache \textsc{HTTPD} 2.4. \cite{_mod_authz_core_????} \cite{_mod_authnz_ldap_????}
 
   \item \textbf{Integraci\'{o}n con bases de datos y directorios de usuarios}
 
 %Es posible utilizar el directorio \textsc{LDAP} del sistema para autenticar usuarios de otras aplicaciones de la \textsc{DICyG} y de esta manera centralizar la autenticaci\'{o}n.
 
 Como alternativa para evitar el uso de un directorio, es posible utilizar una base de datos para autenticar a los usuarios mediante el m\'{o}dulo \texttt{mod\_authn\_dbd} de Apache \textsc{HTTPD} que se comunica con una base de datos y ejecuta sentencias \textsc{SQL} para autenticar y autorizar al usuario.
-% http://httpd.apache.org/docs/2.2/mod/mod_authn_dbd.html
+%\cite{_mod_authn_dbd_????}	http://httpd.apache.org/docs/2.2/mod/mod_authn_dbd.html
 
 En caso de utilizar un directorio externo de usuarios \textsc{LDAP}, ser\'{a} necesario modificar las directivas de autenticaci\'{o}n que utiliza este sistema para realizar la b\'{u}squeda del usuario y la validaci\'{o}n de sus credenciales.
 

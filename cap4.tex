@@ -90,24 +90,18 @@ Las pruebas de autenticaci\'{o}n se realizaron de manera automatizada utilizando
 Al realizar una verificaci\'{o}n de seguridad del cifrado \texttt{SSL} utiilizado en el \textsl{appliance}, se obtuvo una calificaci\'{o}n regular \textbf{C} y se encontraron los siguientes problemas con la configuraci\'{o}n predeterminada:
 
 \begin{itemize}
-  \item Vulnerabilidad al ataque \texttt{POODLE} \footnote{Padding Oracle On Downgraded Legacy Encryption}
-% https://www.us-cert.gov/ncas/alerts/TA14-290A
-% https://www.openssl.org/~bodo/ssl-poodle.pdf
-% https://googleonlinesecurity.blogspot.mx/2014/10/this-poodle-bites-exploiting-ssl-30.html
-% https://blog.mozilla.org/security/2014/10/14/the-poodle-attack-and-the-end-of-ssl-3-0/
-% https://community.qualys.com/blogs/securitylabs/2014/10/15/ssl-3-is-dead-killed-by-the-poodle-attack
+  \item Vulnerabilidad al ataque \texttt{POODLE} \footnote{Padding Oracle On Downgraded Legacy Encryption} \cite{_ssl_????-1} \cite{_ssl-poodle_????} \cite{_this_????} \cite{barnes_poodle_????} \cite{_security_????-1}
 
-  \item El servidor soporta el algoritmo cifrado \texttt{RC4}, mismo que es clasificado como d\'{e}bil
-% https://community.qualys.com/blogs/securitylabs/2013/03/19/rc4-in-tls-is-broken-now-what
+  \item El servidor soporta el algoritmo cifrado \texttt{RC4}, mismo que es clasificado como d\'{e}bil \cite{_security_????}
 
-  \item La configuraci\'{o}n de \texttt{SSL} aplicada no permite el uso de \textsl{Perfect Forward Secrecy}
-% https://en.wikipedia.org/wiki/Forward_secrecy
+  \item La configuraci\'{o}n de \texttt{SSL} aplicada no permite el uso de \textsl{Perfect Forward Secrecy} \cite{_forward_2016}
 \end{itemize}
 
   \picturebox{figures/SSL-Labs_Test-Default}{772}{476}{0.8}{ssl-test-default}{Prueba de par\'{a}metros de cifrado \textsc{HTTPS} est\'{a}ndar}{}
 
-Para resolver los problemas encontrados se tomaron en cuenta los requerimientos para \texttt{SSL} del est\'{a}ndar \texttt{PCI-DSS}, deshabilitando por completo el soporte de \texttt{RC4} y \texttt{SSLv3}. Gracias a la configuraci\'{o}n aplicada se obtuvo una calificaci\'{o}n buena \textbf{A}. En la siguiente imagen se muestra el resltado de las pruebas de seguridad SSL donde la \'{u}nica advertencia mostrada es referente a la autoridad que realiz\'{o} la firma del certificado.
-% https://www.ssllabs.com/ssltest/analyze.html?d=xnas.tonejito.org&hideResults=on&clearCache=on
+Para resolver los problemas encontrados se tomaron en cuenta los requerimientos para \texttt{SSL} del est\'{a}ndar \texttt{PCI-DSS}, deshabilitando por completo el soporte de \texttt{RC4} y \texttt{SSLv3}.
+
+Gracias a la configuraci\'{o}n aplicada se obtuvo una calificaci\'{o}n buena \textbf{A}. En la siguiente imagen se muestra el resltado de las pruebas de seguridad SSL donde la \'{u}nica advertencia mostrada es referente a la autoridad que realiz\'{o} la firma del certificado. \cite{_ssl_????}
 
   \picturebox{figures/SSL-Labs_Test-Enhanced}{772}{346}{0.8}{ssl-test-enhanced}{Prueba de par\'{a}metros de cifrado \textsc{HTTPS} reforzados}{}
 
