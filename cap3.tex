@@ -7,14 +7,14 @@
 
     \section {Configuraci\'{o}n del sistema operativo}
 
-El sistema operativo que ser\'{a} utilizado para la implementaci\'{o}n es \textsc{Debian GNU/Linux} 7 \textit{\guillemotleft wheezy\guillemotright} se instalar\'{a} de manera nativa en el servidor y se le aplicar\'{a}n configuraciones personalizadas para ejecutar el software que ser\'{a} implementado, ajustar el rendimiento y reforzar la seguridad de los servicios que ofrezca.
+El sistema operativo que ser\'{a} utilizado para la implementaci\'{o}n es \textsc{Debian GNU/Linux} 7 \textit{\guillemotleft wheezy\guillemotright} se instalar\'{a} de manera nativa en el servidor y se le aplicar\'{a}n configuraciones personalizadas para ejecutar el \textit{software} que ser\'{a} implementado, ajustar el rendimiento y reforzar la seguridad de los servicios que ofrezca.
 
       \subsection {Arreglo de discos \textsc{RAID}}
 
 Los discos duros del servidor ser\'{a}n configurados en un arreglo \textsc{RAID} debido a las ventajas que ofrece\footnote{Ver p\'{a}gina \pageref{Arreglos-RAID} secci\'{o}n \ref{Arreglos-RAID}}. La configuraci\'{o}n en el servidor de pruebas se realizar\'{a} con un arreglo \textsc{RAID} 1 por \textit{software} que se configur\'{o} de la siguiente manera: \cite{_softwareraid_????}
 
 \begin{itemize}
-  \item Instalar el software para habilitar la compatibilidad con arreglos \textsc{RAID} por software:
+  \item Instalar el programa para habilitar la compatibilidad con arreglos \textsc{RAID} por \textit{software}:
 
 {
 \scriptsize
@@ -176,7 +176,7 @@ Se pide el nombre DNS del dominio que servir\'{a} para conformar la ra\'{i}z del
 | 'dc=foo, dc=example, dc=org' as base DN.                                   |
 |                                                                            |
 | DNS domain name:                                                           |
-| xnas.tonejito.org________________________________________________________________ |
+| xnas.tonejito.org_________________________________________________________ |
 |                                   <Ok>                                     |
 +----------------------------------------------------------------------------+
 \end{verbatim}
@@ -532,7 +532,7 @@ Se ingresaron en el sistema de archivos varias ligas simb\'{o}licas que apuntan 
 {
  \linespread{1}
  \begin{table}[H]
- \caption{Archivos de configuraci\'{o}n de Apache \textsc{httpd}}{}
+ \caption{Archivos de configuraci\'{o}n de Apache \textsc{HTTPD}}{}
  \label{tab:system-config}
  \noindent\makebox[\textwidth]
  {%
@@ -698,7 +698,7 @@ Para el acceso mediante el cliente nativo se utilizan los siguientes par\'{a}met
 
 {
  \begin{table}[H]
- \caption{Par\'{a}metros de conexi\'{o}n \texttt{WebDAV}}{}
+ \caption{Par\'{a}metros de conexi\'{o}n \textsc{WebDAV}}{}
  \label{tab:webdav-parameters}
  \noindent\makebox[\textwidth]
  {%
@@ -866,7 +866,7 @@ Una parte importante de la configuraci\'{o}n de seguridad de un sistema radica e
 
       \subsection {Reducci\'{o}n de componentes instalados}
 
-Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los paquetes que se instalan en el sistema operativo para disminuir la ventana de posibilidades de tener una intrusi\'{o}n. Con la siguiente configuraci\'{o}n del gestor de paquetes se evita la instalaci\'{o}n de software adicional cuando se agrega un paquete. Esto ayuda a reducir la complejidad del sistema y reduce el espacio en disco utilizado. \cite{_configuration_????}
+Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los paquetes que se instalan en el sistema operativo para disminuir la ventana de posibilidades de tener una intrusi\'{o}n. Con la siguiente configuraci\'{o}n del gestor de paquetes se evita la instalaci\'{o}n de \textit{software} adicional cuando se agrega un paquete. Esto ayuda a reducir la complejidad del sistema y reduce el espacio en disco utilizado. \cite{_configuration_????}
 
 {
 \scriptsize
@@ -893,7 +893,7 @@ Para mitigar este riesgo se instal\'{o} el programa \texttt{molly-guard}. Al det
 \end{verbatim}
 }
 
-      \subsection {Reenvio del correo electr\'{o}nico de \texttt{root}}
+      \subsection {Reenv\'{i}o del correo electr\'{o}nico de \texttt{root}}
 
 Se instal\'{o} en el equipo el \textsl{MTA} \texttt{Postfix} configurado como \textit{Internet Site}. Para habilitar la redirecci\'{o}n de los mensajes de correo electr\'{o}nico dirigidos al administrador del sistema se realiz\'{o} lo siguiente:
 
@@ -1014,9 +1014,9 @@ Para implementar las reglas de \textit{firewall} se utiliz\'{o} \texttt{iptables
 
         \subsubsection {Protecci\'{o}n contra ataques de fuerza bruta con \textit{fail2ban}}
 
-Este software realiza un seguimiento de las conexiones que se realizan al equipo e identifica los ataques de fuerza bruta contra el servicio de \textsc{SSH}. Al detectar un ataque, realiza un bloqueo de la direcci\'{o}n \textsc{IP} de origen por un tiempo determinado.
+Este \textit{software} realiza un seguimiento de las conexiones que se realizan al equipo e identifica los ataques de fuerza bruta contra el servicio de \textsc{SSH}. Al detectar un ataque, realiza un bloqueo de la direcci\'{o}n \textsc{IP} de origen por un tiempo determinado.
 
-Es necesario instalar el software y hacer una copia del archivo \texttt{jail.conf} con el nombre \texttt{jail.local} donde se realizar\'{a}n ajustes a la configuraci\'{o}n del servicio.
+Es necesario instalar el \textit{software} y hacer una copia del archivo \texttt{jail.conf} con el nombre \texttt{jail.local} donde se realizar\'{a}n ajustes a la configuraci\'{o}n del servicio.
 
 {
 \scriptsize
@@ -1054,7 +1054,7 @@ Al finalizar el ajuste de los par\'{a}metros de configuraci\'{o}n, se reinicia e
 
       \subsection {Configuraci\'{o}n de seguridad de Apache HTTPD}
 
-Se establecieron los valores recomendados en las siguientes directivas con el objetivo de evitar la divulgaci\'{o}n de informaci\'{o}n acerca del software del servidor web y el sistema operativo. Estas directivas se encuentran presentes en el archivo \texttt{/etc/apache2/conf.d/security}.
+Se establecieron los valores recomendados en las siguientes directivas con el objetivo de evitar la divulgaci\'{o}n de informaci\'{o}n acerca del \textit{software} del servidor web y el sistema operativo. Estas directivas se encuentran presentes en el archivo \texttt{/etc/apache2/conf.d/security}.
 
 {
  \begin{table}[H]

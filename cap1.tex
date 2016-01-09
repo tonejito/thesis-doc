@@ -27,7 +27,7 @@ Es una variante de la memoria \textsc{RAM} donde se almacena la informaci\'{o}n 
 
   \item \textbf{ROM}
 
-Es una memoria de s\'{o}lo lectura que puede ser grabada una sola vez, generalmente se utilizaba para almacenar el firmware de dispositivos o alg\'{u}n programa embebido en hardware que requiere una salida fija para una entrada determinada \cite{_rom_????}.
+Es una memoria de s\'{o}lo lectura que puede ser grabada una sola vez, generalmente se utilizaba para almacenar el firmware de dispositivos o alg\'{u}n programa embebido en \textit{hardware} que requiere una salida fija para una entrada determinada \cite{_rom_????}.
 
   \item \textbf{EEPROM}
 
@@ -299,11 +299,11 @@ En este tipo de soluciones se pueden tener grandes vol\'{u}menes de datos dispon
 
 El t\'{e}rmino \textsc{RAID} es un acr\'{o}nimo de \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Independientes). \footnote{Dependiendo de la bibliograf\'{i}a el t\'{e}rmino puede ser tambi\'{e}n referido como \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Baratos).} \cite{_bytepile.com_????} Es una tecnolog\'{i}a que se basa en combinar m\'{u}ltiples discos para que se comporten como uno solo. Dependiendo el modo de operaci\'{o}n, ofrece la posibilidad de tomar varios discos y sumar el espacio de almacenamiento o bien replicar los datos escribiendolos en varios discos para tener tolerancia a fallos \cite{_raid_????-2}.
 
-Los arreglos de disco se pueden configurar por tarjetas dedicadas de \textit{hardware} o mediante configuraci\'{o}n de \textit{software} en el sistema operativo. En los \emph{arreglos por \textit{hardware}} el \textit{firmware} de la tarjeta controladora tiene los algoritmos encargados de leer, escribir y sincronizar los datos, mientras que en los \emph{arreglos por software} el \textit{kernel} del sistema operativo es el encargado de realizar estas operaciones \cite{_chapter_????}.
+Los arreglos de disco se pueden configurar por tarjetas dedicadas de \textit{hardware} o mediante configuraci\'{o}n de \textit{software} en el sistema operativo. En los \emph{arreglos por \textit{hardware}} el \textit{firmware} de la tarjeta controladora tiene los algoritmos encargados de leer, escribir y sincronizar los datos, mientras que en los \emph{arreglos por \textit{software}} el \textit{kernel} del sistema operativo es el encargado de realizar estas operaciones \cite{_chapter_????}.
 
 \subsubsection*{Tipos de arreglo RAID}
 
-A continuaci\'{o}n se muestra la descripci\'{o}n de los tipos de arreglo \textsc{RAID} que se pueden implementar tanto en hardware y en software con las tarjetas controladoras actuales \footnote{Los tipos 2, 3 y 4 de \textsc{RAID} no son comunes y generalmente no son soportados.}.
+A continuaci\'{o}n se muestra la descripci\'{o}n de los tipos de arreglo \textsc{RAID} que se pueden implementar tanto en \textit{hardware} y en \textit{software} con las tarjetas controladoras actuales \footnote{Los tipos 2, 3 y 4 de \textsc{RAID} no son comunes y generalmente no son soportados.}.
 
 \begin{itemize}
 
@@ -476,7 +476,7 @@ Si un disco de alg\'{u}n arreglo \textsc{RAID} 1 falla, este entra en modo degra
 
     \section {Appliances}
 
-Un appliance es un conjunto de elementos (hardware, software y sistema operativo) que trabajan de manera conjunta para realizar un proceso espec\'{i}fico \cite{smith_linux_2007}.
+Un \textit{appliance} es un conjunto de elementos (\textit{hardware}, \textit{software} y sistema operativo) que trabajan de manera conjunta para realizar un proceso espec\'{i}fico \cite{smith_linux_2007}.
 
     \subsection{Tipos de Appliance}
 
@@ -491,13 +491,13 @@ Regularmente tienen una interfaz web para administraci\'{o}n, algunos integran u
 \newpage
   \item \textbf{Software}
 
-Los \textit{appliances} de software pueden ser distribuidos en paquetes descomprimibles (\textit{tarballs}) que contienen el instalador y todos los progamas necesarios para que funcione la soluci\'{o}n \cite{_bitnami:_????}.
+Los \textit{appliances} de \textit{software} pueden ser distribuidos en paquetes descomprimibles (\textit{tarballs}) que contienen el instalador y todos los progamas necesarios para que funcione la soluci\'{o}n \cite{_bitnami:_????}.
 
 Integran s\'{o}lo la interfaz web, puesto que se ejecutan en un equipo existente y son independientes del \textit{shell} o el soporte \textsc{SNMP} que se tenga en el equipo.
 
   \item \textbf{Virtual}
 
-Este tipo de \textit{appliances} son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}ficamente dise\~{n}adas para un ambiente espec\'{i}fico de virtualizaci\'{o}n e integran la funcionalidad de los \textit{appliances} de hardware. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual para procesar en paralelo las peticiones de los usuarios \cite{_why_????}.
+Este tipo de \textit{appliances} son im\'{a}genes de m\'{a}quinas virtuales espec\'{i}ficamente dise\~{n}adas para un ambiente espec\'{i}fico de virtualizaci\'{o}n e integran la funcionalidad de los \textit{appliances} de \textit{hardware}. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual para procesar en paralelo las peticiones de los usuarios \cite{_why_????}.
 
 \end{itemize}
 
@@ -557,23 +557,23 @@ El sistema operativo GNU/Linux es la combinaci\'{o}n del conjunto de utilerias d
 
   \subsection {Historia}
 
-En 1983 Richard Stallman inici\'{o} el proyecto \textsc{GNU} \footnote{Acr\'{o}nimo recursivo que significa \textit{GNU is Not Unix}.} cuyo prop\'{o}sito es hacer un sistema operativo compatible con \textsc{UNIX} que cumpla con las cuatro libertades del software \footnote{Para m\'{a}s informaci\'{o}n ver el ap\'{e}ndice A.} y desarroll\'{o} junto con otros colegas una serie de utilerias y programas como el compilador \textsc{GNU} para el lenguage \textsc{C} (\textit{gcc}) \cite{_about_????}. Sin embargo el proyecto ten\'{i}a pr\'{a}cticamente todos los programas del sistema operativo pero le faltaba la parte escencial: el \textit{kernel}.
+En 1983 Richard Stallman inici\'{o} el proyecto \textsc{GNU} \footnote{Acr\'{o}nimo recursivo que significa \textit{GNU is Not Unix}.} cuyo prop\'{o}sito es hacer un sistema operativo compatible con \textsc{UNIX} que cumpla con las cuatro libertades del \textit{software} \footnote{Para m\'{a}s informaci\'{o}n ver el ap\'{e}ndice A.} y desarroll\'{o} junto con otros colegas una serie de utilerias y programas como el compilador \textsc{GNU} para el lenguage \textsc{C} (\textit{gcc}) \cite{_about_????}. Sin embargo el proyecto ten\'{i}a pr\'{a}cticamente todos los programas del sistema operativo pero le faltaba la parte escencial: el \textit{kernel}.
 
 En 1987 el profesor Andrew S. Tannenbaum public\'{o} un libro titulado \textit{Sistemas Operativos Dise\~{n}o e Implementaci\'{o}n} \cite{tanenbaum_operating_2006} donde explica varios conceptos y aspectos clave de los sistemas operativos, en las \'{u}ltima secci\'{o}n viene incluido el c\'{o}digo fuente del sistema operativo \textsc{MINIX} que \'{e}l mismo desarroll\'{o} como un clon de \textsc{UNIX} para prop\'{o}sitos educativos. \cite{_complete_????}.
 
-En 1991 Linus Torvalds que estudiaba la maestr\'{i}a en ciencias de la computaci\'{o}n en Helsinki Finlandia \cite{_staff_????}, inspirado en \textsc{MINIX}, decidi\'{o} escribir un sistema operativo compatible con UNIX que cumpliera con el est\'{a}ndar \textsc{POSIX} y el 25 de agosto public\'{o} una entrada en el foro \textsc{USENET} de \textsc{MINIX} \cite{_history_????} explicando su proyecto y pidiendo retroalimentaci\'{o}n. Esto dio origen a una ola de desarrollo que hizo que el \textit{kernel} Linux creciera, la licencia original de Linux prohib\'{i}a el uso comercial pero se cambi\'{o} para que fuese liberado con la licencia \textsc{GPL} de \textsc{GNU}, que permite el uso comercial siempre y cuando se liberen las modificaciones hechas al software y se permita distribuir copias modificadas \cite{_linux_????-3} \footnote{Visitar \cite{_linuxs_????} para ver la lista completa de mensajes \textsc{usenet}.}.
+En 1991 Linus Torvalds que estudiaba la maestr\'{i}a en ciencias de la computaci\'{o}n en Helsinki Finlandia \cite{_staff_????}, inspirado en \textsc{MINIX}, decidi\'{o} escribir un sistema operativo compatible con UNIX que cumpliera con el est\'{a}ndar \textsc{POSIX} y el 25 de agosto public\'{o} una entrada en el foro \textsc{USENET} de \textsc{MINIX} \cite{_history_????} explicando su proyecto y pidiendo retroalimentaci\'{o}n. Esto dio origen a una ola de desarrollo que hizo que el \textit{kernel} Linux creciera, la licencia original de Linux prohib\'{i}a el uso comercial pero se cambi\'{o} para que fuese liberado con la licencia \textsc{GPL} de \textsc{GNU}, que permite el uso comercial siempre y cuando se liberen las modificaciones hechas al \textit{software} y se permita distribuir copias modificadas \cite{_linux_????-3} \footnote{Visitar \cite{_linuxs_????} para ver la lista completa de mensajes \textsc{usenet}.}.
 
   \subsection {Distribuciones de GNU/Linux}
 
 Una distribuci\'{o}n es un conjunto de paquetes que permiten instalar, actualizar y borrar programas de una manera sencilla gracias a que resuelven las dependencias de forma autom\'{a}tica. \footnote{Las dependencias son programas o bibliotecas adicionales requeridos para que se ejecute el programa.} Generalmente se instalan \textit{paquetes binarios} que contienen los programas ejecutables o \textit{scripts} que conforman la aplicaci\'{o}n deseada.
 
-Existen tambi\'{e}n \textit{paquetes de c\'{o}digo fuente} que permiten instalar los archivos de cabecera de un paquete en espec\'{i}fico. Esto permite compilar un software que requiera bibliotecas adicionales sin especificarlas expl\'{i}citamente gracias a que se resuelven autom\'{a}ticamente porque est\'{a}n en las rutas est\'{a}ndar del sistema.
+Existen tambi\'{e}n \textit{paquetes de c\'{o}digo fuente} que permiten instalar los archivos de cabecera de un paquete en espec\'{i}fico. Esto permite compilar un \textit{software} que requiera bibliotecas adicionales sin especificarlas expl\'{i}citamente gracias a que se resuelven autom\'{a}ticamente porque est\'{a}n en las rutas est\'{a}ndar del sistema.
 
 Aunque todas las distribuciones se apegan al est\'{a}ndar \textsc{FHS} \footnote{\textit{Filesystem Hierarchy Standard} por sus siglas en ingl\'{e}s. Est\'{a}ndar publicado que se refiere a la estructura del sistema de archivos en sistemas operativos compatibles con \textsc{UNIX} \cite{_fhs_????}.} \cite{_filesystem_????} la ubicaci\'{o}n de los archivos de configuraci\'{o}n y de los binarios var\'{i}a entre distribuciones y generalmente la estructura del sistema de archivos se hereda entre distribuciones derivadas (ej. Ubuntu es derivado de Debian y tiene una estructura de directorios bastante similar).
 
 Tradicionalmente se utilizaba el sistema de inicio basado en \textsc{SystemV} (\textit{sysvrc}) que lanza los servicios de manera secuencial. Recientemente se han implementado otros sistemas de inicio que pueden lanzar servicios en paralelo si no tienen relaci\'{o}n entre si, un ejemplo es \textit{insserv} propuesto por \textsc{LSB} \footnote{\textit{Linux Standard Base} por sus siglas en ingl\'{e}s.} \cite{_lsbinitscripts_????} \cite{_lsbinitscripts/dependencybasedboot_????}, \textit{OpenRC} utilizado principalmente en \textit{Gentoo} \cite{_gentoo_????}\cite{_openrc_????}\cite{_openrc_????-1}, \textit{upstart} utilizado en \textit{Ubuntu} y sus derivados \cite{_upstart_????} y \textit{systemd} utilizado en \textit{Arch Linux} y \textit{Debian 8} \cite{_systemd_????}.
 
-\picturebox{figures/distros}{515}{42}{1.0}{linux-distributions}{Distribuciones de \textsc{GNU}/\textsc{Linux}}{}
+\picturebox{figures/distros}{515}{42}{1.0}{linux-distributions}{Logotipos de las principales distribuciones de \textsc{GNU}/\textsc{Linux}}{}
 
   \subsection {Uso de GNU/Linux en la industria}
 
