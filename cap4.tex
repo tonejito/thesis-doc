@@ -5,17 +5,17 @@
   \label{chap:cap4}
 }
 
-Con el objeto de dar soporte a las plataformas m\'{a}s comunes, se realizaron pruebas sobre los principales sistemas operativos de escritorio y m\'{o}viles. Gracias a que el protocolo \textsc{WebDAV} es est\'{a}ndar, solo es cuesti\'{o}n de instalar un cliente en el sistema operativo o verificar si esta funcionalidad ya est\'{a} incorporada para acceder a servidores de archivos de este tipo.
+Con el objeto de dar soporte a las plataformas m\'{a}s comunes, se realizaron pruebas sobre los principales sistemas operativos de escritorio y m\'{o}viles. Gracias a que el protocolo \textsc{WebDAV} es est\'{a}ndar, s\'{o}lo es cuesti\'{o}n de instalar un cliente en el sistema operativo o verificar si esta funcionalidad ya est\'{a} incorporada para acceder a servidores de archivos de este tipo.
 
     \section {Compatibilidad multiplataforma}
 
-En el \textsl{Ap\'{e}ndice \ref{apdx:a}}\footnote{P\'{a}gina \pageref{apdx:a}} se muestran los pasos necesarios para realizar la conexi\'{o}n al servidor \textsc{WebDAV} tanto en sistemas operativos de escritorio como en plataformas de m\'{o}viles.
+En el \textup{Ap\'{e}ndice \ref{apdx:a}}\footnote{P\'{a}gina \pageref{apdx:a}} se muestran los pasos necesarios para realizar la conexi\'{o}n al servidor \textsc{WebDAV} tanto en sistemas operativos de escritorio como en plataformas de m\'{o}viles.
 
     \section {Pruebas de roles de usuario}
 
 El sistema de almacenamiento presenta tres perfiles de usuario: staff, profesor y alumno. Los dos primeros tienen privilegios de lectura-escritura y el \'{u}ltimo tiene acceso de s\'{o}lo lectura.
 
-El personal de la \textit{Unidad de C\'{o}mputo} verific\'{o} que cada tipo de usario cumpliera con los requerimientos de acceso y adem\'{a}s que la conexi\'{o}n al servidor se pudiera realizar de manera exitosa siguiendo los manuales presentados en el \textsl{Ap\'{e}ndice \ref{apdx:a}}.
+El personal de la \emph{Unidad de C\'{o}mputo} verific\'{o} que cada tipo de usario cumpliera con los requerimientos de acceso y adem\'{a}s que la conexi\'{o}n al servidor se pudiera realizar de manera exitosa siguiendo los manuales presentados en el \textup{Ap\'{e}ndice \ref{apdx:a}}.
 
 {
  \linespread{1}
@@ -58,7 +58,7 @@ PORT    STATE SERVICE  VERSION
 80/tcp  open  http     Apache httpd
 443/tcp open  ssl/http Apache httpd
 
-Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+Service detection performed. Please report any incorrect results at http://nmap.org/submit/
 Nmap done: 1 IP address (1 host up) scanned in 256.32 seconds
 \end{verbatim}
 }
@@ -66,7 +66,7 @@ Nmap done: 1 IP address (1 host up) scanned in 256.32 seconds
 
       \subsection {Autenticaci\'{o}n}
 
-Las pruebas de autenticaci\'{o}n se realizaron de manera automatizada utilizando el siguiente algoritmo para iterar entre los usuarios y carpetas utilizando el cliente \textsc{WebDAV} \textsl{cadaver}:
+Las pruebas de autenticaci\'{o}n se realizaron de manera automatizada, se utiliz\'{o} el siguiente algoritmo para iterar entre los usuarios y carpetas utilizando el cliente \textsc{WebDAV} \textsl{cadaver}:
 
 {
 \scriptsize
@@ -85,12 +85,12 @@ Las pruebas de autenticaci\'{o}n se realizaron de manera automatizada utilizando
 \end{verbatim}
 }
 
-      \subsection {Par\'{a}metros de cifrado para \texttt{HTTPS}}
+      \subsection {Par\'{a}metros de cifrado para \textsc{HTTPS}}
 
-Al realizar una verificaci\'{o}n de seguridad del cifrado \texttt{SSL} utiilizado en el \textsl{appliance}, se obtuvo una calificaci\'{o}n regular \textbf{C} y se encontraron los siguientes problemas con la configuraci\'{o}n predeterminada:
+Al realizar una verificaci\'{o}n de seguridad del cifrado \textsc{SSL} utilizado en el \textsl{appliance}, se obtuvo una calificaci\'{o}n regular \textbf{C} y se encontraron los siguientes problemas con la configuraci\'{o}n predeterminada:
 
 \begin{itemize}
-  \item Vulnerabilidad al ataque \texttt{POODLE} \footnote{Padding Oracle On Downgraded Legacy Encryption} \cite{_ssl_????-1} \cite{_ssl-poodle_????} \cite{_this_????} \cite{barnes_poodle_????} \cite{_security_????-1}
+  \item Vulnerabilidad al ataque \texttt{POODLE}\footnote{Padding Oracle On Downgraded Legacy Encryption} \cite{_ssl_????-1} \cite{_ssl-poodle_????} \cite{_this_????} \cite{barnes_poodle_????} \cite{_security_????-1}
 
   \item El servidor soporta el algoritmo cifrado \texttt{RC4}, mismo que es clasificado como d\'{e}bil \cite{_security_????}
 
@@ -99,7 +99,7 @@ Al realizar una verificaci\'{o}n de seguridad del cifrado \texttt{SSL} utiilizad
 
   \picturebox{figures/SSL-Labs_Test-Default}{772}{476}{0.8}{ssl-test-default}{Prueba de par\'{a}metros de cifrado \textsc{HTTPS} est\'{a}ndar}{}
 
-Para resolver los problemas encontrados se tomaron en cuenta los requerimientos para \texttt{SSL} del est\'{a}ndar \texttt{PCI-DSS}, deshabilitando por completo el soporte de \texttt{RC4} y \texttt{SSLv3}.
+Para resolver los problemas encontrados se tomaron en cuenta los requerimientos para \textsc{SSL} del est\'{a}ndar \textsc{PCI-DSS}, deshabilitando por completo el soporte de \textsc{RC4} y \textsc{SSLv3}.
 
 Gracias a la configuraci\'{o}n aplicada se obtuvo una calificaci\'{o}n buena \textbf{A}. En la siguiente imagen se muestra el resltado de las pruebas de seguridad SSL donde la \'{u}nica advertencia mostrada es referente a la autoridad que realiz\'{o} la firma del certificado. \cite{_ssl_????}
 

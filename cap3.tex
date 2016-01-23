@@ -7,7 +7,7 @@
 
     \section {Configuraci\'{o}n del sistema operativo}
 
-El sistema operativo que ser\'{a} utilizado para la implementaci\'{o}n es \textsc{Debian GNU/Linux} 7 \textit{\guillemotleft wheezy\guillemotright} se instalar\'{a} de manera nativa en el servidor y se le aplicar\'{a}n configuraciones personalizadas para ejecutar el \textit{software} que ser\'{a} implementado, ajustar el rendimiento y reforzar la seguridad de los servicios que ofrezca.
+El sistema operativo que ser\'{a} utilizado para la implementaci\'{o}n es \textsc{Debian GNU/Linux} 7 \guillemotleft\emph{wheezy}\guillemotright, se instalar\'{a} de manera nativa en el servidor y se le aplicar\'{a}n configuraciones personalizadas para ejecutar el \textit{software} que ser\'{a} implementado, ajustar el rendimiento y reforzar la seguridad de los servicios que ofrezca.
 
       \subsection {Arreglo de discos \textsc{RAID}}
 
@@ -121,7 +121,7 @@ Los discos duros del servidor ser\'{a}n configurados en un arreglo \textsc{RAID}
 
       \subsection {Punto de montaje de s\'{o}lo lectura}
 
-Para evitar el acceso de escritura a los archivos pertenecientes a los profesores, se realiz\'{o} un montaje de tipo \textit{bind} con permisos de s\'{o}lo lectura. Debido a que se realizan dos operaciones de montaje, es necesario agregar las siguientes l\'{i}neas al \textit{script} \texttt{/etc/rc.local}. \cite{_mount_????} \cite{_read-only_????} \cite{_karel_????}
+Para evitar el acceso de escritura a los archivos pertenecientes a los profesores, se realiz\'{o} un montaje de tipo \textit{bind} con permisos de s\'{o}lo lectura. Debido a que se realizan dos operaciones de montaje, es necesario agregar las siguientes l\'{i}neas al \textit{script} \texttt{/etc/rc.local} \cite{_mount_????} \cite{_read-only_????} \cite{_karel_????}.
 
 {
 \scriptsize
@@ -295,7 +295,7 @@ Para la configuraci\'{o}n de \textsc{PAM}, se indica que se utilizar\'{a}n como 
 
           \subsubsection {Inicializaci\'{o}n del directorio \textsc{LDAP}}
 
-Una vez instalado el servicio de directorio, es necesario inicializar la estructura b\'{a}sica que comprende los contenedores de usuarios, materias y grupos utilizando el archivo \texttt{xNAS-base.ldif} y el comando \texttt{ldapadd}. En caso de requerir cambiar la contrase\~{n}a del administrador del directorio, seguir las indicaciones mostradas en las siguientes referencias \cite{_change_????} \cite{_openldap_????}
+Una vez instalado el servicio de directorio, es necesario inicializar la estructura b\'{a}sica que comprende los contenedores de usuarios, materias y grupos utilizando el archivo \texttt{xNAS-base.ldif} y el comando \texttt{ldapadd}. En caso de requerir cambiar la contrase\~{n}a del administrador del directorio, seguir las indicaciones mostradas en las siguientes referencias \cite{_change_????} \cite{_openldap_????}.
 
 {
 \scriptsize
@@ -358,7 +358,7 @@ adding new entry "ou=webdav,ou=groups,dc=xnas,dc=local"
 \newpage
           \subsubsection {Carga de datos en el directorio \textsc{LDAP}}
 
-Para realizar la carga de la base de datos de usuarios y grupos se desarroll\'{o} en el lenguaje de programaci\'{o}n \textsl{Ruby} una biblioteca y un script de carga que lee los datos desde un archivo origen en formato \texttt{CSV}, establece las relaciones entre los objetos y realiza el ingreso de los datos al directorio.
+Para realizar la carga de la base de datos de usuarios y grupos se desarroll\'{o} en el lenguaje de programaci\'{o}n \textsl{Ruby} una biblioteca y un \textit{script} de carga que lee los datos desde un archivo origen en formato \texttt{CSV}, establece las relaciones entre los objetos y realiza el ingreso de los datos al directorio.
 
 La biblioteca que realiza la carga de objetos funciona de acuerdo al siguiente algoritmo:
 
@@ -373,7 +373,7 @@ La biblioteca que realiza la carga de objetos funciona de acuerdo al siguiente a
 \end{itemize}
 
 \diagramblock
-{Diagrama de bloques de los scripts de carga}
+{Diagrama de bloques de los \textit{scripts} de carga}
 {DiagramaScript}
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
@@ -386,7 +386,7 @@ Cada archivo de entrada \texttt{CSV} tiene varias columnas que contienen informa
 
 {
  \begin{table}[H]
- \caption{Formato de los archivos \textsl{CSV} para la carga de datos}{}
+ \caption{Formato de los archivos \textsc{CSV} para la carga de datos}{}
  \label{tab:csv-format}
  \noindent\makebox[\textwidth]
  {%
@@ -404,7 +404,7 @@ Cada archivo de entrada \texttt{CSV} tiene varias columnas que contienen informa
  \end{table}
 }
 
-Para la correcta ejecuci\'{o}n de los scripts es necesario instalar los paquetes \texttt{ruby}, \texttt{rubygems} y la gema de ruby que realiza la conexi\'{o}n con el directorio \textsc{LDAP}.
+Para la correcta ejecuci\'{o}n de los \textit{scripts}, es necesario instalar los paquetes \texttt{ruby}, \texttt{rubygems} y la \textit{gema}\footnote{Biblioteca de \textsl{Ruby}.} que realiza la conexi\'{o}n con el directorio \textsc{LDAP}.
 
 {
 \scriptsize
@@ -415,7 +415,7 @@ Para la correcta ejecuci\'{o}n de los scripts es necesario instalar los paquetes
 \end{verbatim}
 }
 
-Utilizando el script \texttt{./load.rb} se cargan los datos y se crean los objetos en el directorio:
+Utilizando el \textit{script} \texttt{./load.rb} se cargan los datos y se crean los objetos en el directorio:
 
 {
 \scriptsize
@@ -427,7 +427,6 @@ xNAS - ./load.rb
 
 Enter username, press <ENTER> for default:
     username    [cn=admin]
-
 Enter password (will not echo):
     password
 \end{verbatim}
@@ -435,7 +434,7 @@ Enter password (will not echo):
 
 {
  \begin{table}[H]
- \caption{Script de carga de objetos en el directorio}{}
+ \caption{\textit{Script} de carga de objetos en el directorio}{}
  \label{tab:load-rb}
  \noindent\makebox[\textwidth]
  {%
@@ -455,7 +454,7 @@ Enter password (will not echo):
 
           \subsubsection {Borrado de datos en el directorio \textsc{LDAP}}
 
-Se desarroll\'{o} un script que ayuda a limpiar el directorio cuando se pretenda cargar una nueva base de datos en el mismo.
+Se desarroll\'{o} un \textit{script} que ayudar\'{a} a limpiar el directorio cuando se pretenda cargar una nueva base de datos en el mismo.
 
 {
 \scriptsize
@@ -468,24 +467,22 @@ xNAS - ./clean.rb
 
 Enter username, press <ENTER> for default:
     username	[cn=admin]
-
 Enter password (will not echo):
     password
-
 \end{verbatim}
 }
 
-      \subsection {Apache \textsc{httpd}}
+      \subsection {Apache \textsc{HTTPD}}
 
 En esta secci\'{o}n se describe el procedimiento que se realiz\'{o} para configurar el servicio de \textsc{HTTP} con \textsc{WebDAV} sobre \textsc{SSL}.
 
         \subsubsection {Esquema de configuraci\'{o}n}
 
-La configuraci\'{o}n de Apache \textit{httpd} comprende tres \texttt{VirtualHost} que sirven como puntos de entrada para el acceso de s\'{o}lo lectura o lectura y escritura a los archivos almacenados en el servidor.
+La configuraci\'{o}n de Apache \textsc{HTTPD} comprende tres \texttt{VirtualHost} que sirven como puntos de entrada para el acceso de s\'{o}lo lectura o lectura y escritura a los archivos almacenados en el servidor.
 
 {
  \begin{table}[H]
- \caption{VirtualHost configurados en Apache HTTPD}{}
+ \caption{VirtualHost configurados en Apache \textsc{HTTPD}}{}
  \label{tab:virtualhost}
  \noindent\makebox[\textwidth]
  {%
@@ -502,10 +499,10 @@ La configuraci\'{o}n de Apache \textit{httpd} comprende tres \texttt{VirtualHost
  \end{table}
 }
 
-Si el usuario accede al \textit{appliance} utilizando el nombre de dominio principal o la direcci\'{o}n IP, se presenta la interfaz de acceso a los archivos. Para acceder a la interfaz de administraci\'{o}n del directorio o para cambiar la contrase\~{n}a, se debe acceder utilizando el nombre de dominio designado en la tabla anterior.
+Si el usuario accede al \textit{appliance} utilizando el nombre de dominio principal o la direcci\'{o}n IP, se presenta la interfaz de acceso a los archivos. Para acceder a la interfaz de administraci\'{o}n del directorio o para cambiar la contrase\~{n}a se debe acceder utilizando el nombre de dominio designado en la tabla anterior.
 
 \diagramblock
-{Diagrama Apache HTTPD VirtualHost}
+{Diagrama Apache \textsc{HTTPD} VirtualHost}
 {DiagramaVirtualHost}
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
@@ -518,7 +515,7 @@ Si el usuario accede al \textit{appliance} utilizando el nombre de dominio princ
 El conjunto de archivos y configuraciones que forman parte del \textit{appliance} se organizan en diferentes carpetas como se muestra en la siguiente ilustraci\'{o}n:
 
 \diagramblock
-{Diagrama de configuraci\'{o}n de Apache HTTPD}
+{Diagrama de configuraci\'{o}n de Apache \textsc{HTTPD}}
 {DiagramaConf}
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
@@ -527,7 +524,7 @@ El conjunto de archivos y configuraciones que forman parte del \textit{appliance
  }
 }
 
-Se ingresaron en el sistema de archivos varias ligas simb\'{o}licas que apuntan a las configuraci\'{o}nes de Apache \textsc{HTTPD} que residane en el directorio \texttt{/opt/xNAS}.
+Se ingresaron en el sistema de archivos varias ligas simb\'{o}licas que apuntan a las configuraci\'{o}nes de Apache \textsc{HTTPD} que reside en el directorio \texttt{/opt/xNAS}.
 
 {
  \linespread{1}
@@ -574,7 +571,7 @@ Se instala el certificado \textsc{SSL} en \texttt{/etc/ssl/certs} y la llave pri
 \end{verbatim}
 }
 
-Se copia el archivo \texttt{ports.conf} al directorio principal de Apache \textit{httpd} con el objeto de configurar de manera adecuada la directiva \texttt{NameVirtualHost} para los sitios de \textsc{HTTPS}.
+Se copia el archivo \texttt{ports.conf} al directorio principal de Apache \textsc{HTTPD} con el objeto de configurar de manera adecuada la directiva \texttt{NameVirtualHost} para los sitios de \textsc{HTTPS}.
 
 {
 \scriptsize
@@ -598,7 +595,7 @@ Se habilita el acceso a las configuraciones espec\'{i}ficas del \textit{applianc
 \end{verbatim}
 }
 
-Se instalan y habilitan los m\'{odulos} necesarios para que las funcionalidades del sitio se realizen de manera adecuada, esto incluye la autenticaci\'{o}n y la funcionalidad de \textsc{WebDAV}. Por \'{u}ltimo se reinicia el servicio para aplicar los cambios.
+Se instalan y habilitan los m\'{odulos} necesarios para que las funcionalidades del sitio se realicen de manera adecuada, esto incluye la autenticaci\'{o}n y la funcionalidad de \textsc{WebDAV}. Por \'{u}ltimo se reinicia el servicio para aplicar los cambios.
 
 {
 \scriptsize
@@ -617,7 +614,7 @@ Se instalan y habilitan los m\'{odulos} necesarios para que las funcionalidades 
 
         \subsubsection {Compatibilidad con clientes \textsc{WebDAV}}
 
-Aunque \textsc{WebDAV} es un est\'{a}ndar definido en el RFC4918 \cite{_rfc_????-2}, existen varios clientes que ofrecen funcionalidades similares aunque son implementados de manera distinta. Por ejemplo, los clientes de \textsc{Mac OS X} y \textsc{GNU/Linux} son los mas completos, mientras que el cliente nativo de Windows (\textit{Microsoft-WebDAV-MiniRedir}) tiene muchos problemas de compatibilidad.
+Aunque \textsc{WebDAV} es un est\'{a}ndar definido en el RFC4918 \cite{_rfc_????-2}, existen varios clientes que ofrecen funcionalidades similares aunque son implementados de manera distinta. Por ejemplo, los clientes de \textsc{Mac OS X} y \textsc{GNU/Linux} son los m\'{a}s completos, mientras que el cliente nativo de Windows (\textit{Microsoft-WebDAV-MiniRedir}) tiene muchos problemas de compatibilidad.
 
 Se utilizaron las directivas \texttt{BrowserMatch} y \texttt{BrowserMatchNoCase} para distinguir a los clientes problem\'{a}ticos que se conectan al servidor y darles un tratamiento especial \cite{_webdav_????} \cite{_fixing_????}. A continuaci\'{o}n se muestran las directivas que se utilizaron para darle un tratamiento especial a los clientes \textsc{WebDAV} nativos de Windows.
 
@@ -630,7 +627,7 @@ BrowserMatch "Microsoft-WebDAV-MiniRedir" redirect-carefully nokeepalive ssl-unc
 \end{verbatim}
 }
 
-Para el caso espec\'{i}fico de Windows, es necesario deshabilitar la detecci\'{o}n autom\'{a}tica de proxy en la configuraci\'{o}n de \textit{Internet Explorer}, esto debido a que de manera predeterminada intenta encontrar un servidor proxy \textit{en cada petici\'{o}n que realiza al servidor} \cite{oddball_fix_????} \cite{_slow_????} \cite{_using_????}.
+Para el caso espec\'{i}fico de Windows, es necesario deshabilitar la detecci\'{o}n autom\'{a}tica de \textit{proxy} en la configuraci\'{o}n de \emph{Internet Explorer}, esto debido a que de manera predeterminada intenta encontrar un servidor \textit{proxy} en cada petici\'{o}n que realiza al servidor \cite{oddball_fix_????} \cite{_slow_????} \cite{_using_????}.
 
         \subsubsection {Conexi\'{o}n al servidor \textsc{LDAP}}
 
@@ -669,7 +666,7 @@ AuthLDAPUrl "ldapi:///ou=users,dc=xnas,dc=local?uid,cn?sub?
 }
 
 
-Para esta URL se realizar\'{a} una b\'{u}squeda en el directorio comenzando en el contenedor principal de usuarios y el objetivo es encontrar objetos de tipo \texttt{posixAccount} o \texttt{simpleSecurityObject} que est\'{e}n indexados por el atributo \textsl{uid} o \textsl{cn}. El alcance de la b\'{u}squeda se establece para todos los objetos que se encuentren bajo esta rama del \'{a}rbol, si se desea que \'{u}nicamente se exploren los objetos en este nivel del directorio, se debe establecer el par\'{a}metro \textsl{one}.
+Para esta URL se realizar\'{a} una b\'{u}squeda en el directorio comenzando en el contenedor principal de usuarios, el objetivo es encontrar objetos de tipo \texttt{posixAccount} o \texttt{simpleSecurityObject} que est\'{e}n indexados por el atributo \textsl{uid} o \textsl{cn}. El alcance de la b\'{u}squeda se establece para todos los objetos que se encuentren bajo esta rama del \'{a}rbol, si se desea que \'{u}nicamente se exploren los objetos en este nivel del directorio, se debe establecer el par\'{a}metro \textsl{one}.
 
         \subsubsection {Grupos de \textsc{LDAP}}
 
@@ -683,7 +680,7 @@ Require ldap-group cn=1024-HEBA861228,ou=webdav,ou=groups,dc=xnas,dc=local
 \end{verbatim}
 }
 
-Al especificar la directiva \texttt{Require ldap-group} se realiza la b\'{u}squeda del usuario y adicionalmente del grupo con el objeto de encontrar todos sus miembros y poder verificar si el usuario en cuesti\'{o}n es uno de ellos.
+Al especificar la directiva \texttt{Require ldap-group} se realiza la b\'{u}squeda del usuario y adicionalmente del grupo, con el objeto de encontrar todos sus miembros y poder verificar si el usuario en cuesti\'{o}n es uno de ellos.
 
 
     \section {Implementaci\'{o}n de las interfaces de usuario}
@@ -719,9 +716,9 @@ Para el acceso mediante el cliente nativo se utilizan los siguientes par\'{a}met
 
 Se desarroll\'{o} una interfaz \textit{frontend} para facilitar a los usuarios de Windows la conexi\'{o}n al servidor \textsc{WebDAV}. Se utiliz\'{o} el lenguaje de programaci\'{o}n \textsl{PowerShell} para lograr que el \textit{script} se pueda ejecutar en versiones recientes de Windows sin necesidad de utilizar alguna otra dependencia.
 
-El programa utiliza de manera interna el comando \texttt{net use} \cite{_net_????} que permite montar una carpeta del servidor \textsc{WebDAV} con una letra de unidad local (Ej. \texttt{Z:}). Es una alternativa a la interfaz est\'{a}ndar que presenta el \textit{Explorador de Windows}. \cite{_create_????}
+El programa utiliza de manera interna el comando \texttt{net use} \cite{_net_????} que permite montar una carpeta del servidor \textsc{WebDAV} con una letra de unidad local (Ej. \texttt{Z:}). Es una alternativa a la interfaz est\'{a}ndar que presenta el \textit{Explorador de Windows} \cite{_create_????}.
 
-Una vez que se toman los datos de la \textsc{URL}, el nombre de usuario y la contrase\~{n}a, se llama al comando \texttt{net use} para montar la unidad de red. La interfaz \textit{frontend} tambi\'{e}n toma en cuenta si se desea realizar la operaci\'{o}n en modo persistente, es decir, que la unidad permanezca montada a\'{u}n cuando se reinicie el equipo.
+Una vez que se toman los datos de la \textsc{URL}, el nombre de usuario y la contrase\~{n}a se llama al comando \texttt{net use} para montar la unidad de red. La interfaz \textit{frontend} tambi\'{e}n toma en cuenta si se desea realizar la operaci\'{o}n en modo persistente, es decir, que la unidad permanezca montada a\'{u}n cuando se reinicie el equipo.
 
 {
 \footnotesize
@@ -736,7 +733,7 @@ C:\> net use  *  https://xnas.tonejito.org/profesor/<nombre-del-profesor>  \
 \newpage
         \subsubsection {Instalaci\'{o}n del conector \textsc{WebDAV} y certificado ra\'{i}z}
 
-Para hacer uso del conector desarrollado en \textsl{PowerShell} o de la interfaz nativa de windows, es necesario instalar el certificado ra\'{i}z de la \textsc{CA} para que el dominio pueda ser validado. 
+Para hacer uso del conector desarrollado en \textsl{PowerShell} o de la interfaz nativa de Windows, es necesario instalar el certificado ra\'{i}z de la \textsc{CA} para que el dominio pueda ser validado. 
 
 El \textit{script} \textit{bootstrap} de instalaci\'{o}n \texttt{install.cmd} realiza las siguientes acciones en el equipo:
 
@@ -744,9 +741,9 @@ El \textit{script} \textit{bootstrap} de instalaci\'{o}n \texttt{install.cmd} re
   \item Descarga y ejecuta el archivo \texttt{install.ps1} con la l\'{o}gica principal del instalador.
   \item Crea el directorio \texttt{C:{\textbackslash}xNAS}.
   \item Descarga el certificado ra\'{i}z \texttt{ca.crt}.
-  \item Instala el certificado ra\'{i}z dentro de las \textit{Autoridades Certificadoras de Confianza} utilizando el comando \texttt{certutil}.
+  \item Instala el certificado ra\'{i}z dentro de las \emph{Autoridades Certificadoras de Confianza} utilizando el comando \texttt{certutil}.
   \item Reinicia el servicio \texttt{WebClient} puesto que es utilizado para las conexiones a \textsc{WebDAV}.
-  \item Descarga el script \texttt{xNAS-Connector.ps1} y crea un acceso directo en el escritorio.
+  \item Descarga el \textit{script} \texttt{xNAS-Connector.ps1} y crea un acceso directo en el escritorio.
 \end{itemize}
 
       \subsection {Interfaz de administraci\'{o}n \textit{LDAP Account Manager}}
@@ -866,7 +863,7 @@ Una parte importante de la configuraci\'{o}n de seguridad de un sistema radica e
 
       \subsection {Reducci\'{o}n de componentes instalados}
 
-Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los paquetes que se instalan en el sistema operativo para disminuir la ventana de posibilidades de tener una intrusi\'{o}n. Con la siguiente configuraci\'{o}n del gestor de paquetes se evita la instalaci\'{o}n de \textit{software} adicional cuando se agrega un paquete. Esto ayuda a reducir la complejidad del sistema y reduce el espacio en disco utilizado. \cite{_configuration_????}
+Como parte de la configuraci\'{o}n de seguridad, es recomendable minimizar los paquetes que se instalan en el sistema operativo para disminuir la ventana de posibilidades de tener una intrusi\'{o}n. Con la siguiente configuraci\'{o}n del gestor de paquetes se evita la instalaci\'{o}n de \textit{software} adicional cuando se agrega un paquete. Esto ayuda a reducir la complejidad del sistema y reduce el espacio en disco utilizado \cite{_configuration_????}.
 
 {
 \scriptsize
@@ -881,7 +878,7 @@ EOF
 
       \subsection {Evitar el apagado o reinicio accidental del equipo}
 
-Al administrar un equipo de manera remota se corre el riesgo de ejecutar por error el comando de apagado o reinicio. Al suceder esto se pierde la sesi\'{o}n de todos los usuarios, los servicios se interrumpen y si se dio la \'{o}rden de apagado, ser\'{a} necesario acudir a la ubicaci\'{o}n f\'{i}sica del equipo y encenderlo manualmente.
+Al administrar un equipo de manera remota se corre el riesgo de ejecutar por error el comando de apagado o reinicio. Al suceder esto se pierde la sesi\'{o}n de todos los usuarios, los servicios se interrumpen, si se dio la \'{o}rden de apagado, ser\'{a} necesario acudir a la ubicaci\'{o}n f\'{i}sica del equipo y encenderlo manualmente.
 
 Para mitigar este riesgo se instal\'{o} el programa \texttt{molly-guard}. Al detectar el uso de comandos para apagar o reiniciar el sistema desde una sesi\'{o}n remota, preguntar\'{a} el nombre del equipo para hacer una verificaci\'{o}n adicional y evitar que un equipo sea apagado o reiniciado accidentalmente de manera remota. El programa se instal\'{o} utilizando el siguiente comando:
 
@@ -895,7 +892,7 @@ Para mitigar este riesgo se instal\'{o} el programa \texttt{molly-guard}. Al det
 
       \subsection {Reenv\'{i}o del correo electr\'{o}nico de \texttt{root}}
 
-Se instal\'{o} en el equipo el \textsl{MTA} \texttt{Postfix} configurado como \textit{Internet Site}. Para habilitar la redirecci\'{o}n de los mensajes de correo electr\'{o}nico dirigidos al administrador del sistema se realiz\'{o} lo siguiente:
+Se instal\'{o} en el equipo el \textsc{MTA} \texttt{Postfix} configurado como \textit{Internet Site}. Para habilitar la redirecci\'{o}n de los mensajes de correo electr\'{o}nico dirigidos al administrador del sistema se realiz\'{o} lo siguiente:
 
 \begin{itemize}
   \item Especificar la direccion de destino en el archivo \texttt{/etc/aliases}:
@@ -918,7 +915,7 @@ Se instal\'{o} en el equipo el \textsl{MTA} \texttt{Postfix} configurado como \t
 \end{verbatim}
 }
 
-  \item Recargar la configuraicon del servicio de correo:
+  \item Recargar la configuraci\'{o}n del servicio de correo:
 
 {
 \scriptsize
@@ -932,7 +929,7 @@ Se instal\'{o} en el equipo el \textsl{MTA} \texttt{Postfix} configurado como \t
 
       \subsection {Restricci\'{o}n de acceso para las tareas programadas}
 
-Para limitar la capacidad de los usuarios para programar la ejecuci\'{o}n de comandos en el sistema operativo se adopt\'{o} una politica restrictiva que consiste en tener una \textit{lista blanca} donde \'{u}nicamente los usuarios del sistema \footnote{Con \textbf{uid} menor a 1000} pueden hacer uso de trabajos de \textsl{cron} y \textsl{at}. \cite{_debian_????-1} \cite{_crontab_????} \cite{_at_????}
+Para limitar la capacidad de los usuarios para programar la ejecuci\'{o}n de comandos en el sistema operativo se adopt\'{o} una politica restrictiva que consiste en tener una \textit{lista blanca} donde \'{u}nicamente los usuarios del sistema\footnote{Con \textbf{uid} menor a 1000} pueden hacer uso de trabajos de \textsl{cron} y \textsl{at} \cite{_debian_????-1} \cite{_crontab_????} \cite{_at_????}.
 
 {
 \scriptsize
@@ -944,18 +941,18 @@ Para limitar la capacidad de los usuarios para programar la ejecuci\'{o}n de com
 \end{verbatim}
 }
 
-      \subsection {Configuraci\'{o}n de seguridad de \textsl{OpenSSH}}
+      \subsection {Configuraci\'{o}n de seguridad de \textup{OpenSSH}}
 
-Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguientes opciones en el archivo de configuraci\'{o}n \texttt{/etc/ssh/sshd\_config}
+Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguientes opciones en el archivo de configuraci\'{o}n \texttt{/etc/ssh/sshd\_config}.
 
 \begin{itemize}
-  \item Quita el nombre del sistema operativo del banner inicial de \textsc{SSH}.
+  \item Quita el nombre del sistema operativo del \textit{banner} inicial de \textsc{SSH}.
     \code{DebianBanner no}
   \item Deshabilitar el acceso administrativo utilizando contrase\~{n}a, \'{u}nicamente se permite el inicio de sesi\'{o}n como \texttt{root} al utilizar autenticaci\'{o}n de llave p\'{u}blica.
     \code{PermitRootLogin without-password}
   \item Deshabilitar el acceso a cuentas que tengan una contrase\~{n}a vac\'{i}a.
     \code{PermitEmptyPasswords no}
-  \item Permitir el acceso al grupo de usuarios de la \textit{Unidad de C\'{o}mputo} de la \textsc{DICyG}.
+  \item Permitir el acceso al grupo de usuarios de la \emph{Unidad de C\'{o}mputo} de la \textsc{DICyG}.
     \code{AllowGroups adm staff support}
   \item  Mostrar una pantalla antes de iniciar la sesi\'{o}n en la que se listen las pol\'{i}ticas de uso del sistema.
     \code{Banner /etc/issue.net}
@@ -970,10 +967,10 @@ Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguient
     \code{LoginGraceTime 60}
 \end{itemize}
 
-      \subsection {Reglas de Firewall}
+      \subsection {Reglas de \textit{firewall}}
       \label{subsec:fw-rules}
 
-Para filtrar el tr\'{a}fico de red se establecieron las siguientes pol\'{i}ticas de \textit{firewall} de host en el equipo:
+Para filtrar el tr\'{a}fico de red se establecieron las siguientes pol\'{i}ticas de \textit{firewall} de \textit{host} en el equipo:
 
 \begin{itemize}
   \item Se permite todo el tr\'{a}fico proveniente de la interfaz \textit{loopback}.
@@ -982,7 +979,7 @@ Para filtrar el tr\'{a}fico de red se establecieron las siguientes pol\'{i}ticas
     \item Segmentos de \textsc{RedUNAM}: \texttt{132.247.0.0/16} , \texttt{132.248.0.0/16}
     \item Red interna de la \textsc{DICyG}.
   \end{enumerate}
-  \item Se permiten las conexiones por \textsc{HTTPS} desde cualquier host, ya sea de la red interna, segmentos de \textsc{RedUNAM} o Internet.
+  \item Se permiten las conexiones por \textsc{HTTPS} desde cualquier \textit{host}, ya sea de la red interna, segmentos de \textsc{RedUNAM} o Internet.
   \item Las conexiones al demonio de \textsc{LDAP} se permiten \'{u}nicamente desde \textit{localhost}.
 \end{itemize}
 
@@ -1052,9 +1049,9 @@ Al finalizar el ajuste de los par\'{a}metros de configuraci\'{o}n, se reinicia e
 \end{verbatim}
 }
 
-      \subsection {Configuraci\'{o}n de seguridad de Apache HTTPD}
+      \subsection {Configuraci\'{o}n de seguridad de Apache \textsc{HTTPD}}
 
-Se establecieron los valores recomendados en las siguientes directivas con el objetivo de evitar la divulgaci\'{o}n de informaci\'{o}n acerca del \textit{software} del servidor web y el sistema operativo. Estas directivas se encuentran presentes en el archivo \texttt{/etc/apache2/conf.d/security}.
+Se establecieron los valores recomendados en las siguientes directivas con el objetivo de evitar la divulgaci\'{o}n de informaci\'{o}n acerca del \textit{software} del servidor web y del sistema operativo. Estas directivas se encuentran presentes en el archivo \texttt{/etc/apache2/conf.d/security}.
 
 {
  \begin{table}[H]
@@ -1102,7 +1099,7 @@ Se configur\'{o} \textsc{PHP} para que no muestre la versi\'{o}n en las cabecera
 
         \subsubsection{Deshabilitar el soporte de archivos \texttt{.htaccess}}
 
-Se agreg\'{o} esta directiva de configuraci\'{o}n dentro de un bloque \texttt{<Directory>} para que el servidor ignore los archivos de configuraci\'{o}n \texttt{.htaccess} debido a que podr\'{i}an ser modificados por los usuarios.
+Se agreg\'{o} esta directiva de configuraci\'{o}n dentro de un bloque \texttt{<Directory>} para que el servidor ignore los archivos de configuraci\'{o}n \texttt{.htaccess}, esto debido a que podr\'{i}an ser modificados por los usuarios.
 
 {
 \scriptsize
@@ -1140,7 +1137,7 @@ Los m\'{e}todos \textsc{HTTP} se pueden clasificar de acuerdo al tipo de acceso 
  \end{table}
 }
 
-Para establecer una restricci\'{o}n a los m\'{e}todos \textsc{HTTP} que pueden escribir datos en el servidor se utiliz\'{o} la directiva \texttt{LimitExcept} para definir los m\'{e}todos que se permiten en el servidor en determinado directorio \cite{_core_????}. En el siguiente ejemplo se muestra la configuraci\'{o}n adoptada para permitir el acceso de solo lectura.
+Con el fin de establecer una restricci\'{o}n a los m\'{e}todos \textsc{HTTP} que pueden escribir datos en el servidor, se utiliz\'{o} la directiva \texttt{LimitExcept} para definir los m\'{e}todos que se permiten en el servidor en determinado directorio \cite{_core_????}. En el siguiente ejemplo se muestra la configuraci\'{o}n adoptada para permitir el acceso de s\'{o}lo lectura.
 
 
 {

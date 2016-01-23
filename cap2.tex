@@ -7,19 +7,19 @@
 
     \section {Problem\'{a}tica actual}
 
-Los usuarios de la Divisi\'{o}n de Ingenier\'{i}as Civil y Geom\'{a}tica utilizan memorias \textsc{USB}, discos \'{o}pticos y carpetas compartidas en red para acceder a archivos de uso interno como documentos, presentaciones e im\'{a}genes que ocupan para realizar sus actividades.
+Los usuarios de la Divisi\'{o}n de Ingenier\'{i}as Civil y Geom\'{a}tica (\textsc{DICyG}) utilizan memorias \textsc{USB}, discos \'{o}pticos y carpetas compartidas en red para acceder a archivos de uso interno como documentos, presentaciones e im\'{a}genes que ocupan para realizar sus actividades.
 
-Adicionalmente el personal de la Unidad de C\'{o}mputo almacena los archivos de instalaci\'{o}n de programas y controladores en dispositivos como memorias \textsc{USB}, discos duros externos \'{o} en discos \'{o}pticos y los utiliza al dar mantenimiento a los equipos de c\'{o}mputo de la divisi\'{o}n.
+Adicionalmente el personal de la Unidad de C\'{o}mputo almacena los archivos de instalaci\'{o}n de programas y controladores en dispositivos como memorias \textsc{USB}, discos duros externos o en discos \'{o}pticos y los utiliza al dar mantenimiento a los equipos de c\'{o}mputo de la divisi\'{o}n.
 
 El problema al mantener los archivos en carpetas compartidas o utilizar un medio de almacenamiento externo es que los datos dejan de estar disponibles si el equipo que comparte la carpeta se encuentra apagado o si el medio de almacenamiento no est\'{a} conectado al equipo donde se procesa la informaci\'{o}n.
 
-Por ejemplo, si un profesor necesita compartir algunos archivos con los alumnos parar utilizarlos en clase, los copia a una memoria \textsc{USB} y la pasa a cada uno de los estudiantes para que copien los archivos a su equipo. Este proceso adem\'{a}s de que ser tardado, es un proceso propenso a errores donde se puede da\~{n}ar la memoria \textit{flash} que circula entre los equipos, o bien, se puede infectar con \textit{malware} \footnote{\textit{Malware}: \textit{software} malicioso} en un equipo y al pasar de equipo a equipo propagar la infecci\'{o}n.
+Por ejemplo, si un profesor necesita compartir algunos archivos con los alumnos parar utilizarlos en clase, los copia a una memoria \textsc{USB} y la pasa a cada uno de los estudiantes para que copien los archivos a su equipo. Este proceso, adem\'{a}s de ser tardado, es un proceso propenso a errores donde se puede da\~{n}ar la memoria \textit{flash} que circula entre los equipos, o bien, se puede infectar con \textit{malware}\footnote{\textit{Malware}: \textit{software} malicioso} en un equipo, y al pasar de equipo a equipo se propaga la infecci\'{o}n.
 
-Otro caso muy com\'{u}n es el env\'{i}o de archivos modificados por correo electr\'{o}nico, generando as\'{i} una lista de versiones diferentes del mismo archivo que causan confusi\'{o}n porque se desconoce cual es la versi\'{o}n m\'{a}s actualizada.
+Otro caso muy com\'{u}n es el env\'{i}o de archivos modificados por correo electr\'{o}nico, generando as\'{i} una lista de versiones diferentes del mismo archivo que causan confusi\'{o}n porque se desconoce cu\'{a}l es la versi\'{o}n m\'{a}s actualizada.
 
     \section {Soluci\'{o}n propuesta}
 
-Para solventar este problema se propone instalar un servidor de almacenamiento que provea espacio para que los usuarios de la \textsc{DICyG} puedan guardar su informaci\'{o}n y accederla desde los equipos conectados a la red interna a trav\'{e}s de una conexi\'{o}n cifrada.
+Para solventar este problema se propone instalar un servidor de almacenamiento que provea espacio para que los usuarios de la \textsc{DICyG} puedan guardar su informaci\'{o}n y acceder a ella desde los equipos conectados a la red interna a trav\'{e}s de una conexi\'{o}n cifrada.
 
 La implementaci\'{o}n del servidor de almacenamiento ayudar\'{a} a liberar espacio en los equipos de c\'{o}mputo que se utilizan para compartir archivos y proporcionar\'{a} un repositorio central que guarde la informaci\'{o}n y la haga accesible a los usuarios sin depender de un equipo o servicio externo.
 
@@ -42,10 +42,10 @@ La implementaci\'{o}n del servidor de almacenamiento ayudar\'{a} a liberar espac
 Para la implementaci\'{o}n de este proyecto se utilizar\'{a}n las siguientes tecnolog\'{i}as:
 
 \begin{itemize}
-  \item Debian GNU/Linux como sistema operativo del \textit{appliance}.
-  \item OpenSSH para el acceso remoto por linea de comandos.
-  \item Apache HTTPD para proveer el servicio de HTTPS.
-  \item OpenLDAP para implementar el directorio de usuarios.
+  \item Debian GNU/Linux como sistema operativo del \textit{appliance}
+  \item OpenSSH para el acceso remoto por linea de comandos
+  \item Apache HTTPD para proveer el servicio de \textsc{HTTPS}
+  \item OpenLDAP para implementar el directorio de usuarios
 \end{itemize}
 
 % TODO insert grapics to complete page
@@ -60,7 +60,7 @@ El prototipo ser\'{a} implementado en un servidor proporcionado por la \textsc{D
 En el siguiente diagrama se muestra la interfaz de administraci\'{o}n \textsc{SSH} y la interfaz de acceso a los archivos \textsc{WebDAV} sobre \textsc{HTTPS}, ambas utilizan el directorio \textsc{OpenLDAP} para autenticar a los usuarios de manera centralizada.
 
 \diagramblock
-{Diagrama funcional de la soluci\'{o}n propuesta.}
+{Diagrama funcional de la soluci\'{o}n propuesta}
 {DiagramaFuncional}
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
@@ -92,7 +92,7 @@ La estructura propuesta comprende varios contenedores que sirven para separar lo
 \newpage
 \textbf{\\ Contenedor de usuarios \\}
 
-Clasifica los usuarios del sistema por tipo, cada usuario tiene un identificador \'{u}nico asignado llamado \textbf{uid} se subdivide en tres ramas:
+Clasifica los usuarios del sistema por tipo, cada usuario tiene un identificador \'{u}nico asignado llamado \textbf{uid}. Se subdivide en tres ramas:
 
 \begin{itemize}
 
@@ -112,7 +112,7 @@ Clasifica los usuarios del sistema por tipo, cada usuario tiene un identificador
 
 \textbf{\\ Contenedor de grupos \\}
 
-Existen tres clases de grupos de usuarios contemplados en el sistema. Esto ayuda a permitir o negar el acceso a los recursos del servidor, un usuario puede pertenecer a uno o m\'{a}s grupos que se listan a continuaci\'{o}n.
+Existen tres clases de grupos de usuarios contemplados en el sistema. Esto ayuda a permitir o negar el acceso a los recursos del servidor, un usuario puede pertenecer a uno o m\'{a}s grupos de los que se listan a continuaci\'{o}n.
 
 \begin{itemize}
 
@@ -126,7 +126,7 @@ Existen tres clases de grupos de usuarios contemplados en el sistema. Esto ayuda
 
   \item \textbf{Alumnos}
 
-  Existen varios grupos que contienen al profesor, la materia y el grupo en el que se imparte, permiten dar acceso a la carpeta donde se almacenan los archivos de un grupo en particular se almacena internamente como un objeto de tipo \textit{groupOfNames}.
+  Existen varios grupos que contienen al profesor, la materia y el grupo en el que se imparte, estos permiten dar acceso a la carpeta donde se guardan los archivos de un grupo en particular. Se almacenan internamente como objetos de tipo \textit{groupOfNames}.
 
 \end{itemize}
 
@@ -172,7 +172,7 @@ Para el caso del acceso via \textsc{WebDAV} es necesario un cliente, los sistema
 
 Aunque en los sistemas operativos es posible instalar clientes de \textsc{WebDAV} para acceder a los archivos, se propone tomar las interfaces nativas del sistema operativo para facilitar el acceso a los archivos.
 
-Los sistemas operativos m\'{o}viles como \textsc{Android} y Apple \textsc{iOS} es posible instalar clientes para acceder a los archivos via \textsc{WebDAV}, si no se desea acceder por este medio se puede utilizar la interfaz web est\'{a}ndar.
+En los sistemas operativos m\'{o}viles como \textsc{Android} y Apple \textsc{iOS} es posible instalar clientes para acceder a los archivos via \textsc{WebDAV}, si no se desea acceder por este medio se puede utilizar la interfaz web est\'{a}ndar.
 
 %        \subsubsection {Acceso por SSH}
 %
@@ -192,11 +192,11 @@ Adem\'{a}s del acceso por \textsc{WebDAV} y por medio de un navegador web, el \t
 
         \subsubsection {Interfaz de administraci\'{o}n}
 
-La interfaz de administraci\'{o}n que se propone permite ver, agregar, modificar y borrar registros del directorio. Se utilizar\'{a} la interfaz web \textit{LDAP Account Manager} y adem\'{a}s se puede instalar la herramienta \textit{Apache Directory Studio} en la workstation del administrador para realizar  estas tareas.
+La interfaz de administraci\'{o}n que se propone permite ver, agregar, modificar y borrar registros del directorio. Se utilizar\'{a} la interfaz web \textit{LDAP Account Manager} y adem\'{a}s se puede instalar la herramienta \textit{Apache Directory Studio} en la \textit{workstation} del administrador para realizar  estas tareas.
 
         \subsubsection {Interfaz de cambio de contrase\~{n}a}
 
-Esta interfaz permite tanto al personal de la \textit{Unidad de C\'{o}mputo} como a los profesores cambiar la contrase\~{n}a de acceso que tienen asignada y al realizar esta acci\'{o}n env\'{i}a un correo para notificar que se llev\'{o} acabo dicho cambio.
+Esta interfaz permite tanto al personal de la \emph{Unidad de C\'{o}mputo} como a los profesores cambiar la contrase\~{n}a de acceso que tienen asignada, al realizar esta acci\'{o}n env\'{i}a un correo para notificar que se llev\'{o} acabo dicho cambio.
 
 \newpage
     \subsection {Especificaci\'{o}n del \textit{appliance}}
@@ -235,10 +235,10 @@ En la siguiente secci\'{o}n se muestran las configuraciones del \textit{hardware
  \label{tab:versiones-software}
  \noindent\makebox[\textwidth]
  {%
-  \begin{tabular}[c]{c|c|c}
+  \begin{tabular}[c]{c|c}
   %\hline
   \textbf{Software} & \textbf{Versi\'{o}n} \\
-  \hline
+  \hline \hline
   \textit{Sistema Operativo} & Debian GNU/Linux 7 \textit{Wheezy} \\
   \textit{OpenSSH} & v6.0 \\
   \textit{Apache httpd} & v2.2 \\
