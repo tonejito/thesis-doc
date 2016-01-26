@@ -70,14 +70,14 @@ Generalmente tienen capacidades que oscilan entre los \textsc{GB} y \textsc{TB} 
 
 En este tipo de discos se puede acceder de manera aleatoria a los datos almacenados, tienen un plato magn\'{e}tico rodeado de un material protector que viene contenido en un armaz\'{o}n de pl\'{a}stico y cuenta con con una abertura que permite a la cabeza lectora tener acceso al medio \cite{_anatomy_????}.
 
-Los discos flexibles almacenan los datos dividiendo el plato en circulos conc\'{e}ntricos denominados pistas, que a su vez se subdividen en arcos llamados sectores, de esta manera se puede localizar la informaci\'{o}n conociendo la pista y el sector donde se encuentra \cite{_illustrated_????}. Su capacidad oscila entre los cientos de \textsc{KB} hasta llegar a 1.44 \textsc{MB}.\footnote{Existieron otros formatos como \textit{ZIP} de Iomega, \textit{SuperDisk} LS120 de Imation o \textit{HiFD} de Sony.}
+Los discos flexibles almacenan los datos dividiendo el plato en c\'{i}rculos conc\'{e}ntricos denominados pistas, que a su vez se subdividen en arcos llamados sectores, de esta manera se puede localizar la informaci\'{o}n conociendo la pista y el sector donde se encuentra \cite{_illustrated_????}. Su capacidad oscila entre los cientos de \textsc{KB} hasta llegar a 1.44 \textsc{MB}.\footnote{Existieron otros formatos como \textit{ZIP} de Iomega, \textit{SuperDisk} LS120 de Imation o \textit{HiFD} de Sony.}
 
   \item \textbf{Discos Duros}
 
-Similar al disco flexible, el disco duro tiene una estructura formada por varios platos, cada uno le\'{i}do por una cabeza diferente. De manera l\'{o}gica, el espacio se organiza en circulos conc\'{e}ntricos (cilindros), platos (cabezas) y arcos (sectores), en modelos modernos se utiliza \emph{Logical Block Addressing} para asignar el espacio \cite{_introduction_????}.
+Similar al disco flexible, el disco duro tiene una estructura formada por varios platos, cada uno le\'{i}do por una cabeza diferente. De manera l\'{o}gica, el espacio se organiza en c\'{i}rculos conc\'{e}ntricos (cilindros), platos (cabezas) y arcos (sectores), en modelos modernos se utiliza \emph{Logical Block Addressing} para asignar el espacio \cite{_introduction_????}.
 %Para buscar un dato se debe hacer referencia al plato donde est\'{a}, al sector del disco y a la cabeza de lectura que corresponda.
 
-Parecidos a los discos flexibles, estos medios tienen mayor capacidad y actualmente son el medio primordial para almacenar informaci\'{o}n en los equipos de c\'{o}mputo. A diferencia de los discos flexibles, tienen los componentes mec\'{a}nicos dentro del armaz\'{o}n del disco y pueden almacenar grandes cantidades de informaci\'{o}n gracias a que se apilan varios discos en una estructura cilindrica.
+Parecidos a los discos flexibles, estos medios tienen mayor capacidad y actualmente son el medio primordial para almacenar informaci\'{o}n en los equipos de c\'{o}mputo. A diferencia de los discos flexibles, tienen los componentes mec\'{a}nicos dentro del armaz\'{o}n del disco y pueden almacenar grandes cantidades de informaci\'{o}n gracias a que se apilan varios discos en una estructura cil\'{i}ndrica.
 \end{itemize}
 
 \diagramblock
@@ -297,7 +297,7 @@ En este tipo de soluciones se pueden tener grandes vol\'{u}menes de datos dispon
   \subsection {Arreglos RAID}
   \label{Arreglos-RAID}
 
-El t\'{e}rmino \textsc{RAID} es un acr\'{o}nimo de \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Independientes)\footnote{Dependiendo de la bibliograf\'{i}a el t\'{e}rmino puede ser tambi\'{e}n referido como \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Baratos).} \cite{_bytepile.com_????}. Es una tecnolog\'{i}a que se basa en combinar m\'{u}ltiples discos para que se comporten como uno solo. Dependiendo el modo de operaci\'{o}n, ofrece la posibilidad de tomar varios discos y sumar el espacio de almacenamiento o bien replicar los datos escribi\'{e}ndolos en varios discos para tener tolerancia a fallos \cite{_raid_????-2}.
+El t\'{e}rmino \textsc{RAID} es un acr\'{o}nimo de \emph{Redundant Array of Independent Disks} (Arreglo Redundante de Discos Independientes)\footnote{Dependiendo de la bibliograf\'{i}a el t\'{e}rmino puede ser tambi\'{e}n referido como \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Baratos).} \cite{_bytepile.com_????}. Es una tecnolog\'{i}a que se basa en combinar m\'{u}ltiples discos para que se comporten como uno solo. Dependiendo el modo de operaci\'{o}n, ofrece la posibilidad de tomar varios discos y sumar el espacio de almacenamiento o bien replicar los datos escribi\'{e}ndolos en varios discos para tener tolerancia a fallos \cite{_raid_????-2}.
 
 Los arreglos de disco se pueden configurar por tarjetas dedicadas de \textsl{hardware} o mediante configuraci\'{o}n de \textsl{software} en el sistema operativo. En los \emph{arreglos por \textsl{hardware}}, el \textsl{firmware} de la tarjeta controladora tiene los algoritmos encargados de leer, escribir y sincronizar los datos, mientras que en los \emph{arreglos por \textsl{software}} el \textsl{kernel} del sistema operativo es el encargado de realizar estas operaciones \cite{_chapter_????}.
 
@@ -347,7 +347,7 @@ No ofrece redundancia porque los bloques se reparten en todos los discos y si un
 
 Denominado \emph{Mirror}, guarda una copia exacta de los datos en ambos discos. Se requiere un m\'{i}nimo de dos discos de igual tama\~{n}o para hacer este arreglo, si los discos son de diferente capacidad, el espacio del arreglo ser\'{a} el del disco m\'{a}s peque\~{n}o.
 
-Este tipo de arreglo es tolerante a fallos siempre y cuando un solo disco siga funcionando puesto que contiene una copia exacta de los datos contenidos en los dem\'{a}s medios.
+Este tipo de arreglo es tolerante a fallos siempre y cuando un solo disco siga funcionando, puesto que contiene una copia exacta de los datos contenidos en los dem\'{a}s medios.
 
 El rendimiento de escritura es menor al que presenta un solo disco debido a que se deben hacer copias exactas de la informaci\'{o}n en todos los discos pertenecientes al arreglo.
 
@@ -491,7 +491,7 @@ Regularmente tienen una interfaz web para administraci\'{o}n, algunos integran u
 \newpage
   \item \textbf{Software}
 
-Los \textit{appliances} de \textit{software} pueden ser distribuidos en paquetes descomprimibles (\textit{tarballs}) que contienen el instalador y todos los progamas necesarios para que funcione la soluci\'{o}n \cite{_bitnami:_????}.
+Los \textit{appliances} de \textit{software} pueden ser distribuidos en paquetes descomprimibles (\textit{tarballs}) que contienen el instalador y todos los programas necesarios para que funcione la soluci\'{o}n \cite{_bitnami:_????}.
 
 Integran s\'{o}lo la interfaz web, puesto que se ejecutan en un equipo existente y son independientes del \textit{shell} o del soporte \textsc{SNMP} que se tenga en el equipo.
 
@@ -551,13 +551,13 @@ Se denomina \textit{hardening} al proceso de reforzar las configuraciones del si
 \newpage
 \section {\textsc{GNU}/Linux}
 
-El sistema operativo GNU/Linux es la combinaci\'{o}n del conjunto de utilerias del sistema operativo GNU y el \textit{kernel} Linux \cite{_linux_????}.
+El sistema operativo GNU/Linux es la combinaci\'{o}n del conjunto de utiler\'{i}as del sistema operativo GNU y el \textit{kernel} Linux \cite{_linux_????}.
 
 \picturebox{figures/gnu-linux}{797}{386}{0.5}{gnu-linux}{Logotipos de \textsc{GNU} y \textsc{Linux}}{}
 
   \subsection {Historia}
 
-En 1983 Richard Stallman inici\'{o} el proyecto \textsc{GNU}\footnote{Acr\'{o}nimo recursivo que significa \textit{GNU is Not Unix}.}, cuyo prop\'{o}sito es hacer un sistema operativo compatible con \textsc{UNIX} que cumpla con las cuatro libertades del \textit{software}\footnote{Para m\'{a}s informaci\'{o}n ver el ap\'{e}ndice A.} y desarroll\'{o} junto con otros colegas una serie de utilerias y programas, como el compilador \textsc{GNU} para el lenguage \textsc{C} (\textit{gcc}) \cite{_about_????}. Sin embargo el proyecto ten\'{i}a pr\'{a}cticamente todos los programas del sistema operativo pero le faltaba la parte escencial: el \textit{kernel}.
+En 1983 Richard Stallman inici\'{o} el proyecto \textsc{GNU}\footnote{Acr\'{o}nimo recursivo que significa \emph{GNU is Not Unix}.}, cuyo prop\'{o}sito es hacer un sistema operativo compatible con \textsc{UNIX} que cumpla con las cuatro libertades del \textit{software}\footnote{Para m\'{a}s informaci\'{o}n ver el ap\'{e}ndice A.} y desarroll\'{o} junto con otros colegas una serie de utiler\'{i}as y programas, como el compilador \textsc{GNU} para el lenguage \textsc{C} (\textit{gcc}) \cite{_about_????}. Sin embargo el proyecto ten\'{i}a pr\'{a}cticamente todos los programas del sistema operativo pero le faltaba la parte escencial: el \textit{kernel}.
 
 En 1987 el profesor Andrew S. Tannenbaum public\'{o} un libro titulado \textit{Sistemas Operativos Dise\~{n}o e Implementaci\'{o}n} \cite{tanenbaum_operating_2006} donde explica varios conceptos y aspectos clave de los sistemas operativos, la \'{u}ltima secci\'{o}n incluye el c\'{o}digo fuente del sistema operativo \textsc{MINIX}, que \'{e}l mismo desarroll\'{o} como un clon de \textsc{UNIX} para prop\'{o}sitos educativos\cite{_complete_????}.
 
@@ -607,13 +607,13 @@ El protocolo \textsc{HTTP} permite transferir datos a trav\'{e}s de Internet en 
 
   \subsection {\textsc{HTTPS} - \textit{HTTP over SSL}}
 
-En el protocolo \textsc{HTTP} los datos se envian y reciben en claro, esto deja la informaci\'{o}n vulnerable puesto que los mensajes se pueden interceptar o incluso modificar, afectando as\'{i} la confidencialidad o integidad del mensaje.
+En el protocolo \textsc{HTTP} los datos se env\'{i}an y reciben en claro, esto deja la informaci\'{o}n vulnerable puesto que los mensajes se pueden interceptar o incluso modificar, afectando as\'{i} la confidencialidad o integidad del mensaje.
 
 Para solventar estas debilidades se defini\'{o} \textsc{HTTPS} en el \textsc{RFC} 2818 \cite{_rfc_????-6}, que cifra la conexi\'{o}n \textsc{HTTP} utilizando \emph{SSL}\footnote{Secure Socket Layer por sus siglas en ingl\'{e}s, definido en el \textsc{RFC} 6101 \cite{_rfc_????-4}.} o su sucesor \emph{TLS}\footnote{Transport Layer Security por sus siglas en ingl\'{e}s, definido en el \textsc{RFC} 5246 \cite{_rfc_????-3}}, con el fin de garantizar la confidencialidad e integridad de la informaci\'{o}n transferida entre el cliente y el servidor.
 
   \subsection {\textsc{WebDAV}}
 
-\textit{Web Distributed Authoring and Versioning} es una extensi\'{o}n al protocolo \textsc{HTTP} que a\~{n}ade la capacidad de interactuar con archivos almacendos en el servidor web.
+\textit{Web Distributed Authoring and Versioning} es una extensi\'{o}n al protocolo \textsc{HTTP} que a\~{n}ade la capacidad de interactuar con archivos almacenados en el servidor web.
 
 Est\'{a} definido en el \textsc{RFC} 4918 \cite{_rfc_????-2} y establece un conjunto de extensiones al protocolo \textsc{HTTP} que incluyen m\'{e}todos, cabeceras y formatos tanto de petici\'{o}n como de respuesta para interactuar con el servidor con la finalidad de crear, modificar y borrar archivos. Adem\'{a}s establece un mecanismo denominado \textit{File locking} que previene que dos personas editen el documento al mismo tiempo para no perder cambios.
 
@@ -689,7 +689,7 @@ Dentro del directorio se tienen almacenados los objetos en diferentes ramas del 
 
   \subsection {Directorio de usuarios}
 
-En \textsc{LDAP}  los usuarios tienen ciertas propiedades como identificador, nombre de usuario y contrase\~{n}a, entre otros. Existen dos tipos principales de usuario: \texttt{simpleSecurityObject} y \texttt{posixAccount}. El primero es utilizado s\'{o}lamente para autenticar un usuario en el directorio y el segundo tiene propiedades parecidas a una cuenta \textsc{UNIX} (\textit{uid}, \textit{gid} y \textit{GECOS}).
+En \textsc{LDAP}  los usuarios tienen ciertas propiedades como identificador, nombre de usuario y contrase\~{n}a, entre otros. Existen dos tipos principales de usuario: \texttt{simpleSecurityObject} y \texttt{posixAccount}. El primero es utilizado solamente para autenticar un usuario en el directorio y el segundo tiene propiedades parecidas a una cuenta \textsc{UNIX} (\textit{uid}, \textit{gid} y \textit{GECOS}).
 
 %{
 %\scriptsize

@@ -524,7 +524,7 @@ El conjunto de archivos y configuraciones que forman parte del \textit{appliance
  }
 }
 
-Se ingresaron en el sistema de archivos varias ligas simb\'{o}licas que apuntan a las configuraci\'{o}nes de Apache \textsc{HTTPD} que reside en el directorio \texttt{/opt/xNAS}.
+Se ingresaron en el sistema de archivos varias ligas simb\'{o}licas que apuntan a las configuraciones de Apache \textsc{HTTPD} que reside en el directorio \texttt{/opt/xNAS}.
 
 {
  \linespread{1}
@@ -895,7 +895,7 @@ Para mitigar este riesgo se instal\'{o} el programa \texttt{molly-guard}. Al det
 Se instal\'{o} en el equipo el \textsc{MTA} \texttt{Postfix} configurado como \textit{Internet Site}. Para habilitar la redirecci\'{o}n de los mensajes de correo electr\'{o}nico dirigidos al administrador del sistema se realiz\'{o} lo siguiente:
 
 \begin{itemize}
-  \item Especificar la direccion de destino en el archivo \texttt{/etc/aliases}:
+  \item Especificar la direcci\'{o}n de destino en el archivo \texttt{/etc/aliases}:
 
 {
 \scriptsize
@@ -929,7 +929,7 @@ Se instal\'{o} en el equipo el \textsc{MTA} \texttt{Postfix} configurado como \t
 
       \subsection {Restricci\'{o}n de acceso para las tareas programadas}
 
-Para limitar la capacidad de los usuarios para programar la ejecuci\'{o}n de comandos en el sistema operativo se adopt\'{o} una politica restrictiva que consiste en tener una \textit{lista blanca} donde \'{u}nicamente los usuarios del sistema\footnote{Con \textbf{uid} menor a 1000} pueden hacer uso de trabajos de \textsl{cron} y \textsl{at} \cite{_debian_????-1} \cite{_crontab_????} \cite{_at_????}.
+Para limitar la capacidad de los usuarios para programar la ejecuci\'{o}n de comandos en el sistema operativo se adopt\'{o} una pol\'{i}tica restrictiva que consiste en tener una \textit{lista blanca} donde \'{u}nicamente los usuarios del sistema\footnote{Con \textbf{uid} menor a 1000} pueden hacer uso de trabajos de \textsl{cron} y \textsl{at} \cite{_debian_????-1} \cite{_crontab_????} \cite{_at_????}.
 
 {
 \scriptsize
