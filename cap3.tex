@@ -193,7 +193,7 @@ Adicionalmente el instalador pregunta por el nombre de la organizaci\'{o}n. Aunq
 | LDAP directory.                                                            |
 |                                                                            |
 | Organization name:                                                         |
-| xNAS_____________________________________________________________________  |
+| xNAS______________________________________________________________________ |
 |                                  <Ok>                                      |
 +----------------------------------------------------------------------------+
 \end{verbatim}
@@ -209,7 +209,7 @@ A continuaci\'{o}n se pide que se introduzca la contrase\~{n}a que ser\'{a} util
 | Please enter the password for the admin entry in your LDAP directory.      |
 |                                                                            |
 | Administrator password:                                                    |
-| **********____________________________________________________________     |
+| **********________________________________________________________________ |
 |                                 <Ok>                                       |
 +----------------------------------------------------------------------------+
 \end{verbatim}
@@ -363,7 +363,7 @@ Para realizar la carga de la base de datos de usuarios y grupos se desarroll\'{o
 La biblioteca que realiza la carga de objetos funciona de acuerdo al siguiente algoritmo:
 
 \begin{itemize}
-  \item Realiza una conexi\'{o}n al directorio LDAP, a esta operaci\'{o}n se le denomina \textit{bind}.
+  \item Realiza una conexi\'{o}n al directorio LDAP, a esta operaci\'{o}n se le denomina \textit{bind} (ver figura).
   \item Convierte el archivo de entrada a la codificaci\'{o}n \textsc{UTF-8}.
   \item Lee cada rengl\'{o}n del archivo de entrada y verifica el contenido de cada campo contra una \textit{expresi\'{o}n regular} para identificar problemas.
   \item Si el rengl\'{o}n cumple con el formato, se contin\'{u}a con el pr\'{o}ximo paso, de lo contrario se guarda en una lista que debe ser revisada manualmente y salta al siguiente.
@@ -499,7 +499,7 @@ La configuraci\'{o}n de Apache \textsc{HTTPD} comprende tres \texttt{VirtualHost
  \end{table}
 }
 
-Si el usuario accede al \textit{appliance} utilizando el nombre de dominio principal o la direcci\'{o}n IP, se presenta la interfaz de acceso a los archivos. Para acceder a la interfaz de administraci\'{o}n del directorio o para cambiar la contrase\~{n}a se debe acceder utilizando el nombre de dominio designado en la tabla anterior.
+Si el usuario accede al \textit{appliance} utilizando el nombre de dominio principal o la direcci\'{o}n IP, se presenta la interfaz de acceso a los archivos. Para acceder a la interfaz de administraci\'{o}n del directorio o para cambiar la contrase\~{n}a se debe acceder utilizando el nombre de dominio designado en la tabla anterior. En la siguiente figura se muestra de manera gr\'{a}fica la segmentaci\'{o}n de los diferentes \textit{VirtualHost}:
 
 \diagramblock
 {Diagrama Apache \textsc{HTTPD} VirtualHost}
@@ -839,6 +839,8 @@ Se instala el certificado, la llave privada y la configuraci\'{o}n del \texttt{V
 
     \section {Hardening}
 
+La configuraci\'{o}n de seguridad del equipo se realiz\'{o} con base en las configuraciones de seguridad presentadas en la documentaci\'{o}n oficial del sistema operativo Debian \textsc{GNU}/Linux\cite{_securing_????}, las guias de seguridad publicadas por el \emph{Centro de Seguridad en Internet} (\textsc{CIS}\footnote{\emph{Center for Internet Security} por sus siglas en ingl\'{e}s.})\cite{_center_????} y recomendaciones emitidas por el proyecto \textsc{OWASP}\footnote{\emph{Open Web Application Security Project} por sus siglas en ingl\'{e}s.}\cite{_scg_????}.
+
       \subsection {Actualizaciones desatendidas}
 
 Una parte importante de la configuraci\'{o}n de seguridad de un sistema radica en la instalaci\'{o}n peri\'{o}dica de actualizaciones. Al ejecutar el siguiente comando y responder \textbf{YES} en el cuadro de di\'{a}logo, se configura el sistema para descargar e instalar \emph{autom\'{a}ticamente} las actualizaciones de seguridad que sean liberadas por el fabricante del sistema operativo.
@@ -886,7 +888,7 @@ Para mitigar este riesgo se instal\'{o} el programa \texttt{molly-guard}. Al det
 \scriptsize
 \linespread{1}
 \begin{verbatim}
-    # aptitude install molly-guard
+# aptitude install molly-guard
 \end{verbatim}
 }
 
@@ -896,35 +898,13 @@ Se instal\'{o} en el equipo el \textsc{MTA} \texttt{Postfix} configurado como \t
 
 \begin{itemize}
   \item Especificar la direcci\'{o}n de destino en el archivo \texttt{/etc/aliases}:
-
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-    root:	xnas@tonejito.org
-\end{verbatim}
-}
+    \code{root:	xnas@tonejito.org}
 
   \item Regenerar la base de datos de \textit{aliases}:
-
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-    # newaliases
-\end{verbatim}
-}
+    \code{\# newaliases}
 
   \item Recargar la configuraci\'{o}n del servicio de correo:
-
-{
-\scriptsize
-\linespread{1}
-\begin{verbatim}
-    # /etc/init.d/postfix reload
-\end{verbatim}
-}
-
+    \code{\# /etc/init.d/postfix reload}
 \end{itemize}
 
       \subsection {Restricci\'{o}n de acceso para las tareas programadas}
@@ -943,7 +923,7 @@ Para limitar la capacidad de los usuarios para programar la ejecuci\'{o}n de com
 
       \subsection {Configuraci\'{o}n de seguridad de \textup{OpenSSH}}
 
-Para la configuraci\'{o}n del servicio de \textsc{SSH} se aplicaron las siguientes opciones en el archivo de configuraci\'{o}n \texttt{/etc/ssh/sshd\_config}.
+Para el servicio de \textsc{SSH} se aplicaron las siguientes opciones en el archivo de configuraci\'{o}n \texttt{/etc/ssh/sshd\_config}. Los valores asignados a las siguientes directivas fueron recomendados por el libro \emph{Securing Debian}\cite{_securing_????} y las guias de \emph{hardening} y auditor\'{i}a publicadas por el \textsc{CIS}\cite{_benchmarks_????}.
 
 \begin{itemize}
   \item Quita el nombre del sistema operativo del \textit{banner} inicial de \textsc{SSH}.
@@ -1051,7 +1031,7 @@ Al finalizar el ajuste de los par\'{a}metros de configuraci\'{o}n, se reinicia e
 
       \subsection {Configuraci\'{o}n de seguridad de Apache \textsc{HTTPD}}
 
-Se establecieron los valores recomendados en las siguientes directivas con el objetivo de evitar la divulgaci\'{o}n de informaci\'{o}n acerca del \textit{software} del servidor web y del sistema operativo. Estas directivas se encuentran presentes en el archivo \texttt{/etc/apache2/conf.d/security}.
+Se establecieron los valores recomendados en las siguientes directivas con el objetivo de evitar la divulgaci\'{o}n de informaci\'{o}n acerca del \textit{software} del servidor web y del sistema operativo. Estas directivas se encuentran presentes en el archivo \texttt{/etc/apache2/conf.d/security}. Se aplicaron las configuraciones publicadas por el \textsc{CIS} en la gu\'{i}a de seguridad para Apache \textsc{HTTPD}\cite{_microsoft_????-1} y adem\'{a}s las recomendaciones de seguridad publicadas por el proyecto \textsc{OWASP}\cite{_scg_????}.
 
 {
  \begin{table}[H]
@@ -1074,7 +1054,7 @@ Se establecieron los valores recomendados en las siguientes directivas con el ob
 
         \subsubsection{Configuraci\'{o}n para \textsc{PHP}}
 
-Se configur\'{o} \textsc{PHP} para que no muestre la versi\'{o}n en las cabeceras del protocolo \textsc{HTTP}, evitar la impresi\'{o}n de errores y para que guarde los errores encontrados en una bit\'{a}cora. Para lograr esto, se establecieron los siguientes valores en el archivo \texttt{php.ini}.
+Se configur\'{o} \textsc{PHP} para que no muestre la versi\'{o}n en las cabeceras del protocolo \textsc{HTTP}, evitar la impresi\'{o}n de errores y para que guarde los errores encontrados en una bit\'{a}cora. Para lograr esto, se establecieron los siguientes valores en el archivo \texttt{php.ini} de acuerdo a la gu\'{i}a de seguridad para \textsc{PHP} publicada por el proyecto \textsc{OWASP}\cite{_php_????}.
 
 {
  \begin{table}[H]
@@ -1139,7 +1119,6 @@ Los m\'{e}todos \textsc{HTTP} se pueden clasificar de acuerdo al tipo de acceso 
 
 Con el fin de establecer una restricci\'{o}n a los m\'{e}todos \textsc{HTTP} que pueden escribir datos en el servidor, se utiliz\'{o} la directiva \texttt{LimitExcept} para definir los m\'{e}todos que se permiten en el servidor en determinado directorio \cite{_core_????}. En el siguiente ejemplo se muestra la configuraci\'{o}n adoptada para permitir el acceso de s\'{o}lo lectura.
 
-
 {
 \scriptsize
 \linespread{1}
@@ -1150,6 +1129,56 @@ Con el fin de establecer una restricci\'{o}n a los m\'{e}todos \textsc{HTTP} que
   Order Allow,Deny
   Deny From ALL
 </LimitExcept>
+\end{verbatim}
+}
+
+        \subsubsection{Configuraci\'{o}n de cifrado para \textsc{HTTPS}}
+
+Se establecieron los siguientes par\'{a}metros de cifrado para \textsc{HTTPS}, a continuaci\'{o}n se listan las medidas adoptadas para mitigar los ataques a \textsc{SSL} y \textsc{TLS}. Para la elaboraci\'{o}n de la configuraci\'{o}n de \texttt{mod\_ssl} se tomaron las recomendaciones oficiales para deshabilitar la funcionalidad afectada por las vulnerabilidades\cite{_ssl_????-2}\cite{goodin_crack_2012}\cite{_breach_????}\cite{_ssl-poodle.pdf_????}\cite{_heartbleed_????}\cite{_tracking_????}.
+
+\begin{itemize}
+  \item Deshabilita el mecanismo de compresi\'{o}n de \textsc{SSL} y \textsc{TLS}, mitigando las vulnerabilidades \textsc{CRIME}\cite{_crime_????} y \textsc{BREACH}\cite{_breach_????}
+    \code{SSLCompression Off}
+  \item Deshabilita expl\'{i}citamente el uso de \textsc{SSLv2}, \textsc{SSLv3} y \textsc{TLSv1}, para evitar la vulnerabilidad \textsc{POODLE}\cite{_poodle_????}
+    \code{SSLProtocol All -TLSv1 -SSLv3 -SSLv2}
+    \code{SSLHonorCipherOrder On}
+  \item Elige un algoritmo seguro para el cifrado, intercambio de llaves y verificaci\'{o}n de mensaje, esto previene los ataques \textsc{BEAST}\cite{_beast.pdf_????} y \textsc{BREACH}\cite{_breach_????}
+    \code{SSLCipherSuite}
+  \item Los algoritmos se listan del m\'{a}s fuerte al m\'{a}s d\'{e}bil y se deshabilitan \textsc{MD5}, \textsc{RC4}, \textsc{3DES}, \textsc{DES}, as\'{i} como los algoritmos de tipo \textsc{EXPORT} y \textsc{NULL}
+\end{itemize}
+
+La configuraci\'{o}n completa de \texttt{mod\_ssl} se muestra a continuaci\'{o}n:
+
+{
+\scriptsize
+\linespread{1}
+\begin{verbatim}
+<IfModule ssl_module>
+  # CRIME and BREACH
+  # http://breachattack.com/
+
+  SSLCompression off
+
+  # POODLE
+  # https://poodle.io/servers.html#apache
+
+  SSLProtocol All -TLSv1 -SSLv3 -SSLv2
+  SSLHonorCipherOrder On
+
+  # BEAST and FREAK
+  # https://ssldecoder.org/
+  # https://cipherli.st/
+  # https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html
+  # https://freakattack.com/
+
+  SSLCipherSuite ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:
+         ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:
+         ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:
+         ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:
+         DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:
+         DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK
+</IfModule>
+
 \end{verbatim}
 }
 

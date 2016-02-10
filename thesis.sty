@@ -21,12 +21,16 @@
 \usepackage{glossaries}
 
 % Use package to fix table float
-\usepackage{float}
+%\usepackage{float}
 % Fix table float
-\restylefloat{table}
+%\restylefloat{table}
 % Set border around figures
-\floatstyle{boxed} 
+%\floatstyle{boxed} 
 %\restylefloat{figure}
+
+\usepackage[tableposition=top]{caption}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
 
 % Try uncommenting the following line if fonts don't
 % display correctly in the PDF file.

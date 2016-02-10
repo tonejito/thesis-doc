@@ -13,7 +13,7 @@ Los medios de almacenamiento guardan los programas y los datos del usuario para 
 
       \subsubsection*{Medios basados en circuitos}
 
-Estos medios de almacenamiento son circuitos individuales o arreglos de circuitos que se utilizan para almacenar datos. La informaci\'{o}n guardada se lee haciendo referencia a la ubicaci\'{o}n de memoria y el tama\~{n}o de los datos que se lee muchas veces es fijo.
+Estos medios de almacenamiento son circuitos individuales o arreglos de circuitos que se utilizan para almacenar datos. La informaci\'{o}n guardada se lee haciendo referencia a la ubicaci\'{o}n de memoria y el tama\~{n}o de los datos que se lee muchas veces es fijo. En la siguiente figura se muestran algunos de ellos.
 
 \begin{itemize}
 
@@ -33,7 +33,7 @@ Es una memoria de s\'{o}lo lectura que puede ser grabada una sola vez, generalme
 
 Una variante de la memoria \textsc{ROM} donde el contenido puede ser borrado por varios m\'{e}todos, ya sea el\'{e}ctricamente o por medio de la exposici\'{o}n a rayos ultravioleta. En condiciones normales de operaci\'{o}n su comportamiento es similar al de la memoria \textsc{ROM} y se debe entrar en un modo especial para grabar nuevos datos en la misma \cite{_rom_????-1}.
 
-  \item \textbf{FLASH}
+  \item \textbf{Flash}
 
 Una variante m\'{a}s de los medios de almacenamiento basados en circuitos es este tipo de memoria que se ha hecho popular en los \'{u}ltimos a\~{n}os gracias a que no depende de partes m\'{o}viles y es peque\~{n}a, por lo que es un medio de almacenamiento port\'{a}til y eficiente \cite{_flashmemguide.pdf_????}.
 
@@ -56,28 +56,28 @@ Un medio de almacenamiento relativamente reciente, utiliza arreglos de circuitos
 \newpage
       \subsubsection*{Medios magn\'{e}ticos}
 
-Este tipo de medios se caracterizan porque el acceso a los datos se realiza mediante un cabezal que lee o escribe el campo magn\'{e}tico impreso en el material que lo guarda. Son susceptibles a fallar si se exponen a campos magn\'{e}ticos, golpes o temperaturas extremas.
+Este tipo de medios se caracterizan porque el acceso a los datos se realiza mediante un cabezal que lee o escribe el campo magn\'{e}tico impreso en el material que lo guarda. Son susceptibles a fallar si se exponen a campos magn\'{e}ticos, golpes o temperaturas extremas. La siguiente figurailustra la forma que tienen los discos flexibles, discos duros y cintas de almacenamiento.
 
 \begin{itemize}
-
-  \item \textbf{Cinta}
-
-Las unidades de cinta son medios que almacenan de manera secuencial los datos, dentro de sus componentes internos destacan dos carretes que sirven para almacenar la cinta mientras se lee, para acceder datos en una posici\'{o}n anterior es necesario rebobinar la cinta.
-
-Generalmente tienen capacidades que oscilan entre los \textsc{GB} y \textsc{TB}  \cite{_powervault_????} y son utilizadas para archivar informaci\'{o}n.
-
-  \item \textbf{Discos Flexibles}
+  \item \textbf{Discos flexibles}
 
 En este tipo de discos se puede acceder de manera aleatoria a los datos almacenados, tienen un plato magn\'{e}tico rodeado de un material protector que viene contenido en un armaz\'{o}n de pl\'{a}stico y cuenta con con una abertura que permite a la cabeza lectora tener acceso al medio \cite{_anatomy_????}.
 
 Los discos flexibles almacenan los datos dividiendo el plato en c\'{i}rculos conc\'{e}ntricos denominados pistas, que a su vez se subdividen en arcos llamados sectores, de esta manera se puede localizar la informaci\'{o}n conociendo la pista y el sector donde se encuentra \cite{_illustrated_????}. Su capacidad oscila entre los cientos de \textsc{KB} hasta llegar a 1.44 \textsc{MB}.\footnote{Existieron otros formatos como \textit{ZIP} de Iomega, \textit{SuperDisk} LS120 de Imation o \textit{HiFD} de Sony.}
 
-  \item \textbf{Discos Duros}
+  \item \textbf{Discos duros}
 
 Similar al disco flexible, el disco duro tiene una estructura formada por varios platos, cada uno le\'{i}do por una cabeza diferente. De manera l\'{o}gica, el espacio se organiza en c\'{i}rculos conc\'{e}ntricos (cilindros), platos (cabezas) y arcos (sectores), en modelos modernos se utiliza \emph{Logical Block Addressing} para asignar el espacio \cite{_introduction_????}.
 %Para buscar un dato se debe hacer referencia al plato donde est\'{a}, al sector del disco y a la cabeza de lectura que corresponda.
 
 Parecidos a los discos flexibles, estos medios tienen mayor capacidad y actualmente son el medio primordial para almacenar informaci\'{o}n en los equipos de c\'{o}mputo. A diferencia de los discos flexibles, tienen los componentes mec\'{a}nicos dentro del armaz\'{o}n del disco y pueden almacenar grandes cantidades de informaci\'{o}n gracias a que se apilan varios discos en una estructura cil\'{i}ndrica.
+
+  \item \textbf{Cintas}
+
+Las unidades de cinta son medios que almacenan de manera secuencial los datos, dentro de sus componentes internos destacan dos carretes que sirven para almacenar la cinta mientras se lee, para acceder datos en una posici\'{o}n anterior es necesario rebobinar la cinta.
+
+Generalmente tienen capacidades que oscilan entre los \textsc{GB} y \textsc{TB}  \cite{_powervault_????} y son utilizadas para archivar informaci\'{o}n.
+
 \end{itemize}
 
 \diagramblock
@@ -98,7 +98,7 @@ Parecidos a los discos flexibles, estos medios tienen mayor capacidad y actualme
 
 Los discos magneto-\'{o}pticos tienen las bondades de la rapidez de los discos magn\'{e}ticos y la versatilidad de los discos \'{o}pticos.
 
-Para escribir los datos se calienta la superficie del disco y se aplica un campo magn\'{e}tico para que queden registrados. Al leer los datoa,s el l\'{a}ser reconoce la polaridad y esta se interpreta como cero o uno para la parte del disco que est\'{e} leyendo \cite{_illustrated_????}.
+Para escribir los datos se calienta la superficie del disco y se aplica un campo magn\'{e}tico para que queden registrados (v\'{e}ase siguiente figura). Al leer los datos el l\'{a}ser reconoce la polaridad y esta se interpreta como cero o uno para la parte del disco que est\'{e} leyendo \cite{_illustrated_????}.
 
 \end{itemize}
 
@@ -120,7 +120,7 @@ Para escribir los datos se calienta la superficie del disco y se aplica un campo
 
 Los discos pre-masterizados (\textsc{CD-ROM}, \textsc{DVD-ROM}, \textsc{BD-ROM}) se graban en las f\'{a}bricas donde se tiene un disco maestro que sirve para transferir los datos al medio final por un proceso de vaciado t\'{e}rmico.
 
-Los discos grabables (\textsc{CD-R}, \textsc{DVD+R}, \textsc{DVD-R} y \textsc{BD-R}) pueden ser escritos mediante un l\'{a}ser al fundir una capa de policarbonato en la superficie inferior del disco para ingresar los bits. El formato de los bits generalmente va de acuerdo al est\'{a}ndar \textsc{ISO-9660} \cite{_further_????}.
+Los discos grabables (\textsc{CD-R}, \textsc{DVD+R}, \textsc{DVD-R} y \textsc{BD-R}) pueden ser escritos mediante un l\'{a}ser al fundir una capa de policarbonato en la superficie inferior del disco para ingresar los bits (v\'{e}ase figura siguiente). El formato de los bits generalmente va de acuerdo al est\'{a}ndar \textsc{ISO-9660} \cite{_further_????}.
 
 \newpage
   \item \textbf{Discos regrabables}
@@ -175,7 +175,7 @@ Es un nuevo medio de almacenamiento a\'{u}n en desarrollo que ofrece un m\'{e}to
 %  \cline{1-5}
   \textsc{EEPROM} & MB & \yesmark & \yesmark & \nomark &  \\
 %  \cline{1-5}
-  \textsc{FLASH / SSD} & GB & \yesmark & \yesmark & \yesmark &  \\
+  \textsc{Flash / SSD} & GB & \yesmark & \yesmark & \yesmark &  \\
   \hline
   Cinta & TB & \yesmark & \nomark & \yesmark & \multirow{3}{*}{Campos magn\'{e}ticos} \\
 %  \cline{1-5}
@@ -309,7 +309,7 @@ A continuaci\'{o}n se muestra la descripci\'{o}n de los tipos de arreglo \textsc
 
   \item \textbf{Linear}
 
-En esta variante se combinan dos o m\'{a}s discos como si fueran uno solo al \emph{concatenar} el espacio y s\'{o}lo se escribir\'{a} al disco 1 si el disco 0 se encuentra completamente lleno.
+En esta variante se combinan dos o m\'{a}s discos como si fueran uno solo al \emph{concatenar} el espacio y s\'{o}lo se escribir\'{a} al disco 1 si el disco 0 se encuentra completamente lleno (ver figura).
 
 Para crear el arreglo no importa el tama\~{n}o de los discos. Si se accede a dos archivos que est\'{a}n almacenados en diferentes discos el rendimiento aumenta porque la lectura se realiza en paralelo.
 
@@ -317,7 +317,7 @@ Este m\'{e}todo no ofrece redundancia, por lo que si falla un disco los datos co
 
 \diagramblock
 {Diagrama de funcionamiento del arreglo \emph{Linear}}
-{LinearArray}
+{array-linear}
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
  {
@@ -327,7 +327,7 @@ Este m\'{e}todo no ofrece redundancia, por lo que si falla un disco los datos co
 
   \item \textbf{RAID 0 - \textit{Stripe}}
 
-Tambi\'{e}n llamado \emph{Stripe}, organiza los datos en bloques que se reparten copiando un bloque a cada disco.
+Tambi\'{e}n llamado \emph{Stripe}, organiza los datos en bloques que se reparten copiando un bloque a cada disco (ver figura).
 
 Aunque es posible crear el arreglo con discos de diferente tama\~{n}o, se recomienda que sean por lo menos dos discos de la misma capacidad. Gracias a la organizaci\'{o}n de los datos, estos se acceden en paralelo aumentando la velocidad de lectura y escritura.
 
@@ -335,7 +335,7 @@ No ofrece redundancia porque los bloques se reparten en todos los discos y si un
 
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textsc{RAID-0}}
-{RAID0-Array}
+{array-raid0}
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
  {
@@ -345,7 +345,7 @@ No ofrece redundancia porque los bloques se reparten en todos los discos y si un
 
   \item \textbf{RAID 1 - \textit{Mirror}}
 
-Denominado \emph{Mirror}, guarda una copia exacta de los datos en ambos discos. Se requiere un m\'{i}nimo de dos discos de igual tama\~{n}o para hacer este arreglo, si los discos son de diferente capacidad, el espacio del arreglo ser\'{a} el del disco m\'{a}s peque\~{n}o.
+Denominado \emph{Mirror}, guarda una copia exacta de los datos en ambos discos (ver figura). Se requiere un m\'{i}nimo de dos discos de igual tama\~{n}o para hacer este arreglo, si los discos son de diferente capacidad, el espacio del arreglo ser\'{a} el del disco m\'{a}s peque\~{n}o.
 
 Este tipo de arreglo es tolerante a fallos siempre y cuando un solo disco siga funcionando, puesto que contiene una copia exacta de los datos contenidos en los dem\'{a}s medios.
 
@@ -353,7 +353,7 @@ El rendimiento de escritura es menor al que presenta un solo disco debido a que 
 
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textsc{RAID-1}}
-{RAID1-Array}
+{array-raid1}
 {
 \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
  {
@@ -363,7 +363,7 @@ El rendimiento de escritura es menor al que presenta un solo disco debido a que 
 \newpage
   \item \textbf{RAID 5 - \textit{Stripe with distributed parity}}
 
-En este tipo de arreglo se dividen los datos en bloques de manera similar a \textsc{RAID} 0 y adem\'{a}s se calcula un bloque de paridad que sirve para reconstruir los datos si uno de los discos falla.
+En este tipo de arreglo se dividen los datos en bloques de manera similar a \textsc{RAID} 0 y adem\'{a}s se calcula un bloque de paridad que sirve para reconstruir los datos si uno de los discos falla (ver figura).
 
 Esta configuraci\'{o}n de \textsc{RAID} tiene tolerancia a fallos siempre y cuando no falle m\'{a}s de un disco en el arreglo. Se requieren por lo menos tres discos para configurar un arreglo de este tipo.
 
@@ -371,7 +371,7 @@ Dado que se calcula la paridad de los bloques de datos, se debe restar el tama\~
 
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textsc{RAID-5}}
-{RAID5-Array}
+{array-raid5}
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
  {
@@ -381,7 +381,7 @@ Dado que se calcula la paridad de los bloques de datos, se debe restar el tama\~
 \newpage
   \item \textbf{RAID 6 - \textit{Stripe with \textsl{dual} distributed parity}}
 
-Su funcionamiento es similar al de \textsc{RAID} 5 s\'{o}lo que se calculan dos bloques de paridad para cada bloque de datos.
+Su funcionamiento es similar al de \textsc{RAID} 5 s\'{o}lo que se calculan dos bloques de paridad para cada bloque de datos (ver figura).
 
 Esta configuraci\'{o}n de arreglo puede tolerar el fallo de hasta dos discos duros, mismos que se reconstruyen utilizando los bloques de paridad. Se requieren al menos cuatro discos para hacer un arreglo \textsc{RAID} 6.
 
@@ -389,7 +389,7 @@ Las operaciones de escritura tardan m\'{a}s porque se deben calcular dos bloques
 
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textsc{RAID-6}}
-{RAID6-Array}
+{array-raid6}
 {
  \psscalebox{1.0 1.0} % Change this value to rescale the drawing.
  {
@@ -405,13 +405,13 @@ Las operaciones de escritura tardan m\'{a}s porque se deben calcular dos bloques
 
   \item \textbf{RAID 01 / RAID 0+1}
 
-Se compone por un arreglo \textsc{RAID} 1 (\textit{Mirror}) que replica los datos contenidos en dos arreglos \textsc{RAID} 0 (\textit{Stripe}). Se requiere un m\'{i}nimo de cuatro discos para hacer esta configuraci\'{o}n.
+Se compone por un arreglo \textsc{RAID} 1 (\textit{Mirror}) que replica los datos contenidos en dos arreglos \textsc{RAID} 0 (\textit{Stripe}). Se requiere un m\'{i}nimo de cuatro discos para hacer esta configuraci\'{o}n (ver figura).
 
 Si fallan uno o dos discos del mismo arreglo \textsc{RAID} 0, el arreglo \textsc{RAID} 1 entra en modo degradado sin perder los datos. Si adem\'{a}s falla un disco de otro arreglo \textsc{RAID} 0, entonces todos los datos se pierden.
 
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textsc{RAID-01}}
-{RAID01-Array}
+{array-raid01}
 {
  \psscalebox{0.65 0.65} % Change this value to rescale the drawing.
  {
@@ -422,7 +422,7 @@ Si fallan uno o dos discos del mismo arreglo \textsc{RAID} 0, el arreglo \textsc
 \newpage
   \item \textbf{RAID 10 / RAID 1+0}
 
-Consiste en un arreglo \textsc{RAID} 0 (\textit{Stripe}) conformado por dos o m\'{a}s arreglos \textsc{RAID} 1 (\textit{Mirror}). El sistema operativo detecta la presencia de un solo disco mientras que este se conforma por un arreglo \textsc{RAID} 0 (\textit{Stripe}) que une los dos arreglos \textsc{RAID} 1 (\textit{Mirror}).
+Consiste en un arreglo \textsc{RAID} 0 \textit{Stripe} conformado por dos o m\'{a}s arreglos \textsc{RAID} 1 \textit{Mirror}. El sistema operativo detecta la presencia de un solo disco mientras que este se conforma por un arreglo \textsc{RAID} 0 \textit{Stripe} que une los dos arreglos \textsc{RAID} 1 \textit{Mirror} (ver figura).
 
 Si un disco de alg\'{u}n arreglo \textsc{RAID} 1 falla, este entra en modo degradado y el funcionamiento del arreglo \textsc{RAID} 0 no se ve afectado. \footnote{Salvo por la perdida de rendimiento en el arreglo.} Si fallan dos discos del mismo arreglo \textsc{RAID} 1, entonces el arreglo \textsc{RAID} 0 pierde los datos. Se requieren por lo menos cuatro discos para hacer esta configuraci\'{o}n.
 
@@ -430,7 +430,7 @@ Si un disco de alg\'{u}n arreglo \textsc{RAID} 1 falla, este entra en modo degra
 
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textsc{RAID-10}}
-{RAID10-Array}
+{array-raid10}
 {
  \psscalebox{0.65 0.65} % Change this value to rescale the drawing.
  {
@@ -503,7 +503,7 @@ Este tipo de \textit{appliances} son im\'{a}genes de m\'{a}quinas virtuales dise
 
 \section {Seguridad inform\'{a}tica}
 
-La seguridad inform\'{a}tica se refiere a los procesos y metodolog\'{i}as dise\~{n}ados e implementados para proteger informaci\'{o}n sin importar que est\'{e} en medios impresos, electr\'{o}nicos o de otro tipo, esta puede ser confidencial, privada o sensible y se debe proteger de accesos no autorizados, mal uso, revelaci\'{o}n, destrucci\'{o}n o modificaci\'{o}n. \cite{_sans:_????}
+La seguridad inform\'{a}tica se refiere a los procesos y metodolog\'{i}as dise\~{n}ados e implementados para proteger informaci\'{o}n sin importar que est\'{e} en medios impresos, electr\'{o}nicos o de otro tipo, esta puede ser confidencial, privada o sensible y se debe proteger de accesos no autorizados, mal uso, revelaci\'{o}n, destrucci\'{o}n o modificaci\'{o}n \cite{_sans:_????}.
 
   \subsection {Principios de seguridad inform\'{a}tica}
 
@@ -530,9 +530,132 @@ Por ejemplo, un recurso en l\'{i}nea debe estar disponible siempre para que pued
 
 \end{itemize}
 
+  \subsection {Criptograf\'{i}a}
+
+El t\'{e}rmino criptograf\'{i}a proviene de las ra\'{i}ces griegas \emph{kryptos} (oculto) y \emph{grafe} (escritura). Es un conjunto de t\'{e}cnicas utilizadas para \emph{ocultar} (cifrar) el contenido de un mensaje, mismo que solo podr\'{a} ser descifrado y le\'{i}do por la persona a la que va destinado\cite{_criptografi-_????}.
+
+La criptograf\'{i}a moderna se basa en el uso de las matem\'{a}ticas para ocultar la informaci\'{o}n y de los sistemas digitales para realizar la transmisi\'{o}n de la misma \cite{_powerpoint_????}. Existen dos tipos de algoritmos que se utilizan para cifrar los mensajes que ser\'{a}n transmitidos a trav\'{e}s de un canal inseguro:
+
+    \subsubsection {Algoritmos sim\'{e}tricos}
+
+La principal caracter\'{i}stica de estos algoritmos radica en utilizar la misma llave para cifrar y descifrar el mensaje. Para que la protecci\'{o}n de la informaci\'{o}n sea adecuada, se debe realizar previamente el intercambio de la llave a trav\'{e}s de un medio seguro (ej. entregar la llave secreta en persona) y una vez que las dos partes tengan la clave secreta, pueden intercambiar mensajes cifrados.
+
+      \begin{itemize}
+
+        \item \textbf{DES y Triple-DES}
+
+El algoritmo llamado \emph{Data Encription Standard} o \textsc{DES}, se basa en \emph{Lucifer} creado por Horst Feistel. Cifra el mensaje en bloques de 64 bits y la longitud de la llave utilizada es de 56 bits. Utiliza permutaciones, substituciones y aplica la funci\'{o}n binaria \texttt{XOR} a los datos\cite{_criptografi-_????}\cite{_.pdf_????}.
+
+Tras el descubrimiento de vulnerabilidades en el algoritmo \textsc{DES}, en 1998 la \textsc{EFF}\footnote{\emph{Electronic Frontier Foundation} por sus siglas en ingl\'{e}s.} public\'{o} en Internet la especificaci\'{o}n de una m\'{a}quina capaz de romper el cifrado de este algoritmo\cite{_criptografi-_????}\cite{<scotthyperthought.com>_security_????}. La soluci\'{o}n interina que fue adoptada consiste en realizar el cifrado \textsc{DES} \emph{tres veces}, es decir, cifrar el mensaje con \emph{Triple-DES}.
+
+\newpage
+        \item \textbf {AES}
+
+Es el algoritmo de cifrado sucesor de \textsc{DES}, se basa en \emph{Rijndael} creado por Joan Daemen y Vincent Rijmen. Tiene una longitud variable de llave que puede ser de 128, 192 o 256 bits y realiza el cifrado en bloques de 128 bits \cite{_.pdf_????}\cite{_fips_????-1}.
+
+Gracias a sus caracter\'{i}sticas, este algoritmo puede ser utilizado en procesadores de 8 bits como los que se utilizan en los dispositivos \emph{SmartCard}, 16 bits com\'{u}nmente utilizados en microcontroladores y adem\'{a}s en computadoras de escritorio de 32 y 64 bits.
+
+Para realizar de manera m\'{a}s r\'{a}pida el proceso criptogr\'{a}fico, se han incluido instrucciones espec\'{i}ficas de \textsc{AES} en algunos modelos de procesadores\cite{_microsoft_????} e incluso se pueden programar las tarjetas gr\'{a}ficas \textsc{GPU} para acelerar el proceso de cifrado y descifrado\cite{_gpu_????}.
+
+      \end{itemize}
+
+    \subsubsection {Algoritmos asim\'{e}tricos}
+
+La criptograf\'{i}a de llave p\'{u}blica se basa en la idea de que cada entidad involucrada tenga un par de llaves que est\'{e}n matem\'{a}ticamente relacionadas\cite{weisstein_rsa_????}.
+
+Se utiliza la llave p\'{u}blica de una persona para cifrar el mensaje, mismo que se env\'{i}a a trav\'{e}s de un canal inseguro y al llegar al otro extremo el destinatario hace uso de su llave privada para descifrar el mensaje y acceder a la informaci\'{o}n contenida\cite{_yevgeny.pdf_????}.
+
+      \begin{itemize}
+
+        \item \textbf {RSA}
+
+Creado por Ron \textbf{R}ivest, Adi \textbf{S}hamir y Leonard \textbf{A}dleman, el algoritmo \textsc{RSA} puede ser utilizado para cifrado de mensajes y adem\'{a}s puede realizar operaciones de firma digital. Utiliza operaciones de m\'{o}dulo y exponente de n\'{u}meros primos de gran tama\~{n}o\cite{weisstein_rsa_????}\cite{_slides12.dvi_????}.
+
+        \item \textbf {Curvas el\'{i}pticas}
+
+Tambi\'{e}n denominado \textsc{ECC}\footnote{\emph{Elliptic Curve Cryptography} por sus siglas en ingl\'{e}s.}, utiliza operaciones entre un n\'{u}mero primo y una ecuaci\'{o}n de curva el\'{i}ptica dentro de un \emph{campo finito}\cite{_safecurves:_????}.
+
+Una de sus ventajas primordiales radica en que el tama\~{n}o de las llaves criptogr\'{a}ficas se ve reducido, por ejemplo, una llave sim\'{e}trica de 128 bits es comparable a una llave asim\'{e}trica de 3072 bits, mientras que en curvas el\'{i}pticas, s\'{o}lo es necesario utilizar una clave con longitud de 256 bits\cite{_elliptic_????}.
+
+      \end{itemize}
+
+\newpage
+    \subsubsection {Algoritmos digestivos}
+
+Estos algoritmos, tambi\'{e}n conocidos como \emph{funciones hash} o \emph{funciones de una v\'{i}a} producen una suma de verificaci\'{o}n a partir de un mensaje dado. Sus principales caracter\'{i}sticas son las siguientes:
+
+\begin{enumerate}
+  \setlength{\itemsep}{0.5em}
+  \item Es r\'{a}pido calcular el \emph{hash} de un mensaje
+  \item No es posible regenerar el mensaje a partir de su \emph{hash}
+  \item Si se cambia el mensaje, el valor del \emph{hash} asociado tambi\'{e}n cambia
+\end{enumerate}
+
+A continuaci\'{o}n se describen algunas funciones \emph{hash} empleadas en \textsc{SSL} y \textsc{TLS}:
+
+
+      \begin{itemize}
+
+%         \item \textbf {RC4}
+% 
+% Creado por Ron Rivest de \textsc{RSA}, utiliza permutaciones y la funci\'{o}n \texttt{XOR} 
+% El algoritmo \textsc{RC4} no ser\'{a} soportado en \textsc{TLS} puesto que el \textsc{RFC7465} lo prohibe expresamente debido a que se han encontrado fallas explotables en el\cite{<andreipomicrosoft.com>_prohibiting_????}. %rfc7465
+
+        \item \textbf {MD5}
+
+Fue creado por Ron Rivest de \textsc{RSA} y publicado en el \textsc{RFC1321}\cite{rivest_md5_????}, procesa la entrada en bloques de 512 bits y obtiene como salida una firma con longitud de 128 bits.
+
+Debido a que se han encontrado \emph{colisiones}\footnote{Dos mensajes diferentes que generan el mismo valor de \emph{hash}.} en el algoritmo \textsc{MD5} es considerado \textbf{no seguro}\cite{project_weak_2013} y se ha prohibido su uso junto con \textsc{SSLv2} en el \textsc{RFC6176}\cite{<>_prohibiting_????}.
+
+        \item \textbf {SHA1 y SHA256}
+
+Publicada por el \textsc{NIST} en el \textsc{RFC3174}\cite{3rd_us_????}, \textsc{SHA1} obtiene una salida de 160 bits al procesar de manera secuencial bloques de entrada con longitud de 512 bits.
+
+\textsc{SHA256} proviene de la familia \textsc{SHA-2} publicada en el \textsc{RFC4634}\cite{hansen_us_????}, produce una salida de longitud fija con 256 bits y procesa bloques de 512 bits de longitud. A\'{u}n no se han encontrado vulnerabilidades o colisiones en esta familia de funciones, por lo que se consideran seguras.
+
+      \end{itemize}
+
+    \subsubsection {Intercambio de llaves}
+
+Un paso esencial en un proceso de criptograf\'{i}a asim\'{e}trica es realizar el intercambio de las llaves p\'{u}blicas de las partes involucradas\cite{_keyless_????}, algunas t\'{e}cnicas se basan en la confianza que los clientes tienen en una entidad central (Autoridad Certificadora) y existen otros esquemas donde el grado de confianza se mide dependiendo de que tanto confia la comunidad en un individuo (\emph{Web of Trust})\cite{_building_????}.
+%iacr
+
+      \begin{itemize}
+
+        \item \textbf {Diffie-Hellman}
+
+Este m\'{e}todo de intercambio de llaves se basa en el problema de la factorizaci\'{o}n de \emph{logaritmos discretos}, su ventaja principal radica en que la clave secreta nunca es transmitida. Las partes involucradas intercambian n\'{u}meros primos y calculan el exponente que ser\'{a} utilizado como clave secreta mediante operaciones modulares\cite{_samplesections.pdf_????}.
+
+      \end{itemize}
+
   \subsection {Vulnerabilidades}
 
 Una vulnerabilidad es un fallo en la l\'{o}gica o una situaci\'{o}n que se da en condiciones especiales con la que un programa o proceso realiza tareas para las que no fue originalmente destinado. Cuando se alcanzan estas condiciones y se modifica la ejecuci\'{o}n del programa se dice que se ha \textit{explotado} la vulnerabilidad \cite{padilla_buenas_2009}.
+
+        \subsubsection{BEAST}
+
+Descubierto en 2011, este ataque denominado \emph{\textbf{B}rowser \textbf{E}xploit \textbf{A}gainst \textbf{S}SL/\textbf{T}LS} se aprovecha de los vectores de inicializaci\'{o}n del cifrado por bloques \textsc{CBC} para inyectar cadenas en el tr\'{a}fico cifrado de la v\'{i}ctima\cite{_beast.pdf_????}. Para mitigar este ataque se recomienda deshabilitar el soporte de \textsc{SSLv3} y utilizar \textsc{TLSv1.1} o superior\cite{_ssl_????-2}.
+
+        \subsubsection{CRIME}
+
+El ataque \emph{\textbf{C}ompression \textbf{R}atio \textbf{I}nfo-leak \textbf{M}ade \textbf{E}asy} fue publicado en 2012, toma ventaja de fallas en la compresi\'{o}n de los protocolos \textsc{HTTPS} y \textsc{SPDY} permitiendo al atacante robar las \emph{cookies} de sesi\'{o}n para hacerse pasar por la v\'{i}ctima. Para mitigarlo es necesario desactivar la compresi\'{o}n realizada con \texttt{mod\_deflate}\cite{goodin_crack_2012}.
+
+        \subsubsection{BREACH}
+
+En 2013 se dio a conocer el ataque llamado \emph{\textbf{B}rowser \textbf{R}econnaissance and \textbf{E}xfiltration via \textbf{A}daptive \textbf{C}ompression of \textbf{H}ypertext} que fue desarrollado por los creadores de \textsc{CRIME} y como su nombre lo indica, utiliza la compresi\'{o}n del tr\'{a}fico \textsc{HTTP}. En este caso se debe desactivar la compresi\'{o}n de la conexi\'{o}n \textsc{SSL} o \textsc{TLS} y del protocolo \textsc{HTTP}\cite{_breach_????}.
+
+        \subsubsection{POODLE}
+
+La vulnerabilidad conocida como \emph{\textbf{P}adding \textbf{O}racle \textbf{o}n \textbf{D}owngraded \textbf{L}egacy \textbf{E}ncryption} por sus siglas en ingl\'{e}s, fue descubierta en 2014 y toma ventaja de la compatibilidad que implementan los servidores con mecanismos de cifrado d\'{e}biles como el protocolo \textsc{SSLv3} y el algoritmo \textsc{RC4}. Se recomienda desactivar el protocolo \textsc{SSLv3} y el uso de \texttt{TLS\_FALLBACK\_SCSV} en el motor de \textsc{TLS}\cite{_ssl-poodle.pdf_????}.
+
+        \subsubsection{Heartbleed}
+
+Esta vulnerabilidad en la biblioteca de cifrado OpenSSL fue descubierta en 2014 y al explotarla hac\'{i}a posible leer secciones de memoria privadas donde se aloja la llave privada utilizada para cifrar el tr\'{a}fico de red\cite{_heartbleed_????}. Para mitigar esta vulnerabilidad es necesario actualizar a una versi\'{o}n de OpenSSL mayor o igual a \texttt{1.0.1f} o recompilar utilizando la opci\'{o}n \texttt{-DOPENSSL\_NO\_HEARTBEATS} para deshabilitar la funcionalidad afectada\cite{_vulnerabilidad_????}.
+
+        \subsubsection{FREAK}
+
+El ataque \emph{\textbf{F}actoring \textbf{R}SA \textbf{E}xport \textbf{K}eys} publicado en 2015 funciona al interceptar el tr\'{a}fico \textsc{HTTPS} entre clientes y servidores vunerables, para despu\'{e}s forzarlos a establecer la conexi\'{o}n utilizando algoritmos de cifrado d\'{e}biles denominados \texttt{RSA\_EXPORT}. Se recomienda deshabilitar el uso de dichos algoritmos y activar una lista de mecanismos de cifrado denominada \emph{Cipher List}\cite{_tracking_????}.
+%freakattack
 
   \subsection {\textit{Hardening}}
 

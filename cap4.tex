@@ -7,9 +7,30 @@
 
 Con el objeto de dar soporte a las plataformas m\'{a}s comunes, se realizaron pruebas sobre los principales sistemas operativos de escritorio y m\'{o}viles. Gracias a que el protocolo \textsc{WebDAV} es est\'{a}ndar, s\'{o}lo es cuesti\'{o}n de instalar un cliente en el sistema operativo o verificar si esta funcionalidad ya est\'{a} incorporada para acceder a servidores de archivos de este tipo.
 
+    \section {Plan de pruebas}
+
+A continuaci\'{o}n se muestra una lista de las pruebas que se realizaron en el servidor y la descripci\'{o}n de cada una:
+
+\begin{itemize}
+
+  \item \textbf{Pruebas de compatibilidad multiplataforma}
+
+Se verific\'{o} que los usuarios pudieran establecer la conexi\'{o}n al servidor siguiendo los manuales mostrados en el \textup{Ap\'{e}ndice \ref{apdx:a}}.
+
+  \item \textbf{Pruebas de roles de usuario}
+
+Se revis\'{o} que los perfiles de usuario tuvieran el acceso correspondiente a los archivos y los privilegios necesarios para realizar sus actividades.
+
+  \item \textbf{Pruebas de seguridad web}
+
+En esta secci\'{o}n se valid\'{o} que el servidor no contara con servicios adicionales escuchando en puertos de red, adem\'{a}s se realiz\'{o} una prueba automatizada de las cuentas de usuario y sus privilegios de escritura, por \'{u}ltimo se verific\'{o} el nivel de protecci\'{o}n que ofrecen los par\'{a}metros de cifrado configurados en Apache \textsc{HTTPD}.
+
+\end{itemize}
+
+\newpage
     \section {Compatibilidad multiplataforma}
 
-En el \textup{Ap\'{e}ndice \ref{apdx:a}}\footnote{P\'{a}gina \pageref{apdx:a}} se muestran los pasos necesarios para realizar la conexi\'{o}n al servidor \textsc{WebDAV} tanto en sistemas operativos de escritorio como en plataformas de m\'{o}viles.
+En el \textup{Ap\'{e}ndice \ref{apdx:a}} se muestran los pasos necesarios para realizar la conexi\'{o}n al servidor \textsc{WebDAV} tanto en sistemas operativos de escritorio como en plataformas de m\'{o}viles.
 
     \section {Pruebas de roles de usuario}
 
@@ -43,6 +64,10 @@ El personal de la \emph{Unidad de C\'{o}mputo} verific\'{o} que cada tipo de usa
 
       \subsection {Detecci\'{o}n de puertos abiertos}
 
+Se ejecut\'{o} una b\'{u}squeda de puertos abiertos en el servidor utilizando el programa \emph{nmap}. El siguiente comando realiza la verificaci\'{o}n de todo el rango de puertos \textsc{TCP} enviando paquetes de tipo \textsc{SYN} y adem\'{a}s intenta obtener la versi\'{o}n del programa que escucha en el puerto encontrado.
+
+%, los argumentos indican que no se debe de hacer \emph{ping} al \textit{host} (\texttt{-Pn}), se realiza una verificaci\'{o}n de los puertos \textsc{TCP} enviando un paquete de tipo \textsc{SYN} (\texttt{-sS}), se intenta obtener la versi\'{o}n del software que escucha en el puerto (\texttt{-sV} y \texttt{--version-all}), se realiza una b\'{u}squeda con el perfil r\'{a}pido (\texttt{-T5}) y se verifica todo el rango de puertos (\texttt{-p 0-65535}), por \'{u}ltimo se guarda el reporte (\texttt{-oA}).
+
 {
 \scriptsize
 \linespread{1}
@@ -63,6 +88,7 @@ Nmap done: 1 IP address (1 host up) scanned in 256.32 seconds
 \end{verbatim}
 }
 
+% Se encontraron tres servicios: \textsc{SSH}, \textsc{HTTP} y \textsc{HTTPS}. 
 
       \subsection {Autenticaci\'{o}n}
 
@@ -90,12 +116,16 @@ Las pruebas de autenticaci\'{o}n se realizaron de manera automatizada, se utiliz
 Al realizar una verificaci\'{o}n de seguridad del cifrado \textsc{SSL} utilizado en el \textsl{appliance}, se obtuvo una calificaci\'{o}n regular \textbf{C} y se encontraron los siguientes problemas con la configuraci\'{o}n predeterminada:
 
 \begin{itemize}
-  \item Vulnerabilidad al ataque \texttt{POODLE}\footnote{Padding Oracle On Downgraded Legacy Encryption} \cite{_ssl_????-1} \cite{_ssl-poodle_????} \cite{_this_????} \cite{barnes_poodle_????} \cite{_security_????-1}
+  \item Vulnerabilidad al ataque \texttt{POODLE}\footnote{Padding Oracle On Downgraded Legacy Encryption} \cite{_ssl_????-1} \cite{_ssl-poodle.pdf_????} \cite{_this_????} \cite{barnes_poodle_????} \cite{_security_????-1}
 
   \item El servidor soporta el algoritmo cifrado \texttt{RC4}, mismo que es clasificado como d\'{e}bil \cite{_security_????}
 
+  \item Est\'{a} habilitado el soporte de \textsc{SSLv3}
+
   \item La configuraci\'{o}n de \texttt{SSL} aplicada no permite el uso de \textsl{Perfect Forward Secrecy} \cite{_forward_2016}
 \end{itemize}
+
+A comtinuaci\'{o}n se muestra una captura de pantalla con los resultados obtenidos tras la primer prueba:
 
   \picturebox{figures/SSL-Labs_Test-Default}{772}{476}{0.8}{ssl-test-default}{Prueba de par\'{a}metros de cifrado \textsc{HTTPS} est\'{a}ndar}{}
 

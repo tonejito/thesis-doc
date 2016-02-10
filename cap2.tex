@@ -11,7 +11,7 @@ Los usuarios de la Divisi\'{o}n de Ingenier\'{i}as Civil y Geom\'{a}tica (\texts
 
 Adicionalmente el personal de la Unidad de C\'{o}mputo almacena los archivos de instalaci\'{o}n de programas y controladores en dispositivos como memorias \textsc{USB}, discos duros externos o en discos \'{o}pticos y los utiliza al dar mantenimiento a los equipos de c\'{o}mputo de la divisi\'{o}n.
 
-El problema al mantener los archivos en carpetas compartidas o utilizar un medio de almacenamiento externo es que los datos dejan de estar disponibles si el equipo que comparte la carpeta se encuentra apagado o si el medio de almacenamiento no est\'{a} conectado al equipo donde se procesa la informaci\'{o}n.
+El problema al mantener los archivos en carpetas compartidas o utilizar un medio de almacenamiento externo es que los datos dejan de estar disponibles si el equipo que comparte la carpeta tiene problemas de conectividad o si el medio de almacenamiento no est\'{a} conectado al equipo donde se procesa la informaci\'{o}n.
 
 Por ejemplo, si un profesor necesita compartir algunos archivos con los alumnos parar utilizarlos en clase, los copia a una memoria \textsc{USB} y la pasa a cada uno de los estudiantes para que copien los archivos a su equipo. Este proceso, adem\'{a}s de ser tardado, es un proceso propenso a errores donde se puede da\~{n}ar la memoria \textit{flash} que circula entre los equipos, o bien, se puede infectar con \textit{malware}\footnote{\textit{Malware}: \textit{software} malicioso} en un equipo, y al pasar de equipo a equipo se propaga la infecci\'{o}n.
 
@@ -48,16 +48,14 @@ Para la implementaci\'{o}n de este proyecto se utilizar\'{a}n las siguientes tec
   \item OpenLDAP para implementar el directorio de usuarios
 \end{itemize}
 
-% TODO insert grapics to complete page
-
-% \newpage
+\newpage
     \section {Arquitectura del prototipo}
 
 El prototipo ser\'{a} implementado en un servidor proporcionado por la \textsc{DICyG} que almacenar\'{a} los archivos que los profesores utilizan en sus clases, as\'{i} como los programas de instalaci\'{o}n y \textit{software} de controladores de dispositivo que la Unidad de C\'{o}mputo utiliza para dar mantenimiento a los equipos de la divisi\'{o}n.
 
       \subsection {Diagrama funcional}
 
-En el siguiente diagrama se muestra la interfaz de administraci\'{o}n \textsc{SSH} y la interfaz de acceso a los archivos \textsc{WebDAV} sobre \textsc{HTTPS}, ambas utilizan el directorio \textsc{OpenLDAP} para autenticar a los usuarios de manera centralizada.
+La siguiente figura muestra el diagrama de la interfaz de administraci\'{o}n \textsc{SSH} y la interfaz de acceso a los archivos \textsc{WebDAV} sobre \textsc{HTTPS}, ambas utilizan el directorio \textsc{OpenLDAP} para autenticar a los usuarios de manera centralizada.
 
 \diagramblock
 {Diagrama funcional de la soluci\'{o}n propuesta}
@@ -68,8 +66,8 @@ En el siguiente diagrama se muestra la interfaz de administraci\'{o}n \textsc{SS
   \input{figures/diagrama-funcional}
  }
 }
-\newpage
 
+%\newpage
       \subsection {Autenticaci\'{o}n centralizada}
 
 El t\'{e}rmino \textit{autenticaci\'{o}n centralizada} se refiere a contar con un repositorio central de usuarios que permita que las aplicaciones puedan verificar las credenciales de acceso \textit{autenticando} as\'{i} al usuario.
@@ -89,7 +87,7 @@ La estructura propuesta comprende varios contenedores que sirven para separar lo
   \item Contenedor de cuentas de servicio
 \end{itemize}
 
-\newpage
+%\newpage
 \textbf{\\ Contenedor de usuarios \\}
 
 Clasifica los usuarios del sistema por tipo, cada usuario tiene un identificador \'{u}nico asignado llamado \textbf{uid}. Se subdivide en tres ramas:
@@ -130,7 +128,7 @@ Existen tres clases de grupos de usuarios contemplados en el sistema. Esto ayuda
 
 \end{itemize}
 
-\newpage
+%\newpage
 \textbf{\\ Contenedor de materias \\}
 
 Permite almacenar el cat\'{a}logo de las materias que se imparten en la divisi\'{o}n. Se requiere para la asignaci\'{o}n de grupos a los profesores y alumnos.
@@ -155,7 +153,7 @@ El siguiente diagrama muestra la estructura del \'{a}rbol del directorio \textsc
  }
 }
 
-%\newpage
+\newpage
       \subsection {Mecanismos de acceso a los archivos}
 
 Se propone establecer el acceso a los archivos utilizando mecanismos como \textsc{HTTP} est\'{a}ndar y \textsc{WebDAV}.
@@ -192,13 +190,14 @@ Adem\'{a}s del acceso por \textsc{WebDAV} y por medio de un navegador web, el \t
 
         \subsubsection {Interfaz de administraci\'{o}n}
 
-La interfaz de administraci\'{o}n que se propone permite ver, agregar, modificar y borrar registros del directorio. Se utilizar\'{a} la interfaz web \textit{LDAP Account Manager} y adem\'{a}s se puede instalar la herramienta \textit{Apache Directory Studio} en la \textit{workstation} del administrador para realizar  estas tareas.
+La interfaz de administraci\'{o}n que se propone permite ver, agregar, modificar y borrar registros del directorio. Se utilizar\'{a} la interfaz web \textit{LDAP Account Manager} y adem\'{a}s se puede instalar la herramienta \textit{Apache Directory Studio}.
+%en la \textit{workstation} del administrador para realizar  estas tareas.
 
         \subsubsection {Interfaz de cambio de contrase\~{n}a}
 
 Esta interfaz permite tanto al personal de la \emph{Unidad de C\'{o}mputo} como a los profesores cambiar la contrase\~{n}a de acceso que tienen asignada, al realizar esta acci\'{o}n env\'{i}a un correo para notificar que se llev\'{o} acabo dicho cambio.
 
-\newpage
+%\newpage
     \subsection {Especificaci\'{o}n del \textit{appliance}}
 
 En la siguiente secci\'{o}n se muestran las configuraciones del \textit{hardware} y \textit{software} que tendr\'{a} el \textit{appliance}.
@@ -215,12 +214,12 @@ En la siguiente secci\'{o}n se muestran las configuraciones del \textit{hardware
   %\hline
   \textbf{Elemento} & \textbf{M\'{i}nimo} & \textbf{Recomendado} \\
   \hline \hline
-%  \textit{Servidor} & \textbf{Pruebas} & \textbf{Producci\'{o}n} \\
-%  \hline
-  \textit{CPU} & 1x 1 GHz & 2x 2 GHz \\
-  \textit{RAM} & 1 GB & 4 GB \\
-  \textit{Discos Duros} & 1x 80 GB & 2x 500 GB \\
-  \textit{Arreglo \textsc{RAID}} & Sin \textsc{RAID} & \textsc{RAID} 1 \\
+  \textsc{CPU}                         & 1x 1 GHz & 2x 2 GHz        \\
+  \textsc{RAM}                         & 1 GB     & 4 GB            \\
+  Discos Duros                         & 1x 80 GB & 2x 500 GB       \\
+  Arreglo \textsc{RAID}                & \nomark  & \textsc{RAID} 1 \\
+  Fuentes de poder redundantes         & \nomark  & \yesmark        \\
+  Soporte de \emph{TCP Offload Engine} & \nomark  & \yesmark        \\
   %\hline
   \end{tabular}
  } % ending of \makebox
@@ -237,15 +236,15 @@ En la siguiente secci\'{o}n se muestran las configuraciones del \textit{hardware
  {%
   \begin{tabular}[c]{c|c}
   %\hline
-  \textbf{Software} & \textbf{Versi\'{o}n} \\
+  \textbf{Software}               & \textbf{Versi\'{o}n} \\
   \hline \hline
-  \textit{Sistema Operativo} & Debian GNU/Linux 7 \textit{Wheezy} \\
-  \textit{OpenSSH} & v6.0 \\
-  \textit{Apache httpd} & v2.2 \\
-  \textit{OpenLDAP} & v2.4 \\
-  \textit{PHP} & v5.4 \\
-  \textit{LDAP Account Manager} & v4.8 \\
-  \textit{LDAP Toolbox: Self Service Password} & v0.8 \\
+  Sistema Operativo & Debian GNU/Linux 7 \textit{Wheezy} \\
+  OpenSSH                                         & v6.0 \\
+  Apache \textsc{HTTPD}                           & v2.2 \\
+  OpenLDAP                                        & v2.4 \\
+  \textsc{PHP}                                    & v5.4 \\
+  \textsc{LDAP} Account Manager                   & v4.8 \\
+  \textsc{LDAP} Toolbox: Self Service Password    & v0.8 \\
   %\hline
   \end{tabular}
  } % ending of \makebox
