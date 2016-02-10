@@ -135,8 +135,11 @@ edit:
 	$(VIM) $(ABSTRACT) $(ACK) $(INTRO) $(CHAPTERS) $(APDX)
 
 # Optimize pdf for print size
+# http://stackoverflow.com/a/24117633
+# http://blog.rot13.org/2011/05/optimize-pdf-file-size-using-ghostscript.html
 optimize:	
-	$(GS) $(GS_QUIET) -dBATCH -dNOPAUSE -sPAPERSIZE=$(PAPERSIZE) -sDEVICE=pdfwrite -dPDFSETTINGS=/$(PDFSETTINGS) -dUseCIEColor=true -sOutputFile=$(MAIN)..pdf $(MAIN).pdf
+	mv $(MAIN).pdf $(MAIN)..pdf
+	$(GS) $(GS_QUIET) -dBATCH -dNOPAUSE -sPAPERSIZE=$(PAPERSIZE) -sDEVICE=pdfwrite -dPDFSETTINGS=/$(PDFSETTINGS) -dDetectDuplicateImages=true -dCompatibilityLevel=1.4 -dUseCIEColor=true -sOutputFile=$(MAIN).pdf $(MAIN)..pdf
 	$(LS) -l --sort=size $(MAIN).pdf $(MAIN)..pdf
 
 $(MAIN).dvi:	$(MAIN).tex $(FIGURES) $(FILES)
@@ -144,7 +147,9 @@ $(MAIN).dvi:	$(MAIN).tex $(FIGURES) $(FILES)
 	$(LATEX) $*.tex; 
 	$(BIBTEX) $*;
 	$(LATEX) $*.tex;
-	$(LATEX) $*.tex; 
+	$(LATEX) $*.tex;
+	#$(MAKEGLOSSARIES) $*
+	#$(LATEX) $*.tex; 
 	#while grep -s 'Rerun' $*.log 2> /dev/null; do	\
 	#	$(LATEX) $*.tex;			\
 	#done
