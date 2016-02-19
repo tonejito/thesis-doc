@@ -6,6 +6,7 @@ RM=		rm
 LATEX=		latex
 PDFLATEX=	pdflatex
 BIBTEX=		bibtex
+MAKEGLOSSARIES=	makeglossaries
 DVIPS=		dvips
 PS2PDF=		ps2pdf
 GS=		gs
@@ -143,13 +144,11 @@ optimize:
 	$(LS) -l --sort=size $(MAIN).pdf $(MAIN)..pdf
 
 $(MAIN).dvi:	$(MAIN).tex $(FIGURES) $(FILES)
-	$(LATEX) $*.tex; 
-	$(LATEX) $*.tex; 
-	$(BIBTEX) $*;
-	$(LATEX) $*.tex;
-	$(LATEX) $*.tex;
-	#$(MAKEGLOSSARIES) $*
-	#$(LATEX) $*.tex; 
+	$(LATEX) $*.tex 
+	$(BIBTEX) $*
+	$(LATEX) $*.tex
+	$(MAKEGLOSSARIES) $*
+	$(LATEX) $*.tex 
 	#while grep -s 'Rerun' $*.log 2> /dev/null; do	\
 	#	$(LATEX) $*.tex;			\
 	#done
