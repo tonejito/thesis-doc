@@ -441,18 +441,7 @@
 %\DeclareUnicodeCharacter{2717}{\notmark}
 
 % Works only in final (non-draft) mode
-\usepackage[pagebackref=true]{hyperref}
 \usepackage{url}
-
-% https://en.wikibooks.org/wiki/LaTeX/Glossary
-% Use package for glossary
-%\usepackage{glossaries}
-\usepackage[toc]{glossaries}
-%\usepackage[toc,acronym]{glossaries}
-%\usepackage[acronym]{glossaries}
-\input{glossary}
-\makeglossaries
-\glsaddall
 
 % Works when not using verbatim, verb texttt or tt inside it
 \usepackage{ifdraft}
@@ -516,3 +505,18 @@
 % http://tex.stackexchange.com/a/38678
 \usepackage{textcomp}
 
+%	http://tex.stackexchange.com/a/4900
+
+% Must be the second-last package that is loaded
+\usepackage[pagebackref=true]{hyperref}
+
+% Must be the last package, loaded after hyperref
+% https://en.wikibooks.org/wiki/LaTeX/Glossary
+% Use package for glossary
+%\usepackage{glossaries}
+\usepackage[toc]{glossaries}
+%\usepackage[toc,acronym]{glossaries}
+%\usepackage[acronym]{glossaries}
+\input{glossary}
+\makeglossaries
+\glsaddall
