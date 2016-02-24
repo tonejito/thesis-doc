@@ -30,7 +30,7 @@
 	{Ingeniero en Computaci\'{o}n}
 	{Andr\'{e}s Leonardo Hern\'{a}ndez Berm\'{u}dez}
 	{M.I. Tanya Itzel Arteaga Ricci}
-	{Ciudad Universitaria, Enero 2016}
+	{Ciudad Universitaria, Febrero 2016}
 
 \thesispdfinfo
 	{xNAS: Appliance de almacenamiento en red por medio de WebDAV}
@@ -63,10 +63,21 @@
 }
 {
 %\pagestyle{empty}
-\printglossaries
+%\cleardoublepage  
+\phantomsection  
+%\chapter*{Glosario}
+\addcontentsline{toc}{chapter}{Glosario}
+\label{chap:glossary}
+\printglossary[title=Glosario,toctitle=Glosario]
+%\printglossaries
+}
+{
+% Bibliography
 \include{bib}
-
+}
+{
 % Add empty page at the end
 \newpage\null\thispagestyle{empty}\newpage
 }
 \end{document}
+

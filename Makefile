@@ -178,7 +178,7 @@ clean.doc:
 
 # Suggested by Neil B.
 clean:	clean.doc
-	for ext in aux out log lot lof blg bbl toc nav snm vrb brf glo ist ; \
+	for ext in aux out log lot lof blg bbl toc nav snm vrb brf glo ist gls glg ; \
 	do \
 	  $(RM) -f *.aux \
 		$(MAIN).$$ext $(PRESENTATION).$$ext $(MAN).$$ext ; \
