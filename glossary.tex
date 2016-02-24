@@ -1,15 +1,15 @@
-%\newacronym[longplural=Frames per Second]{FPS}{fpsLabel}{FPS}
-
-%\newglossaryentry{Linux}
-%{
-%  name=Linux,
-%  description={is a generic term referring to the family of Unix-like
-%               computer operating systems that use the Linux kernel},
-%  plural=Linuces
-%
-%}
-
 %       Glossary
+
+%\newacronym[longplural=<desc>]{<label>}{<abbrv>}{<full>}
+
+%	http://tex.stackexchange.com/a/69569
+%\newglossaryentry{<label>}
+%{
+%  name={<appears on glossary>},
+%  text={<appears on text>},
+%  description={<desc>},
+%  plural={<plural>}
+%}
 
 \newglossaryentry{KB}
 {
@@ -34,16 +34,6 @@
   name=TB,
   description={\textit{TeraByte} - 1024\textsuperscript{4} bytes = 1099511627776 bytes},
 }
-
-%       Acronyms
-% \newacronym{<label>}{<abbrv>}{<full>}
-% xNAS
-
-%\newglossaryentry{}
-%{
-%  name={},
-%  description={},
-%}
 
 \newglossaryentry{EFF}
 {
@@ -203,7 +193,8 @@
 }
 \newglossaryentry{firewall}
 {
-  name={firewall},
+  name={Firewall},
+  text={firewall},
   description={Dispositivof\'{i}sico o de software que bloquea las conexiones de red entrantes y/o salientes},
 }
 \newglossaryentry{Proxy}
@@ -223,7 +214,8 @@
 %}
 \newglossaryentry{rollback}
 {
-  name={rollback},
+  name={Rollback},
+  text={rollback},
   description={Acci\'{o}n que deshace los cambios realizados},
 }
 \newglossaryentry{Ruby}
@@ -243,13 +235,15 @@
 }
 \newglossaryentry{script}
 {
-  name={script},
+  name={Script},
+  text={script},
   description={Programa escrito en un archivo de texto, que es le\'{i}do y ejecutado por un int\'{e}rprete},
   plural={scripts}
 }
 \newglossaryentry{frontend}
 {
-  name={frontend},
+  name={Frontend},
+  text={frontend},
   description={Interfaz de usuario},
 }
 \newglossaryentry{PowerShell}
@@ -259,12 +253,14 @@
 }
 \newglossaryentry{bootstrap}
 {
-  name={bootstrap},
+  name={Bootstrap},
+  text={bootstrap},
   description={\Gls{script} m\'{i}nimo de inicializaci\'{o}n},
 }
 \newglossaryentry{tarball}
 {
-  name={tarball},
+  name={Tarball},
+  text={tarball},
   description={Formato del archivo contenedor utilizado para almacenar paquetes de software},
 }
 %\newglossaryentry{SYN}
@@ -284,17 +280,20 @@
 }
 \newglossaryentry{aliases}
 {
-  name={aliases},
+  name={\emph{aliases}},
+  text={aliases},
   description={Archivo de configuraci\'{o}n que contiene los alias de correo del sistema, utilizado por el \gls{MTA}},
 }
 \newglossaryentry{cron}
 {
-  name={cron},
+  name={Cron},
+  text={cron},
   description={Servicio del sistema que se utiliza para definir y ejecutar tareas programadas},
 }
 \newglossaryentry{at}
 {
-  name={at},
+  name={AT},
+  text={at},
   description={Servicio del sistema que agenda la ejecuci\'{o}n de un comando en una fecha espec\'{i}fica},
 }
 %\newglossaryentry{hardening}
@@ -304,47 +303,56 @@
 %}
 \newglossaryentry{root}
 {
-  name={root},
+  name={\emph{root}},
+  text={root},
   description={Usuario administrador en sistemas compatibles con \textsc{UNIX}},
 }
 \newglossaryentry{loopback}
 {
-  name={loopback},
+  name={Loopback},
+  text={loopback},
   description={Interfaz de red virtual que comunica \'{u}nicamente al \gls{host}, utilizada por procesos internos del sistema operativo},
 }
 \newglossaryentry{host}
 {
-  name={host},
+  name={Host},
+  text={host},
   description={Equipo conectado a una red},
 }
 \newglossaryentry{localhost}
 {
-  name={localhost},
+  name={\emph{localhost}},
+  text={localhost},
   description={Nombre de red que se refiere al \gls{host} actual, est\'{a} asociado al bloque de direcciones \textsc{IPv4} \texttt{127.0.0.0/8} y a la direcci\'{o}n reservada \texttt{::1} de \textsc{IPv6}},
 }
 \newglossaryentry{hardware}
 {
-  name={hardware},
+  name={Hardware},
+  text={hardware},
   description={Partes f\'{i}sicas de un equipo de c\'{o}mputo},
 }
 \newglossaryentry{software}
 {
-  name={software},
+  name={Software},
+  text={software},
   description={Sistema operativo y programas instalados en un equipo de c\'{o}mputo},
 }
 \newglossaryentry{firmware}
 {
-  name={firmware},
+  name={Firmware},
+  text={firmware},
   description={L\'{o}gica programada de un circuito},
 }
 \newglossaryentry{Malware}
 {
-  name={malware},
+  name={Malware},
+  text={malware},
   description={\Gls{Software} malicioso},
 }
 \newglossaryentry{shell}
 {
   name={Shell},
+  text={shell},
   description={Int\'{e}rprete de comandos del sistema operativo},
 }
 \newglossaryentry{GNU}
@@ -359,7 +367,9 @@
 }
 \newglossaryentry{kernel}
 {
-  name=kernel,
+  name=Kernel,
+  text=kernel,
   description={N\'{u}cleo del sistema operativo, ejecuta las tareas en el CPU y administra los recursos del sistema},
 }
 % IP CIDR banner
+
