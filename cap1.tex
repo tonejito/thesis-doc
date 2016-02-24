@@ -27,7 +27,7 @@ Es una variante de la memoria \textsc{RAM} donde se almacena la informaci\'{o}n 
 
   \item \textbf{ROM}
 
-Es una memoria de s\'{o}lo lectura que puede ser grabada una sola vez, generalmente se utilizaba para almacenar el firmware de dispositivos o alg\'{u}n programa embebido en \textit{hardware} que requiere una salida fija para una entrada determinada \cite{_rom_????}.
+Es una memoria de s\'{o}lo lectura que puede ser grabada una sola vez, generalmente se utilizaba para almacenar el firmware de dispositivos o alg\'{u}n programa embebido en \emph{\gls{hardware}} que requiere una salida fija para una entrada determinada \cite{_rom_????}.
 
   \item \textbf{EEPROM}
 
@@ -297,13 +297,13 @@ En este tipo de soluciones se pueden tener grandes vol\'{u}menes de datos dispon
   \subsection {Arreglos RAID}
   \label{Arreglos-RAID}
 
-El t\'{e}rmino \textsc{RAID} es un acr\'{o}nimo de \emph{Redundant Array of Independent Disks} (Arreglo Redundante de Discos Independientes)\footnote{Dependiendo de la bibliograf\'{i}a el t\'{e}rmino puede ser tambi\'{e}n referido como \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Baratos).} \cite{_bytepile.com_????}. Es una tecnolog\'{i}a que se basa en combinar m\'{u}ltiples discos para que se comporten como uno solo. Dependiendo el modo de operaci\'{o}n, ofrece la posibilidad de tomar varios discos y sumar el espacio de almacenamiento o bien replicar los datos escribi\'{e}ndolos en varios discos para tener tolerancia a fallos \cite{_raid_????-2}.
+El t\'{e}rmino \textsc{\gls{RAID}} es un acr\'{o}nimo de \emph{Redundant Array of Independent Disks} (Arreglo Redundante de Discos Independientes)\footnote{Dependiendo de la bibliograf\'{i}a el t\'{e}rmino puede ser tambi\'{e}n referido como \emph{Redundant Array of Inexpensive Disks} (Arreglo Redundante de Discos Baratos).} \cite{_bytepile.com_????}. Es una tecnolog\'{i}a que se basa en combinar m\'{u}ltiples discos para que se comporten como uno solo. Dependiendo el modo de operaci\'{o}n, ofrece la posibilidad de tomar varios discos y sumar el espacio de almacenamiento o bien replicar los datos escribi\'{e}ndolos en varios discos para tener tolerancia a fallos \cite{_raid_????-2}.
 
-Los arreglos de disco se pueden configurar por tarjetas dedicadas de \textsl{hardware} o mediante configuraci\'{o}n de \textsl{software} en el sistema operativo. En los \emph{arreglos por \textsl{hardware}}, el \textsl{firmware} de la tarjeta controladora tiene los algoritmos encargados de leer, escribir y sincronizar los datos, mientras que en los \emph{arreglos por \textsl{software}} el \textsl{kernel} del sistema operativo es el encargado de realizar estas operaciones \cite{_chapter_????}.
+Los arreglos de disco se pueden configurar por tarjetas dedicadas de \emph{\gls{hardware}} o mediante configuraci\'{o}n de \emph{\gls{software}} en el sistema operativo. En los \emph{arreglos por \gls{hardware}}, el \emph{\gls{firmware}} de la tarjeta controladora tiene los algoritmos encargados de leer, escribir y sincronizar los datos, mientras que en los \emph{arreglos por \gls{software}} el \textsl{\gls{kernel}} del sistema operativo es el encargado de realizar estas operaciones \cite{_chapter_????}.
 
 \subsubsection*{Tipos de arreglo RAID}
 
-A continuaci\'{o}n se muestra la descripci\'{o}n de los tipos de arreglo \textsc{RAID} que se pueden implementar tanto en \textit{hardware} y en \textit{software} con las tarjetas controladoras actuales. \footnote{Los tipos 2, 3 y 4 de \textsc{RAID} no son comunes y generalmente no son soportados.}
+A continuaci\'{o}n se muestra la descripci\'{o}n de los tipos de arreglo \textsc{\gls{RAID}} que se pueden implementar tanto en \emph{\gls{hardware}} y en \emph{\gls{software}} con las tarjetas controladoras actuales. \footnote{Los tipos 2, 3 y 4 de \textsc{\gls{RAID}} no son comunes y generalmente no son soportados.}
 
 \begin{itemize}
 
@@ -363,9 +363,9 @@ El rendimiento de escritura es menor al que presenta un solo disco debido a que 
 \newpage
   \item \textbf{RAID 5 - \textit{Stripe with distributed parity}}
 
-En este tipo de arreglo se dividen los datos en bloques de manera similar a \textsc{RAID} 0 y adem\'{a}s se calcula un bloque de paridad que sirve para reconstruir los datos si uno de los discos falla (ver figura).
+En este tipo de arreglo se dividen los datos en bloques de manera similar a \textsc{\gls{RAID}} 0 y adem\'{a}s se calcula un bloque de paridad que sirve para reconstruir los datos si uno de los discos falla (ver figura).
 
-Esta configuraci\'{o}n de \textsc{RAID} tiene tolerancia a fallos siempre y cuando no falle m\'{a}s de un disco en el arreglo. Se requieren por lo menos tres discos para configurar un arreglo de este tipo.
+Esta configuraci\'{o}n de \textsc{\gls{RAID}} tiene tolerancia a fallos siempre y cuando no falle m\'{a}s de un disco en el arreglo. Se requieren por lo menos tres discos para configurar un arreglo de este tipo.
 
 Dado que se calcula la paridad de los bloques de datos, se debe restar el tama\~{n}o de un disco para obtener el espacio m\'{a}ximo utilizable.
 
@@ -381,9 +381,9 @@ Dado que se calcula la paridad de los bloques de datos, se debe restar el tama\~
 \newpage
   \item \textbf{RAID 6 - \textit{Stripe with \textsl{dual} distributed parity}}
 
-Su funcionamiento es similar al de \textsc{RAID} 5 s\'{o}lo que se calculan dos bloques de paridad para cada bloque de datos (ver figura).
+Su funcionamiento es similar al de \textsc{\gls{RAID}} 5 s\'{o}lo que se calculan dos bloques de paridad para cada bloque de datos (ver figura).
 
-Esta configuraci\'{o}n de arreglo puede tolerar el fallo de hasta dos discos duros, mismos que se reconstruyen utilizando los bloques de paridad. Se requieren al menos cuatro discos para hacer un arreglo \textsc{RAID} 6.
+Esta configuraci\'{o}n de arreglo puede tolerar el fallo de hasta dos discos duros, mismos que se reconstruyen utilizando los bloques de paridad. Se requieren al menos cuatro discos para hacer un arreglo \textsc{\gls{RAID}} 6.
 
 Las operaciones de escritura tardan m\'{a}s porque se deben calcular dos bloques de paridad, mientras que las operaciones de lectura no se ven afectadas.
 
@@ -405,9 +405,9 @@ Las operaciones de escritura tardan m\'{a}s porque se deben calcular dos bloques
 
   \item \textbf{RAID 01 / RAID 0+1}
 
-Se compone por un arreglo \textsc{RAID} 1 (\textit{Mirror}) que replica los datos contenidos en dos arreglos \textsc{RAID} 0 (\textit{Stripe}). Se requiere un m\'{i}nimo de cuatro discos para hacer esta configuraci\'{o}n (ver figura).
+Se compone por un arreglo \textsc{\gls{RAID}} 1 (\textit{Mirror}) que replica los datos contenidos en dos arreglos \textsc{\gls{RAID}} 0 (\textit{Stripe}). Se requiere un m\'{i}nimo de cuatro discos para hacer esta configuraci\'{o}n (ver figura).
 
-Si fallan uno o dos discos del mismo arreglo \textsc{RAID} 0, el arreglo \textsc{RAID} 1 entra en modo degradado sin perder los datos. Si adem\'{a}s falla un disco de otro arreglo \textsc{RAID} 0, entonces todos los datos se pierden.
+Si fallan uno o dos discos del mismo arreglo \textsc{\gls{RAID}} 0, el arreglo \textsc{\gls{RAID}} 1 entra en modo degradado sin perder los datos. Si adem\'{a}s falla un disco de otro arreglo \textsc{\gls{RAID}} 0, entonces todos los datos se pierden.
 
 \diagramblock
 {Diagrama de funcionamiento del arreglo \textsc{RAID-01}}
@@ -422,9 +422,9 @@ Si fallan uno o dos discos del mismo arreglo \textsc{RAID} 0, el arreglo \textsc
 \newpage
   \item \textbf{RAID 10 / RAID 1+0}
 
-Consiste en un arreglo \textsc{RAID} 0 \textit{Stripe} conformado por dos o m\'{a}s arreglos \textsc{RAID} 1 \textit{Mirror}. El sistema operativo detecta la presencia de un solo disco mientras que este se conforma por un arreglo \textsc{RAID} 0 \textit{Stripe} que une los dos arreglos \textsc{RAID} 1 \textit{Mirror} (ver figura).
+Consiste en un arreglo \textsc{\gls{RAID}} 0 \textit{Stripe} conformado por dos o m\'{a}s arreglos \textsc{\gls{RAID}} 1 \textit{Mirror}. El sistema operativo detecta la presencia de un solo disco mientras que este se conforma por un arreglo \textsc{\gls{RAID}} 0 \textit{Stripe} que une los dos arreglos \textsc{\gls{RAID}} 1 \textit{Mirror} (ver figura).
 
-Si un disco de alg\'{u}n arreglo \textsc{RAID} 1 falla, este entra en modo degradado y el funcionamiento del arreglo \textsc{RAID} 0 no se ve afectado. \footnote{Salvo por la perdida de rendimiento en el arreglo.} Si fallan dos discos del mismo arreglo \textsc{RAID} 1, entonces el arreglo \textsc{RAID} 0 pierde los datos. Se requieren por lo menos cuatro discos para hacer esta configuraci\'{o}n.
+Si un disco de alg\'{u}n arreglo \textsc{\gls{RAID}} 1 falla, este entra en modo degradado y el funcionamiento del arreglo \textsc{\gls{RAID}} 0 no se ve afectado. \footnote{Salvo por la perdida de rendimiento en el arreglo.} Si fallan dos discos del mismo arreglo \textsc{\gls{RAID}} 1, entonces el arreglo \textsc{\gls{RAID}} 0 pierde los datos. Se requieren por lo menos cuatro discos para hacer esta configuraci\'{o}n.
 
 \end{itemize}
 
@@ -476,7 +476,7 @@ Si un disco de alg\'{u}n arreglo \textsc{RAID} 1 falla, este entra en modo degra
 
     \section {\textit{Appliances}}
 
-Un \textit{appliance} es un conjunto de elementos (\textit{hardware}, \textit{software} y sistema operativo) que trabajan de manera conjunta para realizar un proceso espec\'{i}fico \cite{smith_linux_2007}.
+Un \textit{appliance} es un conjunto de elementos (\emph{\gls{hardware}}, \emph{\gls{software}} y sistema operativo) que trabajan de manera conjunta para realizar un proceso espec\'{i}fico \cite{smith_linux_2007}.
 
     \subsection{Tipos de \textit{appliance}}
 
@@ -486,18 +486,18 @@ Un \textit{appliance} es un conjunto de elementos (\textit{hardware}, \textit{so
 
 Los \textit{appliances} de hardware son sistemas especializados dise\~{n}ados para realizar tareas espec\'{i}ficas. El fabricante los distribuye en servidores independientes y para agregar funcionalidades o aumentar la capacidad puede ser necesario comprar una licencia adicional o incluso comprar un nuevo equipo que realice esta funci\'{o}n.
 
-Regularmente tienen una interfaz web para administraci\'{o}n, algunos integran un \textit{shell} para realizar las funciones conect\'{a}ndose a trav\'{e}s de \textsc{SSH} y en otros casos integran soporte para \textsc{SNMP}.
+Regularmente tienen una interfaz web para administraci\'{o}n, algunos integran un \emph{\gls{shell}} para realizar las funciones conect\'{a}ndose a trav\'{e}s de \textsc{\gls{SSH}} y en otros casos integran soporte para \textsc{SNMP}.
 
 \newpage
   \item \textbf{Software}
 
-Los \textit{appliances} de \textit{software} pueden ser distribuidos en paquetes descomprimibles (\textit{tarballs}) que contienen el instalador y todos los programas necesarios para que funcione la soluci\'{o}n \cite{_bitnami:_????}.
+Los \textit{appliances} de \emph{\gls{software}} pueden ser distribuidos en paquetes descomprimibles (\emph{\gls{tarball}}) que contienen el instalador y todos los programas necesarios para que funcione la soluci\'{o}n \cite{_bitnami:_????}.
 
-Integran s\'{o}lo la interfaz web, puesto que se ejecutan en un equipo existente y son independientes del \textit{shell} o del soporte \textsc{SNMP} que se tenga en el equipo.
+Integran s\'{o}lo la interfaz web, puesto que se ejecutan en un equipo existente y son independientes del \emph{\gls{shell}} o del soporte \textsc{SNMP} que se tenga en el equipo.
 
   \item \textbf{Virtual}
 
-Este tipo de \textit{appliances} son im\'{a}genes de m\'{a}quinas virtuales dise\~{n}adas para un ambiente espec\'{i}fico de virtualizaci\'{o}n e integran la funcionalidad de los \textit{appliances} de \textit{hardware}. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual para procesar en paralelo las peticiones de los usuarios \cite{_why_????}.
+Este tipo de \textit{appliances} son im\'{a}genes de m\'{a}quinas virtuales dise\~{n}adas para un ambiente espec\'{i}fico de virtualizaci\'{o}n e integran la funcionalidad de los \textit{appliances} de \emph{\gls{hardware}}. Para aumentar la capacidad de este tipo de equipos se pueden instalar m\'{a}s instancias de la m\'{a}quina virtual para procesar en paralelo las peticiones de los usuarios \cite{_why_????}.
 
 \end{itemize}
 
@@ -546,7 +546,7 @@ La principal caracter\'{i}stica de estos algoritmos radica en utilizar la misma 
 
 El algoritmo llamado \emph{Data Encription Standard} o \textsc{DES}, se basa en \emph{Lucifer} creado por Horst Feistel. Cifra el mensaje en bloques de 64 bits y la longitud de la llave utilizada es de 56 bits. Utiliza permutaciones, substituciones y aplica la funci\'{o}n binaria \texttt{XOR} a los datos\cite{_criptografi-_????}\cite{_.pdf_????}.
 
-Tras el descubrimiento de vulnerabilidades en el algoritmo \textsc{DES}, en 1998 la \textsc{EFF}\footnote{\emph{Electronic Frontier Foundation} por sus siglas en ingl\'{e}s.} public\'{o} en Internet la especificaci\'{o}n de una m\'{a}quina capaz de romper el cifrado de este algoritmo\cite{_criptografi-_????}\cite{<scotthyperthought.com>_security_????}. La soluci\'{o}n interina que fue adoptada consiste en realizar el cifrado \textsc{DES} \emph{tres veces}, es decir, cifrar el mensaje con \emph{Triple-DES}.
+Tras el descubrimiento de vulnerabilidades en el algoritmo \textsc{DES}, en 1998 la \textsc{\gls{EFF}}\footnote{\emph{Electronic Frontier Foundation} por sus siglas en ingl\'{e}s.} public\'{o} en Internet la especificaci\'{o}n de una m\'{a}quina capaz de romper el cifrado de este algoritmo\cite{_criptografi-_????}\cite{<scotthyperthought.com>_security_????}. La soluci\'{o}n interina que fue adoptada consiste en realizar el cifrado \textsc{DES} \emph{tres veces}, es decir, cifrar el mensaje con \emph{Triple-DES}.
 
 \newpage
         \item \textbf {AES}
@@ -573,7 +573,7 @@ Creado por Ron \textbf{R}ivest, Adi \textbf{S}hamir y Leonard \textbf{A}dleman, 
 
         \item \textbf {Curvas el\'{i}pticas}
 
-Tambi\'{e}n denominado \textsc{ECC}\footnote{\emph{Elliptic Curve Cryptography} por sus siglas en ingl\'{e}s.}, utiliza operaciones entre un n\'{u}mero primo y una ecuaci\'{o}n de curva el\'{i}ptica dentro de un \emph{campo finito}\cite{_safecurves:_????}.
+Tambi\'{e}n denominado \textsc{\gls{ECC}}\footnote{\emph{Elliptic Curve Cryptography} por sus siglas en ingl\'{e}s.}, utiliza operaciones entre un n\'{u}mero primo y una ecuaci\'{o}n de curva el\'{i}ptica dentro de un \emph{campo finito}\cite{_safecurves:_????}.
 
 Una de sus ventajas primordiales radica en que el tama\~{n}o de las llaves criptogr\'{a}ficas se ve reducido, por ejemplo, una llave sim\'{e}trica de 128 bits es comparable a una llave asim\'{e}trica de 3072 bits, mientras que en curvas el\'{i}pticas, s\'{o}lo es necesario utilizar una clave con longitud de 256 bits.
 
@@ -591,7 +591,7 @@ Estos algoritmos, tambi\'{e}n conocidos como \emph{funciones hash} o \emph{funci
   \item Si se cambia el mensaje, el valor del \emph{hash} asociado tambi\'{e}n cambia
 \end{enumerate}
 
-A continuaci\'{o}n se describen algunas funciones \emph{hash} empleadas en \textsc{SSL} y \textsc{TLS}:
+A continuaci\'{o}n se describen algunas funciones \emph{hash} empleadas en \textsc{\gls{SSL}} y \textsc{\gls{TLS}}:
 
 
       \begin{itemize}
@@ -599,19 +599,19 @@ A continuaci\'{o}n se describen algunas funciones \emph{hash} empleadas en \text
 %         \item \textbf {RC4}
 % 
 % Creado por Ron Rivest de \textsc{RSA}, utiliza permutaciones y la funci\'{o}n \texttt{XOR} 
-% El algoritmo \textsc{RC4} no ser\'{a} soportado en \textsc{TLS} puesto que el \textsc{RFC7465} lo prohibe expresamente debido a que se han encontrado fallas explotables en el\cite{<andreipomicrosoft.com>_prohibiting_????}. %rfc7465
+% El algoritmo \textsc{RC4} no ser\'{a} soportado en \textsc{\gls{TLS}} puesto que el \textsc{\gls{RFC}}7465 lo prohibe expresamente debido a que se han encontrado fallas explotables en el\cite{<andreipomicrosoft.com>_prohibiting_????}. %rfc7465
 
         \item \textbf {MD5}
 
-Fue creado por Ron Rivest de \textsc{RSA} y publicado en el \textsc{RFC1321}\cite{rivest_md5_????}, procesa la entrada en bloques de 512 bits y obtiene como salida una firma con longitud de 128 bits.
+Fue creado por Ron Rivest de \textsc{RSA} y publicado en el \textsc{\gls{RFC}}1321\cite{rivest_md5_????}, procesa la entrada en bloques de 512 bits y obtiene como salida una firma con longitud de 128 bits.
 
-Debido a que se han encontrado \emph{colisiones}\footnote{Dos mensajes diferentes que generan el mismo valor de \emph{hash}.} en el algoritmo \textsc{MD5} es considerado \textbf{no seguro}\cite{project_weak_2013} y se ha prohibido su uso junto con \textsc{SSLv2} en el \textsc{RFC6176}\cite{<>_prohibiting_????}.
+Debido a que se han encontrado \emph{colisiones}\footnote{Dos mensajes diferentes que generan el mismo valor de \emph{hash}.} en el algoritmo \textsc{MD5} es considerado \textbf{no seguro}\cite{project_weak_2013} y se ha prohibido su uso junto con \textsc{SSLv2} en el \textsc{\gls{RFC}}6176\cite{<>_prohibiting_????}.
 
         \item \textbf {SHA1 y SHA256}
 
-Publicada por el \textsc{NIST} en el \textsc{RFC3174}\cite{3rd_us_????}, \textsc{SHA1} obtiene una salida de 160 bits al procesar de manera secuencial bloques de entrada con longitud de 512 bits.
+Publicada por el \textsc{NIST} en el \textsc{\gls{RFC}}3174\cite{3rd_us_????}, \textsc{SHA1} obtiene una salida de 160 bits al procesar de manera secuencial bloques de entrada con longitud de 512 bits.
 
-\textsc{SHA256} proviene de la familia \textsc{SHA-2} publicada en el \textsc{RFC4634}\cite{hansen_us_????}, produce una salida de longitud fija con 256 bits y procesa bloques de 512 bits de longitud. A\'{u}n no se han encontrado vulnerabilidades o colisiones en esta familia de funciones, por lo que se consideran seguras.
+\textsc{SHA256} proviene de la familia \textsc{SHA-2} publicada en el \textsc{\gls{RFC}}4634\cite{hansen_us_????}, produce una salida de longitud fija con 256 bits y procesa bloques de 512 bits de longitud. A\'{u}n no se han encontrado vulnerabilidades o colisiones en esta familia de funciones, por lo que se consideran seguras.
 
       \end{itemize}
 
@@ -638,15 +638,15 @@ Descubierto en 2011, este ataque denominado \emph{\textbf{B}rowser \textbf{E}xpl
 
         \subsubsection{CRIME}
 
-El ataque \emph{\textbf{C}ompression \textbf{R}atio \textbf{I}nfo-leak \textbf{M}ade \textbf{E}asy} fue publicado en 2012, toma ventaja de fallas en la compresi\'{o}n de los protocolos \textsc{HTTPS} y \textsc{SPDY} permitiendo al atacante robar las \emph{cookies} de sesi\'{o}n para hacerse pasar por la v\'{i}ctima. Para mitigarlo es necesario desactivar la compresi\'{o}n realizada con \texttt{mod\_deflate}\cite{goodin_crack_2012}.
+El ataque \emph{\textbf{C}ompression \textbf{R}atio \textbf{I}nfo-leak \textbf{M}ade \textbf{E}asy} fue publicado en 2012, toma ventaja de fallas en la compresi\'{o}n de los protocolos \textsc{\gls{HTTPS}} y \textsc{SPDY} permitiendo al atacante robar las \emph{cookies} de sesi\'{o}n para hacerse pasar por la v\'{i}ctima. Para mitigarlo es necesario desactivar la compresi\'{o}n realizada con \texttt{mod\_deflate}\cite{goodin_crack_2012}.
 
         \subsubsection{BREACH}
 
-En 2013 se dio a conocer el ataque llamado \emph{\textbf{B}rowser \textbf{R}econnaissance and \textbf{E}xfiltration via \textbf{A}daptive \textbf{C}ompression of \textbf{H}ypertext} que fue desarrollado por los creadores de \textsc{CRIME} y como su nombre lo indica, utiliza la compresi\'{o}n del tr\'{a}fico \textsc{HTTP}. En este caso se debe desactivar la compresi\'{o}n de la conexi\'{o}n \textsc{SSL} o \textsc{TLS} y del protocolo \textsc{HTTP}\cite{_breach_????}.
+En 2013 se dio a conocer el ataque llamado \emph{\textbf{B}rowser \textbf{R}econnaissance and \textbf{E}xfiltration via \textbf{A}daptive \textbf{C}ompression of \textbf{H}ypertext} que fue desarrollado por los creadores de \textsc{CRIME} y como su nombre lo indica, utiliza la compresi\'{o}n del tr\'{a}fico \textsc{\gls{HTTP}}. En este caso se debe desactivar la compresi\'{o}n de la conexi\'{o}n \textsc{\gls{SSL}} o \textsc{\gls{TLS}} y del protocolo \textsc{\gls{HTTP}}\cite{_breach_????}.
 
         \subsubsection{POODLE}
 
-La vulnerabilidad conocida como \emph{\textbf{P}adding \textbf{O}racle \textbf{o}n \textbf{D}owngraded \textbf{L}egacy \textbf{E}ncryption} por sus siglas en ingl\'{e}s, fue descubierta en 2014 y toma ventaja de la compatibilidad que implementan los servidores con mecanismos de cifrado d\'{e}biles como el protocolo \textsc{SSLv3} y el algoritmo \textsc{RC4}. Se recomienda desactivar el protocolo \textsc{SSLv3} y el uso de \texttt{TLS\_FALLBACK\_SCSV} en el motor de \textsc{TLS}\cite{_ssl-poodle.pdf_????}.
+La vulnerabilidad conocida como \emph{\textbf{P}adding \textbf{O}racle \textbf{o}n \textbf{D}owngraded \textbf{L}egacy \textbf{E}ncryption} por sus siglas en ingl\'{e}s, fue descubierta en 2014 y toma ventaja de la compatibilidad que implementan los servidores con mecanismos de cifrado d\'{e}biles como el protocolo \textsc{SSLv3} y el algoritmo \textsc{RC4}. Se recomienda desactivar el protocolo \textsc{SSLv3} y el uso de \texttt{TLS\_FALLBACK\_SCSV} en el motor de \textsc{\gls{TLS}}\cite{_ssl-poodle.pdf_????}.
 
         \subsubsection{Heartbleed}
 
@@ -654,7 +654,7 @@ Esta vulnerabilidad en la biblioteca de cifrado OpenSSL fue descubierta en 2014 
 
         \subsubsection{FREAK}
 
-El ataque \emph{\textbf{F}actoring \textbf{R}SA \textbf{E}xport \textbf{K}eys} publicado en 2015 funciona al interceptar el tr\'{a}fico \textsc{HTTPS} entre clientes y servidores vunerables, para despu\'{e}s forzarlos a establecer la conexi\'{o}n utilizando algoritmos de cifrado d\'{e}biles denominados \texttt{RSA\_EXPORT}. Se recomienda deshabilitar el uso de dichos algoritmos y activar una lista de mecanismos de cifrado denominada \emph{Cipher List}\cite{_tracking_????}.
+El ataque \emph{\textbf{F}actoring \textbf{R}SA \textbf{E}xport \textbf{K}eys} publicado en 2015 funciona al interceptar el tr\'{a}fico \textsc{\gls{HTTPS}} entre clientes y servidores vunerables, para despu\'{e}s forzarlos a establecer la conexi\'{o}n utilizando algoritmos de cifrado d\'{e}biles denominados \texttt{RSA\_EXPORT}. Se recomienda deshabilitar el uso de dichos algoritmos y activar una lista de mecanismos de cifrado denominada \emph{Cipher List}\cite{_tracking_????}.
 %freakattack
 
   \subsection {\textit{Hardening}}
@@ -667,34 +667,34 @@ Se denomina \textit{hardening} al proceso de reforzar las configuraciones del si
   \item Permisos del sistema de archivos
   \item Cuotas de espacio en disco
   \item Configuraci\'{o}n de acceso remoto
-  \item Directivas de \textit{firewall} de \textit{host}
+  \item Directivas de \emph{\gls{firewall}} de \emph{\gls{host}}
   \item Configuraci\'{o}n de las aplicaciones
 \end{itemize}
 
 \newpage
 \section {\textsc{GNU}/Linux}
 
-El sistema operativo GNU/Linux es la combinaci\'{o}n del conjunto de utiler\'{i}as del sistema operativo GNU y el \textit{kernel} Linux \cite{_linux_????}.
+El sistema operativo GNU/Linux es la combinaci\'{o}n del conjunto de utiler\'{i}as del sistema operativo GNU y el \textsl{\gls{kernel}} Linux \cite{_linux_????}.
 
 \picturebox{figures/gnu-linux}{797}{386}{0.5}{gnu-linux}{Logotipos de \textsc{GNU} y \textsc{Linux}}{}
 
   \subsection {Historia}
 
-En 1983 Richard Stallman inici\'{o} el proyecto \textsc{GNU}\footnote{Acr\'{o}nimo recursivo que significa \emph{GNU is Not Unix}.}, cuyo prop\'{o}sito es hacer un sistema operativo compatible con \textsc{UNIX} que cumpla con las cuatro libertades del \textit{software}\footnote{Para m\'{a}s informaci\'{o}n ver el ap\'{e}ndice A.} y desarroll\'{o} junto con otros colegas una serie de utiler\'{i}as y programas, como el compilador \textsc{GNU} para el lenguage \textsc{C} (\textit{gcc}) \cite{_about_????}. Sin embargo el proyecto ten\'{i}a pr\'{a}cticamente todos los programas del sistema operativo pero le faltaba la parte escencial: el \textit{kernel}.
+En 1983 Richard Stallman inici\'{o} el proyecto \textsc{\gls{GNU}}\footnote{Acr\'{o}nimo recursivo que significa \emph{GNU is Not Unix}.}, cuyo prop\'{o}sito es hacer un sistema operativo compatible con \textsc{UNIX} que cumpla con las cuatro libertades del \emph{\gls{software}} y desarroll\'{o} junto con otros colegas una serie de utiler\'{i}as y programas, como el compilador \textsc{\gls{GNU}} para el lenguage \textsc{C} (\textit{gcc}) \cite{_about_????}. Sin embargo el proyecto ten\'{i}a pr\'{a}cticamente todos los programas del sistema operativo pero le faltaba la parte escencial: el \textsl{\gls{kernel}}.
 
 En 1987 el profesor Andrew S. Tannenbaum public\'{o} un libro titulado \textit{Sistemas Operativos Dise\~{n}o e Implementaci\'{o}n} \cite{tanenbaum_operating_2006} donde explica varios conceptos y aspectos clave de los sistemas operativos, la \'{u}ltima secci\'{o}n incluye el c\'{o}digo fuente del sistema operativo \textsc{MINIX}, que \'{e}l mismo desarroll\'{o} como un clon de \textsc{UNIX} para prop\'{o}sitos educativos\cite{_complete_????}.
 
-En 1991 Linus Torvalds, que estudiaba la maestr\'{i}a en ciencias de la computaci\'{o}n en Helsinki, Finlandia \cite{_staff_????}, inspirado en \textsc{MINIX}, decidi\'{o} escribir un sistema operativo compatible con UNIX que cumpliera con el est\'{a}ndar \textsc{POSIX} y el 25 de agosto public\'{o} una entrada en el foro \textsc{USENET} de \textsc{MINIX} \cite{_history_????} explicando su proyecto y pidiendo retroalimentaci\'{o}n. Esto dio origen a una ola de desarrollo que hizo que el \textit{kernel} Linux creciera, la licencia original de Linux prohib\'{i}a el uso comercial pero se cambi\'{o} para que fuese liberado con la licencia \textsc{GPL} de \textsc{GNU}, que permite el uso comercial siempre y cuando se liberen las modificaciones hechas al \textit{software} y se permita distribuir copias modificadas\footnote{Visitar \cite{_linuxs_????} para ver la lista completa de mensajes \textsc{usenet}.} \cite{_linux_????-3}.
+En 1991 Linus Torvalds, que estudiaba la maestr\'{i}a en ciencias de la computaci\'{o}n en Helsinki, Finlandia \cite{_staff_????}, inspirado en \textsc{MINIX}, decidi\'{o} escribir un sistema operativo compatible con UNIX que cumpliera con el est\'{a}ndar \textsc{POSIX} y el 25 de agosto public\'{o} una entrada en el foro \textsc{USENET} de \textsc{MINIX} \cite{_history_????} explicando su proyecto y pidiendo retroalimentaci\'{o}n. Esto dio origen a una ola de desarrollo que hizo que el \textsl{\gls{kernel}} Linux creciera, la licencia original de Linux prohib\'{i}a el uso comercial pero se cambi\'{o} para que fuese liberado con la licencia \textsc{\gls{GPL}} de \textsc{\gls{GNU}}, que permite el uso comercial siempre y cuando se liberen las modificaciones hechas al \emph{\gls{software}} y se permita distribuir copias modificadas\footnote{Visitar \cite{_linuxs_????} para ver la lista completa de mensajes \textsc{usenet}.} \cite{_linux_????-3}.
 
   \subsection {Distribuciones de GNU/Linux}
 
 Una distribuci\'{o}n es un conjunto de paquetes que permiten instalar, actualizar y borrar programas de una manera sencilla gracias a que resuelven las dependencias de forma autom\'{a}tica\footnote{Las dependencias son programas o bibliotecas adicionales requeridos para que se ejecute el programa.}. Generalmente se instalan \textit{paquetes binarios} que contienen los programas ejecutables o \textit{scripts} que conforman la aplicaci\'{o}n deseada.
 
-Existen tambi\'{e}n \textit{paquetes de c\'{o}digo fuente} que permiten instalar los archivos de cabecera de un paquete espec\'{i}fico. Esto permite compilar un \textit{software} que requiera bibliotecas adicionales sin especificarlas expl\'{i}citamente gracias a que se resuelven autom\'{a}ticamente porque est\'{a}n en las rutas est\'{a}ndar del sistema.
+Existen tambi\'{e}n \textit{paquetes de c\'{o}digo fuente} que permiten instalar los archivos de cabecera de un paquete espec\'{i}fico. Esto permite compilar un \emph{\gls{software}} que requiera bibliotecas adicionales sin especificarlas expl\'{i}citamente gracias a que se resuelven autom\'{a}ticamente porque est\'{a}n en las rutas est\'{a}ndar del sistema.
 
-Aunque todas las distribuciones se apegan al est\'{a}ndar \textsc{FHS}\footnote{\textit{Filesystem Hierarchy Standard} por sus siglas en ingl\'{e}s. Est\'{a}ndar publicado que se refiere a la estructura del sistema de archivos en sistemas operativos compatibles con \textsc{UNIX} \cite{_fhs_????}.} \cite{_filesystem_????}, la ubicaci\'{o}n de los archivos de configuraci\'{o}n y de los binarios var\'{i}a entre distribuciones y generalmente la estructura del sistema de archivos se hereda entre distribuciones derivadas (ej. Ubuntu es derivado de Debian y tiene una estructura de directorios bastante similar).
+Aunque todas las distribuciones se apegan al est\'{a}ndar \textsc{\gls{FHS}}\footnote{\textit{Filesystem Hierarchy Standard} por sus siglas en ingl\'{e}s. Est\'{a}ndar publicado que se refiere a la estructura del sistema de archivos en sistemas operativos compatibles con \textsc{UNIX} \cite{_fhs_????}.} \cite{_filesystem_????}, la ubicaci\'{o}n de los archivos de configuraci\'{o}n y de los binarios var\'{i}a entre distribuciones y generalmente la estructura del sistema de archivos se hereda entre distribuciones derivadas (ej. Ubuntu es derivado de Debian y tiene una estructura de directorios bastante similar).
 
-Tradicionalmente se utilizaba el sistema de inicio basado en \textsc{SystemV} (\textit{sysvrc}), que lanza los servicios de manera secuencial. Recientemente se han implementado otros sistemas de inicio que pueden lanzar servicios en paralelo si no tienen relaci\'{o}n entre s\'{i}. Un ejemplo es \textit{insserv} propuesto por \textsc{LSB}\footnote{\textit{Linux Standard Base} por sus siglas en ingl\'{e}s.} \cite{_lsbinitscripts_????} \cite{_lsbinitscripts/dependencybasedboot_????}, \textit{OpenRC} utilizado principalmente en \textit{Gentoo} \cite{_gentoo_????}\cite{_openrc_????}\cite{_openrc_????-1}, \textit{upstart} utilizado en \textit{Ubuntu} y sus derivados \cite{_upstart_????} y \textit{systemd} utilizado en \textit{Arch Linux} y \textit{Debian 8} \cite{_systemd_????}.
+Tradicionalmente se utilizaba el sistema de inicio basado en \textsc{SystemV} (\textit{sysvrc}), que lanza los servicios de manera secuencial. Recientemente se han implementado otros sistemas de inicio que pueden lanzar servicios en paralelo si no tienen relaci\'{o}n entre s\'{i}. Un ejemplo es \textit{insserv} propuesto por \textsc{\gls{LSB}}\footnote{\textit{Linux Standard Base} por sus siglas en ingl\'{e}s.} \cite{_lsbinitscripts_????} \cite{_lsbinitscripts/dependencybasedboot_????}, \textit{OpenRC} utilizado principalmente en \textit{Gentoo} \cite{_gentoo_????}\cite{_openrc_????}\cite{_openrc_????-1}, \textit{upstart} utilizado en \textit{Ubuntu} y sus derivados \cite{_upstart_????} y \textit{systemd} utilizado en \textit{Arch Linux} y \textit{Debian 8} \cite{_systemd_????}.
 
 \picturebox{figures/distros}{515}{42}{1.0}{linux-distributions}{Logotipos de las principales distribuciones de \textsc{GNU}/\textsc{Linux}}{}
 
@@ -708,9 +708,9 @@ Desde hace m\'{a}s de 15 a\~{n}os el sistema operativo \textsc{GNU}/Linux ha est
 \begin{itemize}
   \item \textit{Clusters} de superc\'{o}mputo (94\% de los sistemas de c\'{o}mputo de alto rendimiento se ejecuta sobre GNU/Linux) \cite{_tic_????}\cite{_94_????}
   \item Sistemas embebidos con aplicaciones m\'{e}dicas, militares y civiles \cite{_elinux.org_????}\cite{_rtos_????}
-  \item Sistemas embebidos de control y \textsc{RTOS}\footnote{\textit{Real Time Operating System} por sus siglas en ingl\'{e}s.} \cite{_uclinux_????}\cite{_rtos_????}.
-  \item \textit{Appliances} de red y \textit{firewalls} \cite{_router/bridge_????}\cite{_endian_????}
-  \item \textit{Proxys} y sistemas de seguridad \cite{_f5_????}\cite{_junos_????}\cite{_infoblox_????}
+  \item Sistemas embebidos de control y \textsc{\gls{RTOS}}\cite{_uclinux_????}\cite{_rtos_????}.
+  \item \textit{Appliances} de red y \textit{\glspl{firewall}} \cite{_router/bridge_????}\cite{_endian_????}
+ \item Servidores \emph{\Gls{Proxy}} y sistemas de seguridad \cite{_f5_????}\cite{_junos_????}\cite{_infoblox_????}
   \item \textsc{HTPC} (Dispositivos de entretenimiento casero) \cite{_openelec_????}
   \item Dispositivos m\'{o}viles como celulares y \textit{tablets} (Android \cite{_android_????}, Firefox OS \cite{_firefox_????}, HP WebOS \cite{_hp_????}, TizenOS \cite{_tizen_????}, Maemo \cite{_maemo.org_????}, Ubuntu Phone \cite{_ubuntu_????})
   \item Consolas de videojuegos (PlayStation 2 \cite{_ps2_????}, PlayStation 3 \cite{_open_????}, SteamOS y Nvidia Shield)
@@ -726,29 +726,29 @@ Hoy en d\'{i}a Debian es la distribuci\'{o}n m\'{a}s significativa de GNU/Linux 
 
 \section {Protocolo \textsc{HTTP}}
 
-El protocolo \textsc{HTTP} permite transferir datos a trav\'{e}s de Internet en un esquema cliente-servidor. La primer versi\'{o}n de este protocolo (\texttt{HTTP/1.0}) fue descrita en el \textsc{RFC} 1945 \cite{_rfc_????-1}. Con la evoluci\'{o}n de Internet el protocolo fue mejorado y se le agregaron funciones como el control de transferencia o el soporte de mensajes \textit{MIME}, los cuales dieron origen a la versi\'{o}n actual (\texttt{HTTP/1.1}) definida en el RFC 2616 \cite{_rfc_????}.
+El protocolo \textsc{\gls{HTTP}} permite transferir datos a trav\'{e}s de Internet en un esquema cliente-servidor. La primer versi\'{o}n de este protocolo (\texttt{HTTP/1.0}) fue descrita en el \textsc{\gls{RFC}}1945 \cite{_rfc_????-1}. Con la evoluci\'{o}n de Internet el protocolo fue mejorado y se le agregaron funciones como el control de transferencia o el soporte de mensajes \textit{MIME}, los cuales dieron origen a la versi\'{o}n actual (\texttt{HTTP/1.1}) definida en el \textsc{\gls{RFC}}2616 \cite{_rfc_????}.
 
   \subsection {\textsc{HTTPS} - \textit{HTTP over SSL}}
 
-En el protocolo \textsc{HTTP} los datos se env\'{i}an y reciben en claro, esto deja la informaci\'{o}n vulnerable puesto que los mensajes se pueden interceptar o incluso modificar, afectando as\'{i} la confidencialidad o integidad del mensaje.
+En el protocolo \textsc{\gls{HTTP}} los datos se env\'{i}an y reciben en claro, esto deja la informaci\'{o}n vulnerable puesto que los mensajes se pueden interceptar o incluso modificar, afectando as\'{i} la confidencialidad o integidad del mensaje.
 
-Para solventar estas debilidades se defini\'{o} \textsc{HTTPS} en el \textsc{RFC} 2818 \cite{_rfc_????-6}, que cifra la conexi\'{o}n \textsc{HTTP} utilizando \emph{SSL}\footnote{Secure Socket Layer por sus siglas en ingl\'{e}s, definido en el \textsc{RFC} 6101 \cite{_rfc_????-4}.} o su sucesor \emph{TLS}\footnote{Transport Layer Security por sus siglas en ingl\'{e}s, definido en el \textsc{RFC} 5246 \cite{_rfc_????-3}}, con el fin de garantizar la confidencialidad e integridad de la informaci\'{o}n transferida entre el cliente y el servidor.
+Para solventar estas debilidades se defini\'{o} \textsc{\gls{HTTPS}} en el \textsc{\gls{RFC}}2818 \cite{_rfc_????-6}, que cifra la conexi\'{o}n \textsc{\gls{HTTP}} utilizando \emph{\gls{SSL}}\footnote{Secure Socket Layer por sus siglas en ingl\'{e}s, definido en el \textsc{\gls{RFC}}6101 \cite{_rfc_????-4}.} o su sucesor \emph{\gls{TLS}}\footnote{Transport Layer Security por sus siglas en ingl\'{e}s, definido en el \textsc{\gls{RFC}}5246 \cite{_rfc_????-3}}, con el fin de garantizar la confidencialidad e integridad de la informaci\'{o}n transferida entre el cliente y el servidor.
 
   \subsection {\textsc{WebDAV}}
 
-\textit{Web Distributed Authoring and Versioning} es una extensi\'{o}n al protocolo \textsc{HTTP} que a\~{n}ade la capacidad de interactuar con archivos almacenados en el servidor web.
+\textit{Web Distributed Authoring and Versioning} es una extensi\'{o}n al protocolo \textsc{\gls{HTTP}} que a\~{n}ade la capacidad de interactuar con archivos almacenados en el servidor web.
 
-Est\'{a} definido en el \textsc{RFC} 4918 \cite{_rfc_????-2} y establece un conjunto de extensiones al protocolo \textsc{HTTP} que incluyen m\'{e}todos, cabeceras y formatos tanto de petici\'{o}n como de respuesta para interactuar con el servidor con la finalidad de crear, modificar y borrar archivos. Adem\'{a}s establece un mecanismo denominado \textit{File locking} que previene que dos personas editen el documento al mismo tiempo para no perder cambios.
+Est\'{a} definido en el \textsc{\gls{RFC}}4918 \cite{_rfc_????-2} y establece un conjunto de extensiones al protocolo \textsc{\gls{HTTP}} que incluyen m\'{e}todos, cabeceras y formatos tanto de petici\'{o}n como de respuesta para interactuar con el servidor con la finalidad de crear, modificar y borrar archivos. Adem\'{a}s establece un mecanismo denominado \textit{File locking} que previene que dos personas editen el documento al mismo tiempo para no perder cambios.
 
 \section {Protocolo \textsc{LDAP}}
 
-El protocolo \textsc{LDAP} \footnote{Ligthweight Directory Access Protocol por sus siglas en ingl\'{e}s.} est\'{a} definido en el \textsc{RFC} 4511 \cite{_rfc_????-5} y establece el directorio como una colecci\'{o}n de objetos que comparte a otros equipos y programas a trav\'{e}s de una conexi\'{o}n de red.
+El protocolo \textsc{\gls{LDAP}} \footnote{Ligthweight Directory Access Protocol por sus siglas en ingl\'{e}s.} est\'{a} definido en el \textsc{\gls{RFC}}4511 \cite{_rfc_????-5} y establece el directorio como una colecci\'{o}n de objetos que comparte a otros equipos y programas a trav\'{e}s de una conexi\'{o}n de red.
 
 Dentro del directorio los objetos se organizan en una estructura jer\'{a}rquica donde se tiene la ra\'{i}z del \'{a}rbol, los contenedores y los objetos, estos \'{u}ltimos adem\'{a}s tienen atributos que pueden tener uno o m\'{a}s valores.
 
   \subsection {Nomenclatura}
 
-La nomenclatura de los objetos es similar a la que utiliza \textsc{DNS}, es decir, el nivel m\'{a}s general se indica a la derecha y el nivel m\'{a}s espec\'{i}fico se indica a la izquierda \cite{_appendix_????}. La ra\'{i}z del \'{a}rbol se puede escribir de manera similar al dominio \textsc{DNS} en una notaci\'{o}n denominada \textit{Domain Component} (\textbf{dc}) o utilizando el nombre de la organizaci\'{o}n (\textbf{o}).
+La nomenclatura de los objetos es similar a la que utiliza \textsc{\gls{DNS}}, es decir, el nivel m\'{a}s general se indica a la derecha y el nivel m\'{a}s espec\'{i}fico se indica a la izquierda \cite{_appendix_????}. La ra\'{i}z del \'{a}rbol se puede escribir de manera similar al dominio \textsc{\gls{DNS}} en una notaci\'{o}n denominada \textit{Domain Component} (\textbf{dc}) o utilizando el nombre de la organizaci\'{o}n (\textbf{o}).
 
 {
  \begin{table}[H]
@@ -812,7 +812,7 @@ Dentro del directorio se tienen almacenados los objetos en diferentes ramas del 
 
   \subsection {Directorio de usuarios}
 
-En \textsc{LDAP}  los usuarios tienen ciertas propiedades como identificador, nombre de usuario y contrase\~{n}a, entre otros. Existen dos tipos principales de usuario: \texttt{simpleSecurityObject} y \texttt{posixAccount}. El primero es utilizado solamente para autenticar un usuario en el directorio y el segundo tiene propiedades parecidas a una cuenta \textsc{UNIX} (\textit{uid}, \textit{gid} y \textit{GECOS}).
+En \textsc{\gls{LDAP}}  los usuarios tienen ciertas propiedades como identificador, nombre de usuario y contrase\~{n}a, entre otros. Existen dos tipos principales de usuario: \texttt{simpleSecurityObject} y \texttt{posixAccount}. El primero es utilizado solamente para autenticar un usuario en el directorio y el segundo tiene propiedades parecidas a una cuenta \textsc{UNIX} (\textit{uid}, \textit{gid} y \textit{GECOS}).
 
 %{
 %\scriptsize
@@ -842,30 +842,30 @@ En \textsc{LDAP}  los usuarios tienen ciertas propiedades como identificador, no
 \newpage
 \section {Protocolo \textsc{SSH}}
 \label{Protocolo-SSH}
-El protocolo \textsc{SSH}\footnote{\textit{Secure Shell} por sus siglas en ingl\'{e}s.} sirve para establecer sesiones remotas cifradas entre dos equipos \cite{_ssh_????-1}. Utiliza cifrado asim\'{e}trico para proteger la conexi\'{o}n y soporta m\'{u}ltiples m\'{e}todos de autenticaci\'{o}n, lo que permite que sea flexible y f\'{a}cil de incluir en varios sistemas operativos.
+El protocolo \textsc{\gls{SSH}}\footnote{\textit{Secure Shell} por sus siglas en ingl\'{e}s.} sirve para establecer sesiones remotas cifradas entre dos equipos \cite{_ssh_????-1}. Utiliza cifrado asim\'{e}trico para proteger la conexi\'{o}n y soporta m\'{u}ltiples m\'{e}todos de autenticaci\'{o}n, lo que permite que sea flexible y f\'{a}cil de incluir en varios sistemas operativos.
 
 Com\'{u}nmente se utiliza para conectarse a un servidor y utilizar la interfaz de l\'{i}nea de comandos, aunque el protocolo es muy flexible y se puede utilizar para cumplir las funciones que se listan a continuaci\'{o}n:
 
   \begin{itemize}
-    \item Ejecutar un \textit{shell} en el equipo remoto
+    \item Ejecutar un \emph{\gls{shell}} en el equipo remoto
     \item Transferencia de archivos desde y hacia el equipo remoto
     \item Creaci\'{o}n de t\'{u}neles para permitir que el equipo local alcance servicios remotos (\textit{LocalForward})
     \item Creaci\'{o}n de t\'{u}neles para que los equipos remotos puedan acceder a los servicios locales (\textit{RemoteForward})
     \item Ejecutar programas gr\'{a}ficos en el equipo remoto y visualizar la interfaz como si fuese un programa local (\textit{X11Forward})
-    \item Generar un \textit{proxy} \textsc{SOCKS} para enviar el tr\'{a}fico local al equipo remoto (\textit{DynamicForward})
+    \item Generar un \emph{\gls{Proxy}} \textsc{SOCKS} para enviar el tr\'{a}fico local al equipo remoto (\textit{DynamicForward})
   \end{itemize}
 
 \picturebox{figures/OpenSSH}{500}{492}{0.25}{openssh-logo}{Logotipo de \textsc{OpenSSH}}{}
 
 %  \subsection {SCP - Secure Copy}
 %
-%Este protocolo se utiliza para copiar archivos entre dos equipos, ya sea desde el equipo remoto hacia el local o viceversa y utiliza \textsc{SSH} como transporte para los datos. Est\'{a} basado en el programa de copia de archivos \textit{rcp} originario de la variante de \textsc{UNIX} \textsc{BSD} \cite{_scp_????}.
+%Este protocolo se utiliza para copiar archivos entre dos equipos, ya sea desde el equipo remoto hacia el local o viceversa y utiliza \textsc{\gls{SSH}} como transporte para los datos. Est\'{a} basado en el programa de copia de archivos \textit{rcp} originario de la variante de \textsc{UNIX} \textsc{BSD} \cite{_scp_????}.
 %
 %  \subsection {SFTP - Secure FTP}
 %
-%El protocolo \textsc{SFTP} dise\~{n}ado por la \textsc{IETF} \footnote{Espec\'{i}ficamente por el grupo \textsc{SECSH} de la \textsc{IETF}.} es una extensi\'{o}n del protocolo \textsc{SSH} que a diferencia de \textsc{SCP} permite acceder, transferir y borrar archivos adem\'{a}s de listar los directorios del equipo remoto \cite{_chrooted_????}. La versi\'{o}n actual de este protocolo es la 6.0.
+%El protocolo \textsc{SFTP} dise\~{n}ado por la \textsc{IETF} \footnote{Espec\'{i}ficamente por el grupo \textsc{SECSH} de la \textsc{IETF}.} es una extensi\'{o}n del protocolo \textsc{\gls{SSH}} que a diferencia de \textsc{SCP} permite acceder, transferir y borrar archivos adem\'{a}s de listar los directorios del equipo remoto \cite{_chrooted_????}. La versi\'{o}n actual de este protocolo es la 6.0.
 %
 %  \subsection {SSHFS - Secure Shell Filesystem}
 %
-%\textsc{SSHFS} es un programa que hace uso de \textsc{SFTP} para \textit{montar} un directorio remoto en el equipo local utilizando \textsc{SSH} como transporte \cite{_sshfs_????} y hace uso de la biblioteca de sistemas de archivo \textsc{FUSE} \cite{_ssh_????} del lado del cliente para realizar el mapeo y manejo del sistema de archivos virtual. El funcionamiento de un directorio montado con \textsc{SSHFS} es similar a \textsc{NFS} o \textsc{CIFS} \cite{_sshfs:_????}.
+%\textsc{SSHFS} es un programa que hace uso de \textsc{SFTP} para \textit{montar} un directorio remoto en el equipo local utilizando \textsc{\gls{SSH}} como transporte \cite{_sshfs_????} y hace uso de la biblioteca de sistemas de archivo \textsc{FUSE} \cite{_ssh_????} del lado del cliente para realizar el mapeo y manejo del sistema de archivos virtual. El funcionamiento de un directorio montado con \textsc{SSHFS} es similar a \textsc{NFS} o \textsc{CIFS} \cite{_sshfs:_????}.
 %

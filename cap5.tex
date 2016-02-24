@@ -10,11 +10,11 @@
 % Objetivos cumplidos:
 % 
 % \begin{itemize}
-%   \item Compatibilidad con los clientes \textsc{WebDAV} nativos de Windows
+%   \item Compatibilidad con los clientes \textsc{\gls{WebDAV}} nativos de Windows
 %   \item Carga de usuarios
 %   \item Tipos de cuentas de usuario (staff, profesor, alumno)
 %   \item Restricci\'{o}n de acceso para usuarios autenticados
-%   \item Acceso por \textsc{HTTPS}
+%   \item Acceso por \textsc{\gls{HTTPS}}
 %   \item Scripts de instalaci\'{o}n para Windows
 %   \item Restricci\'{o}n de permisos de escritura por perfil de usuario
 %   \item Compatibilidad multiplataforma, incluso con navegadores web
@@ -23,23 +23,23 @@
 \begin{itemize}
   \item \textbf{WebDAV}
 
-Gracias a que la soluci\'{o}n desarrollada utiliza el protocolo est\'{a}ndar \textsc{WebDAV}, que es una extensi\'{o}n de \textsc{HTTP}, se tiene un alto grado de compatibilidad con clientes \textsc{WebDAV}, navegadores web y utilidades de l\'{i}nea de comandos, adem\'{a}s se puede integrar con otras plataformas.
+Gracias a que la soluci\'{o}n desarrollada utiliza el protocolo est\'{a}ndar \textsc{\gls{WebDAV}}, que es una extensi\'{o}n de \textsc{\gls{HTTP}}, se tiene un alto grado de compatibilidad con clientes \textsc{\gls{WebDAV}}, navegadores web y utilidades de l\'{i}nea de comandos, adem\'{a}s se puede integrar con otras plataformas.
 
   \item \textbf{HTTPS}
 
-Para resguardar la confidencialidad de la contrase\~{n}a del usuario e integridad de los datos transmitidos, el mecanismo de acceso a los archivos es \'{u}nicamente a trav\'{e}s de \textsc{HTTPS}. Esto adem\'{a}s de ser una pr\'{a}ctica recomendada, es un requisito para poder utilizar servicios \textsc{WebDAV} en Windows.
+Para resguardar la confidencialidad de la contrase\~{n}a del usuario e integridad de los datos transmitidos, el mecanismo de acceso a los archivos es \'{u}nicamente a trav\'{e}s de \textsc{\gls{HTTPS}}. Esto adem\'{a}s de ser una pr\'{a}ctica recomendada, es un requisito para poder utilizar servicios \textsc{\gls{WebDAV}} en Windows.
 
   \item \textbf{Compatibilidad multiplataforma}
 
-Durante el desarrollo de este proyecto se realizaron ajustes de los componentes utilizados en la implementaci\'{o}n para que el servidor de archivos fuera compatible con el cliente \textsc{WebDAV} del sistema operativo Windows.
+Durante el desarrollo de este proyecto se realizaron ajustes de los componentes utilizados en la implementaci\'{o}n para que el servidor de archivos fuera compatible con el cliente \textsc{\gls{WebDAV}} del sistema operativo Windows.
 
 De igual manera, se investigaron e implementaron mecanismos que permitieran instalar de forma automatizada el certificado de la autoridad ra\'{i}z en el sistema y que no tuvieran dependencias adicionales para ejecutarse.
 
   \item \textbf{Directorio LDAP}
 
-% Con el objetivo de buscar a futuro unificar la autenticaci\'{o}n de usuarios en los sistemas de la \textsc{DICyG}, se utiliz\'{o} el sistema de directorio de usuarios \textsc{LDAP}.
+% Con el objetivo de buscar a futuro unificar la autenticaci\'{o}n de usuarios en los sistemas de la \textsc{DICyG}, se utiliz\'{o} el sistema de directorio de usuarios \textsc{\gls{LDAP}}.
 
-Para agilizar la carga de los usuarios se desarrollaron una serie de \textit{scripts} que realizan la carga desde un archivo separado por comas e insertan los objetos en el directorio \textsc{LDAP}. La carga de usuarios se puede realizar de manera parcial o en una sola operaci\'{o}n sin presentar dificultades en el sistema.
+Para agilizar la carga de los usuarios se desarrollaron una serie de \emph{\glspl{script}} que realizan la carga desde un archivo separado por comas e insertan los objetos en el directorio \textsc{\gls{LDAP}}. La carga de usuarios se puede realizar de manera parcial o en una sola operaci\'{o}n sin presentar dificultades en el sistema.
 
 % El acceso a los archivos almacenados en el servidor queda restringido a aquellos usuarios que tengan una contrase\~{n}a v\'{a}lida, misma que puede ser cambiada en el \textsl{portal de autoservicio} sin necesidad de acudir con el administrador del sistema.
 
@@ -50,13 +50,13 @@ Para agilizar la carga de los usuarios se desarrollaron una serie de \textit{scr
     \section {Oportunidades de mejora}
 
 % \begin{itemize}
-%   \item \textsc{RAID}
+%   \item \textsc{\gls{RAID}}
 %   \item Cuotas
 %   \item Uso de directivas wilcard de Apache 2.4
-%   \item Integraci\'{o}n del servicio \textsc{WebDAV} como almacenamiento secundario de \textsc{OwnCloud}
-%   \item Integraci\'{o}n del servicio \textsc{LDAP} como mecanismo de autenticaci\'{o}n para otras aplicaciones
-%   \item Uso del servicio \textsc{LDAP} de \textsc{Zimbra} para la autenticaci\'{o}n de los usuarios
-%   \item Uso del servicio \textsc{LDAP} de \textsc{Zentyal} para la autenticaci\'{o}n de los usuarios
+%   \item Integraci\'{o}n del servicio \textsc{\gls{WebDAV}} como almacenamiento secundario de \textsc{OwnCloud}
+%   \item Integraci\'{o}n del servicio \textsc{\gls{LDAP}} como mecanismo de autenticaci\'{o}n para otras aplicaciones
+%   \item Uso del servicio \textsc{\gls{LDAP}} de \textsc{Zimbra} para la autenticaci\'{o}n de los usuarios
+%   \item Uso del servicio \textsc{\gls{LDAP}} de \textsc{Zentyal} para la autenticaci\'{o}n de los usuarios
 %   \item Uso de una base de datos \textsc{SQL} para la autorizaci\'{o}n de los usuarios
 % \end{itemize}
 
@@ -65,7 +65,7 @@ Se identificaron los siguientes elementos que se pueden utilizar para extender y
 \begin{itemize}
   \item \textbf{Implementaci\'{o}n de cuotas de usuario}
 
-Para evitar que un solo usuario ocupe todo el espacio disponible en el disco, se pueden implementar cuotas para los usuarios que tienen permisos de escritura en el sistema, esto requerir\'{a} aplicar directivas de \textsc{ACL} en las carpetas de cada usuario para mantener el grupo asociado al usuario en cada archivo que este cree. 
+Para evitar que un solo usuario ocupe todo el espacio disponible en el disco, se pueden implementar cuotas para los usuarios que tienen permisos de escritura en el sistema, esto requerir\'{a} aplicar directivas de \textsc{\gls{ACL}} en las carpetas de cada usuario para mantener el grupo asociado al usuario en cada archivo que este cree. 
 
   \item \textbf{Apache HTTPD 2.4}
 
@@ -73,12 +73,12 @@ Utilizar directivas din\'{a}micas de control de acceso puede simplificar las dir
 
   \item \textbf{Integraci\'{o}n con bases de datos y directorios de usuarios}
 
-%Es posible utilizar el directorio \textsc{LDAP} del sistema para autenticar usuarios de otras aplicaciones de la \textsc{DICyG} y de esta manera centralizar la autenticaci\'{o}n.
+%Es posible utilizar el directorio \textsc{\gls{LDAP}} del sistema para autenticar usuarios de otras aplicaciones de la \textsc{DICyG} y de esta manera centralizar la autenticaci\'{o}n.
 
 Como alternativa para evitar el uso de un directorio, es posible utilizar una base de datos para autenticar a los usuarios mediante el m\'{o}dulo \texttt{mod\_authn\_dbd} de Apache \textsc{HTTPD} que se comunica con una base de datos y ejecuta sentencias \textsc{SQL} para autenticar y autorizar al usuario.
 %\cite{_mod_authn_dbd_????}	http://httpd.apache.org/docs/2.2/mod/mod_authn_dbd.html
 
-En caso de utilizar un directorio externo de usuarios \textsc{LDAP}, ser\'{a} necesario modificar las directivas de autenticaci\'{o}n que utiliza este sistema para realizar la b\'{u}squeda del usuario y la validaci\'{o}n de sus credenciales.
+En caso de utilizar un directorio externo de usuarios \textsc{\gls{LDAP}}, ser\'{a} necesario modificar las directivas de autenticaci\'{o}n que utiliza este sistema para realizar la b\'{u}squeda del usuario y la validaci\'{o}n de sus credenciales.
 
 Ejemplos de otros sistemas que ofrecen directorios de usuarios son las suites de colaboraci\'{o}n \textsl{Zimbra} y \textsl{Zentyal}.  Existen otros servicios de directorio compatibles como \textit{OpenLDAP}, \textit{Apache Directory Server}, \textit{OpenDirectory} de Mac OS X Server, \textit{389 Directory Server} de Red Hat, \textit{Tivoli Directory Server} de IBM y \textit{Active Directory} de Microsoft.
 
@@ -88,7 +88,7 @@ Este \textsl{appliance} puede ser utilizado como fuente de autenticaci\'{o}n en 
 
 %  \item \textbf{Redundancia, tolerancia a fallos y respaldos}
 %
-% A pesar de que se realiz\'{o} el an\'{a}lisis y comparativa de los tipos de arreglo \textsc{RAID}, en el prototipo final no se implement\'{o} esta funcionalidad debido a que el equipo proporcionado solo contaba con un disco duro y tampoco fue posible obtener una tarjeta controladora.
+% A pesar de que se realiz\'{o} el an\'{a}lisis y comparativa de los tipos de arreglo \textsc{\gls{RAID}}, en el prototipo final no se implement\'{o} esta funcionalidad debido a que el equipo proporcionado solo contaba con un disco duro y tampoco fue posible obtener una tarjeta controladora.
 
 \end{itemize}
 

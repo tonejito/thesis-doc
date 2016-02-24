@@ -5,7 +5,7 @@
   \label{chap:cap4}
 }
 
-Con el objeto de dar soporte a las plataformas m\'{a}s comunes, se realizaron pruebas sobre los principales sistemas operativos de escritorio y m\'{o}viles. Gracias a que el protocolo \textsc{WebDAV} es est\'{a}ndar, s\'{o}lo es cuesti\'{o}n de instalar un cliente en el sistema operativo o verificar si esta funcionalidad ya est\'{a} incorporada para acceder a servidores de archivos de este tipo.
+Con el objeto de dar soporte a las plataformas m\'{a}s comunes, se realizaron pruebas sobre los principales sistemas operativos de escritorio y m\'{o}viles. Gracias a que el protocolo \textsc{\gls{WebDAV}} es est\'{a}ndar, s\'{o}lo es cuesti\'{o}n de instalar un cliente en el sistema operativo o verificar si esta funcionalidad ya est\'{a} incorporada para acceder a servidores de archivos de este tipo.
 
     \section {Plan de pruebas}
 
@@ -30,7 +30,7 @@ En esta secci\'{o}n se valid\'{o} que el servidor no contara con servicios adici
 \newpage
     \section {Compatibilidad multiplataforma}
 
-En el \textup{Ap\'{e}ndice \ref{apdx:a}} se muestran los pasos necesarios para realizar la conexi\'{o}n al servidor \textsc{WebDAV} tanto en sistemas operativos de escritorio como en plataformas de m\'{o}viles.
+En el \textup{Ap\'{e}ndice \ref{apdx:a}} se muestran los pasos necesarios para realizar la conexi\'{o}n al servidor \textsc{\gls{WebDAV}} tanto en sistemas operativos de escritorio como en plataformas de m\'{o}viles.
 
     \section {Pruebas de roles de usuario}
 
@@ -88,11 +88,11 @@ Nmap done: 1 IP address (1 host up) scanned in 256.32 seconds
 \end{verbatim}
 }
 
-% Se encontraron tres servicios: \textsc{SSH}, \textsc{HTTP} y \textsc{HTTPS}. 
+% Se encontraron tres servicios: \textsc{\gls{SSH}}, \textsc{\gls{HTTP}} y \textsc{\gls{HTTPS}}. 
 
       \subsection {Autenticaci\'{o}n}
 
-Las pruebas de autenticaci\'{o}n se realizaron de manera automatizada, se utiliz\'{o} el siguiente algoritmo para iterar entre los usuarios y carpetas utilizando el cliente \textsc{WebDAV} \textsl{cadaver}:
+Las pruebas de autenticaci\'{o}n se realizaron de manera automatizada, se utiliz\'{o} el siguiente algoritmo para iterar entre los usuarios y carpetas utilizando el cliente \textsc{\gls{WebDAV}} \textsl{cadaver}:
 
 {
 \scriptsize
@@ -113,7 +113,7 @@ Las pruebas de autenticaci\'{o}n se realizaron de manera automatizada, se utiliz
 
       \subsection {Par\'{a}metros de cifrado para \textsc{HTTPS}}
 
-Al realizar una verificaci\'{o}n de seguridad del cifrado \textsc{SSL} utilizado en el \textsl{appliance}, se obtuvo una calificaci\'{o}n regular \textbf{C} y se encontraron los siguientes problemas con la configuraci\'{o}n predeterminada:
+Al realizar una verificaci\'{o}n de seguridad del cifrado \textsc{\gls{SSL}} utilizado en el \textsl{appliance}, se obtuvo una calificaci\'{o}n regular \textbf{C} y se encontraron los siguientes problemas con la configuraci\'{o}n predeterminada:
 
 \begin{itemize}
   \item Vulnerabilidad al ataque \texttt{POODLE}\footnote{Padding Oracle On Downgraded Legacy Encryption} \cite{_ssl_????-1} \cite{_ssl-poodle.pdf_????} \cite{_this_????} \cite{barnes_poodle_????} \cite{_security_????-1}
@@ -122,14 +122,14 @@ Al realizar una verificaci\'{o}n de seguridad del cifrado \textsc{SSL} utilizado
 
   \item Est\'{a} habilitado el soporte de \textsc{SSLv3}
 
-  \item La configuraci\'{o}n de \texttt{SSL} aplicada no permite el uso de \textsl{Perfect Forward Secrecy} \cite{_forward_2016}
+  \item La configuraci\'{o}n de \textsc{\gls{SSL}} aplicada no permite el uso de \textsl{Perfect Forward Secrecy} \cite{_forward_2016}
 \end{itemize}
 
 A comtinuaci\'{o}n se muestra una captura de pantalla con los resultados obtenidos tras la primer prueba:
 
   \picturebox{figures/SSL-Labs_Test-Default}{772}{476}{0.8}{ssl-test-default}{Prueba de par\'{a}metros de cifrado \textsc{HTTPS} est\'{a}ndar}{}
 
-Para resolver los problemas encontrados se tomaron en cuenta los requerimientos para \textsc{SSL} del est\'{a}ndar \textsc{PCI-DSS}, deshabilitando por completo el soporte de \textsc{RC4} y \textsc{SSLv3}.
+Para resolver los problemas encontrados se tomaron en cuenta los requerimientos para \textsc{\gls{SSL}} del est\'{a}ndar \textsc{\gls{PCI-DSS}}, deshabilitando por completo el soporte de \textsc{RC4} y \textsc{SSLv3}.
 
 Gracias a la configuraci\'{o}n aplicada se obtuvo una calificaci\'{o}n buena \textbf{A}. En la siguiente imagen se muestra el resultado de las pruebas de seguridad SSL donde la \'{u}nica advertencia mostrada es referente a la autoridad que realiz\'{o} la firma del certificado. \cite{_ssl_????}
 
