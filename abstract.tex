@@ -3,3 +3,13 @@
 \addcontentsline{toc}{chapter}{\abstractname}
 \label{chap:abstract}
 
+{
+\linespread{1.6}
+
+Este trabajo presenta la implementaci\'{o}n de un servidor de almacenamiento para la Divisi\'{o}n de Ingenier\'{i}as Civil y Geom\'{a}tica. Este equipo proporcionar\'{a} un espacio para que los profesores puedan distribuir el material de sus cursos a los alumnos utilizando las herramientas nativas del sistema operativo.
+
+El proyecto fue implementado en el sistema operativo Debian \textsc{GNU}/Linux utilizando \textsc{SSH} como mecanismo de acceso remoto para la administraci\'{o}n del servidor, \textsc{LDAP} como sistema de autenticaci\'{o}n para los usuarios, Apache \textsc{HTTPD} para brindar el servicio de \textsc{HTTPS} y el m\'{o}dulo de \textsc{WebDAV} para permitir la gesti\'{o}n de los archivos almacenados en el servidor.
+
+Se reforz\'{o} la seguridad del servidor al establecer reglas de \emph{firewall} y ajustar los par\'{a}metros de operaci\'{o}n del sistema operativo para aplicar las actualizaciones de manera autom\'{a}tica y adem\'{a}s bloquear los ataques de diccionario. Tras las pruebas realizadas, se modificaron las opciones de \texttt{mod\_ssl} para mitigar las vulnerabilidades presentes.
+}
+
