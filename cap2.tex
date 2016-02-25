@@ -9,7 +9,7 @@
 
 Los usuarios de la Divisi\'{o}n de Ingenier\'{i}as Civil y Geom\'{a}tica (\textsc{DICyG}) utilizan memorias \textsc{USB}, discos \'{o}pticos y carpetas compartidas en red para acceder a archivos de uso interno como documentos, presentaciones e im\'{a}genes que ocupan para realizar sus actividades.
 
-Adicionalmente el personal de la Unidad de C\'{o}mputo almacena los archivos de instalaci\'{o}n de programas y controladores en dispositivos como memorias \textsc{USB}, discos duros externos o en discos \'{o}pticos y los utiliza al dar mantenimiento a los equipos de c\'{o}mputo de la divisi\'{o}n.
+Adicionalmente el personal de la Unidad de C\'{o}mputo almacena los archivos de instalaci\'{o}n de programas y controladores en dispositivos como memorias \textsc{USB}, discos duros externos o en discos \'{o}pticos y los utiliza al dar mantenimiento a los equipos de c\'{o}mputo de la Divisi\'{o}n.
 
 El problema al mantener los archivos en carpetas compartidas o utilizar un medio de almacenamiento externo es que los datos dejan de estar disponibles si el equipo que comparte la carpeta tiene problemas de conectividad o si el medio de almacenamiento no est\'{a} conectado al equipo donde se procesa la informaci\'{o}n.
 
@@ -25,7 +25,7 @@ La implementaci\'{o}n del servidor de almacenamiento ayudar\'{a} a liberar espac
 
 % Usuarios de la Divisi\'{o}n de Ingenier\'{i}a Civil y Geom\'{a}tica (Depto de Geomatica) y Unidad de Computo
 % 50 usuarios
-% Almacenamiento centralizado para guardar imagenes o documentos y poderlos visualizar o editar en cualquier equipo conectado a la red de la division (archivos ligeros)
+% Almacenamiento centralizado para guardar imagenes o documentos y poderlos visualizar o editar en cualquier equipo conectado a la red de la Division (archivos ligeros)
 % Almacenamiento de archivos de intalacion para uso de la unidad de computo (archivos pesados)
 % % Alcance
 % Implementaci\'{o}n, hardening, interfaz de cambio de contrase\~{n}a, pruebas de seguridad y de compatibilidad
@@ -35,7 +35,7 @@ La implementaci\'{o}n del servidor de almacenamiento ayudar\'{a} a liberar espac
 % la transmision de datos esta cifrada, los datos no se cifran en el servidor
 % disponibilidad de los datos en los horarios establecidos
 % liberar espacio y evitar el uso de medios externos para transmitir la informacion
-% poderlos visualizar o editar en cualquier equipo conectado a la red de la division
+% poderlos visualizar o editar en cualquier equipo conectado a la red de la Division
 
     \section {Tecnolog\'{i}as a utilizar}
 
@@ -44,18 +44,18 @@ Para la implementaci\'{o}n de este proyecto se utilizar\'{a}n las siguientes tec
 \begin{itemize}
   \item Debian GNU/Linux como sistema operativo del \textit{appliance}
   \item OpenSSH para el acceso remoto por l\'{i}nea de comandos
-  \item Apache HTTPD para proveer el servicio de \textsc{\gls{HTTPS}}
-  \item OpenLDAP para implementar el directorio de usuarios
+  \item Apache \textsc{HTTPD} para proveer el servicio de \textsc{\gls{HTTPS}}
+  \item \textup{OpenLDAP} para implementar el directorio de usuarios
 \end{itemize}
 
 \newpage
     \section {Arquitectura del prototipo}
 
-El prototipo ser\'{a} implementado en un servidor proporcionado por la \textsc{DICyG} que almacenar\'{a} los archivos que los profesores utilizan en sus clases, as\'{i} como los programas de instalaci\'{o}n y \emph{\gls{software}} de controladores de dispositivo que la Unidad de C\'{o}mputo utiliza para dar mantenimiento a los equipos de la divisi\'{o}n.
+El prototipo ser\'{a} implementado en un servidor proporcionado por la \textsc{DICyG} que almacenar\'{a} los archivos que los profesores utilizan en sus clases, as\'{i} como los programas de instalaci\'{o}n y \emph{\gls{software}} de controladores de dispositivo que la Unidad de C\'{o}mputo utiliza para dar mantenimiento a los equipos de la Divisi\'{o}n.
 
       \subsection {Diagrama funcional}
 
-La siguiente figura muestra el diagrama de la interfaz de administraci\'{o}n \textsc{\gls{SSH}} y la interfaz de acceso a los archivos \textsc{\gls{WebDAV}} sobre \textsc{\gls{HTTPS}}, ambas utilizan el directorio \textsc{OpenLDAP} para autenticar a los usuarios de manera centralizada.
+La siguiente figura muestra el diagrama de la interfaz de administraci\'{o}n \textsc{\gls{SSH}} y la interfaz de acceso a los archivos \textsc{\gls{WebDAV}} sobre \textsc{\gls{HTTPS}}, ambas utilizan el directorio \textup{OpenLDAP} para autenticar a los usuarios de manera centralizada.
 
 \diagramblock
 {Diagrama funcional de la soluci\'{o}n propuesta}
@@ -74,7 +74,7 @@ El t\'{e}rmino \textit{autenticaci\'{o}n centralizada} se refiere a contar con u
 
         \subsubsection {Autenticaci\'{o}n por medio de directorio}
 
-Para tener un esquema de autenticaci\'{o}n centralizada se tendr\'{a} un directorio de usuarios que implemente el servicio \textsc{\gls{LDAP}} mediante el \emph{\gls{software}} \textsc{OpenLDAP}.
+Para tener un esquema de autenticaci\'{o}n centralizada se tendr\'{a} un directorio de usuarios que implemente el servicio \textsc{\gls{LDAP}} mediante el \emph{\gls{software}} \textup{OpenLDAP}.
 
         \subsubsection {Estructura del directorio}
 
@@ -94,7 +94,7 @@ Clasifica los usuarios del sistema por tipo, cada usuario tiene un identificador
 
 \begin{itemize}
 
-  \item \textbf{Personal de la \textit{Unidad de C\'{o}mputo} de la divisi\'{o}n}
+  \item \textbf{Personal de la \textit{Unidad de C\'{o}mputo} de la Divisi\'{o}n}
 
   Estas cuentas de usuario son objetos de tipo \textit{posixAccount} y representan cuentas est\'{a}ndar de \textsc{UNIX}.
 
@@ -114,7 +114,7 @@ Existen tres clases de grupos de usuarios contemplados en el sistema. Esto ayuda
 
 \begin{itemize}
 
-  \item \textbf{Usuarios de la \textsl{Unidad de C\'{o}mputo} de la divisi\'{o}n}
+  \item \textbf{Usuarios de la \textsl{Unidad de C\'{o}mputo} de la Divisi\'{o}n}
 
   Existe un grupo \'{u}nico que contiene a todos los usuarios pertenecientes a la \textit{Unidad de C\'{o}mputo} y se almacena como un objeto de tipo \textit{posixGroup} que representa un grupo est\'{a}ndar de usuarios \textsc{UNIX}.
 
@@ -131,7 +131,7 @@ Existen tres clases de grupos de usuarios contemplados en el sistema. Esto ayuda
 %\newpage
 \textbf{\\ Contenedor de materias \\}
 
-Permite almacenar el cat\'{a}logo de las materias que se imparten en la divisi\'{o}n. Se requiere para la asignaci\'{o}n de grupos a los profesores y alumnos.
+Permite almacenar el cat\'{a}logo de las materias que se imparten en la Divisi\'{o}n. Se requiere para la asignaci\'{o}n de grupos a los profesores y alumnos.
 
 \textbf{\\ Contenedor de cuentas de servicio \\}
 
@@ -241,7 +241,7 @@ En la siguiente secci\'{o}n se muestran las configuraciones del \emph{\gls{hardw
   Sistema Operativo & Debian GNU/Linux 7 \textit{Wheezy} \\
   OpenSSH                                         & v6.0 \\
   Apache \textsc{HTTPD}                           & v2.2 \\
-  OpenLDAP                                        & v2.4 \\
+  \textup{OpenLDAP}                               & v2.4 \\
   \textsc{PHP}                                    & v5.4 \\
   \textsc{LDAP} Account Manager                   & v4.8 \\
   \textsc{LDAP} Toolbox: Self Service Password    & v0.8 \\

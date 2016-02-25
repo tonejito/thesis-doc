@@ -135,11 +135,11 @@ Para evitar el acceso de escritura a los archivos pertenecientes a los profesore
 
     \section {Configuraci\'{o}n de los servicios}
 
-      \subsection {OpenLDAP}
+      \subsection {\textup{OpenLDAP}}
 
-          \subsubsection {Instalaci\'{o}n de \textsc{OpenLDAP}}
+          \subsubsection {Instalaci\'{o}n de \textup{OpenLDAP}}
 
-Se instala \textsc{OpenLDAP} utilizando el comando \texttt{aptitude}, es necesario contestar \textbf{NO} en el cuadro de di\'{a}logo para seguir el asistente de instalaci\'{o}n:
+Se instala \textup{OpenLDAP} utilizando el comando \texttt{aptitude}, es necesario contestar \textbf{NO} en el cuadro de di\'{a}logo para seguir el asistente de instalaci\'{o}n:
 
 {
 \scriptsize
@@ -164,7 +164,7 @@ Se instala \textsc{OpenLDAP} utilizando el comando \texttt{aptitude}, es necesar
 \end{verbatim}
 }
 
-Se pide el nombre textsc{\gls{DNS}} del dominio que servir\'{a} para conformar la ra\'{i}z del \'{a}rbol de \textsc{\gls{LDAP}}.
+Se pide el nombre \textsc{\gls{DNS}} del dominio que servir\'{a} para conformar la ra\'{i}z del \'{a}rbol de \textsc{\gls{LDAP}}.
 
 {
 \scriptsize
@@ -234,7 +234,7 @@ Se recomienda deshabilitar el soporte del protocolo \textsc{LDAPv2} puesto que e
 \end{verbatim}
 }
 
-          \subsubsection {Configuraci\'{o}n de \textsc{OpenLDAP}}
+          \subsubsection {Configuraci\'{o}n de \textup{OpenLDAP}}
 
 Se configur\'{o} el sistema operativo para permitir que los usuarios de \textsc{\gls{LDAP}} de tipo \textit{posixAccount} puedan iniciar sesi\'{o}n en el equipo.
 
@@ -358,7 +358,7 @@ adding new entry "ou=webdav,ou=groups,dc=xnas,dc=local"
 \newpage
           \subsubsection {Carga de datos en el directorio \textsc{LDAP}}
 
-Para realizar la carga de la base de datos de usuarios y grupos se desarroll\'{o} en el lenguaje de programaci\'{o}n \emph{\gls{Ruby}} una biblioteca y un \emph{\gls{script}} de carga que lee los datos desde un archivo origen en formato \texttt{CSV}, establece las relaciones entre los objetos y realiza el ingreso de los datos al directorio.
+Para realizar la carga de la base de datos de usuarios y grupos se desarroll\'{o} en el lenguaje de programaci\'{o}n \emph{\gls{Ruby}} una biblioteca y un \emph{\gls{script}} de carga que lee los datos desde un archivo origen en formato \textsc{CSV}, establece las relaciones entre los objetos y realiza el ingreso de los datos al directorio.
 
 La biblioteca que realiza la carga de objetos funciona de acuerdo al siguiente algoritmo:
 
@@ -382,7 +382,7 @@ La biblioteca que realiza la carga de objetos funciona de acuerdo al siguiente a
  }
 }
 
-Cada archivo de entrada \texttt{CSV} tiene varias columnas que contienen informaci\'{o}n acerca del tipo de objeto que representa, a continuaci\'{o}n se muestran las columnas que se requieren en los archivos de entrada:
+Cada archivo de entrada \textsc{CSV} tiene varias columnas que contienen informaci\'{o}n acerca del tipo de objeto que representa, a continuaci\'{o}n se muestran las columnas que se requieren en los archivos de entrada:
 
 {
  \begin{table}[H]
@@ -1009,8 +1009,10 @@ Una vez copiado el archivo de configuraci\'{o}n, se agregan los bloques \textsc{
 \linespread{1}
 \begin{verbatim}
 [DEFAULT]
+
 # "ignoreip" can be an IP address, a CIDR mask or a DNS host
 ignoreip = 127.0.0.0/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 132.247.0.0/16 132.248.0.0/16
+
 # seconds
 bantime  = 3600
 maxretry = 3
