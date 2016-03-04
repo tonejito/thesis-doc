@@ -161,6 +161,8 @@
 
 Implementar un servidor dedicado de almacenamiento que incluya las cuentas de usuario desde un directorio \textup{LDAP} y que transmita la informaci\'{o}n por medio de \textup{WebDAV} a trav\'{e}s de un canal cifrado.
 
+\vspace{3em}
+
 \centering
  \psscalebox{0.5 0.5} % Change this value to rescale the drawing.
  {
@@ -215,6 +217,11 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 \begin{frame}
 \frametitle{Desarrollo}
 \framesubtitle{Diagrama de bloques}
+
+Se utiliza \textup{SSH} para la administraci\'{o}n del equipo y se utiliza \textup{HTTPS} para acceder a los archivos almacenados.
+
+\vspace{1.7em}
+
 \centering
  \psscalebox{0.9 0.9}
  {
@@ -229,6 +236,8 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 \framesubtitle{\'{A}rbol de directorio \textup{LDAP}}
 
 Organiza los usuarios y grupos en \emph{unidades organizacionales} para acotar las b\'{u}squedas.
+
+\vspace{1.0em}
 
 \centering
  \psscalebox{0.9 0.9}
@@ -246,6 +255,8 @@ Organiza los usuarios y grupos en \emph{unidades organizacionales} para acotar l
 
 Se desarroll\'{o} una biblioteca que carga los usuarios en el directorio \textup{LDAP}.
 
+\vspace{1.5em}
+
 \centering
  \psscalebox{0.9 0.9}
  {
@@ -261,6 +272,8 @@ Se desarroll\'{o} una biblioteca que carga los usuarios en el directorio \textup
 \framesubtitle{Formato de archivos \textup{CSV}}
 
 El script de carga acepta estos archivos como entrada y genera la salida en el mismo formato.
+
+\vspace{2em}
 
 \centering
 {
@@ -324,6 +337,8 @@ El script de carga acepta estos archivos como entrada y genera la salida en el m
 
 Nombres \textup{DNS} utilizados para acceder a las interfaces de usuario del sistema
 
+\vspace{2em}
+
 \centering
  \psscalebox{0.75 0.75}
  {
@@ -339,6 +354,8 @@ Nombres \textup{DNS} utilizados para acceder a las interfaces de usuario del sis
 \framesubtitle{Configuraci\'{o}n de Apache \textup{HTTPD}}
 
 La configuraci\'{o}n del servicio se organiza en diferentes carpetas:
+
+\vspace{2em}
 
 \centering
  \psscalebox{0.9 0.9}
