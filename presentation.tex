@@ -61,7 +61,7 @@
 \newcommand{\AuthorName}{Andr\'{e}s Leonardo Hern\'{a}ndez Berm\'{u}dez}
 \newcommand{\CollegeMajor}{Ingenier\'{i}a en Computaci\'{o}n}
 \newcommand{\PresentationTitle}{xNAS: Appliance de almacenamiento en red por medio de WebDAV}
-\newcommand{\PresentationDate}{Enero 2016}
+\newcommand{\PresentationDate}{Marzo 2016}
 
 
 %----------------------------------------------------------------------------------------
@@ -123,9 +123,10 @@
 \justifying
   \item Los profesores de la Divisi\'{o}n de Ingenier\'{i}as Civil y Geom\'{a}tica utilizan medios de almacenamiento externos como memorias USB y discos duros externos para distribuir la informaci\'{o}n que utilizan para sus cursos.
 \\~\\
-  \item El personal de la Unidad de C\'{o}mputo utiliza discos \'{o}pticos para instalar el software en los equipos a los que da servicio.
+  \item El personal de la Unidad de C\'{o}mputo utiliza discos \'{o}pticos para instalar el software en los equipos de la Divisi\'{o}n.
 \end{itemize}
 
+\centering
  \psscalebox{0.5 0.5} % Change this value to rescale the drawing.
  {
   \input{figures/media}
@@ -142,7 +143,7 @@
 \justifying
   \item No existen controles de acceso a los archivos
 \\~\\
-  \item Es propenso a borrado accidental de archivos
+  \item Los archivos pueden ser borrados de manera accidental
 \\~\\
   \item La velocidad de transferencia es baja
 \\~\\
@@ -158,8 +159,9 @@
 \frametitle{Objetivo}
 \justifying
 
-Implementar un servidor dedicado de almacenamiento que incluya las cuentas de usuario desde un directorio \textsc{LDAP} y que transmita la informaci\'{o}n por medio de \textsc{WebDAV} a trav\'{e}s de un canal cifrado.
+Implementar un servidor dedicado de almacenamiento que incluya las cuentas de usuario desde un directorio \textup{LDAP} y que transmita la informaci\'{o}n por medio de \textup{WebDAV} a trav\'{e}s de un canal cifrado.
 
+\centering
  \psscalebox{0.5 0.5} % Change this value to rescale the drawing.
  {
   \input{figures/rack-servers}
@@ -197,13 +199,13 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 \begin{block}{Debian GNU/Linux 7 \guillemotleft wheezy\guillemotright}
  Sistema operativo del \textsl{appliance}
 \end{block}
-\begin{block}{OpenSSH}
+\begin{block}{\textup{OpenSSH}}
  Administraci\'{o}n por l\'{i}nea de comandos
 \end{block}
-\begin{block}{Apache HTTPD}
- Servicio HTTPS para el acceso a los archivos a trav\'{e}s de WebDAV
+\begin{block}{Apache \textup{HTTPD}}
+ Servicio \textup{HTTPS} para el acceso a los archivos a trav\'{e}s de \textup{WebDAV}
 \end{block}
-\begin{block}{OpenLDAP}
+\begin{block}{\textup{OpenLDAP}}
  Servicio LDAP para autenticaci\'{o}n centralizada
 \end{block}
 
@@ -224,7 +226,10 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 
 \begin{frame}
 \frametitle{Desarrollo}
-\framesubtitle{\'{A}rbol de directorio}
+\framesubtitle{\'{A}rbol de directorio \textup{LDAP}}
+
+Organiza los usuarios y grupos en \emph{unidades organizacionales} para acotar las b\'{u}squedas.
+
 \centering
  \psscalebox{0.9 0.9}
  {
@@ -238,6 +243,9 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 \begin{frame}
 \frametitle{Desarrollo}
 \framesubtitle{Carga de usuarios}
+
+Se desarroll\'{o} una biblioteca que carga los usuarios en el directorio \textup{LDAP}.
+
 \centering
  \psscalebox{0.9 0.9}
  {
@@ -250,7 +258,10 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 
 \begin{frame}
 \frametitle{Desarrollo}
-\framesubtitle{Formato de archivos CSV}
+\framesubtitle{Formato de archivos \textup{CSV}}
+
+El script de carga acepta estos archivos como entrada y genera la salida en el mismo formato.
+
 \centering
 {
  \begin{table}[H]
@@ -275,38 +286,44 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 
 \end{frame}
 
+%%------------------------------------------------
+%
+%\begin{frame}
+%\frametitle{Desarrollo}
+%\framesubtitle{VirtualHost de Apache HTTPD}
+%
+%Nombres DNS utilizados para acceder a las interfaces de usuario del sistema
+%
+%\centering
+%{
+% \begin{table}[H]
+%% \caption{VirtualHost configurados en Apache HTTPD}{}
+% \label{tab:virtualhost}
+% \noindent\makebox[\textwidth]
+% {%
+%  \begin{tabular}[c]{c|c}
+%  %\hline
+%  \textbf{VirtualHost} & \textbf{Funci\'{o}n} \\
+%  \hline \hline
+%  \texttt{xnas.tonejito.org}       & Acceso a los archivos por medio de \textsc{WebDAV} \\
+%  \texttt{reset.xnas.tonejito.org} & Interfaz de cambio de contrase\~{n}a \\
+%  \texttt{admin.xnas.tonejito.org} & Interfaz administrativa del directorio \textsc{LDAP} \\
+%  %\hline
+%  \end{tabular}
+% } % ending of \makebox
+% \end{table}
+%}
+%
+%\end{frame}
+%
 %------------------------------------------------
 
 \begin{frame}
 \frametitle{Desarrollo}
-\framesubtitle{VirtualHost de Apache HTTPD}
-\centering
-{
- \begin{table}[H]
-% \caption{VirtualHost configurados en Apache HTTPD}{}
- \label{tab:virtualhost}
- \noindent\makebox[\textwidth]
- {%
-  \begin{tabular}[c]{c|c}
-  %\hline
-  \textbf{VirtualHost} & \textbf{Funci\'{o}n} \\
-  \hline \hline
-  \texttt{xnas.local} & Acceso a los archivos por medio de \textsc{WebDAV} \\
-  \texttt{reset.xnas.local} & Interfaz de cambio de contrase\~{n}a \\
-  \texttt{admin.xnas.local} & Interfaz administrativa del directorio \textsc{LDAP} \\
-  %\hline
-  \end{tabular}
- } % ending of \makebox
- \end{table}
-}
+\framesubtitle{Diagrama de VirtualHost de Apache \textup{HTTPD}}
 
-\end{frame}
+Nombres \textup{DNS} utilizados para acceder a las interfaces de usuario del sistema
 
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Desarrollo}
-\framesubtitle{Diagrama de VirtualHost}
 \centering
  \psscalebox{0.75 0.75}
  {
@@ -319,7 +336,10 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 
 \begin{frame}
 \frametitle{Desarrollo}
-\framesubtitle{Configuraci\'{o}n de Apache HTTPD}
+\framesubtitle{Configuraci\'{o}n de Apache \textup{HTTPD}}
+
+La configuraci\'{o}n del servicio se organiza en diferentes carpetas:
+
 \centering
  \psscalebox{0.9 0.9}
  {
@@ -339,7 +359,9 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 \\~\\
  \item Reducci\'{o}n de componentes instalados
 \\~\\
- \item Configuraci\'{o}n de seguridad de OpenSSH
+ \item Configuraci\'{o}n de seguridad de \textup{OpenSSH}
+\\~\\
+ \item Par\'{a}metros de cifrado para \textup{HTTPS}
 \\~\\
  \item Reglas de Firewall
 \end{itemize}
@@ -390,13 +412,13 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 \framesubtitle{Resultados obtenidos}
 \justifying
 \begin{itemize}
- \item WebDAV
+ \item \textup{WebDAV}
 \\~\\
- \item HTTPS
+ \item \textup{HTTPS}
 \\~\\
  \item Compatibilidad multiplataforma
 \\~\\
- \item Autenticaci\'{o}n LDAP
+ \item Autenticaci\'{o}n \textup{LDAP}
 \end{itemize}
 \end{frame}
 
@@ -413,7 +435,7 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 \\~\\
  \item Integraci\'{o}n con \textsl{ownCloud}
 \\~\\
- \item Autenticaci\'{o}n LDAP
+ \item Autenticaci\'{o}n \textup{LDAP}
 \end{itemize}
 \end{frame}
 
@@ -426,3 +448,4 @@ Implementar un servidor dedicado de almacenamiento que incluya las cuentas de us
 %------------------------------------------------
 
 \end{document}
+
