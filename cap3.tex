@@ -1139,7 +1139,7 @@ Se establecieron los siguientes par\'{a}metros de cifrado para \textsc{\gls{HTTP
 \begin{itemize}
   \item Deshabilita el mecanismo de compresi\'{o}n de \textsc{\gls{SSL}} y \textsc{\gls{TLS}}, mitigando las vulnerabilidades \textsc{CRIME}\cite{_crime_????} y \textsc{BREACH}\cite{_breach_????}
     \code{SSLCompression Off}
-  \item Deshabilita expl\'{i}citamente el uso de \textsc{SSLv2}, \textsc{SSLv3} y \textsc{TLSv1}, para evitar la vulnerabilidad \textsc{POODLE}\cite{_poodle_????}
+  \item Deshabilita expl\'{i}citamente el uso de \textsc{SSLv2}, \textsc{SSLv3} y \textsc{TLSv1}, para evitar las vulnerabilidades \textsc{POODLE}\cite{_poodle_????} y \textsc{DROWN}\cite{_drown_????}
     \code{SSLProtocol All -TLSv1 -SSLv3 -SSLv2}
     \code{SSLHonorCipherOrder On}
   \item Elige un algoritmo seguro para el cifrado, intercambio de llaves y verificaci\'{o}n de mensaje, esto previene los ataques \textsc{BEAST}\cite{_beast.pdf_????} y \textsc{BREACH}\cite{_breach_????}
@@ -1161,6 +1161,8 @@ La configuraci\'{o}n completa de \texttt{mod\_ssl} se muestra a continuaci\'{o}n
 
   # POODLE
   # https://poodle.io/servers.html#apache
+  # DROWN
+  # https://drownattack.com/apache.html
 
   SSLProtocol All -TLSv1 -SSLv3 -SSLv2
   SSLHonorCipherOrder On
