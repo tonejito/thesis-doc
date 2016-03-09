@@ -27,7 +27,7 @@ Es una variante de la memoria \textsc{RAM} donde se almacena la informaci\'{o}n 
 
   \item \textbf{ROM}
 
-Es una memoria de s\'{o}lo lectura que puede ser grabada una sola vez, generalmente se utilizaba para almacenar el firmware de dispositivos o alg\'{u}n programa embebido en \emph{\gls{hardware}} que requiere una salida fija para una entrada determinada \cite{_rom_????}.
+Es una memoria de s\'{o}lo lectura que puede ser grabada una sola vez, generalmente se utilizaba para almacenar el \emph{\gls{firmware}} de dispositivos o alg\'{u}n programa embebido en \emph{\gls{hardware}} que requiere una salida fija para una entrada determinada \cite{_rom_????}.
 
   \item \textbf{EEPROM}
 
@@ -303,7 +303,7 @@ Los arreglos de disco se pueden configurar por tarjetas dedicadas de \emph{\gls{
 
 \subsubsection*{Tipos de arreglo RAID}
 
-A continuaci\'{o}n se muestra la descripci\'{o}n de los tipos de arreglo \textsc{\gls{RAID}} que se pueden implementar tanto en \emph{\gls{hardware}} y en \emph{\gls{software}} con las tarjetas controladoras actuales. \footnote{Los tipos 2, 3 y 4 de \textsc{\gls{RAID}} no son comunes y generalmente no son soportados.}
+A continuaci\'{o}n se muestra la descripci\'{o}n de los tipos de arreglo \textsc{\gls{RAID}} que se pueden implementar tanto en \emph{\gls{hardware}} y en \emph{\gls{software}} con las tarjetas controladoras actuales. \footnote{Los tipos 2, 3 y 4 de \textsc{\gls{RAID}} no son comunes, por lo que generalmente no son soportados.}
 
 \begin{itemize}
 
@@ -424,7 +424,7 @@ Si fallan uno o dos discos del mismo arreglo \textsc{\gls{RAID}} 0, el arreglo \
 
 Consiste en un arreglo \textsc{\gls{RAID}} 0 \textit{Stripe} conformado por dos o m\'{a}s arreglos \textsc{\gls{RAID}} 1 \textit{Mirror}. El sistema operativo detecta la presencia de un solo disco mientras que este se conforma por un arreglo \textsc{\gls{RAID}} 0 \textit{Stripe} que une los dos arreglos \textsc{\gls{RAID}} 1 \textit{Mirror} (ver figura).
 
-Si un disco de alg\'{u}n arreglo \textsc{\gls{RAID}} 1 falla, este entra en modo degradado y el funcionamiento del arreglo \textsc{\gls{RAID}} 0 no se ve afectado. \footnote{Salvo por la perdida de rendimiento en el arreglo.} Si fallan dos discos del mismo arreglo \textsc{\gls{RAID}} 1, entonces el arreglo \textsc{\gls{RAID}} 0 pierde los datos. Se requieren por lo menos cuatro discos para hacer esta configuraci\'{o}n.
+Si un disco de alg\'{u}n arreglo \textsc{\gls{RAID}} 1 falla, este entra en modo degradado y el funcionamiento del arreglo \textsc{\gls{RAID}} 0 no se ve afectado. \footnote{Salvo por la p\'{e}rdida de rendimiento en el arreglo.} Si fallan dos discos del mismo arreglo \textsc{\gls{RAID}} 1, entonces el arreglo \textsc{\gls{RAID}} 0 pierde los datos. Se requieren por lo menos cuatro discos para hacer esta configuraci\'{o}n.
 
 \end{itemize}
 
@@ -760,8 +760,8 @@ La nomenclatura de los objetos es similar a la que utiliza \textsc{\gls{DNS}}, e
   %\hline
   \textbf{Nomenclatura} & \textbf{Formato del nodo ra\'{i}z} \\
   \hline \hline
-  \textit{Domain Component} & dc=tonejito,dc=org \\
-  \textit{Organization} & o=tonejito \\
+  \textit{Domain Component} & \texttt{dc=tonejito,dc=org} \\
+  \textit{Organization}     & \texttt{o=tonejito} \\
   %\hline
   \end{tabular}
  } % ending of \makebox
