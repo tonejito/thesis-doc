@@ -79,5 +79,18 @@
 % Add empty page at the end
 \newpage\null\thispagestyle{empty}\newpage
 }
+{
+% Set up a reference URL on the final page
+% http://tex.stackexchange.com/a/2327
+% http://tex.stackexchange.com/a/70718
+\thispagestyle{empty}
+\clearpage
+ \vspace*{\fill}
+  \begin{center}
+   \texttt{http://thesis.tonejito.org/}
+  \end{center}
+ \vfill % equivalent to \vspace{\fill}
+\clearpage
+}
 \end{document}
 
