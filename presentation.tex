@@ -285,6 +285,39 @@ Organiza los usuarios y grupos en \emph{unidades organizacionales} para acotar l
 
 \end{frame}
 
+%%------------------------------------------------
+%
+%\begin{frame}
+%\frametitle{Desarrollo}
+%\framesubtitle{Formato de archivos \textup{CSV}}
+%
+%El script de carga acepta estos archivos como entrada y genera la salida en el mismo formato.
+%
+%\vspace{2em}
+%
+%\centering
+%{
+% \begin{table}[H]
+%% \caption{Formato de los archivos \textsl{CSV}}{}
+% \label{tab:csv-format}
+% \noindent\makebox[\textwidth]
+% {%
+%  \begin{tabular}[c]{c|c c c c c}
+%  %\hline
+%  \textbf{Archivo} & \multicolumn{5}{c}{\textbf{Columnas}} \\
+%  \hline \hline
+%  \textit{staff.csv} & usuario & nombre & correo & curp & \\
+%  \textit{materias.csv} & id & grupo & materia & rfc & profesor \\
+%  \textit{profesores.csv} & rfc & nombre & correo & & \\
+%  \textit{alumnos.csv} & cuenta & nombre & correo & asignatura & grupo \\
+%  %\hline
+%  \end{tabular}
+% } % ending of \makebox
+% \end{table}
+%}
+%
+%\end{frame}
+
 %------------------------------------------------
 
 \begin{frame}
@@ -300,40 +333,6 @@ Se desarroll\'{o} una biblioteca que carga los usuarios en el directorio \textup
  {
   \input{figures/load-script-diagram}
  }
-
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Desarrollo}
-\framesubtitle{Formato de archivos \textup{CSV}}
-
-El script de carga acepta estos archivos como entrada y genera la salida en el mismo formato.
-
-\vspace{2em}
-
-\centering
-{
- \begin{table}[H]
-% \caption{Formato de los archivos \textsl{CSV}}{}
- \label{tab:csv-format}
- \noindent\makebox[\textwidth]
- {%
-  \begin{tabular}[c]{c|c c c c c}
-  %\hline
-  \textbf{Archivo} & \multicolumn{5}{c}{\textbf{Columnas}} \\
-  \hline \hline
-  \textit{staff.csv} & usuario & nombre & correo & curp & \\
-  \textit{materias.csv} & id & grupo & materia & rfc & profesor \\
-  \textit{profesores.csv} & rfc & nombre & correo & & \\
-  \textit{alumnos.csv} & cuenta & nombre & correo & asignatura & grupo \\
-  %\hline
-  \end{tabular}
- } % ending of \makebox
- \end{table}
-}
-
 
 \end{frame}
 
