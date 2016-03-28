@@ -119,14 +119,10 @@
   \end{itemize}
   \item Desarrollo
   \begin{itemize}
-%    \item Componentes
-%    \item Diagrama de bloques
     \item \'{A}rbol de directorio \textup{LDAP}
-%    \item Carga de usuarios
-%    \item Formato de archivos \textup{CSV}
-    %\item VirtualHost de Apache HTTPD
-%    \item Diagrama de VirtualHost de Apache \textup{HTTPD}
+    \item Carga de usuarios
     \item Configuraci\'{o}n de Apache \textup{HTTPD}
+    \item Interfaces de usuario
     \item \textsl{Hardening}
   \end{itemize}
   \item Pruebas
@@ -407,9 +403,9 @@ La configuraci\'{o}n del servicio se organiza en diferentes carpetas:
 
 \begin{frame}
 \frametitle{Desarrollo}
-\framesubtitle{Conector WebDAV en PowerShell}
+\framesubtitle{Conector WebDAV}
 
-Se desarroll\'{o} una interfaz \textsl{frontend} que pasa los par\'{a}metros al comando \texttt{net use} para montar una unidad de red:
+Se desarroll\'{o} en PowerShell una interfaz \textsl{frontend} que pasa los par\'{a}metros al comando \texttt{net use} para montar una unidad de red:
 
 \vspace{2em}
 
@@ -418,6 +414,36 @@ Se desarroll\'{o} una interfaz \textsl{frontend} que pasa los par\'{a}metros al 
  {
   \input{figures/xNAS-Connector}
  }
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Desarrollo}
+\framesubtitle{Interfaz de administraci\'{o}n del directorio}
+
+LDAP Account Manager
+
+\vspace{1em}
+
+\centering
+\includegraphics[scale=0.4,keepaspectratio=true]{figures/LAM}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Desarrollo}
+\framesubtitle{Interfaz de cambio de contrase\~{n}a}
+
+LDAP Toolbox - Self Service Password
+
+\vspace{1em}
+
+\centering
+\includegraphics[scale=0.4,keepaspectratio=true]{figures/Self-Service-Password}
 
 \end{frame}
 
@@ -479,6 +505,28 @@ Se desarroll\'{o} una interfaz \textsl{frontend} que pasa los par\'{a}metros al 
 
 \end{frame}
 
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Conclusiones}
+\framesubtitle{Resultados obtenidos}
+\justifying
+
+\textbf{\textup{WebDAV}}
+\begin{itemize}
+ \item Compatibilidad
+ \item Integraci\'{o}n con otras plataformas
+\end{itemize}
+
+\vspace{2em}
+
+\textbf{\textup{HTTPS}}
+\begin{itemize}
+ \item Proteje la confidencialidad e integridad de la informaci\'{o}n
+ \item Requisito para la conexi\'{o}n en clientes Windows
+\end{itemize}
+
+\end{frame}
 
 %------------------------------------------------
 
@@ -486,16 +534,21 @@ Se desarroll\'{o} una interfaz \textsl{frontend} que pasa los par\'{a}metros al 
 \frametitle{Conclusiones}
 \framesubtitle{Resultados obtenidos}
 \justifying
+
+\textbf{Compatibilidad multiplataforma}
 \begin{itemize}
- \item \textup{WebDAV}
-\\~\\
- \item \textup{HTTPS}
-\\~\\
- \item Compatibilidad multiplataforma
-\\~\\
- \item Autenticaci\'{o}n \textup{LDAP}
-\\~\\
+ \item Ajustes para compatibilidad con clientes Windows
+ \item Instalaci\'{o}n del certificado ra\'{i}z en los clientes
 \end{itemize}
+
+\vspace{2em}
+
+\textbf{Autenticaci\'{o}n \textup{LDAP}}
+\begin{itemize}
+ \item Carga de usuarios desde archivos \textup{CSV}
+ \item Se puede hacer la carga de forma parcial o completa
+\end{itemize}
+
 \end{frame}
 
 %------------------------------------------------
@@ -504,16 +557,45 @@ Se desarroll\'{o} una interfaz \textsl{frontend} que pasa los par\'{a}metros al 
 \frametitle{Conclusiones}
 \framesubtitle{Oportunidades de mejora}
 \justifying
+
+\textbf{Cuotas de disco duro}
 \begin{itemize}
- \item Cuotas de disco duro
-\\~\\
- \item Otros mecanismos de autenticaci\'{o}n
-\\~\\
- \item Integraci\'{o}n con \textsl{ownCloud}
-\\~\\
- \item Autenticaci\'{o}n \textup{LDAP}
-\\~\\
+ \item Limita el espacio de disco disponible a cada usuario
+ \item Requiere el uso de ACL en el sistema de archivos
 \end{itemize}
+
+\vspace{2em}
+
+\textbf{Otros mecanismos de autenticaci\'{o}n}
+\begin{itemize}
+ \item Conexi\'{o}n con otros directorios \textup{LDAP} y bases de datos \textup{SQL}
+ \item Requiere modificaciones a los filtros de b\'{u}squeda
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Conclusiones}
+\framesubtitle{Oportunidades de mejora}
+\justifying
+
+\textbf{Autenticaci\'{o}n \textup{LDAP}}
+\begin{itemize}
+ \item El directorio puede autenticar usuarios de otros sistemas
+ \item Requiere grupos adicionales para el manejo de privilegios
+\end{itemize}
+
+\vspace{2em}
+
+\textbf{Integraci\'{o}n con \textsl{ownCloud}}
+\begin{itemize}
+ \item Puede ser utilizado como fuente de autenticaci\'{o}n
+\\~\\
+% \item Es posible montar el directorio virtual de \textup{xNAS} en \textup{ownCloud}
+\end{itemize}
+
 \end{frame}
 
 %------------------------------------------------
